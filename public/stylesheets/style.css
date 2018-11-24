@@ -117,6 +117,9 @@
 .ml-auto {
   margin-left: auto; }
 
+html {
+  overflow: hidden; }
+
 body {
   overflow: hidden;
   -webkit-transition: .3s ease-in-out;
