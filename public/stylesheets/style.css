@@ -121,7 +121,6 @@ html {
   overflow: hidden; }
 
 body {
-  overflow: hidden;
   -webkit-transition: .3s ease-in-out;
      -moz-transition: .3s ease-in-out;
        -o-transition: .3s ease-in-out;
