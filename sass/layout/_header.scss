@@ -1,0 +1,86 @@
+.header{
+  height:72px;
+  background-color:#0e71ff;
+}
+
+
+.logo{
+
+}
+
+.logo-img{
+  width:34px;
+  height:34px;
+}
+
+
+//==============for navigation =====================//
+.nav{
+  background-color:#0e71ff;
+  height:100%;
+  width:250px;
+  padding:20px;
+  text-transform:uppercase;
+  top:0;
+  right:0;
+  border-left:1px solid #749dca;
+  transform:translateX(250px);
+}
+
+.nav-list{
+  margin-bottom:20px;
+}
+.nav-link{
+  font-weight:$font-weight-normal;
+  color:#fff;
+  display:block;
+}
+@supports(height:100vh){
+  .nav{
+    height:100vh;
+  }
+}
+
+
+//================for hamburger==================
+
+.hamburger{
+  padding:10px;
+  width: 84px;
+  height: 36px;
+  border-radius: 18px;
+  border: 2px solid #fff;
+}
+.burger-cont{
+  width:15px;
+  margin-right:5px;
+  // position: relative;
+}
+.burger1,.burger2,.burger3{
+  display: block;
+  width: 15px;
+  height: 2px;
+  margin-bottom: 3px;
+  border-radius: 1px;
+  background-color: #fff;
+  transition:.1s ease-in-out;
+}
+
+.hamburger-text{
+  font-size:13px;
+  color:#fff;
+}
+
+.change.burger1,.change.burger2{
+  position: absolute;
+  transform:rotate(-45deg);
+}
+
+.change.burger3{
+  position: absolute;
+  transform:rotate(45deg);
+}
+
+.translate{
+  transform:translateX(-250px);
+}

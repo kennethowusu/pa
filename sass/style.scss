@@ -1,0 +1,39 @@
+
+
+//import vendors styles
+
+
+
+//import utils styles
+@import 'utils/variables',
+        'utils/helpers',
+        'utils/layout',
+        'utils/flex',
+        'utils/display',
+        'utils/position',
+        'utils/functions',
+        'utils/mixins',
+        'utils/margin';
+
+        //import base styles
+        @import 'base/reset',
+                'base/typography';
+
+
+
+//import layout styles
+@import 'layout/header',
+        'layout/footer',
+        'layout/sidebar';
+
+
+//import layout styles
+
+
+//
+//import component styles
+  @import 'components/buttons';
+
+
+  //import pages styles
+  @import 'pages/home';

@@ -1,0 +1,8 @@
+//=============clear float========//
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
