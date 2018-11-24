@@ -149,7 +149,8 @@ body {
 
 .header {
   height: 72px;
-  background-color: #0e71ff; }
+  background-color: #0e71ff;
+  padding: 20px; }
 
 .logo-img {
   width: 34px;
