@@ -16,21 +16,29 @@
   <body>
 
     <header class="header d-flex align-items-center p-relative">
-      <a href="" class="logo mr-auto">
+
+      <a href="" class="logo mr-auto ">
         <img src="/images/svg/apple.svg" alt="image of logo" class="logo-img">
       </a>
-
-      <nav class="nav js-nav p-absolute ">
+      <nav class="nav js-nav p-absolute  ">
         <ul>
-          <li class="nav-list"><a href="" class="nav-link">About us</a></li>
-          <li class="nav-list"><a href="" class="nav-link">How it works</a></li>
-          <li class="nav-list"><a href="" class="nav-link">faqs</a></li>
-          <li class="nav-list"><a href="" class="nav-link">login</a></li>
-          <li class="nav-list"><a href="" class="nav-link">signup</a></li>
+          <div class='nav-divider'>
+            <li class="nav-list"><a href="" class="nav-link">About us</a></li>
+            <li class="nav-list"><a href="" class="nav-link">How it works</a></li>
+            <li class="nav-list"><a href="" class="nav-link">faqs</a></li>
+            <li class="nav-list"><a href="" class="nav-link">login</a></li>
+          </div>
+          <div>
+            <li class="nav-list signupforfree p-absolute"><a href="" class=" capitalize nav-link btn btn-hollow ">signup for free</a></li>
+          </div>
         </ul>
       </nav>
 
-      <div class=" hamburger js-hamburger d-flex align-items-center justify-content-center pointer">
+      <ul class="d-flex ml-auto align-items-center ">
+        <li class=""><a href="" class=" btn btn-hollow capitalize">log In</a></li>
+        <li class=" d-none"><a href="" class="nav-link  ">signup</a></li>
+      </ul>
+      <div class=" hamburger mr-auto js-hamburger d-flex align-items-center justify-content-center pointer">
         <span class="burger-cont">
           <span class="burger1"></span>
           <span class="burger2"></span>
@@ -39,6 +47,10 @@
         </span>
         <span class="hamburger-text">Menu</span>
       </div>
+
+
+
+
     </header>
   </body>
 
