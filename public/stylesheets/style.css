@@ -158,7 +158,7 @@ body {
 
 .header {
   height: 72px;
-  background-color: #7370f5;
+  background-color: radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
   padding: 20px; }
 
 @media (min-width: 1028px) {
@@ -173,7 +173,7 @@ body {
   .nav {
     height: 100vh; } }
 .nav {
-  background-color: #7370f5;
+  background-color: radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
   height: 100%;
   width: 250px;
   padding: 0 30px 0  20px;
@@ -356,9 +356,21 @@ body {
 
 .banner-cont {
   position: absolute;
-  opacity: .5;
   z-index: -80;
   background-image: url("../images/rasta/background-image.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; }
+
+.banner-cont {
+  width: 100%;
+  max-width: 100%;
+  height: 400px; }
+
+.welc-background {
+  width: inherit;
+  height: inherit;
+  background-image: -webkit-radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
+  background-image: -moz- oldradial-gradient(center bottom, circle farthest-side, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
+  background-image: -o-radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
+  background-image: radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%); }
