@@ -6,9 +6,16 @@
 
 
 .logo{
-
+  @extend %break-margin;
 }
 
+.sublist{
+  @extend %break-margin;
+
+  @media(min-width:$breakpoint-nav){
+    display:none;
+  }
+}
 .logo-img{
   width:34px;
   height:34px;
@@ -16,6 +23,12 @@
 
 
 //==============for navigation =====================//
+@supports(height:100vh){
+  .nav{
+    height:100vh;
+  }
+}
+
 .nav{
   background-color:$color-primary;
   height:100%;
@@ -24,30 +37,57 @@
   text-transform:uppercase;
   top:0;
   left:0;
-  border-left:1px solid #749dca;
 
   transform:translateX(-250px);
+
+  @media(min-width:$breakpoint-nav){
+    transform:translateX(0);
+    position:static;
+    height:auto;
+    width:100%;
+    height:auto;
+  }
 }
 
 .nav-divider{
-  margin:40px 0 ;
+  margin:40px 0;
   border-bottom:1px solid #fff;
+
+   @media(min-width:$breakpoint-nav){
+     margin:0;
+     border:0;
+     display:flex;
+   }
 }
 .nav-list{
   margin-bottom:20px;
+
+  @media(min-width:$breakpoint-nav){
+    margin:0;
+  }
 }
 .nav-link{
   font-weight:$font-weight-normal;
   color:#fff;
   display:block;
+
+  @media(min-width:$breakpoint-nav){
+    text-transform:capitalize;
+  }
 }
-@supports(height:100vh){
-  .nav{
-    height:100vh;
+.nav-ul{
+  @media(min-width:$breakpoint-nav){
+    display:flex;
+    justify-content: space-around;
+    align-items: flex-end;
   }
 }
 
-
+.nav-user{
+  @media(min-width:$breakpoint-nav){
+    display:flex;
+  }
+}
 //================for hamburger==================
 
 .hamburger{
@@ -57,6 +97,11 @@
   border-radius: 18px;
   border: 2px solid #fff;
   order:-1;
+
+  @media(min-width:$breakpoint-nav){
+    display:none;
+
+  }
 }
 .burger-cont{
   width:15px;
@@ -124,11 +169,51 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px
     height: 48px ;
     border-radius: 24px !important;
   }
+
+  @media(min-width:$breakpoint-nav){
+    position:static;
+    // display:none;
+  }
 }
 
 
 
+//=====================================================================//
+.x-login{
+  a{
+    @media(min-width:$breakpoint-nav){
+      background-color:#fff;
+      color:#000;
 
+      &:hover{
+
+        color:#2b2b2b;
+      }
+    }
+  }
+}
 .translate{
   transform:translateX(250px);
+
+  @media(min-width:$breakpoint-nav){
+    transition:none;
+    transform:translateX(0);
+  }
+}
+
+
+
+//==========================for banner======================//
+.banner-cont{
+  position: absolute;
+  opacity: .5;
+  z-index: -80;
+  background-image:url("../images/rasta/background-image.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.banner-img{
+
 }
