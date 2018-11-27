@@ -1,3 +1,25 @@
+//==================FOR STICKY HEADER========================//
+$('.header').sticky();
+
+$('.header').on('sticky-start',function(){
+  $('.header').toggleClass('header-sticky');
+  $('.nav-link').toggleClass('links-sticky');
+  $('.burger1,.burger2,.burger3').addClass('burger-sticky');
+  $('.hamburger-text').addClass('hamburger-text-sticky');
+  $('.hamburger').addClass('hamburger-sticky');
+})
+
+$('.header').on('sticky-end',function(){
+  $('.header').removeClass('header-sticky');
+  $('.nav-link').removeClass('links-sticky');
+  $('.burger1,.burger2,.burger3').removeClass('burger-sticky');
+  $('.hamburger-text').removeClass('hamburger-text-sticky');
+  $('.hamburger').removeClass('hamburger-sticky');
+})
+
+
+
+
 //==================FOR HAMBURGER=====================//
 
  const showMenu =  ()=>{
