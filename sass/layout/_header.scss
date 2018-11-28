@@ -1,4 +1,5 @@
-.header{
+
+header{
   height:72px;
   background-color:$color-primary;
   padding:20px 15px;
@@ -11,14 +12,17 @@
 
 
 .logo{
-  @extend %break-margin;
+  @media(min-width:$breakpoint-nav){
+    margin:0;
+  }
 }
 
 .sublist{
-  @extend %break-margin;
+
 
   @media(min-width:$breakpoint-nav){
     display:none;
+    margin:0;
   }
 }
 .logo-img{
@@ -35,17 +39,20 @@
 }
 
 .nav{
-  background-color:$color-primary;
-  height:100%;
+  background-color:#4c8bc6;
   width:250px;
   padding:0 30px 0  20px;
   text-transform:uppercase;
+  position:fixed;
+  top:50px;
+  bottom:0;
   top:0;
   left:0;
 
   transform:translateX(-250px);
 
   @media(min-width:$breakpoint-nav){
+    background-color:transparent;
     transform:translateX(0);
     position:static;
     height:auto;
@@ -54,16 +61,7 @@
   }
 }
 
-.nav-divider{
-  margin:40px 0;
-  border-bottom:1px solid #fff;
 
-   @media(min-width:$breakpoint-nav){
-     margin:0;
-     border:0;
-     display:flex;
-   }
-}
 .nav-list{
   margin-bottom:20px;
 
@@ -229,16 +227,21 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px
 
 
 //=============================FOR STICKY=============================//
+
+@media(min-width:$breakpoint-nav){
+
+  .links-sticky{
+    color:#000;
+    &:hover{
+      color:#000;
+    }
+  }
+}
  .header-sticky{
    background-color:#fff;
    box-shadow:#d9d9d9 0px 2px 3px;
  }
- .links-sticky{
-   color:#000;
-   &:hover{
-     color:#000;
-   }
- }
+
 
 .hamburger-sticky{
   border-color:#000;
