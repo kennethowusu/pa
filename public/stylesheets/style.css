@@ -436,13 +436,16 @@ header {
 @media (min-width: 370px) {
   .r-f-form {
     width: 330px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -160px;
-    margin-right: -160px;
-    margin-top: -161px;
-    margin-bottom: -161px; } }
+    margin-top: 40px; } }
+  @media (min-width: 370px) and (min-width: 500px) {
+    .r-f-form {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -160px;
+      margin-right: -160px;
+      margin-top: -161px;
+      margin-bottom: -161px; } }
 
 .form-box {
   color: #9DB2C2;
