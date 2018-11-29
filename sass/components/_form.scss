@@ -14,7 +14,11 @@
     border-radius: 5px;
     cursor: text;
     width: 100%;
-    transition: all 0.1s linear;
+    transition: border-left  0.2s linear;
+
+    &:focus{
+      border-left:2px solid $color-accent;
+    }
 }
 .fieldset{
   margin-bottom:15px;

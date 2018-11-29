@@ -434,10 +434,12 @@ header {
   border-radius: 5px;
   cursor: text;
   width: 100%;
-  -webkit-transition: all 0.1s linear;
-     -moz-transition: all 0.1s linear;
-       -o-transition: all 0.1s linear;
-          transition: all 0.1s linear; }
+  -webkit-transition: border-left  0.2s linear;
+     -moz-transition: border-left  0.2s linear;
+       -o-transition: border-left  0.2s linear;
+          transition: border-left  0.2s linear; }
+  .form-box:focus {
+    border-left: 2px solid #ff6814; }
 
 .fieldset {
   margin-bottom: 15px; }
