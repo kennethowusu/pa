@@ -9,13 +9,13 @@ router.get('/', function(req, res, next) {
 
 /* GET home page. */
 router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Express' });
+  res.render('login', { title: 'Account Login|Prime ' });
 });
 
 
 /* GET home page. */
 router.get('/register', function(req, res, next) {
-  res.render('register', { title: 'Express' });
+  res.render('register', { title: 'Create Account|Prime ' });
 });
 
 
