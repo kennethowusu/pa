@@ -126,6 +126,9 @@
 .mr-15 {
   margin-right: 15px; }
 
+.p-5 {
+  padding: 5px; }
+
 .w-100 {
   width: 100%; }
 
@@ -137,6 +140,9 @@ body {
      -moz-transition: .3s ease-in-out;
        -o-transition: .3s ease-in-out;
           transition: .3s ease-in-out; }
+
+input {
+  -webkit-appearance: none; }
 
 a:hover {
   text-decoration: none; }

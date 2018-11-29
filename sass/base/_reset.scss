@@ -5,6 +5,9 @@ html{
 body{
   transition:.3s ease-in-out;
 }
+input{
+  -webkit-appearance: none;
+}
 a:hover{
   text-decoration:none;
 }
