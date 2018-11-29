@@ -453,11 +453,24 @@ header {
      -moz-box-pack: center;
           justify-content: center;
   color: #9e9e9e; }
+  .form-link:hover {
+    color: #2b2b2b; }
 
 .form-link.active {
   border-radius: 22px;
   color: #fff;
-  background-color: #9e9e9e; }
+  background-color: #9e9e9e;
+  -webkit-transition: color .3s ease-in-out;
+     -moz-transition: color .3s ease-in-out;
+       -o-transition: color .3s ease-in-out;
+          transition: color .3s ease-in-out; }
 
 .form-notice {
-  color: #9e9e9e; }
+  color: #9e9e9e;
+  font-weight: bold; }
+  .form-notice:hover {
+    color: #2b2b2b;
+    -webkit-transition: color .3s ease-in-out;
+       -moz-transition: color .3s ease-in-out;
+         -o-transition: color .3s ease-in-out;
+            transition: color .3s ease-in-out; }
