@@ -541,14 +541,6 @@ select {
 body {
   -webkit-font-smoothing: antialiased; }
 
-section {
-  background: #647df9;
-  color: #7a90ff;
-  padding: 2em 0 8em;
-  min-height: 100vh;
-  position: relative;
-  -webkit-font-smoothing: antialiased; }
-
 .pricing {
   display: -webkit-flex;
   display: -moz-box;
@@ -676,6 +668,24 @@ section {
 
 .pricing-palden .pricing-item--featured .pricing-deco {
   padding: 5em 0 8.885em 0; }
+
+.section-head {
+  font-size: 3.5rem;
+  font-weight: 400;
+  text-align: center;
+  text-transform: capitalize; }
+
+@media (min-width: 720px) {
+  .steps {
+    display: -webkit-flex;
+    display: -moz-box;
+    display: flex;
+    -webkit-justify-content: space-between;
+       -moz-box-pack: justify;
+            justify-content: space-between;
+    -webkit-align-items: flex-end;
+       -moz-box-align: end;
+            align-items: flex-end; } }
 
 .steps-img {
   width: 90px;
