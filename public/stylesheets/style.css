@@ -193,16 +193,17 @@ body {
   font-family: "raleway";
   font-weight: 300; }
 
-header {
+.header {
   height: 72px;
   background-color: radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
+  z-index: 20 !important;
   padding: 20px 15px;
   -webkit-transition: background-color .3s ease-in-out;
      -moz-transition: background-color .3s ease-in-out;
        -o-transition: background-color .3s ease-in-out;
           transition: background-color .3s ease-in-out; }
   @media (min-width: 1028px) {
-    header {
+    .header {
       height: 100px; } }
 
 @media (min-width: 1028px) {
@@ -579,7 +580,6 @@ body {
   text-align: left; }
 
 .pricing-palden .pricing-item {
-  font-family: 'Open Sans', sans-serif;
   cursor: default;
   color: #84697c;
   background: #fff;
@@ -593,11 +593,11 @@ body {
 
   .pricing-palden .pricing__item--featured {
     margin: 0;
-    z-index: 10;
-    box-shadow: 0 0 20px rgba(46, 59, 125, 0.23); } }
+    box-shadow: 0 0 20px rgba(46, 59, 125, 0.23);
+    font-weight: 400; } }
 .pricing-palden .pricing-deco {
   border-radius: 10px 10px 0 0;
-  background: rgba(76, 70, 101, 0.99);
+  background: #ff6814;
   padding: 4em 0 9em;
   position: relative; }
 .pricing-palden .pricing-deco-img {
@@ -635,7 +635,7 @@ body {
   margin: 0 0 0.25em 0;
   line-height: 0.75; }
 .pricing-palden .pricing-currency {
-  font-size: 0.15em;
+  font-size: 2rem;
   vertical-align: top; }
 .pricing-palden .pricing-period {
   font-size: 0.15em;
@@ -650,15 +650,21 @@ body {
   padding: 0.25em 0 2.5em;
   list-style: none;
   text-align: center; }
+.pricing-palden .pricing-feature-tr {
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex; }
 .pricing-palden .pricing-feature {
-  padding: 1em 0; }
+  padding: 10px; }
+  .pricing-palden .pricing-feature.l {
+    margin-right: auto; }
 .pricing-palden .pricing-action {
   font-weight: bold;
   margin: auto 3em 2em 3em;
   padding: 1em 2em;
   color: #fff;
   border-radius: 30px;
-  background: #4d4766;
+  background: #ff6814;
   -webkit-transition: background-color 0.3s;
   -moz-transition: background-color 0.3s;
     -o-transition: background-color 0.3s;

@@ -57,7 +57,6 @@ body{
 
 
 .pricing-palden .pricing-item {
-	font-family: 'Open Sans', sans-serif;
 	cursor: default;
 	color: #84697c;
 	background: #fff;
@@ -72,14 +71,14 @@ body{
 	}
 	.pricing-palden .pricing__item--featured {
 		margin: 0;
-		z-index: 10;
 		box-shadow: 0 0 20px rgba(46, 59, 125, 0.23);
+    font-weight:400;
 	}
 }
 .pricing-palden{
   .pricing-deco {
 	border-radius: 10px 10px 0 0;
-background: rgba(76, 70, 101, 0.99);
+background: $color-accent;
 	padding: 4em 0 9em;
 	position: relative;
 }
@@ -125,7 +124,7 @@ background: rgba(76, 70, 101, 0.99);
 	line-height: 0.75;
 }
 .pricing-currency {
-	font-size: 0.15em;
+	font-size: 2rem;
 	vertical-align: top;
 
 }
@@ -146,8 +145,16 @@ background: rgba(76, 70, 101, 0.99);
 	list-style: none;
 	text-align: center;
 }
+
+.pricing-feature-tr{
+  display:flex;
+}
+
 .pricing-feature {
-	padding: 1em 0;
+	padding:10px;
+ &.l{
+   margin-right:auto;
+ }
 }
 .pricing-action {
 	font-weight: bold;
@@ -155,7 +162,7 @@ background: rgba(76, 70, 101, 0.99);
 	padding: 1em 2em;
 	color: #fff;
 	border-radius: 30px;
-    background: #4d4766;
+    background: $color-accent;
 	-webkit-transition: background-color 0.3s;
 	transition: background-color 0.3s;
 	&:hover, &:focus{

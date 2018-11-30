@@ -1,7 +1,8 @@
 
-header{
+.header{
   height:72px;
   background-color:$color-primary;
+  z-index:20 !important;
   padding:20px 15px;
   transition: background-color .3s ease-in-out;
   @media(min-width:$breakpoint-nav){
