@@ -27,6 +27,7 @@ $('.header').on('sticky-end',function(){
     $('body').toggleClass('translate');
     $('.burger-cont').toggleClass('p-relative');
     $('.burger1,.burger2,.burger3').toggleClass('change');
+    $('body').toggleClass('control-body');
   });
 }
 

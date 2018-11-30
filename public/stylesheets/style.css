@@ -225,6 +225,8 @@ header {
   width: 250px;
   padding: 0 30px 0  20px;
   text-transform: uppercase;
+  position: fixed;
+  height: 100%;
   top: 0;
   left: 0;
   -webkit-transform: translateX(-250px);
@@ -421,6 +423,9 @@ header {
 
 .hamburger-text-sticky {
   color: #000 !important; }
+
+.control-body {
+  overflow: hidden; }
 
 .banner-cont {
   width: 100%;
