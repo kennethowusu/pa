@@ -132,6 +132,9 @@
 .ml-auto {
   margin-left: auto; }
 
+.mb-25 {
+  margin-bottom: 25px; }
+
 .mr-15 {
   margin-right: 15px; }
 
@@ -666,3 +669,13 @@ section {
 
 .pricing-palden .pricing-item--featured .pricing-deco {
   padding: 5em 0 8.885em 0; }
+
+.steps-img {
+  width: 90px;
+  height: 90px; }
+
+.steps-name {
+  font-size: 1.4rem; }
+
+.steps-description {
+  font-weight: 400; }
