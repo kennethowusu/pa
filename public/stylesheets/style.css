@@ -703,8 +703,26 @@ body {
 .steps-description {
   font-weight: 400; }
 
+@media (min-width: 1020px) {
+  .sec-div {
+    margin-top: 510px !important; } }
+
 .background-text-cont {
   top: 110px; }
 
 .background-head {
   font-size: 2rem; }
+  @media (min-width: 620px) {
+    .background-head {
+      font-size: 3rem; } }
+
+.learn-more {
+  margin-top: 28px;
+  width: 200px;
+  background-color: #fff;
+  color: #000; }
+
+@media (min-width: 620px) {
+  .background-description {
+    max-width: 555px;
+    font-size: 1.4rem; } }
