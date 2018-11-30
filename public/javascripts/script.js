@@ -31,4 +31,4 @@ $('.header').on('sticky-end',function(){
   });
 }
 
-showMenu();
+// showMenu();
