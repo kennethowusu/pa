@@ -555,6 +555,9 @@ select {
           align-items: baseline;
   margin-bottom: 4px; }
 
+.submit-disabled {
+  background-color: #efb696 !important; }
+
 body {
   -webkit-font-smoothing: antialiased; }
 

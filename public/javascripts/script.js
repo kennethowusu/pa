@@ -59,12 +59,18 @@ const email_empty
  const password_empty =
   `<span class="error"><img src="/images/rasta/warning.png " class="error-img " alt="">Enter a password<span>`;
 
+const email_val_error =
+`<span class="error"><img src="/images/rasta/warning.png " class="error-img " alt="">Enter a valid email address<span>`;
+const password_confirm_error =
+`<span class="error"><img src="/images/rasta/warning.png " class="error-img " alt="">Passwords do not match<span>`;
+
 function element_exist_and_empty(element,empty_element_message){
   if(element.length && element.val().length<1){
     element.siblings('.error-div').html(empty_element_message);
     addToErrors(element.attr('attr-name')+'-empty');
   }else{
-    return false;
+    element.siblings('.error-div').html('');
+    removeFromErrors(element.attr('attr-name')+'-empty');
   }
 }
 
@@ -98,8 +104,51 @@ function removeFromErrors(errorName){
 
 }
 
+//============validate email ==============//
+function email_validate(){
+  const pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+  if(!errors.includes('email-empty')){
+    if (!pattern.test(email.val())){
+        email.siblings('.error-div').html(email_val_error);
+        addToErrors(email.attr('attr-name')+'-val');
+    }else{
+      email.siblings('.error-div').html('');
+      removeFromErrors(email.attr('attr-name')+'-val');
+    }
+  }
+}
+
+function check_confirm_password(){
+  if(!errors.includes('password-empty')){
+    if(password.val() !== confirm_password.val()){
+      confirm_password.siblings('.error-div').html(password_confirm_error);
+      addToErrors(confirm_password.attr('attr-name')+'-val');
+    }else{
+      confirm_password.siblings('.error-div').html('');
+      removeFromErrors(confirm_password.attr('attr-name')+'-val');
+    }
+  }
+}
+
+function submit_disabled(){
+  if(errors.length>0){
+    $('.form-submit').addClass('submit-disabled');
+    submit_enabled();
+  }
+}
+// function submit_enabled(){
+//   $('body').on('click',function(){
+//     if($('.form-submit').hasClass('submit-disabled')){
+//       $('.form-submit').removeClass('submit-disabled');
+//     }
+//   })
+// }
 //=======================for signup==================================//
 $('.form-submit').on('click',(e)=>{
   e.preventDefault();
   check_for_empty_fields();
+  email_validate();
+  check_confirm_password();
+  submit_disabled();
+
 });
