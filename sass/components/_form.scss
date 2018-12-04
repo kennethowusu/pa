@@ -92,3 +92,18 @@ select{
     font-size: 1rem;
     border-bottom: 1px solid #757575;
   }
+
+  //==============================for validation =============================//
+  .error-img{
+    width:20px;
+    height:20px;
+    margin-right:6px;
+  }
+.error{
+  color:red !important;
+}
+.error-div{
+  display:flex;
+  align-items: baseline;
+  margin-bottom:4px;
+}
