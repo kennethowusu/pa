@@ -398,14 +398,6 @@ body {
            -o-transform: translateX(0);
               transform: translateX(0); } }
 
-.banner-cont {
-  position: absolute;
-  z-index: -80;
-  background-image: url("../images/rasta/background-image.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; }
-
 @media (min-width: 1028px) {
   .links-sticky {
     color: #000; }
@@ -426,6 +418,13 @@ body {
 
 .control-body {
   overflow: hidden; }
+
+.banner-cont {
+  z-index: -80;
+  background-image: url("../images/rasta/background-image.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
 
 .banner-cont {
   width: 100%;
@@ -719,6 +718,10 @@ body {
 
 .steps-description {
   font-weight: 400; }
+
+@media (min-width: 1020px) {
+  .sec-div {
+    margin-top: 510px !important; } }
 
 .background-text-cont {
   top: 110px; }
