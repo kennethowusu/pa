@@ -45,7 +45,11 @@ body{
 
 
 
-
+.pricing-item{
+  @media(min-width:1160px){
+    margin-right:20px !important;
+  }
+}
 .pricing-feature-list {
 	text-align: left;
 }

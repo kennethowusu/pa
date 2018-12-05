@@ -592,6 +592,10 @@ body {
     .pricing-action:focus {
       outline: none; }
 
+@media (min-width: 1160px) {
+  .pricing-item {
+    margin-right: 20px !important; } }
+
 .pricing-feature-list {
   text-align: left; }
 
