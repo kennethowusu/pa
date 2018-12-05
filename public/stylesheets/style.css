@@ -436,8 +436,6 @@ body {
       height: 580px; } }
 
 .welc-background {
-  width: inherit;
-  height: inherit;
   background-image: -webkit-radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
   background-image: -moz- oldradial-gradient(center bottom, circle farthest-side, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
   background-image: -o-radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
@@ -721,10 +719,6 @@ body {
 
 .steps-description {
   font-weight: 400; }
-
-@media (min-width: 1020px) {
-  .sec-div {
-    margin-top: 510px !important; } }
 
 .background-text-cont {
   top: 110px; }
