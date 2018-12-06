@@ -19,7 +19,7 @@
   </head>
   <body class="text-center">
 
-   <form class="w-100 r-f-form p-5" action="index.html" method="post">
+   <form class="w-100 r-f-form p-5 form-signup" action="index.html" method="post">
      <div class="r-f">
        <div class="r-f-links d-flex align-items-center fieldset">
          <a href="/" class='mr-auto'>Primeaxis</a>
@@ -314,8 +314,11 @@
            </div>
             <input type="password" name="confirm_password" attr-name="confirm_password" value="" placeholder="Confirm Password " class="form-box confirm_password" >
          </div>
-         <div class="fieldset">
-
+         <div>
+           <input type="hidden" name="referee_id" value="<%=referee_id%>">
+         </div>
+         <div class="fieldset p-relative">
+             <img src="/images/rasta/signup-loader.gif" alt="" class="p-absolute signup-loader d-none">
             <input type="submit"  value="Create Account" class="form-box form-submit pointer">
          </div>
          <div class="fieldset p-relative">

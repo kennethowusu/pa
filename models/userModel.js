@@ -3,26 +3,33 @@ const sequelize = require('../config/database');
 
 
 const User = sequelize.define('user',{
-  firstName:{
-    type:Sequelize.STRING
+  firstname:{
+    type:Sequelize.STRING,
+    allowNull: false
   },
-  lastName:{
-    type:Sequelize.STRING
+  lastname:{
+    type:Sequelize.STRING,
+    allowNull: false
   },
   email:{
-    type:Sequelize.STRING
+    type:Sequelize.STRING,
+    allowNull: false
   },
   country:{
     type:Sequelize.INTEGER,
+    allowNull: false
   },
   password:{
     type:Sequelize.STRING,
+    allowNull: false
   },
   referal_id:{
-    type:Sequelize.INTEGER,
+    type:Sequelize.STRING,
+    allowNull: false,
+    unique: true
   },
   referee_id:{
-    type:Sequelize.INTEGER,
+    type:Sequelize.STRING,
   }
 });
 

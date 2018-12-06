@@ -555,6 +555,15 @@ select {
 .submit-disabled {
   background-color: #efb696 !important; }
 
+.border-red {
+  border: 1px solid red !important; }
+
+.signup-loader {
+  top: 0;
+  right: 7px;
+  width: 42px;
+  height: 42px; }
+
 body {
   -webkit-font-smoothing: antialiased; }
 

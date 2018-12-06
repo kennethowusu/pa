@@ -67,9 +67,12 @@ const password_confirm_error =
 function element_exist_and_empty(element,empty_element_message){
   if(element.length && element.val().length<1){
     element.siblings('.error-div').html(empty_element_message);
+    add_error_border(element);
     addToErrors(element.attr('attr-name')+'-empty');
+
   }else{
     element.siblings('.error-div').html('');
+    remove_error_border(element);
     removeFromErrors(element.attr('attr-name')+'-empty');
   }
 }
@@ -110,9 +113,11 @@ function email_validate(){
   if(!errors.includes('email-empty')){
     if (!pattern.test(email.val())){
         email.siblings('.error-div').html(email_val_error);
+        add_error_border(email);
         addToErrors(email.attr('attr-name')+'-val');
     }else{
       email.siblings('.error-div').html('');
+      remove_error_border(email);
       removeFromErrors(email.attr('attr-name')+'-val');
     }
   }
@@ -123,8 +128,10 @@ function check_confirm_password(){
     if(password.val() !== confirm_password.val()){
       confirm_password.siblings('.error-div').html(password_confirm_error);
       addToErrors(confirm_password.attr('attr-name')+'-val');
+      add_error_border(confirm_password);
     }else{
       confirm_password.siblings('.error-div').html('');
+      remove_error_border(confirm_password);
       removeFromErrors(confirm_password.attr('attr-name')+'-val');
     }
   }
@@ -133,8 +140,16 @@ function check_confirm_password(){
 function submit_disabled(){
   if(errors.length>0){
     $('.form-submit').addClass('submit-disabled');
-    submit_enabled();
+    // submit_enabled();
   }
+}
+
+function add_error_border(element){
+  element.addClass('border-red');
+}
+
+function remove_error_border(element){
+  element.removeClass('border-red');
 }
 // function submit_enabled(){
 //   $('body').on('click',function(){
@@ -150,5 +165,32 @@ $('.form-submit').on('click',(e)=>{
   email_validate();
   check_confirm_password();
   submit_disabled();
-
+  if(errors.length==0){
+    signup();
+  }
 });
+
+
+//=============================ajax request for signup=====================//
+function signup(){
+  const data = $('.form-signup').serialize();
+  const url  = '/register';
+  $.ajax({
+    type:"post",
+    url:url,
+    data:data
+  }).done(function(result){
+    if(result.hasOwnProperty('email_error')){
+      var emailError =  `<span class="error"><img src="/images/rasta/warning.png " class="error-img " alt="">${result.email_error}<span>`;
+      email.siblings('.error-div').html(emailError);
+      add_error_border(email);
+    }else if(result.hasOwnProperty('success')){
+      remove_error_border(email);
+      function signup_redirect(){
+        $('.signup-loader').css('display','inline-block !important');
+        window.location.replace(result.success);
+      }
+      setTimeout(signup_redirect,3000);
+    }
+  })
+}
