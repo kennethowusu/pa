@@ -6,7 +6,7 @@ const crypto = require('crypto');
 var User = require('../models/userModel');
 module.exports = {
  generateId : ()=>{
-	return	crypto.randomBytes(15).toString('hex');
+	return	crypto.randomBytes(5).toString('hex') + Date.now().toString();
 },
   hashedPassword: function(plainPassword) {
     return bcrypt.hashSync(plainPassword, 10);

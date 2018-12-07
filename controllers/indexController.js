@@ -17,6 +17,7 @@ module.exports.createUser = (req,res,next)=>{
      email : req.body.email,
      password : req.body.password,
      country: req.body.country,
+     user_id : user.generateId(),
      referal_id:user.make_referal_id(req.body.firstname),
      referee_id: req.body.referee_id
   }
@@ -33,9 +34,10 @@ module.exports.createUser = (req,res,next)=>{
       } else {
         //store user in database
         User.sync({
-            force: false
+            force: true
           }).then(() => {
             User.create({
+              user_id  :      newUser.user_id,
               firstname:      newUser.firstname,
               lastname:       newUser.lastname,
               email:          newUser.email,

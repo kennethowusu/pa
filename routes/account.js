@@ -4,7 +4,9 @@ var router = express.Router();
 
 //=======================sign up ======================//
 
-
+router.get('/dashboard',function(req,res,next){
+  res.render('account/dashboard',{title:"Dashboard"});
+})
 
 
 

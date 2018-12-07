@@ -1,0 +1,79 @@
+.header{
+  background-color:$color-accent;
+  height:67px;
+  padding:20px;
+}
+
+.nav{
+  padding:30px 20px;
+  width:270px;
+  height:100%;
+  background-color: #efefef;
+  overflow-y: scroll;
+  transition: transform .3s ease-in-out;
+  transform: translateX(-270px);
+  @media(min-width:835px){
+    transition:none;
+    transform:translate(0) !important;
+  }
+
+}
+.nav-sec-list{
+  margin-bottom:28px;
+}
+.nav-sec-link{
+  display:flex;
+  align-items: flex-end;
+  color:rgb(3, 14, 38);
+  &:hover{
+    color:#000;
+  }
+}
+.dash-invest{
+  width:26px;
+  height:26px;
+}
+
+.dash-referral{
+  width:26px;
+  height:26px;
+}
+
+.dash-settings{
+  width:26px;
+  height:26px;
+}
+.dash-withdrawal{
+  width:26px;
+  height:26px;
+}
+.dash-home{
+  width:26px;
+  height:26px;
+}
+
+
+//=======================for hamburger==========================//
+.burger{
+  @media(min-width:835px){
+    display:none;
+  }
+}
+.bar{
+    width: 29px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #fff;
+    margin-bottom: 5px;
+}
+
+.action-cont{
+  margin-right:9px;
+  img{
+    width:24px;
+  }
+}
+
+.nav-translate{
+  transform:translateX(0) !important;
+}
