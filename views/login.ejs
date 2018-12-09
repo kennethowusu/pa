@@ -20,7 +20,7 @@
   </head>
   <body class="text-center">
 
-   <form class="w-100 r-f-form p-5 d-in-block" action="index.html" method="post">
+   <form class="w-100 r-f-form p-5 d-in-block form-signin" action="index.html" method="post">
      <div class="r-f">
        <div class="r-f-links d-flex align-items-center fieldset">
          <a href="/" class='mr-auto'>Primeaxis</a>
@@ -31,13 +31,17 @@
        </div>
        <div class="r-f-cont d-flex flex-column">
          <div class="fieldset">
-          <input type="text" name="email" value="" placeholder="Email Address" class="form-box">
+           <div class="error-div">
+           </div>
+            <input type="text" name="email" attr-name="email" placeholder="Email Address" value="" class="form-box email">
          </div>
          <div class="fieldset">
-            <input type="password" name="password" value="" placeholder="Password" class="form-box" >
+           <div class="error-div">fdgfd
+           </div>
+          <input type="password" name="password" attr-name="password" value="" placeholder="Password" class="form-box password">
          </div>
          <div class="fieldset">
-            <input type="submit" value="Login" class="form-box form-submit pointer">
+            <input type="submit" value="Login" class="form-box form-submit signin pointer">
          </div>
          <div class="fieldset p-relative">
            <img src="/images/rasta/google-oauth.png"  alt="" class="google-img">

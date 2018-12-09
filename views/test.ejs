@@ -1,0 +1,32 @@
+<head>
+  <meta charset="utf-8">
+  <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+  <script src="https://js.braintreegateway.com/web/dropin/1.14.1/js/dropin.min.js"></script>
+</head>
+<body>
+  <div id="dropin-container"></div>
+  <button id="submit-button">Request payment method</button>
+  <script>
+    var button = document.querySelector('#submit-button');
+
+    braintree.dropin.create({
+      authorization:'<%=token%>',
+      container: '#dropin-container'
+    }, function (createErr, instance) {
+      button.addEventListener('click', function () {
+        instance.requestPaymentMethod(function (err, payload) {
+        console.log(payload)
+        const data =  {nonce:payload.nonce}
+          $.ajax({
+            type:'post',
+            url:'/test',
+            data:data
+          })
+        });
+      });
+    });
+  </script>
+</body>

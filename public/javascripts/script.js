@@ -159,7 +159,7 @@ function remove_error_border(element){
 //   })
 // }
 //=======================for signup==================================//
-$('.form-submit').on('click',(e)=>{
+$('.form-submit.signup').on('click',(e)=>{
   e.preventDefault();
   check_for_empty_fields();
   email_validate();
@@ -170,6 +170,16 @@ $('.form-submit').on('click',(e)=>{
   }
 });
 
+//=======================for signup==================================//
+$('.form-submit.signin').on('click',(e)=>{
+  e.preventDefault();
+  check_for_empty_fields();
+  email_validate();
+  submit_disabled();
+  if(errors.length==0){
+    signin();
+  }
+});
 
 //=============================ajax request for signup=====================//
 function signup(){
@@ -191,6 +201,36 @@ function signup(){
         window.location.replace(result.success);
       }
       setTimeout(signup_redirect,3000);
+    }
+  })
+}
+
+
+function signin(){
+  const data = $('.form-signin').serialize();
+  const url  = '/login';
+  $.ajax({
+    type:"post",
+    url:url,
+    data:data
+  }).done(function(result){
+    if(result.hasOwnProperty('sign_in_mail_error')){
+      var emailError =  `<span class="error"><img src="/images/rasta/warning.png " class="error-img " alt="">${result.sign_in_mail_error}<span>`;
+      email.siblings('.error-div').html(emailError);
+      add_error_border(email);
+    }else if(result.hasOwnProperty('sign_in_password_error')){
+      var passwordError =  `<span class="error"><img src="/images/rasta/warning.png " class="error-img " alt="">${result.sign_in_password_error}<span>`;
+      password.siblings('.error-div').html(passwordError);
+      add_error_border(password)
+    }
+    else if(result.hasOwnProperty('success')){
+      remove_error_border(email);
+      remove_error_border(password);
+      function signin_redirect(){
+        $('.signup-loader').css('display','inline-block !important');
+        window.location.replace(result.success);
+      }
+      setTimeout(signin_redirect,3000);
     }
   })
 }

@@ -43,7 +43,7 @@ module.exports = {
   },
   generateToken : function(req,res,next,person){
          const payload = {
-           id:person.id
+           id:person.user_id
          }//payload
 
          const options = {
@@ -56,20 +56,15 @@ module.exports = {
        },
    loggedIn: function(req,res,next){
      var userToken = req.cookies.auth;
-      if(userToken){
+
       module.exports.tokenIsValid(userToken).then(function(result){
         if(result){
-          console.log(userToken)
-          return res.send('token is valid');
-        }else{
-          module.exports.getEmail(req,res,next);
-         return res.send('token is not valid');
+         return res.redirect('/account');
         }
-      })
-      }
       next();
-   },
+      })
 
+   },
   tokenIsValid: function(userToken){
       //verify token
     return new Promise(function(resolve,reject){
