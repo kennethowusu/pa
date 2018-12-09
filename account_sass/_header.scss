@@ -56,8 +56,11 @@
 
 .action-cont{
   margin-right:9px;
+  &:last-of-type{
+    margin-right:0;
+  }
   img{
-    width:20px;
+    height:23px;
   }
 }
 

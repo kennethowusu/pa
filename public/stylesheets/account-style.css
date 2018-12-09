@@ -215,8 +215,10 @@ body {
 
 .action-cont {
   margin-right: 9px; }
+  .action-cont:last-of-type {
+    margin-right: 0; }
   .action-cont img {
-    width: 20px; }
+    height: 23px; }
 
 .nav-translate {
   transform: translateX(0) !important; }
