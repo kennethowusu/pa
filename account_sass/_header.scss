@@ -1,5 +1,5 @@
 .header{
-  background-color:$color-accent;
+  background-color:#ff9c65;
   height:67px;
   padding:20px;
 }
@@ -29,27 +29,14 @@
     color:#000;
   }
 }
-.dash-invest{
-  width:26px;
-  height:26px;
-}
-
-.dash-referral{
-  width:26px;
-  height:26px;
-}
-
-.dash-settings{
-  width:26px;
-  height:26px;
-}
-.dash-withdrawal{
-  width:26px;
-  height:26px;
-}
-.dash-home{
-  width:26px;
-  height:26px;
+.dash-invest,
+.dash-referral,
+.dash-settings,
+.dash-withdrawal,
+.dash-home
+{
+  width:20px;
+  height:20px;
 }
 
 
@@ -60,17 +47,17 @@
   }
 }
 .bar{
-    width: 29px;
-    height: 4px;
-    border-radius: 2px;
-    background-color: #fff;
-    margin-bottom: 5px;
+  width: 24px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #fff;
+  margin-bottom: 6px;
 }
 
 .action-cont{
   margin-right:9px;
   img{
-    width:24px;
+    width:20px;
   }
 }
 

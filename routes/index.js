@@ -16,7 +16,7 @@ router.get('/login',user.loggedIn,function(req, res, next) {
 
 router.post('/login',indexController.signin);
 /* GET home page. */
-router.get('/register', function(req, res, next) {
+router.get('/register',user.loggedIn,function(req, res, next) {
   res.render('register', { title: 'Create Account|Prime ' ,referee_id:req.query.ref});
 });
 
