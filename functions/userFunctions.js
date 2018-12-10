@@ -4,6 +4,10 @@ const crypto = require('crypto');
 
 //models
 var User = require('../models/userModel');
+const NOTIFICATION = require('../models/notificationModel.js');
+const FINANCE       = require('../models/financeModel.js');
+const INVESTMENT    = require('../models/investmentModel.js');
+
 module.exports = {
  generateId : ()=>{
 	return	crypto.randomBytes(5).toString('hex') + Date.now().toString();
@@ -35,8 +39,8 @@ module.exports = {
     return decoded; //verify token
 
   },
-  getUserById:function(req,res,next){
-    return User.find({where:{id:module.exports.getDecodedToken(req,res,next).id}});
+  getUser:function(req,res,next){
+    return User.find({where:{user_id:module.exports.getDecodedToken(req,res,next).id}});
   },
   getUserByEmail:email=>{
     return User.findOne({where:{email:email}});
@@ -116,6 +120,19 @@ module.exports = {
    var firstname = firstname.toString().toLowerCase();
    var lastTwoChars = date.substr(-2);
    return firstname+referal_id+lastTwoChars;
+ },
+ getUserFinance:()=>{
+   return FINANCE.find({where:{user_id:module.exports.getDecodedToken(req,res,next).id}});
+ },
+ get_user_and_finance:(req,res,next)=>{
+   return User.find({
+     where:{user_id:module.exports.getDecodedToken(req,res,next).id},
+     include:[
+       {model:FINANCE,required:true}
+     ]
+
+   });
+
  }
 
 
