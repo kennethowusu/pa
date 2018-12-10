@@ -203,6 +203,10 @@ body {
   height: 20px; }
 
 @media (min-width: 835px) {
+  .logo {
+    display: inline-block; } }
+
+@media (min-width: 835px) {
   .burger {
     display: none; } }
 
@@ -223,8 +227,66 @@ body {
 .nav-translate {
   transform: translateX(0) !important; }
 
+.notification-alert {
+  position: absolute;
+  background-color: red;
+  color: #fff;
+  font-size: 10px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 50%;
+  height: 20px;
+  top: -7px;
+  left: -7px; }
+
+@media (min-width: 835px) {
+  .dashboard-content {
+    margin-left: 280px; } }
+
 body {
   font-family: "open sans" !important;
   font-weight: normal !important; }
+
+.notification-cont {
+  position: absolute;
+  width: 100%;
+  background-color: #efefef;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 65px 20px; }
+
+.notification-close-img-cont {
+  top: 19px;
+  right: 39px; }
+
+.notification-close-img {
+  width: 22px;
+  position: absolute; }
+
+.notification-div {
+  padding: 20px;
+  box-shadow: 0 0 3px grey;
+  background-color: #fff;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px; }
+
+.notification-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 0 3px grey;
+  background-color: #fff;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-weight: bold;
+  font-size: 14px; }
+
+body {
+  overflow: hidden; }
 
 /*# sourceMappingURL=account-style.css.map */
