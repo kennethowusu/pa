@@ -88,7 +88,39 @@
     left: -7px;
 }
 .dashboard-content{
+  padding:40px 15px 15px 15px;
   @media(min-width:835px){
     margin-left:280px;
   }
+}
+
+// .box{
+//   background-color: #ffffff;
+// border-radius: 4px;
+// box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1);
+// height: 100%;
+// margin: 2.25rem 0 0 0;
+//     margin-bottom: 0px;
+// padding-bottom: 0;
+// padding: 0 1.5rem 1.5rem 1.5rem;
+// position: relative;
+// text-align: left;
+// }
+
+
+.box{
+  border: 2px solid #f1f1f1;
+  padding: 2rem;
+}
+.div{
+  height: 3rem;
+  padding: .85rem;
+  width: 100%;
+  display: inline-block;
+  font-size: 1rem;
+  color: #333;
+  border-radius: 3px;
+  line-height: normal;
+  border: 1px solid #dfdfdf;
+  position: relative;
 }
