@@ -123,16 +123,6 @@ module.exports = {
  },
  getUserFinance:()=>{
    return FINANCE.find({where:{user_id:module.exports.getDecodedToken(req,res,next).id}});
- },
- get_user_and_finance:(req,res,next)=>{
-   return User.find({
-     where:{user_id:module.exports.getDecodedToken(req,res,next).id},
-     include:[
-       {model:FINANCE,required:true}
-     ]
-
-   });
-
  }
 
 

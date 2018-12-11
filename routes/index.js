@@ -3,6 +3,8 @@ var router = express.Router();
 var indexController  = require('../controllers/indexController');
 const user  = require('../functions/userFunctions');
 const account = require("../functions/accountFunctions");
+
+const mail = require('../mail/mail');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -21,7 +23,8 @@ router.get('/register',user.loggedIn,function(req, res, next) {
 });
 
 router.get('/testview',function(req,res,next){
-  account.deposit(req,res,next,'39d775e4201544304941069',1000000);
+
+
 })
 
 //================logout==================//

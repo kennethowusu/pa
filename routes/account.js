@@ -10,6 +10,10 @@ router.get('/summary',function(req,res,next){
 
 
 
+//===================referral =======================//
+router.get('/referral',accountController.getReferralPage);
+
+
 
 
 

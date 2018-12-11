@@ -13,7 +13,7 @@ require('dotenv').config();
 
 // create reusable transporter object using the default SMTP transport
 const transporter = nodemailer.createTransport({
-    host: 'mail.privateemail.com',
+    host: 'server254.web-hosting.com',
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
@@ -43,7 +43,7 @@ module.exports.sendResetCode = function(resetCode){
   nodemailer.createTestAccount((err, account) => {
       // setup email data with unicode symbols
       const mailOptions = {
-          from: '"Glammycare " <admin@glammycare.com>', // sender address
+          from: '"Glammycare " <support@primeaxisllc.com>', // sender address
           to: 'consultkenneth@gmail.com', // list of receivers
           subject:'GlammyCare Reset Password', // Subject line
           text: 'Hello world?', // plain text body

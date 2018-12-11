@@ -22,6 +22,7 @@
     "http-errors": "~1.6.2",
     "jsonwebtoken": "^8.4.0",
     "moment": "^2.22.2",
+    "money-math": "^2.5.1",
     "morgan": "~1.9.0",
     "mysql2": "^1.6.4",
     "nodemailer": "^4.7.0",
