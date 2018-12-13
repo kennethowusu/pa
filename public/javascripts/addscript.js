@@ -10,3 +10,12 @@ notificationDropdown.on('click',function(){
     notificationCount.remove();
   })
 })
+
+//=============copy url===============//
+$('.clipboard').on('click',function(){
+  const clipboard = new Clipboard('.clipboard');
+  clipboard.on('success', function(e) {
+    $('.clipboard').html('Copied!');
+
+  });
+})

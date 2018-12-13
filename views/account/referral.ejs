@@ -13,6 +13,19 @@
        </div>
    </div>
 
+   <div class="row grid-margin">
+     <div class="card card-statistics w-100">
+       <div class="card-body">
+         <div class="form-group">
+              <h4 class="mb-3">Referral link</h4>
+              <button type="button"data-clipboard-text="<%=ref_url%>" class="btn  mb-3 clipboard">Click to copy link</button>
+              <div class="form-control">
+                <p class="m-0"><%=ref_url%></p>
+              </div>
+          </div>
+       </div>
+     </div>
+   </div>
 
 
    <div class="row">
@@ -24,19 +37,6 @@
              <table class="table table-bordered">
 
                <tbody>
-                 <tr>
-                   <td class="font-weight-medium">
-                     Clicks
-                   </td>
-                   <td>
-                     Number of times your link has been clicked.
-                   </td>
-
-                   <td>
-                     0
-                   </td>
-
-                 </tr>
                  <tr>
                    <td class="font-weight-medium">
                      Referrals
@@ -98,5 +98,5 @@
 
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 <%-include('../account/footer');-%>

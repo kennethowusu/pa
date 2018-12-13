@@ -54,10 +54,10 @@ module.exports.getReferralPage = (req,res,next)=>{
 
     Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
     then(function(count){
-      console.log(count)
+      const ref_url = req.protocol + '://' + req.get('host') + '?i=' + person.referal_id;
       return res.render('account/referral',{title:'Account Referral',
       user:person,notifications:person.notifications,
-      moment:moment,truncate:truncate,notification_count:count})
+      moment:moment,truncate:truncate,notification_count:count,ref_url:ref_url})
     })//Notificatin.findAndCountAll
   })//then(person)
 }

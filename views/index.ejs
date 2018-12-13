@@ -19,7 +19,11 @@
 
               <div  class="nav-user d-none">
                 <li class="nav-list signupforfree x-login "><a href="/login" class=" capitalize nav-link btn btn-hollow ">log in</a></li>
-                <li class="nav-list signupforfree  p-absolute"><a href="/register" class=" signup capitalize nav-link btn btn-hollow ">sign up </a></li>
+                <%if(i!=null){%>
+                  <li class="nav-list signupforfree  p-absolute"><a href="/register?i=<%=i%>" class=" signup capitalize nav-link btn btn-hollow ">sign up </a></li>
+                <%}else{%>
+                  <li class="nav-list signupforfree  p-absolute"><a href="/register" class=" signup capitalize nav-link btn btn-hollow ">sign up </a></li>
+                <%}%>
               </div>
             </ul>
           </nav>

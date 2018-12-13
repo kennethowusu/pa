@@ -6,10 +6,7 @@ const account = require("../functions/accountFunctions");
 
 const mail = require('../mail/mail');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
+router.get('/',indexController.getIndexPage);
 
 /* GET home page. */
 router.get('/login',user.loggedIn,function(req, res, next) {
@@ -18,9 +15,7 @@ router.get('/login',user.loggedIn,function(req, res, next) {
 
 router.post('/login',indexController.signin);
 /* GET home page. */
-router.get('/register',user.loggedIn,function(req, res, next) {
-  res.render('register', { title: 'Create Account|Prime ' ,referee_id:req.query.ref});
-});
+router.get('/register',user.loggedIn,indexController.getSignupPage);
 
 router.get('/testview',function(req,res,next){
 

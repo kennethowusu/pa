@@ -14,7 +14,20 @@ const INVESTMENT    = require('../models/investmentModel.js');
 // const mail = require('../mail/mail');
 require('dotenv').config();
 
+//=============================GET CONTROLLERS======================//
 
+//===========get index page ==============//
+module.exports.getIndexPage = (req,res,next)=>{
+  const i = req.query.i;
+ 
+  return res.render('index',{title:"Prime Axis LLC",i:i});
+
+}
+//=======get signup page========================//
+module.exports.getSignupPage = (req,res,next)=>{
+  res.render('register', { title: 'Create Account|Prime ' ,referee_id:req.query.ref});
+
+}
 //===================================sign up ============================//
 module.exports.createUser = (req,res,next)=>{
   const newUser = {
@@ -25,7 +38,7 @@ module.exports.createUser = (req,res,next)=>{
      country: req.body.country,
      user_id : user.generateId(),
      referal_id:user.make_referal_id(req.body.firstname),
-     referee_id: req.body.referee_id
+     referee_id: req.body.i
   }
 
 
