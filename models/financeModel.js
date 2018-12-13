@@ -11,7 +11,7 @@ const FINANCE = sequelize.define('finance',{
   interest:{
     type:Sequelize.DECIMAL(10, 2),
     allowNull: false,
-    defaultValue:0
+    defaultValue:false
   },
   referal:{
     type:Sequelize.DECIMAL(10, 2),

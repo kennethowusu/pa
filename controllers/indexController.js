@@ -40,7 +40,7 @@ module.exports.createUser = (req,res,next)=>{
       } else {
         //store user in database
         User.sync({
-            force: false
+            force: true
           }).then(() => {
             User.create({
               user_id  :      newUser.user_id,
@@ -56,21 +56,21 @@ module.exports.createUser = (req,res,next)=>{
               // return res.send({success:'/account'});
 
               //=======================CREATE FINANCE FOR USER================//
-              FINANCE.sync({force:false})
+              FINANCE.sync({force:true})
               .then(function(){
                 FINANCE.create({
                   user_id:newUser.user_id
                 })
                 .then(function(finance){
                   //=============CREATE FINANCE FOR USER===================//
-                  INVESTMENT.sync({force:false})
+                  INVESTMENT.sync({force:true})
                   .then(function(investment){
                     INVESTMENT.create({
                       user_id:newUser.user_id
                     })
                     .then(function(notification){
                       //==========CREATE WELCOME NOTIFICATION FOR USER======//
-                      NOTIFICATION.sync({force:false})
+                      NOTIFICATION.sync({force:true})
                       .then(function(){
                         const welcome_message = `Hi, ${newUser.firstname} you are welcome to prime axis `;
 
@@ -81,7 +81,7 @@ module.exports.createUser = (req,res,next)=>{
                         then(function(){
                           //===============SET ACCESS TOKEN AND REDIRECT===============//
                           user.generateToken(req, res, next, newUser);
-                          return res.send({success:'/account'});
+                          return res.send({success:'/account/summary'});
                         })
                       })//NOTIFICATION.sync
                     })
@@ -127,7 +127,7 @@ module.exports.signin = function(req, res, next){
       } else {
         var token = user.generateToken(req, res, next, person);
         //send this for the cookie to work
-        res.send({success:'/testview'});
+        res.send({success:'/account/summary'});
         //redirect to a url
       } //else
     }) //then

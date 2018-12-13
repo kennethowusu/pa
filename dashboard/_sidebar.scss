@@ -284,3 +284,9 @@
     }
   }
 }
+
+@media(min-width:991px){
+  .sidebar-offcanvas{
+    position:fixed !important;
+  }
+}

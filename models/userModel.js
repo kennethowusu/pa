@@ -38,6 +38,11 @@ const User = sequelize.define('user',{
   },
   referee_id:{
     type:Sequelize.STRING,
+  },
+  is_read:{
+    type:Sequelize.STRING,
+    allowNull:false,
+    defaultValue:false
   }
 });
 

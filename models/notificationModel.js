@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
-
+const moment = require('moment');
 //PxVaipCgx3
 const NOTIFICATION = sequelize.define('notification',{
 
@@ -12,8 +12,8 @@ const NOTIFICATION = sequelize.define('notification',{
   },
   is_read:{
      type: Sequelize.BOOLEAN,
-     allowNull: false, 
-     defaultValue: true
+     allowNull: false,
+     defaultValue:false
   }
 });
 

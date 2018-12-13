@@ -28,7 +28,7 @@ router.get('/testview',function(req,res,next){
 })
 
 //================logout==================//
-router.get('/logout',indexController.logout);
+router.get('/account/logout',indexController.logout);
 router.get('/test',function(req,res,next){
 
   //   var braintree = require("braintree");

@@ -131,6 +131,9 @@
           .small-text {
             font-size: 0.75rem;
           }
+          &.unread{
+            background-color:#d8d6d6;
+          }
         }
 
         .dropdown-divider {

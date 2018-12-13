@@ -39,6 +39,12 @@ module.exports = {
     return decoded; //verify token
 
   },
+  getUserId:function(req, res, next) {
+    const userToken = req.cookies.auth;
+
+    var decoded = jwt.decode(userToken);
+    return decoded.id; //verify token
+  },
   getUser:function(req,res,next){
     return User.find({where:{user_id:module.exports.getDecodedToken(req,res,next).id}});
   },
@@ -63,11 +69,21 @@ module.exports = {
 
       module.exports.tokenIsValid(userToken).then(function(result){
         if(result){
-         return res.redirect('/account');
+         return res.redirect('/account/summary');
         }
       next();
       })
 
+   },
+   requireAuth:(req,res,next)=>{
+     var userToken = req.cookies.auth;
+
+      module.exports.tokenIsValid(userToken).then(function(result){
+        if(!result){
+         return res.redirect('/');
+        }
+      next();
+      })
    },
   tokenIsValid: function(userToken){
       //verify token
