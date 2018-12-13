@@ -15999,10 +15999,10 @@ ul {
   .nav .nav-item.dropdown .navbar-dropdown, .navbar-nav .nav-item.dropdown .navbar-dropdown {
     font-size: 0.9rem;
     margin-top: 0;
-    position: absolute;
+    position: fixed;
     top: calc(63px - 6px);
     right: 0;
-    left: auto;
+    left: 0;
     border: 1px solid rgba(182, 182, 182, 0.1);
     padding: 0 0 20px;
     min-width: 100%;
@@ -16011,6 +16011,10 @@ ul {
     -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.13);
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.13);
     overflow: hidden; }
+    @media (min-width: 530px) {
+      .nav .nav-item.dropdown .navbar-dropdown, .navbar-nav .nav-item.dropdown .navbar-dropdown {
+        position: absolute;
+        left: auto; } }
     .rtl .nav .nav-item.dropdown .navbar-dropdown,
     .rtl .navbar-nav .nav-item.dropdown .navbar-dropdown {
       right: auto;

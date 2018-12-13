@@ -60,10 +60,10 @@
       .navbar-dropdown {
         font-size: 0.9rem;
         margin-top: 0;
-        position: absolute;
+        position: fixed;
         top: calc(#{$navbar-height} - 6px);
         right: 0;
-        left: auto;
+        left: 0;
         border: 1px solid rgba(182, 182, 182, 0.1);
         padding: 0 0 20px;
         min-width: 100%;
@@ -73,6 +73,10 @@
         -moz-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.13);
         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.13);
 
+        @media(min-width:530px){
+          position:absolute;
+          left:auto;
+        }
         .rtl & {
           right: auto;
           left: 0;
