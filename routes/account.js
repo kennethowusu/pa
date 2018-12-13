@@ -38,6 +38,10 @@ router.get('/referral',user.requireAuth,accountController.getReferralPage);
 
 
 
+//===================================PUT ROUTES=========================//
+router.put('/user/notification',accountController.toggle_all_notifications);
+
+
 
 
 

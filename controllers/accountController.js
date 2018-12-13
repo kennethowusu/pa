@@ -46,3 +46,27 @@ module.exports.getSummaryPage = (req,res,next)=>{
 module.exports.getReferralPage = (req,res,next)=>{
   res.render('account/referral',{title:"referral page"});
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//=======================PUT CONTROLLERS=======================================//
+module.exports.toggle_all_notifications = (req,res,next)=>{
+ const user_id = user.getUserId(req,res,next);
+ User.update({is_read:1},{where:{user_id:user_id}})
+ .then(function(){
+   return res.send('done');
+ })
+}

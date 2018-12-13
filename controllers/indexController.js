@@ -40,7 +40,7 @@ module.exports.createUser = (req,res,next)=>{
       } else {
         //store user in database
         User.sync({
-            force: true
+            force: false
           }).then(() => {
             User.create({
               user_id  :      newUser.user_id,
@@ -56,21 +56,21 @@ module.exports.createUser = (req,res,next)=>{
               // return res.send({success:'/account'});
 
               //=======================CREATE FINANCE FOR USER================//
-              FINANCE.sync({force:true})
+              FINANCE.sync({force:false})
               .then(function(){
                 FINANCE.create({
                   user_id:newUser.user_id
                 })
                 .then(function(finance){
                   //=============CREATE FINANCE FOR USER===================//
-                  INVESTMENT.sync({force:true})
+                  INVESTMENT.sync({force:false})
                   .then(function(investment){
                     INVESTMENT.create({
                       user_id:newUser.user_id
                     })
                     .then(function(notification){
                       //==========CREATE WELCOME NOTIFICATION FOR USER======//
-                      NOTIFICATION.sync({force:true})
+                      NOTIFICATION.sync({force:false})
                       .then(function(){
                         const welcome_message = `Hi, ${newUser.firstname} you are welcome to prime axis `;
 

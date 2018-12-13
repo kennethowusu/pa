@@ -56,13 +56,13 @@
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="mdi mdi-bell"></i>
-              <%if(notification_count.count>0){%>
-                <span class="count"><%=notification_count.count%></span>
+              <%if(user.is_read==0){%>
+                <span class="count js-notification-count"><%=notification_count.count%></span>
               <%}%>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <a class="dropdown-item">
-                <%if(notification_count.count>0){%>
+                <%if(user.is_read==0){%>
                   <p class="mb-0 font-weight-normal float-left">You have <%=notification_count.count%> new notifications</p>
                 <%}else{%>
                   <p class="mb-0 font-weight-normal float-left">You have no new notifications</p>
