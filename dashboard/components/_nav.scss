@@ -145,7 +145,11 @@
         }
       }
     }
+    &.active{
+      background-color:$accent-color;
 
+    
+    }
     .nav-link {}
   }
 }

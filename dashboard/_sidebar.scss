@@ -83,7 +83,10 @@
       }
       &.active {
         >.nav-link {
-          color: $sidebar-light-menu-active-color;
+          color: #fff !important;
+          &:hover{
+            background-color:$accent-color !important;
+          }
           .menu-title,
           i {
             color: inherit;

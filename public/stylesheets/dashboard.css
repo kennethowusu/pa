@@ -13931,7 +13931,9 @@ input:focus {
       .sidebar .nav .nav-item .nav-link:hover {
         color: #3d3d3d; }
     .sidebar .nav .nav-item.active > .nav-link {
-      color: #308ee0; }
+      color: #fff !important; }
+      .sidebar .nav .nav-item.active > .nav-link:hover {
+        background-color: #ff8d4e !important; }
       .sidebar .nav .nav-item.active > .nav-link .menu-title,
       .sidebar .nav .nav-item.active > .nav-link i {
         color: inherit; }
@@ -16060,6 +16062,9 @@ ul {
         background-color: #d8d6d6; }
     .nav .nav-item.dropdown .navbar-dropdown .dropdown-divider, .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-divider {
       margin: 0; }
+  .nav .nav-item.active,
+  .navbar-nav .nav-item.active {
+    background-color: #ff8d4e; }
 
 /* New Account */
 .new-accounts {
