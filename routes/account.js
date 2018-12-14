@@ -23,9 +23,8 @@ router.get('/withdraw',user.requireAuth,function(req,res,next){
   res.render('account/withdraw',{title:"Dashboard"});
 })
 
-router.get('/activity',user.requireAuth,function(req,res,next){
-  res.render('account/activity',{title:"Dashboard"});
-})
+router.get('/activity',user.requireAuth,accountController.getActivityPage);
+
 
 //===================referral =======================//
 router.get('/referral',user.requireAuth,accountController.getReferralPage);
