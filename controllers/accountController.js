@@ -84,8 +84,63 @@ module.exports.getActivityPage = (req,res,next)=>{
 
 
 
+module.exports.getWithdrawPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next);
+
+  User.findOne({where:{user_id:user_id},
+    include: [{model: Notification,where: {user_id:user_id},
+      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3}]
+  })
+  .then((person)=>{
+
+    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
+    then(function(count){
+      console.log(count)
+      return res.render('account/withdraw',{title:'Withdraw',
+      user:person,notifications:person.notifications,
+      moment:moment,truncate:truncate,notification_count:count})
+    })//Notificatin.findAndCountAll
+  })//then(person);
+}
 
 
+module.exports.getDepositPage  = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next);
+
+  User.findOne({where:{user_id:user_id},
+    include: [{model: Notification,where: {user_id:user_id},
+      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3}]
+  })
+  .then((person)=>{
+
+    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
+    then(function(count){
+      console.log(count)
+      return res.render('account/deposit',{title:'Deposit',
+      user:person,notifications:person.notifications,
+      moment:moment,truncate:truncate,notification_count:count})
+    })//Notificatin.findAndCountAll
+  })//then(person)
+}
+
+module.exports.getInvestmentPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next);
+
+  User.findOne({where:{user_id:user_id},
+    include: [{model: Notification,where: {user_id:user_id},
+      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3}]
+  })
+  .then((person)=>{
+
+    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
+    then(function(count){
+      console.log(count)
+      return res.render('account/investment',{title:'Investment',
+      user:person,notifications:person.notifications,
+      moment:moment,truncate:truncate,notification_count:count})
+    })//Notificatin.findAndCountAll
+  })//then(person)
+}
 
 
 

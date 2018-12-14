@@ -11,17 +11,11 @@ router.get('/summary',user.requireAuth,accountController.getSummaryPage);
 
 
 //=========================get routes=============================//
-router.get('/investment',user.requireAuth,function(req,res,next){
-  res.render('account/investment',{title:"Dashboard"});
-})
+router.get('/investment',user.requireAuth,accountController.getInvestmentPage)
 
-router.get('/deposit',user.requireAuth,function(req,res,next){
-  res.render('account/deposit',{title:"Dashboard"});
-})
+router.get('/deposit',user.requireAuth,accountController.getDepositPage)
 
-router.get('/withdraw',user.requireAuth,function(req,res,next){
-  res.render('account/withdraw',{title:"Dashboard"});
-})
+router.get('/withdraw',user.requireAuth,accountController.getWithdrawPage);
 
 router.get('/activity',user.requireAuth,accountController.getActivityPage);
 
