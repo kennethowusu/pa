@@ -11,8 +11,10 @@
     border-color: $border-color;
   }
 }
-
-.form-control {
+#card-number,#cvv,#expiration-date{
+  height:34px;
+}
+.form-control,#card-number,#cvv,#expiration-date{
   border: 1px solid $border-color;
   font-family: $type-1;
   font-size: $input-font-size;

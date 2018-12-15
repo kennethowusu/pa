@@ -19,6 +19,14 @@ const moment        = require('moment');
 
 
 
+const braintree = require("braintree");
+
+const  gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: "5fz7nmmw96d5xp5m",
+  publicKey: "pr4b4pyxkgk8qz4d",
+  privateKey: "122b3988a3e1d13910c07aff551aae3e"
+});
 
 
 
@@ -118,10 +126,14 @@ module.exports.getDepositPage  = (req,res,next)=>{
 
     Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
     then(function(count){
-      console.log(count)
-      return res.render('account/deposit',{title:'Deposit',
-      user:person,notifications:person.notifications,
-      moment:moment,truncate:truncate,notification_count:count})
+
+      gateway.clientToken.generate({}, function (err, response) {
+        return res.render('account/deposit',{title:'Deposit',
+        user:person,notifications:person.notifications,
+        moment:moment,truncate:truncate,notification_count:count,
+        token:response.clientToken})
+    })
+
     })//Notificatin.findAndCountAll
   })//then(person)
 }
@@ -148,7 +160,21 @@ module.exports.getInvestmentPage = (req,res,next)=>{
 
 
 
+//=================POST CONTROLLERS=====================//
+module.exports.deposit = (req,res,next)=>{
+  const nonce  = req.body.nonce;
+  const amount = req.body.amount;
+  gateway.transaction.sale({
+    amount: amount,
+    paymentMethodNonce: req.body.nonce,
+    options: {
+      submitForSettlement: true
+    }
+  }, function (err, result) {
+    return res.send(result)
+  });
 
+}
 
 
 //=======================PUT CONTROLLERS=======================================//

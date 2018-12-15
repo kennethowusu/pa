@@ -1,4 +1,6 @@
 <%-include('../account/header');-%>
+<script src="https://js.braintreegateway.com/web/3.40.0/js/client.min.js"></script>
+<script src="https://js.braintreegateway.com/web/3.40.0/js/hosted-fields.min.js"></script>
 <%-include('../account/nav');-%>
   <div class="row">
     <div class="card card-statistics w-100">
@@ -38,73 +40,37 @@
 
       <!----form-->
       <div class="row card-payment-section">
-        <form class="" >
+        <form class="" id="card-form" >
           <!--start-->
           <div class="d-md-flex">
               <div class="form-group grid-margin p-md-3" action="index.html" method="post">
-                <label for="">Card Number</label>
-                <input type="text" name="" class="form-control" value="">
+                <label for="card-number">Card Number</label>
+                <div  name="" id="card-number" class="form-control" ></div>
               </div>
 
               <div class="form-group grid-margin p-md-3" action="index.html" method="post">
-                <label for="">CVV</label>
-                <input type="text" name="" class="form-control" value="">
+                <label for="cvv">CVV</label>
+                <div  id="cvv" class="form-control" value=""></div>
               </div>
           </div>
           <!--end-->
 
         <!--start-->
           <div class="d-md-flex">
-            <div class="form-group grid-margin p-md-3" action="index.html" method="post">
-              <label for="">Month</label>
-              <select class="form-control" name="">
-                <option value="">1 - January</option>
-                <option value="">2 - February</option>
-                <option value="">3 - March</option>
-                <option value="">4 - April</option>
-                <option value="">5 - May</option>
-                <option value="">6 - June</option>
-                <option value="">7 - July</option>
-                <option value="">8 - August</option>
-                <option value="">9 - September</option>
-                <option value="">10 - October</option>
-                <option value="">11 - November</option>
-                <option value="">12 - December</option>
-              </select>
-            </div>
 
-            <div class="form-group grid-margin  p-md-3" action="index.html" method="post">
-              <label for="">Year</label>
-              <select class="form-control" name="">
-                <option value="">2018</option>
-                <option value="">2019</option>
-                <option value="">2020</option>
-                <option value="">2021</option>
-                <option value="">2022</option>
-                <option value="">2023</option>
-                <option value="">2024</option>
-                <option value="">2025</option>
-                <option value="">2026</option>
-                <option value="">2027</option>
-                <option value="">2028</option>
-                <option value="">2029</option>
-                <option value="">2030</option>
-                <option value="">2031</option>
-                <option value="">2032</option>
-                <option value="">2033</option>
-                <option value="">2034</option>
-                <option value="">2035</option>
-                <option value="">2036</option>
-              </select>
+
+            <div class="form-group grid-margin p-md-3">
+              <label for="expiration-date">Expiration Date</label>
+              <div  id="expiration-date" class="form-control" value=""></div>
             </div>
 
             <div class="form-group grid-margin  p-md-3">
-                <label for="">Amount</label>
+                <label for="card-amount">Amount</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
                 </div>
-                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <input type="text" class="form-control" id="card-amount" aria-label="Amount (to the nearest dollar)">
                   <div class="input-group-append">
                       <span class="input-group-text">.00</span>
                   </div>
@@ -113,7 +79,7 @@
         </div><!--end-->
 
         <div class="row grid-margin pl-3 pl-md-4">
-          <button type="button" name="button" class="btn btn-accent">Deposit</button>
+          <input type="submit" name="button"  id="card-submit" value="Deposit" disabled class="btn btn-accent">
         </div>
       </form>
     </div><!--row-- for card payment option-->
@@ -147,4 +113,81 @@
       </div><!--row-->
     </div><!--card-->
   </div><!--card-statistics-->
+  <script type="text/javascript" >
+
+      const form = document.querySelector('#card-form');
+      const card_submit = document.querySelector('#card-submit');
+
+      braintree.client.create({
+        authorization: '<%=token%>'
+      }, function (clientErr, clientInstance) {
+        if (clientErr) {
+          console.error(clientErr);
+          return;
+        }
+
+        // This example shows Hosted Fields, but you can also use this
+        // client instance to create additional components here, such as
+        // PayPal or Data Collector.
+
+        braintree.hostedFields.create({
+          client: clientInstance,
+          styles: {
+            'input': {
+              'border': '1px solid #f2f2f2'
+
+            },
+            'input.invalid': {
+              'color': 'red'
+            },
+            'input.valid': {
+              'color': 'green'
+            }
+          },
+          fields: {
+            number: {
+              selector: '#card-number',
+              placeholder: '4111 1111 1111 1111'
+            },
+            cvv: {
+              selector: '#cvv',
+              placeholder: '123'
+            },
+            expirationDate: {
+              selector: '#expiration-date',
+              placeholder: '10/2019'
+            }
+          }
+        }, function (hostedFieldsErr, hostedFieldsInstance) {
+          if (hostedFieldsErr) {
+            console.error(hostedFieldsErr);
+            return;
+          }
+
+          card_submit.removeAttribute('disabled');
+
+          form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
+              if (tokenizeErr) {
+                console.error(tokenizeErr);
+                return;
+              }
+              const card_amount = document.querySelector('#card-amount').value;
+              const url = '/account/deposit';
+              const data = {nonce:payload.nonce,amount:card_amount}
+              $.ajax({
+                type:"post",
+                url:url,
+                data:data
+              }).done(function(result){
+                console.log(result);
+              })
+              
+            });
+          }, false);
+        });
+      });
+  </script>
 <%-include('../account/footer');-%>

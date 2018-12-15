@@ -29,7 +29,8 @@ router.get('/referral',user.requireAuth,accountController.getReferralPage);
 
 
 
-
+//=================================POST ROUTES===========================//
+router.post('/deposit',accountController.deposit);
 
 //===================================PUT ROUTES=========================//
 router.put('/user/notification',accountController.toggle_all_notifications);

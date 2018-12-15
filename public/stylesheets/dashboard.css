@@ -15814,7 +15814,10 @@ pre {
     background: transparent;
     border-color: #f2f2f2; }
 
-.form-control {
+#card-number, #cvv, #expiration-date {
+  height: 34px; }
+
+.form-control, #card-number, #cvv, #expiration-date {
   border: 1px solid #f2f2f2;
   font-family: "Poppins", sans-serif;
   font-size: 0.75rem;
@@ -15825,13 +15828,37 @@ pre {
   .input-group-lg > .input-group-prepend > .form-control.input-group-text,
   .input-group-lg > .input-group-append > .form-control.input-group-text,
   .input-group-lg > .input-group-prepend > .form-control.btn,
-  .input-group-lg > .input-group-append > .form-control.btn {
+  .input-group-lg > .input-group-append > .form-control.btn, #card-number.form-control-lg, .input-group-lg > #card-number.form-control,
+  .input-group-lg > .input-group-prepend > #card-number.input-group-text,
+  .input-group-lg > .input-group-append > #card-number.input-group-text,
+  .input-group-lg > .input-group-prepend > #card-number.btn,
+  .input-group-lg > .input-group-append > #card-number.btn, #cvv.form-control-lg, .input-group-lg > #cvv.form-control,
+  .input-group-lg > .input-group-prepend > #cvv.input-group-text,
+  .input-group-lg > .input-group-append > #cvv.input-group-text,
+  .input-group-lg > .input-group-prepend > #cvv.btn,
+  .input-group-lg > .input-group-append > #cvv.btn, #expiration-date.form-control-lg, .input-group-lg > #expiration-date.form-control,
+  .input-group-lg > .input-group-prepend > #expiration-date.input-group-text,
+  .input-group-lg > .input-group-append > #expiration-date.input-group-text,
+  .input-group-lg > .input-group-prepend > #expiration-date.btn,
+  .input-group-lg > .input-group-append > #expiration-date.btn {
     padding: 0.5rem 0.75rem; }
   .form-control.form-control-sm, .input-group-sm > .form-control,
   .input-group-sm > .input-group-prepend > .form-control.input-group-text,
   .input-group-sm > .input-group-append > .form-control.input-group-text,
   .input-group-sm > .input-group-prepend > .form-control.btn,
-  .input-group-sm > .input-group-append > .form-control.btn {
+  .input-group-sm > .input-group-append > .form-control.btn, #card-number.form-control-sm, .input-group-sm > #card-number.form-control,
+  .input-group-sm > .input-group-prepend > #card-number.input-group-text,
+  .input-group-sm > .input-group-append > #card-number.input-group-text,
+  .input-group-sm > .input-group-prepend > #card-number.btn,
+  .input-group-sm > .input-group-append > #card-number.btn, #cvv.form-control-sm, .input-group-sm > #cvv.form-control,
+  .input-group-sm > .input-group-prepend > #cvv.input-group-text,
+  .input-group-sm > .input-group-append > #cvv.input-group-text,
+  .input-group-sm > .input-group-prepend > #cvv.btn,
+  .input-group-sm > .input-group-append > #cvv.btn, #expiration-date.form-control-sm, .input-group-sm > #expiration-date.form-control,
+  .input-group-sm > .input-group-prepend > #expiration-date.input-group-text,
+  .input-group-sm > .input-group-append > #expiration-date.input-group-text,
+  .input-group-sm > .input-group-prepend > #expiration-date.btn,
+  .input-group-sm > .input-group-append > #expiration-date.btn {
     padding: 0.25rem 0.75rem; }
 
 select.form-control {
