@@ -15584,7 +15584,7 @@ pre {
   margin-bottom: 10px; }
   .form-check .form-check-label, .form-radio .form-check-label {
     display: block;
-    padding-left: 30px;
+    padding-left: 10px;
     line-height: 1.5; }
     .rtl .form-check .form-check-label,
     .rtl .form-radio .form-check-label {

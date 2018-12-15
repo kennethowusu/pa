@@ -48,7 +48,9 @@ module.exports.getReferralPage = (req,res,next)=>{
 
   User.findOne({where:{user_id:user_id},
     include: [{model: Notification,where: {user_id:user_id},
-      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3}]
+      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
+      {model:Finance,where:{user_id:user_id},required:true}
+    ]
   })
   .then((person)=>{
 
@@ -57,7 +59,8 @@ module.exports.getReferralPage = (req,res,next)=>{
       const ref_url = req.protocol + '://' + req.get('host') + '?i=' + person.referal_id;
       return res.render('account/referral',{title:'Account Referral',
       user:person,notifications:person.notifications,
-      moment:moment,truncate:truncate,notification_count:count,ref_url:ref_url})
+      moment:moment,truncate:truncate,notification_count:count,ref_url:ref_url,
+      finance:person.finance})
     })//Notificatin.findAndCountAll
   })//then(person)
 }

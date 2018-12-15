@@ -26,30 +26,21 @@ router.get('/testview',function(req,res,next){
 router.get('/account/logout',indexController.logout);
 router.get('/test',function(req,res,next){
 
-  //   var braintree = require("braintree");
-  //
-  //   var gateway = braintree.connect({
-  //     environment: braintree.Environment.Sandbox,
-  //     merchantId: "5fz7nmmw96d5xp5m",
-  //     publicKey: "pr4b4pyxkgk8qz4d",
-  //     privateKey: "122b3988a3e1d13910c07aff551aae3e"
-  //   });
-  //
-  //
-  // gateway.clientToken.generate({}, function (err, response) {
-  //   res.render('test',{token:response.clientToken});
+    var braintree = require("braintree");
 
-  var token = req.cookies.auth;
-  //});
-  // user.loggedIn(req,res,next);
-  user.tokenIsValid(token).then(function(result){
-    if(result){
-      return res.render('account/dashboard')
-    }
-  })
+    var gateway = braintree.connect({
+      environment: braintree.Environment.Sandbox,
+      merchantId: "5fz7nmmw96d5xp5m",
+      publicKey: "pr4b4pyxkgk8qz4d",
+      privateKey: "122b3988a3e1d13910c07aff551aae3e"
+    });
+
+
+  gateway.clientToken.generate({}, function (err, response) {
+    res.render('testview',{token:response.clientToken});
 
 })
-
+});
 router.post('/test',function(req,res,next){
 
   try{
@@ -71,7 +62,7 @@ router.post('/test',function(req,res,next){
         submitForSettlement: true
       }
     }, function (err, result) {
-      console.log(result);
+      return res.send(result)
     });
 
   }catch(err){
