@@ -1,3 +1,9 @@
 .p-0{
   padding:0 !important
 }
+.btn.btn-accent{
+  background-color:$accent-color !important;
+  &:hover{
+    background-color: #ef6d26 !important;
+  }
+}

@@ -14984,7 +14984,8 @@ pre {
   .btn.btn-xs {
     padding: 0.5rem 0.75rem;
     font-size: 0.625rem; }
-  .btn.btn-danger, .btn.btn-info, .btn.btn-success, .btn.btn-teal, .btn.btn-warning {
+  .btn.btn-danger, .btn.btn-info, .btn.btn-success, .btn.btn-teal, .btn.btn-warning
+  .btn.btn-accent {
     color: #ffffff; }
   .btn.btn-outline-light {
     border-color: #c7d1d5;
@@ -15834,7 +15835,16 @@ pre {
     padding: 0.25rem 0.75rem; }
 
 select.form-control {
-  padding: 0.4375rem 0.75rem; }
+  padding: 0.4375rem 0.75rem;
+  background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+) no-repeat 100% 50%;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  appearance: none;
+  outline-width: 0;
+  display: block;
+  width: 10em;
+  font-size: 1rem; }
 
 .form-group label {
   font-size: 13px;

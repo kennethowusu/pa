@@ -77,7 +77,8 @@
   &.btn-info,
   &.btn-success,
   &.btn-teal,
-  &.btn-warning {
+  &.btn-warning
+  &.btn-accent {
     color: $white;
   }
 
@@ -139,6 +140,7 @@
     &.btn-warning {
       border-color: darken(theme-color(warning),3%);
     }
+
 
     &.btn-success {
       border-color: darken(theme-color(success),3%);
