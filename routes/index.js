@@ -37,7 +37,7 @@ router.get('/test',function(req,res,next){
 
 
   gateway.clientToken.generate({}, function (err, response) {
-    res.render('testview',{token:response.clientToken});
+    res.render('test',{token:response.clientToken});
 
 })
 });
