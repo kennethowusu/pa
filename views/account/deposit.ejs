@@ -37,7 +37,7 @@
 
 
       <!----form-->
-      <div class="row card-payemnt-section">
+      <div class="row card-payment-section">
         <form class="" >
           <!--start-->
           <div class="d-md-flex">
@@ -111,18 +111,38 @@
                 </div>
             </div>
         </div><!--end-->
+
         <div class="row grid-margin pl-3 pl-md-4">
           <button type="button" name="button" class="btn btn-accent">Deposit</button>
         </div>
+      </form>
+    </div><!--row-- for card payment option-->
 
-        <div class="row paypal-payment-option grid-margin pl-3 pl-md-4">
-          <div class="row">
-            <button type="button" name="button" class="btn btn-accent">Deposit</button>
-          </div>
+
+    <form class="paypal-payment-section"  method="post">
+
+      <div class="row">
+        <div class="form-group grid-margin  p-md-3">
+            <label for="">Amount</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+              <div class="input-group-append">
+                  <span class="input-group-text">.00</span>
+              </div>
+            </div>
         </div>
+      </div>
+      <div class="row  grid-margin pl-3 pl-md-4">
+        <div class="row">
+          <button type="button" name="button" class="btn btn-accent">Deposit</button>
+        </div>
+      </div>
     </form>
 
-      </div><!--row-->
+
 
       </div><!--row-->
     </div><!--card-->
