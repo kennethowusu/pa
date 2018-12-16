@@ -34,6 +34,10 @@ const  gateway = braintree.connect({
 
 
 
+module.exports.getConfirmationPage = (req,res,next)=>{
+  return res.render('confirmation');
+}
+
 
 module.exports.getSummaryPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next);

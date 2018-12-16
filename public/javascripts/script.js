@@ -143,7 +143,9 @@ function submit_disabled(){
     // submit_enabled();
   }
 }
-
+$('input').on('keypress',function(){
+  $('.form-submit').removeClass('submit-disabled');
+})
 function add_error_border(element){
   element.addClass('border-red');
 }
@@ -196,7 +198,10 @@ function signup(){
       add_error_border(email);
     }else if(result.hasOwnProperty('success')){
       remove_error_border(email);
+        $('.form-submit').addClass('submit-disabled');
+        $('.signup-loader').css('display','inline');
       function signup_redirect(){
+
         $('.signup-loader').css('display','inline-block !important');
         window.location.replace(result.success);
       }
@@ -226,7 +231,10 @@ function signin(){
     else if(result.hasOwnProperty('success')){
       remove_error_border(email);
       remove_error_border(password);
+      $('.form-submit').addClass('submit-disabled');
+      $('.signup-loader').css('display','inline');
       function signin_redirect(){
+        submit_disabled();
         $('.signup-loader').css('display','inline-block !important');
         window.location.replace(result.success);
       }
