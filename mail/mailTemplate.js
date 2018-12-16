@@ -17,6 +17,8 @@ module.exports.generateResetCodeTemplate = (resetCode)=>{
     </p>-GlammyCare Customer Care Team</p>
 
   </div>`;
+}
 
-
+module.exports.sendDepositMail = ()=>{
+  
 }

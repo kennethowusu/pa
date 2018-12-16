@@ -46,7 +46,11 @@
 
 
       <!----form-->
+        <p class="text-danger" id="error-cont"></p>
       <div class="row card-payment-section">
+        <div class="">
+
+        </div>
         <form class="" id="card-form" >
           <!--start-->
           <div class="d-md-flex">
@@ -101,7 +105,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">$</span>
             </div>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <input type="text" class="form-control" id="paypal-amount" aria-label="Amount (to the nearest dollar)">
               <div class="input-group-append">
                   <span class="input-group-text">.00</span>
               </div>
@@ -125,7 +129,7 @@
 
       const form = document.querySelector('#card-form');
       const card_submit = document.querySelector('#card-submit');
-
+      const error_cont = document.querySelector('#error-cont');
       braintree.client.create({
         authorization: '<%=token%>'
       }, function (clientErr, clientInstance) {
@@ -168,7 +172,7 @@
           }
         }, function (hostedFieldsErr, hostedFieldsInstance) {
           if (hostedFieldsErr) {
-            console.error(hostedFieldsErr);
+
             return;
           }
 
@@ -179,18 +183,25 @@
 
             hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
               if (tokenizeErr) {
-                console.error(tokenizeErr);
+                if(tokenizeErr.code=="HOSTED_FIELDS_FIELDS_EMPTY"){
+                  error_cont.innerHTML = "Please fill all required fields";
+                }
+                else if(tokenizeErr.code=="HOSTED_FIELDS_FIELDS_INVALID"){
+                  error_cont.innerHTML = "There was an error processing your card.Please recheck and try again.";
+                }
                 return;
               }
               const card_amount = document.querySelector('#card-amount').value;
               const url = '/account/deposit';
-              const data = {nonce:payload.nonce,amount:card_amount}
+              const data = {nonce:payload.nonce,amount:card_amount,method:'card'}
               $.ajax({
                 type:"post",
                 url:url,
                 data:data
               }).done(function(result){
-                console.log(result);
+                if(result.success){
+                  window.location.replace("/account/summary");
+                }
               })
 
             });
@@ -199,7 +210,7 @@
       });
 
 
-      // Create a client.
+//=================Paypal component=================================//
 braintree.client.create({
   authorization: '<%=token%>'
 }, function (clientErr, clientInstance) {
@@ -227,17 +238,37 @@ braintree.client.create({
 
     // Set up PayPal with the checkout.js library
     paypal.Button.render({
-      env: 'production', // or 'sandbox'
+      env: 'sandbox', // or 'production'
 
       payment: function () {
+        const amount = document.querySelector('#paypal-amount').value;
+        console.log(amount);
         return paypalCheckoutInstance.createPayment({
+
+
           // Your PayPal options here. For available options, see
           // http://braintree.github.io/braintree-web/current/PayPalCheckout.html#createPayment
+          flow: 'checkout',
+          amount: amount,
+          currency: 'USD',
+          intent: 'sale'
+
         });
       },
 
       onAuthorize: function (data, actions) {
         return paypalCheckoutInstance.tokenizePayment(data, function (err, payload) {
+          const amount = document.querySelector('#paypal-amount').value;
+          const data =  {method:'paypal',amount:amount,nonce:payload.nonce}
+            $.ajax({
+              type:'post',
+              url:'/test',
+              data:data
+            }).done(function(result){
+              if(result.success){
+                window.location.replace("/account/summary");
+              }
+            })
           // Submit `payload.nonce` to your server.
         });
       },

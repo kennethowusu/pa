@@ -13,8 +13,13 @@ const FINANCE = sequelize.define('finance',{
     allowNull: false,
     defaultValue:false
   },
+  investment:{
+    type:Sequelize.DECIMAL(10, 2),
+    allowNull: false,
+    defaultValue:false
+  },
   //referral
-  referal:{
+  referral:{
     type:Sequelize.DECIMAL(10, 2),
     allowNull: false,
     defaultValue:0

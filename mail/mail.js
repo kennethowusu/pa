@@ -55,3 +55,20 @@ module.exports.sendResetCode = function(resetCode){
   });
 
 }
+
+//Send Depsoit Notification
+module.exports.sendDepositMail = function(){
+  nodemailer.createTestAccount((err, account) => {
+      // setup email data with unicode symbols
+      const mailOptions = {
+          from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
+          to: 'consultkenneth@gmail.com', // list of receivers
+          subject:'Depsit', // Subject line
+          text: 'Hello world?', // plain text body
+          html: template.sendDepositMail() // html body
+      };
+
+      //sendMail
+      module.exports.sendMail(mailOptions);
+  });
+}
