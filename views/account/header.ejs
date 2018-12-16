@@ -61,7 +61,7 @@
               <%}%>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <a class="dropdown-item">
+              <a href="/account/notifications" class="dropdown-item">
                 <%if(user.is_read==0){%>
                   <p class="mb-0 font-weight-normal float-left">You have <%=notification_count.count%> new notifications</p>
                 <%}else{%>
@@ -96,11 +96,12 @@
             </div>
           </li>
           <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+            <!-- <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> -->
+            <a class="nav-link " id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Hello, <%=user.firstname%></span>
               <i class="mdi-profile-img mdi mdi-account-circle"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+            <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
                 <div class="d-flex border-bottom">
                   <div class="py-3 px-4 d-flex align-items-center justify-content-center">
@@ -126,7 +127,7 @@
               <a class="dropdown-item">
                 Sign Out
               </a>
-            </div>
+            </div> -->
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle"  href="/account/logout">

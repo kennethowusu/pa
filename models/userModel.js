@@ -49,4 +49,8 @@ const User = sequelize.define('user',{
 User.hasMany(NOTIFICATION,{foreignKey:"user_id",sourceKey: 'user_id'});
 User.hasOne(INVESTMENT,{foreignKey:"user_id",sourceKey:"user_id"});
 User.hasOne(FINANCE, {foreignKey: 'user_id', sourceKey: 'user_id'});
+// sequelize.sync({
+//   force:true
+// })
+
 module.exports = User;

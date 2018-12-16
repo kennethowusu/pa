@@ -5,6 +5,7 @@ const user  = require('../functions/userFunctions');
 const async = require('async');
 const truncate = require('truncate');
 const money    = require('money-math');
+const util   = require('util');
 // const mail = require('../mail/mail');
 require('dotenv').config();
 
@@ -190,7 +191,8 @@ module.exports.deposit = (req,res,next)=>{
               user_id:user_id,
               is_read:0
             }).then(function(){
-              return res.send(result);
+              // return res.send(result);
+              console.log(util.inspect(result,false,null,true));
             })
 
 

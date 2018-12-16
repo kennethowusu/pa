@@ -19,7 +19,7 @@ require('dotenv').config();
 //===========get index page ==============//
 module.exports.getIndexPage = (req,res,next)=>{
   const i = req.query.i;
- 
+
   return res.render('index',{title:"Prime Axis LLC",i:i});
 
 }
@@ -52,9 +52,6 @@ module.exports.createUser = (req,res,next)=>{
         return res.send({email_error:emailError});
       } else {
         //store user in database
-        User.sync({
-            force: false
-          }).then(() => {
             User.create({
               user_id  :      newUser.user_id,
               firstname:      newUser.firstname,
@@ -69,22 +66,16 @@ module.exports.createUser = (req,res,next)=>{
               // return res.send({success:'/account'});
 
               //=======================CREATE FINANCE FOR USER================//
-              FINANCE.sync({force:false})
-              .then(function(){
                 FINANCE.create({
                   user_id:newUser.user_id
                 })
                 .then(function(finance){
                   //=============CREATE FINANCE FOR USER===================//
-                  INVESTMENT.sync({force:false})
-                  .then(function(investment){
                     INVESTMENT.create({
                       user_id:newUser.user_id
                     })
                     .then(function(notification){
                       //==========CREATE WELCOME NOTIFICATION FOR USER======//
-                      NOTIFICATION.sync({force:false})
-                      .then(function(){
                         const welcome_message = `Hi, ${newUser.firstname} you are welcome to prime axis `;
 
                         NOTIFICATION.create({
@@ -96,20 +87,11 @@ module.exports.createUser = (req,res,next)=>{
                           user.generateToken(req, res, next, newUser);
                           return res.send({success:'/account/summary'});
                         })
-                      })//NOTIFICATION.sync
                     })
-                  })//INVESTMENT.sync
 
                 })
 
-              })//FINANCE.sync
-
-
-
-
-
             })
-          })
           .catch(err => {
             return res.send(err);
           })
