@@ -15,6 +15,7 @@ var User = require('../models/userModel');
 const Notification = require('../models/notificationModel.js');
 const Finance       = require('../models/financeModel.js');
 const Investment    = require('../models/investmentModel.js');
+const Deposit       = require('../models/depositModel');
 const moment        = require('moment');
 //==============variables=============/
 
@@ -174,6 +175,8 @@ module.exports.deposit = (req,res,next)=>{
   const nonce  = req.body.nonce;
   const amount = req.body.amount;
   payment_type = req.body.method;
+  const investment_type = 'plan_gold';
+
 
   if(payment_type=="card"){
     gateway.transaction.sale({
@@ -183,27 +186,35 @@ module.exports.deposit = (req,res,next)=>{
         submitForSettlement: true
       }
     }, function (err, result) {
-      if(result.success){
-        Finance.findOne({where:{user_id:user_id}}).then(function(finance){
-          Finance.update({deposit:money.add(finance.deposit,result.transaction.amount)},{where:{user_id:user_id}})
-          .then(function(){
-            Notification.create({
-              topic:"Deposit",
-              message: `You have deposited an amount of  <b>${result.transaction.amount}</b>
-                        in your account. Your balance is now
-                        <b>${money.add(finance.deposit,result.transaction.amount)}</b>`,
-              user_id:user_id,
-              is_read:0
-            }).then(function(){
-              // return res.send(result);
-              console.log(util.inspect(result,false,null,true));
-            })
+      if(result.success && result.transaction.status == 'submitted_for_settlement' && result.transaction.processorResponseCode =='1000' && result.transaction.processorResponseText == 'Approved'){
+           //=======if transaction is authorized update investment data
+           Investment.update({
+             user_id:user_id,
+             investment_amount:result.transaction.amount,
+             investment_type:investment_type,
+             investment_status:'active',
+             principal_transaction_id:result.transaction.id,
+             principal_credited_status:'no'
+           },{where:{user_id:user_id}})
+           .then(function(){
+             //=========store transaction in depsosit table
+             Deposit.create({
+               user_id:user_id,
+               transaction_id:result.transaction.id,
+               transaction_status:result.transaction.status,
+               transaction_amount:result.transaction.amount,
+               transaction_credited:'no'
+
+             })
+             .then(function(){
+               console.log('Just did what you asked');
+             })
 
 
-          })
+           })
 
-        })
-
+      }else if(!result.success){
+        console.log(util.inspect(result,false,null,true))
       }
     });
 
@@ -244,3 +255,7 @@ module.exports.toggle_all_notifications = (req,res,next)=>{
    return res.send('done');
  })
 }
+
+// gateway.transaction.find("day7qzb0",function(err,transaction){
+//   console.log(util.inspect(transaction.status,false,null,true));
+// })

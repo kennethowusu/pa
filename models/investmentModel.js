@@ -3,16 +3,33 @@ const sequelize = require('../config/database');
 
 //xUowh6qK87
 const INVESTMENT = sequelize.define('investment',{
-  investment:{
+  investment_amount:{
     type:Sequelize.DECIMAL(10, 2),
     defaultValue:null
   },
   investment_type:{
-    type:Sequelize.STRING,
-    defaultValue:null
+    type:Sequelize.ENUM,
+    defaultValue:null,
+    values:['plan_gold','plan_diamond','plan_platinum']
   },
   investment_date:{
     type:Sequelize.DATE,
+    defaultValue:Sequelize.NOW
+  },
+  investment_status:{
+    type:Sequelize.ENUM,
+    allowNull:false,
+    values:['active','inactive'],
+    defaultValue:'inactive'
+  },
+  principal_credited_status:{
+    type:Sequelize.ENUM,
+    allowNull:false,
+    values:['yes','no'],
+    defaultValue:'no'
+  },
+  principal_transaction_id:{
+    type:Sequelize.STRING,
     defaultValue:null
   }
 });
