@@ -13,7 +13,7 @@ router.get('/summary',user.requireAuth,accountController.getSummaryPage);
 //=========================get routes=============================//
 router.get('/investment',user.requireAuth,accountController.getInvestmentPage)
 
-router.get('/deposit',user.requireAuth,accountController.getDepositPage)
+router.get('/plan/deposit',user.requireAuth,accountController.getDepositPage)
 
 router.get('/withdraw',user.requireAuth,accountController.getWithdrawPage);
 

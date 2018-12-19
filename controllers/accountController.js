@@ -131,14 +131,16 @@ module.exports.getWithdrawPage = (req,res,next)=>{
 module.exports.getDepositPage  = (req,res,next)=>{
   const type = req.query.type;
   const amount = req.query.amount;
+  const title  = req.query.title;
   const user_id = user.getUserId(req,res,next);
 
   if(type==null || amount==null){
     return res.redirect('/account/summary');
   }
-  // if(type!='gold-plan' || type!='diamond-plan' || type!='platinum-plan'){
-  //   return res.redirect('/account/summary');
-  // }
+  if(type=='gold-plan' || type=='diamond-plan' || type=='platinum-plan'){
+  }else{
+    return res.redirect('/account/summary');
+  }
   if(type=='gold-plan'){
     if(amount > 999 && amount<=10000){
 
@@ -174,7 +176,7 @@ module.exports.getDepositPage  = (req,res,next)=>{
         return res.render('account/deposit',{title:'Deposit',
         user:person,notifications:person.notifications,
         moment:moment,truncate:truncate,notification_count:count,
-        token:response.clientToken})
+        token:response.clientToken,type:type,amount:amount,package_title:title})
     })
 
     })//Notificatin.findAndCountAll
@@ -209,8 +211,8 @@ module.exports.deposit = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next);
   const nonce  = req.body.nonce;
   const amount = req.body.amount;
-  payment_type = req.body.method;
-  const investment_type = 'plan_gold';
+  const payment_type = req.body.method;
+  const investment_type = req.body.investment_type;
 
 
   if(payment_type=="card"){

@@ -75,21 +75,22 @@ plan_modal_container.on('click','.plan-proceed-link',function(e){
   const amount = $('.amount').val();
   const plan_type = $('.plan-type').attr('name');
   const error_message = $('.plan-type').attr('error-message');
+  const title = $('.modal-title').html();
   if(plan_type=='gold-plan'){
     if(amount > 999 && amount<=10000){
-      window.location.href = "/account/deposit?type="+plan_type+'&amount='+amount;
+      window.location.href = "/account/plan/deposit?type="+plan_type+'&amount='+amount+'&title='+title;
     }else{
       $('.error-message').html(error_message);
     }
   }else if(plan_type=='diamond-plan'){
     if(amount >=10000){
-      window.location.href = "/account/deposit?type="+plan_type+'&amount='+amount;
+      window.location.href = "/account/plan/deposit?type="+plan_type+'&amount='+amount+'&title='+title;
     }else{
       $('.error-message').html(error_message);
     }
   }else if(plan_type=='platinum-plan'){
     if(amount >=1000){
-      window.location.href = "/account/deposit?type="+plan_type+'&amount='+amount;
+      window.location.href = "/account/plan/deposit?type="+plan_type+'&amount='+amount+'&title='+title;
   }else{
     $('.error-message').html(error_message);
   }
