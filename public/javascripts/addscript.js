@@ -42,3 +42,56 @@ const displayPaymentOption = function(){
 }
 displayPaymentOptionAction();
 displayPaymentOption();
+
+
+//=========for investment plan====//
+const plan_modal_container = $('.plan-modal-container');
+const showPlanModal = function(){
+  $('.btn.apply-plan').on('click',function(e){
+    const target = $(e.target);
+    const title = target.siblings('.plan-title').attr('value');
+    const plan_type = target.siblings('.plan-title').attr('name');
+    const url = "/account/includes/plan";
+    const error_message = target.siblings('.plan-title').attr('error-message');
+    $.ajax({
+      type:'get',
+      url:url
+    }).done(function(result){
+      $('.plan-modal-container').html(result);
+      $('.modal-title').html(title);
+      $('.plan-type').attr('name',plan_type);
+      $('.plan-type').attr('error-message',error_message)
+    })
+  })
+}
+const closePlanModal = function(){
+  plan_modal_container.on('click','.modal-plan-close',function(){
+    $('.modal').remove();
+  })
+}
+showPlanModal();
+closePlanModal();
+plan_modal_container.on('click','.plan-proceed-link',function(e){
+  const amount = $('.amount').val();
+  const plan_type = $('.plan-type').attr('name');
+  const error_message = $('.plan-type').attr('error-message');
+  if(plan_type=='gold-plan'){
+    if(amount > 999 && amount<=10000){
+      window.location.href = "/account/deposit?type="+plan_type+'&amount='+amount;
+    }else{
+      $('.error-message').html(error_message);
+    }
+  }else if(plan_type=='diamond-plan'){
+    if(amount >=10000){
+      window.location.href = "/account/deposit?type="+plan_type+'&amount='+amount;
+    }else{
+      $('.error-message').html(error_message);
+    }
+  }else if(plan_type=='platinum-plan'){
+    if(amount >=1000){
+      window.location.href = "/account/deposit?type="+plan_type+'&amount='+amount;
+  }else{
+    $('.error-message').html(error_message);
+  }
+}
+})

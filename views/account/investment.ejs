@@ -33,7 +33,9 @@
               <span class="float-right">Once every 2 weeks</span>
             </p>
             <div class="">
-              <button type="button"  name="button" disabled class="btn btn-success w-100">Unavailable
+              <input type="hidden" class="plan-title" error-message="Amount should be equal or between $1,000.00 and $10,000.00" name="gold-plan" value="Gold plan">
+              <input type="hidden" class="" name="" value="">
+              <button type="button"  name="button"  class="btn apply-plan btn-success w-100">Apply
               </button>
             </div>
           </div>
@@ -62,8 +64,9 @@
               <span class="float-right">Once a month</span>
             </p>
             <div class="">
-              <button type="button" disabled name="button" class="btn btn-success w-100">Unavailable
-              </button>
+              <input type="hidden" class="plan-title" error-message="Minimum amount must be $10,000.00" name="diamond-plan" value="Diamond plan">
+              <input type="hidden" class="" name="" value="">
+              <button type="button"  name="button"  class="btn apply-plan btn-success w-100">Apply
             </div>
           </div>
         </div>
@@ -93,8 +96,9 @@
             </p>
             <div class="dropdown-divider"></div>
             <div class="">
-              <button type="button" disabled name="button" class="btn btn-success w-100">Unavailable
-              </button>
+              <input type="hidden" class="plan-title" error-message="Minimum amount must be $1000.00" name="platinum-plan" value="Platinum plan">
+              <input type="hidden" class="" name="" value="">
+              <button type="button"  name="button"  class="btn apply-plan btn-success w-100">Apply
             </div>
           </div>
         </div>
@@ -102,7 +106,9 @@
     </div>
   </div>
 
-
+</div>
+<div class="plan-modal-container">
 
 </div>
+
 <%-include('../account/footer');-%>

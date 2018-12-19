@@ -34,12 +34,16 @@ const  gateway = braintree.connect({
 
 
 
+//=======================GET CONROLLERS=============//
 
 module.exports.getConfirmationPage = (req,res,next)=>{
   return res.render('confirmation');
 }
 
 
+module.exports.getPlanModal = (req,res,next)=>{
+  return res.render('account/plan-modal');
+}
 module.exports.getSummaryPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next);
 
@@ -125,7 +129,37 @@ module.exports.getWithdrawPage = (req,res,next)=>{
 
 
 module.exports.getDepositPage  = (req,res,next)=>{
+  const type = req.query.type;
+  const amount = req.query.amount;
   const user_id = user.getUserId(req,res,next);
+
+  if(type==null || amount==null){
+    return res.redirect('/account/summary');
+  }
+  // if(type!='gold-plan' || type!='diamond-plan' || type!='platinum-plan'){
+  //   return res.redirect('/account/summary');
+  // }
+  if(type=='gold-plan'){
+    if(amount > 999 && amount<=10000){
+
+    }else{
+      return res.redirect('/account/summary');
+    }
+  }else if(type=='diamond-plan'){
+    if(amount >=10000){
+
+    }else{
+      return res.redirect('/account/summary');
+    }
+  }else if(type=='platinum-plan'){
+    if(amount >=1000){
+
+  }else{
+    return res.redirect('/account/summary');
+  }
+}
+
+
 
   User.findOne({where:{user_id:user_id},
     include: [{model: Notification,where: {user_id:user_id},
@@ -171,6 +205,7 @@ module.exports.getInvestmentPage = (req,res,next)=>{
 
 //=================POST CONTROLLERS=====================//
 module.exports.deposit = (req,res,next)=>{
+
   const user_id = user.getUserId(req,res,next);
   const nonce  = req.body.nonce;
   const amount = req.body.amount;

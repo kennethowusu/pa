@@ -16463,4 +16463,16 @@ ul {
   .error-page .error-page-divider {
     border-left: 3px solid rgba(255, 255, 255, 0.2); } }
 
+.p-0 {
+  padding: 0 !important; }
+
+.btn.btn-accent {
+  background-color: #ff8d4e !important; }
+  .btn.btn-accent:hover {
+    background-color: #ef6d26 !important; }
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  display: block; }
+
 /*# sourceMappingURL=dashboard.css.map */

@@ -20,7 +20,7 @@ router.get('/withdraw',user.requireAuth,accountController.getWithdrawPage);
 router.get('/activity',user.requireAuth,accountController.getActivityPage);
 
 router.get('/confirmation',accountController.getConfirmationPage);
-
+router.get('/includes/plan',accountController.getPlanModal);
 //===================referral =======================//
 router.get('/referral',user.requireAuth,accountController.getReferralPage);
 

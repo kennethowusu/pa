@@ -23,10 +23,6 @@ const Deposit = sequelize.define('deposit',{
  transaction_amount:{
    type:Sequelize.DECIMAL(10, 2),
    allowNull:false
- },
- transaction_credited:{
-   type:Sequelize.ENUM,
-   values:['yes','no']
  }
 });
 
