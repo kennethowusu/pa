@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+ <style media="screen">
+   .card-body{
+     max-width:400px;
+   }
+   .email-confirm-svg{
+     width:105px;
+     height:105px;
+   }
+ </style>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title><%=title%></title>
+  <link rel="stylesheet" href="/stylesheets/dashboard.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="/images/favicon.png" />
+</head>
+
+<body>
+
+ <div class="row">
+   <div class="card card-statistics m-auto">
+     <div class="card-body text-center ">
+          <h2>Confirm your Account</h2>
+          <div class="">
+            <img src="/images/svg/email-confirm.svg" class='email-confirm-svg grid-margin' alt="">
+          </div>
+          <div class="">
+            <p>Check your email for the verifcation link sent to</p>
+            <p class="text-accent"><%=person.email%></p>
+            <p>After receiving email,click the link provided to complete your registeration.</p>
+          </div>
+
+          <div class="row tex-center ">
+            <p class="w-100">Not in inbox or span folder? <a href="/account/confirmation/send">Resend</a></p>
+          </div>
+     </div>
+   </div>
+ </div>
+
+
+
+
+
+  <script type="text/javascript" src='/javascripts/addscript.js'></script>
+
+  </body>
+
+  </html>

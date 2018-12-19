@@ -16471,6 +16471,9 @@ ul {
   .btn.btn-accent:hover {
     background-color: #ef6d26 !important; }
 
+.text-accent {
+  color: #ff8d4e !important; }
+
 .modal {
   background-color: rgba(0, 0, 0, 0.5) !important;
   display: block; }

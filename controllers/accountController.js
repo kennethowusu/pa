@@ -38,9 +38,23 @@ const  gateway = braintree.connect({
 //=======================GET CONROLLERS=============//
 
 module.exports.getConfirmationPage = (req,res,next)=>{
-  return res.render('confirmation');
+  const user_id = user.getUserId(req,res,next);
+  User.find({where:{user_id:user_id}})
+  .then(function(person){
+    return res.render('account/confirmation',{title:'Account Confirmation',person:person});
+  })
 }
 
+module.exports.verifyUser  = (req,res,next)=>{
+  const token = req.query.verify;
+
+  var decoded = jwt.decode(token);
+  const user_id = decoded.id;
+  User.update({is_verified:1},{where:{user_id:user_id}})
+    .then(function(){
+      return res.redirect('/account/confirmed');
+    })
+}
 
 module.exports.getPlanModal = (req,res,next)=>{
   return res.render('account/plan-modal');
