@@ -48,10 +48,11 @@ module.exports.verifyInvestmentPackage = (req,res,next)=>{
       console.log('he has settled us let him go')
       return;
     }
-    else if(investment.investment_status == 'active' && investment.principal_credited_status == 'no'){
+    else if(investment.investment_status == 'pending' && investment.principal_credited_status == 'no'){
         gateway.transaction.find(transaction_id,function(err,transaction){
           if(transaction.status=="settled"){
-            Investment.update({principal_credited_status:'yes'},{where:{user_id:user_id}});
+            Investment.update({principal_credited_status:'yes',investment_status:'active'},
+            {where:{user_id:user_id}});
             Deposit.update({transaction_status:transaction.status},{where:{transaction_id:transaction_id}})
           }
           //cancel investment packages when it settlement fails

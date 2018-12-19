@@ -13,13 +13,25 @@ router.get('/summary',user.requireAuth,
 
 
 //=========================get routes=============================//
-router.get('/investment',user.requireAuth,accountController.getInvestmentPage)
+router.get('/investment',
+  user.requireAuth,
+  account.verifyInvestmentPackage,
+  accountController.getInvestmentPage)
 
-router.get('/plan/deposit',user.requireAuth,accountController.getDepositPage)
+router.get('/plan/deposit',
+    user.requireAuth,
+    account.verifyInvestmentPackage,
+    accountController.getDepositPage)
 
-router.get('/withdraw',user.requireAuth,accountController.getWithdrawPage);
+router.get('/withdraw',
+    user.requireAuth,
+    account.verifyInvestmentPackage,
+    accountController.getWithdrawPage);
 
-router.get('/activity',user.requireAuth,accountController.getActivityPage);
+router.get('/activity',
+    user.requireAuth,
+    account.verifyInvestmentPackage,
+    accountController.getActivityPage);
 
 router.get('/confirmation',accountController.getConfirmationPage);
 router.get('/includes/plan',accountController.getPlanModal);

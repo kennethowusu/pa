@@ -230,7 +230,7 @@ module.exports.deposit = (req,res,next)=>{
              user_id:user_id,
              investment_amount:result.transaction.amount,
              investment_type:investment_type,
-             investment_status:'active',
+             investment_status:'pending',
              principal_transaction_id:result.transaction.id,
              principal_credited_status:'no',
              investment_date:Date.now(),

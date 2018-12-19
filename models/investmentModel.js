@@ -19,7 +19,7 @@ const INVESTMENT = sequelize.define('investment',{
   investment_status:{
     type:Sequelize.ENUM,
     allowNull:false,
-    values:['active','inactive'],
+    values:['active','inactive','pending'],
     defaultValue:'inactive'
   },
   principal_credited_status:{

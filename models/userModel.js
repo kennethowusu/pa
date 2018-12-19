@@ -49,6 +49,11 @@ const User = sequelize.define('user',{
     values:['yes','no'],
     allowNull:false,
     defaultValue:'yes'
+  },
+  is_verified:{
+    type:Sequelize.BOOLEAN,
+    allowNull:false,
+    defaultValue:false
   }
 });
 
