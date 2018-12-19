@@ -72,3 +72,20 @@ module.exports.sendDepositMail = function(){
       module.exports.sendMail(mailOptions);
   });
 }
+
+
+module.exports.sendSettlementFailedMessage = function(){
+  nodemailer.createTestAccount((err, account) => {
+      // setup email data with unicode symbols
+      const mailOptions = {
+          from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
+          to: 'consultkenneth@gmail.com', // list of receivers
+          subject:'Depsit', // Subject line
+          text: 'Hello world?', // plain text body
+          html: 'sorry we could not charge your credit card' // html body
+      };
+
+      //sendMail
+      module.exports.sendMail(mailOptions);
+  });
+}

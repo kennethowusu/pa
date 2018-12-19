@@ -6,6 +6,7 @@ const async = require('async');
 const truncate = require('truncate');
 const money    = require('money-math');
 const util   = require('util');
+
 // const mail = require('../mail/mail');
 require('dotenv').config();
 
@@ -231,7 +232,8 @@ module.exports.deposit = (req,res,next)=>{
              investment_type:investment_type,
              investment_status:'active',
              principal_transaction_id:result.transaction.id,
-             principal_credited_status:'no'
+             principal_credited_status:'no',
+             investment_date:Date.now(),
            },{where:{user_id:user_id}})
            .then(function(){
              //=========store transaction in depsosit table

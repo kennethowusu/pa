@@ -2,10 +2,12 @@ var accountController = require('../controllers/accountController');
 var express = require('express');
 var router = express.Router();
 const user = require('../functions/userFunctions');
-
+const account = require('../functions/accountFunctions')
 //=======================sign up ======================//
 
-router.get('/summary',user.requireAuth,accountController.getSummaryPage);
+router.get('/summary',user.requireAuth,
+        account.verifyInvestmentPackage,
+        accountController.getSummaryPage);
 
 
 
