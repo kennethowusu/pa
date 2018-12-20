@@ -14,3 +14,8 @@
   background-color: rgba(0,0,0,.5) !important;
   display:block;
 }
+@media(min-width:959px){
+  .logout-nav{
+    display:none !important;
+  }
+}
