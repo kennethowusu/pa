@@ -235,6 +235,23 @@ module.exports.getInvestmentPage = (req,res,next)=>{
 
 
 //=================POST CONTROLLERS=====================//
+module.exports.sendPasswordResetLink = (req,res,next)=>{
+  const email  = req.body.email;
+
+ const  url = req.protocol + '://' + req.get('host') + '/account/password/reset/';
+  User.find({where:{email:email}})
+      .then(function(person){
+        if(person == null){
+          return res.send('Email does not exist');
+        }else{
+          const passwordResetLink = user.generateVerificationToken(req,res,next,person);
+          mail.sendPasswordResetLink(person.email,url+passwordResetLink);
+        }
+      }).then(function(){
+        return res.send('sent');
+      })
+
+}
 module.exports.deposit = (req,res,next)=>{
 
   const user_id = user.getUserId(req,res,next);

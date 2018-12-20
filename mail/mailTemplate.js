@@ -28,3 +28,10 @@ module.exports.sendEmailVerificationLink = (verificationLink)=>{
           </div>
   `
 }
+
+module.exports.passwordResetLink = (passwordResetLink)=>{
+  return `<div>
+           This is your link <a href='${passwordResetLink}'>${passwordResetLink}</a>
+          </div>
+  `
+}
