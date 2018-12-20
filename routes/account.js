@@ -6,6 +6,7 @@ const account = require('../functions/accountFunctions')
 //=======================sign up ======================//
 
 router.get('/summary',user.requireAuth,
+        user.isVerified,
         account.verifyInvestmentPackage,
         accountController.getSummaryPage);
 
@@ -15,35 +16,44 @@ router.get('/summary',user.requireAuth,
 //=========================get routes=============================//
 router.get('/investment',
   user.requireAuth,
+  user.isVerified,
   account.verifyInvestmentPackage,
   accountController.getInvestmentPage)
 
 router.get('/plan/deposit',
     user.requireAuth,
+    user.isVerified,
     account.verifyInvestmentPackage,
     accountController.getDepositPage)
 
 router.get('/withdraw',
     user.requireAuth,
+    user.isVerified,
     account.verifyInvestmentPackage,
     accountController.getWithdrawPage);
 
 router.get('/activity',
     user.requireAuth,
+    user.isVerified,
     account.verifyInvestmentPackage,
     accountController.getActivityPage);
 
-router.get('/confirmation',accountController.getConfirmationPage);
+router.get('/confirmation',  user.requireAuth,accountController.getConfirmationPage);
 router.get('/includes/plan',accountController.getPlanModal);
 //===================referral =======================//
-router.get('/referral',user.requireAuth,accountController.getReferralPage);
+router.get('/referral',
+    user.requireAuth,
+    user.isVerified,
+    account.verifyInvestmentPackage,
+    accountController.getReferralPage);
 
 
 
 
 
+router.get('/confirmation/send',  user.requireAuth,accountController.sendResetLink);
 
-
+router.get('/confirmation/verification/:token',accountController.verifyEmail)
 //=================================POST ROUTES===========================//
 router.post('/deposit',accountController.deposit);
 

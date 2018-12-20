@@ -6,7 +6,7 @@ const async = require('async');
 const truncate = require('truncate');
 const money    = require('money-math');
 const util   = require('util');
-
+const mail    =  require('../mail/mail');
 // const mail = require('../mail/mail');
 require('dotenv').config();
 
@@ -41,18 +41,22 @@ module.exports.getConfirmationPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next);
   User.find({where:{user_id:user_id}})
   .then(function(person){
-    return res.render('account/confirmation',{title:'Account Confirmation',person:person});
+    if(!person.is_verified){
+      return res.render('account/confirmation',{title:'Account Confirmation',person:person});
+    }else{
+      return res.redirect('/account/summary');
+    }
   })
 }
 
-module.exports.verifyUser  = (req,res,next)=>{
-  const token = req.query.verify;
+module.exports.verifyEmail  = (req,res,next)=>{
+  const token = req.params.token;
 
   var decoded = jwt.decode(token);
   const user_id = decoded.id;
   User.update({is_verified:1},{where:{user_id:user_id}})
     .then(function(){
-      return res.redirect('/account/confirmed');
+      return res.render('account/email-verified',{title:"Account Verified"});
     })
 }
 
@@ -71,7 +75,6 @@ module.exports.getSummaryPage = (req,res,next)=>{
 
     Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
     then(function(count){
-      console.log(count)
       return res.render('account/summary',{title:'Account Summary',
       user:person,notifications:person.notifications,
       moment:moment,truncate:truncate,notification_count:count,
@@ -102,6 +105,17 @@ module.exports.getReferralPage = (req,res,next)=>{
 }
 
 
+module.exports.sendResetLink = function(req,res,next){
+  const  user_id = user.getUserId(req,res,next);
+  const  url = req.protocol + '://' + req.get('host') + '/account/confirmation/verification/';
+  User.find({where:{user_id:user_id}})
+      .then(function(person){
+        const verificationLink = user.generateVerificationToken(req,res,next,person);
+        mail.sendEmailVerificationLink(person.email,url+verificationLink);
+      }).then(function(){
+        return res.send('sent');
+      })
+}
 
 module.exports.getActivityPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next);

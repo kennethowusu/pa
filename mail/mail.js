@@ -89,3 +89,20 @@ module.exports.sendSettlementFailedMessage = function(){
       module.exports.sendMail(mailOptions);
   });
 }
+
+
+module.exports.sendEmailVerificationLink = (email,verificationLink)=>{
+  nodemailer.createTestAccount((err, account) => {
+      // setup email data with unicode symbols
+      const mailOptions = {
+          from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
+          to: `${email}`, // list of receivers
+          subject:'Email Verification', // Subject line
+          text: 'Hello world?', // plain text body
+          html: template.sendEmailVerificationLink(verificationLink) // html body
+      };
+
+      //sendMail
+      module.exports.sendMail(mailOptions);
+  });
+}

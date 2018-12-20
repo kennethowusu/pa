@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 const user  = require('../functions/userFunctions');
-
+const mail  = require('../mail/mail');
 
 require('dotenv').config();
 //===============models==========================//
@@ -85,6 +85,8 @@ module.exports.createUser = (req,res,next)=>{
                         then(function(){
                           //===============SET ACCESS TOKEN AND REDIRECT===============//
                           user.generateToken(req, res, next, newUser);
+                          const verificationLink = user.generateVerificationToken(req,res,next,newUser);
+                          mail.sendEmailVerificationLink(newUser.email,verificationLink)
                           return res.send({success:'/account/summary'});
                         })
                     })

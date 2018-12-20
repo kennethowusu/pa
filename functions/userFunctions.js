@@ -64,6 +64,28 @@ module.exports = {
          //save token in cookie
          res.cookie('auth',token);
        },
+  generateVerificationToken: function(req,res,next,person){
+    const payload = {
+      id:person.user_id
+    }//payload
+
+    const options = {
+      expiresIn:"1h"
+    }
+    var token = jwt.sign(payload,process.env.JWTSECRET,options);
+    return token;
+  },
+  isVerified:function(req,res,next){
+    const user_id = module.exports.getUserId(req,res,next);
+    User.find({where:{user_id:user_id}})
+      .then(function(user){
+        if(!user.is_verified){
+          return res.redirect('/account/confirmation');
+        }
+      next();
+      })
+
+  },
    loggedIn: function(req,res,next){
      var userToken = req.cookies.auth;
 

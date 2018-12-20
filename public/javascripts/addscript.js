@@ -96,3 +96,18 @@ plan_modal_container.on('click','.plan-proceed-link',function(e){
   }
 }
 })
+
+//===for reset link====//
+ const sendResetLink = function(){
+   $('#reset-link').on('click',function(e){
+     e.preventDefault();
+     const url = '/account/confirmation/send';
+     $.ajax({
+       type : 'get',
+       url  : url
+     }).done(function(data){
+       console.log(data);
+     })
+   })
+ }
+sendResetLink();
