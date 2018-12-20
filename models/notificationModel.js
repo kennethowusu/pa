@@ -14,6 +14,12 @@ const NOTIFICATION = sequelize.define('notification',{
      type: Sequelize.BOOLEAN,
      allowNull: false,
      defaultValue:false
+  },
+  type:{
+    type:Sequelize.ENUM,
+    allowNull:false,
+    defaultValue:'m',
+    values:['m','n']
   }
 });
 

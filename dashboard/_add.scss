@@ -19,3 +19,11 @@
     display:none !important;
   }
 }
+.credit-card-loader-cont{
+  background-color: #fff;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display:none;
+}

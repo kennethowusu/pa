@@ -85,8 +85,9 @@ module.exports.createUser = (req,res,next)=>{
                         then(function(){
                           //===============SET ACCESS TOKEN AND REDIRECT===============//
                           user.generateToken(req, res, next, newUser);
+                          const  url = req.protocol + '://' + req.get('host') + '/account/confirmation/verification/';
                           const verificationLink = user.generateVerificationToken(req,res,next,newUser);
-                          mail.sendEmailVerificationLink(newUser.email,verificationLink)
+                          mail.sendEmailVerificationLink(newUser.email,url+verificationLink)
                           return res.send({success:'/account/summary'});
                         })
                     })

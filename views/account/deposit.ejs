@@ -8,7 +8,11 @@
 <script src="https://js.braintreegateway.com/web/3.40.0/js/client.min.js"></script>
 <script src="https://js.braintreegateway.com/web/3.40.0/js/hosted-fields.min.js"></script>
 <%-include('../account/nav');-%>
-<div class="row">
+
+<div class="row p-relative">
+  <div class="row h-100 w-100 credit-card-loader-cont position-fixed" >
+     <img src="/images/rasta/form-loader.gif" style="width:150px;height:150px" alt="">
+  </div>
   <div class="card card-statistics w-100">
     <div class="card-body">
       <p>Package: <%=package_title%></p>
@@ -85,7 +89,7 @@
               <div  id="expiration-date" class="form-control" value=""></div>
             </div>
 
-            
+
         </div><!--end-->
 
         <div class="row grid-margin pl-3 pl-md-4">
