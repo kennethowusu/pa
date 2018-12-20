@@ -242,7 +242,11 @@ function signin(){
     }
   })
 }
-
+//=======reset password ============//
+$('.form-notice').on('click',function(e){
+  e.preventDefault();
+  $('.password-reset-form-cont').toggle();
+})
 $('.form-box.reset-link').on('click',function(){
   const email = $('#recovery_email').val();
   const data  = {email:email};
@@ -251,6 +255,6 @@ $('.form-box.reset-link').on('click',function(){
     url : '/account/password/reset/send',
     data : data
   }).done(function(result){
-    console.log(result);
+    $('.reset-link-notice').html(result);
   })
 })

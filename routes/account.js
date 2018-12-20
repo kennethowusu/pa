@@ -57,16 +57,15 @@ router.get('/confirmation/verification/:token',accountController.verifyEmail)
 //=================================POST ROUTES===========================//
 router.post('/deposit',accountController.deposit);
 
+router.post('/password/reset',accountController.resetPassword);
+
 router.post('/password/reset/send',accountController.sendPasswordResetLink)
 //===================================PUT ROUTES=========================//
 router.put('/user/notification',accountController.toggle_all_notifications);
 
 
 ///===========
-router.get('/password/reset',function(req,res,next){
-  return res.render('password-reset',{title:'title'})
-})
-
+router.get('/password/reset/:token',accountController.confirmResetPasswordToken)
 
 
 

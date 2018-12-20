@@ -117,6 +117,16 @@ module.exports.sendResetLink = function(req,res,next){
       })
 }
 
+module.exports.confirmResetPasswordToken = (req,res,next)=>{
+  const token = req.params.token;
+
+  var decoded = jwt.decode(token);
+  const user_id = decoded.id;
+  User.find({where:{user_id:user_id}})
+    .then(function(user){
+      return res.render('password-reset',{title:"Password Reset",email:user.email});
+    })
+}
 module.exports.getActivityPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next);
 
@@ -246,11 +256,9 @@ module.exports.sendPasswordResetLink = (req,res,next)=>{
         }else{
           const passwordResetLink = user.generateVerificationToken(req,res,next,person);
           mail.sendPasswordResetLink(person.email,url+passwordResetLink);
+          return res.send('Your password reset link has been set,please check your mail box');
         }
-      }).then(function(){
-        return res.send('sent');
       })
-
 }
 module.exports.deposit = (req,res,next)=>{
 
@@ -340,6 +348,17 @@ module.exports.toggle_all_notifications = (req,res,next)=>{
  })
 }
 
+
+module.exports.resetPassword = function(req,res,next){
+  const email    = req.body.email;
+  const password = req.body.password;
+  const hashedPassword = user.hashedPassword(password);
+
+  User.update({password:hashedPassword},{where:{email:email}})
+  .then(function(){
+    return res.redirect('/login');
+  })
+}
 // gateway.transaction.find("day7qzb0",function(err,transaction){
 //   console.log(util.inspect(transaction.status,false,null,true));
 // })
