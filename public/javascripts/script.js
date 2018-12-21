@@ -1,5 +1,5 @@
 //==================FOR STICKY HEADER========================//
-$('.header').sticky();
+// $('.header').sticky();
 
 $('.header').on('sticky-start',function(){
   $('.header').toggleClass('header-sticky');
@@ -22,19 +22,12 @@ $('.header').on('sticky-end',function(){
 
 //==================FOR HAMBURGER=====================//
 
- const showMenu =  ()=>{
-  $('.js-hamburger').on('click',()=>{
-    $('body').toggleClass('translate');
-    $('.burger-cont').toggleClass('p-relative');
-    $('.burger1,.burger2,.burger3').toggleClass('change');
-    $('body').toggleClass('control-body');
-  });
+function showMenu(){
+  $('.hamburger').on('click',function(){
+    $('.nav').toggleClass('translate');
+  })
 }
-
 showMenu();
-
-
-
 const errors = [];
 const firstname         = $('.firstname');
 const lastname          = $('.lastname');

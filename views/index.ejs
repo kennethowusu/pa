@@ -1,51 +1,5 @@
 <%- include('partials/header'); -%>
-  <body>
-
-
-
-    <div class=" ">
-        <header class="header d-flex align-items-center p-relative">
-
-          <a href="" class="logo mr-auto ">
-            <img src="/images/svg/apple.svg" alt="image of logo" class="logo-img">
-          </a>
-          <nav class="nav js-nav p-absolute  ">
-            <ul class="nav-ul">
-                <li class="nav-list"><a href="" class="nav-link">About us</a></li>
-                <li class="nav-list"><a href="" class="nav-link">How it works</a></li>
-                <li class="nav-list"><a href="/" class="nav-link">investment plans</a></li>
-                <li class="nav-list"><a href="/faqs" class="nav-link">faqs</a></li>
-
-
-              <div  class="nav-user d-none">
-                <li class="nav-list signupforfree x-login "><a href="/login" class=" capitalize nav-link btn btn-hollow ">log in</a></li>
-                <%if(i!=null){%>
-                  <li class="nav-list signupforfree  p-absolute"><a href="/register?i=<%=i%>" class=" signup capitalize nav-link btn btn-hollow ">sign up </a></li>
-                <%}else{%>
-                  <li class="nav-list signupforfree  p-absolute"><a href="/register" class=" signup capitalize nav-link btn btn-hollow ">sign up </a></li>
-                <%}%>
-              </div>
-            </ul>
-          </nav>
-
-          <ul class=" sublist d-flex ml-auto align-items-center ">
-            <li class=""><a href="/login" class=" hamburger capitalize justify-content-center">log In</a></li>
-
-          </ul>
-          <div class=" hamburger mr-auto js-hamburger d-flex align-items-center justify-content-center pointer">
-            <span class="burger-cont">
-              <span class="burger1"></span>
-              <span class="burger2"></span>
-              <span class="burger3"></span>
-
-            </span>
-            <span class="hamburger-text">Menu</span>
-          </div>
-
-
-
-
-        </header>
+  
 
 
 
@@ -234,5 +188,10 @@
 
 
      </section><!--investment offers-->
+
+
+     <section class="p-20"><!--why prime axis-->
+        <p class="section-head">investment offers</p>
+     </section><!--why prime axis-->
 
 <%- include('partials/footer'); -%>
