@@ -20,8 +20,8 @@ require('dotenv').config();
 module.exports.getIndexPage = (req,res,next)=>{
   const i = req.query.i;
 
-  // return res.render('index',{title:"Prime Axis LLC",i:i});
-   return res.redirect('/login');
+  return res.render('index',{title:"Prime Axis LLC",i:i});
+
 }
 //=======get signup page========================//
 module.exports.getSignupPage = (req,res,next)=>{

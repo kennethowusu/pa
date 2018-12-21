@@ -1,9 +1,11 @@
 
 
-// .btn-hollow{
-//   border-radius:18px;
-//   border:2px solid #fff;
-//   background-color: transparent;
-//   box-shadow: none;
-// }
- 
+.btn-accent{
+  background-color:$color-accent;
+  color:#fff;
+  &:hover{
+    background-color:$color-accent-hover;
+    color:#fff;
+
+  }
+}
