@@ -3,14 +3,14 @@ html{
 
 }
 body{
-  transition:.3s ease-in-out;
+   overflow-x:hidden;
 }
 input{
   -webkit-appearance: none;
 }
 a:hover{
   text-decoration:none;
-}  
+}
 button:focus,input:focus{
   outline:none;
 }
