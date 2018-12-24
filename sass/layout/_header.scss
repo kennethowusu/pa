@@ -52,26 +52,26 @@
 }
 .nav{
   height:100vh;
-  width:270px;
+  width:0;
   background-color:#fff;
   top:60px;
   right:0;
   z-index:10;
-  padding: 32px;
   background-image: radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
   transition:.3s ease-in-out;
-  transform:translateX(270px);
+
   @media(min-width:1055px){
     transition:none;
     position:static;
     height:100px;
     width:100%;
-    transform:translateX(0)
+    transform:none;
   }
 }
 .nav-ul{
   & .nav-list{
      margin-bottom:25px;
+
   }
 
   & .nav-link{
@@ -80,6 +80,9 @@
     text-transform:capitalize;
     color:#fff;
 
+    @media(min-width:1055px){
+      text-transform: capitalize !important;
+    }
 
   }
 
@@ -90,5 +93,6 @@
 }
 
 .translate{
-  transform:translateX(0) !important;
+  width:270px;
+  padding: 32px;
 }

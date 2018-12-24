@@ -202,7 +202,7 @@ a {
   cursor: pointer !important; }
 
 body {
-  font-family: 'roboto';
+  font-family: 'lato';
   font-weight: 400; }
 
 .header {
@@ -269,12 +269,11 @@ body {
 
 .nav {
   height: 100vh;
-  width: 270px;
+  width: 0;
   background-color: #fff;
   top: 60px;
   right: 0;
   z-index: 10;
-  padding: 32px;
   background-image: -webkit-radial-gradient(center bottom, circle farthest-side, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
   background-image: -moz- oldradial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
   background-image: -o-radial-gradient(center bottom, circle farthest-side, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
@@ -282,11 +281,7 @@ body {
   -webkit-transition: .3s ease-in-out;
      -moz-transition: .3s ease-in-out;
        -o-transition: .3s ease-in-out;
-          transition: .3s ease-in-out;
-  -webkit-transform: translateX(270px);
-     -moz-transform: translateX(270px);
-       -o-transform: translateX(270px);
-          transform: translateX(270px); }
+          transition: .3s ease-in-out; }
   @media (min-width: 1055px) {
     .nav {
       -webkit-transition: none;
@@ -296,10 +291,10 @@ body {
       position: static;
       height: 100px;
       width: 100%;
-      -webkit-transform: translateX(0);
-         -moz-transform: translateX(0);
-           -o-transform: translateX(0);
-              transform: translateX(0); } }
+      -webkit-transform: none;
+         -moz-transform: none;
+           -o-transform: none;
+              transform: none; } }
 
 .nav-ul .nav-list {
   margin-bottom: 25px; }
@@ -308,6 +303,9 @@ body {
   height: 100%;
   text-transform: capitalize;
   color: #fff; }
+  @media (min-width: 1055px) {
+    .nav-ul .nav-link {
+      text-transform: capitalize !important; } }
 @media (min-width: 1055px) {
   .nav-ul {
     display: -webkit-flex;
@@ -318,10 +316,8 @@ body {
             justify-content: space-between; } }
 
 .translate {
-  -webkit-transform: translateX(0) !important;
-     -moz-transform: translateX(0) !important;
-       -o-transform: translateX(0) !important;
-          transform: translateX(0) !important; }
+  width: 270px;
+  padding: 32px; }
 
 .banner-cont {
   z-index: -80;
