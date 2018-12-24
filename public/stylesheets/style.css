@@ -678,4 +678,7 @@ select {
 .interest {
   padding: 35px 0; }
   .interest p {
-    font-size: 3rem; }
+    font-size: 2rem; }
+    @media (min-width: 1055px) {
+      .interest p {
+        font-size: 3rem; } }
