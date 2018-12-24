@@ -59,13 +59,15 @@
   z-index:10;
   background-image: radial-gradient(circle farthest-side at center bottom, rgba(0, 156, 222, 0.8), rgba(0, 48, 135, 0.7) 125%);
   transition:.3s ease-in-out;
-
+  display:none;
   @media(min-width:1055px){
+    padding:32px !important;
     transition:none;
     position:static;
     height:100px;
-    width:100%;
+    width:100% !important;
     transform:none;
+    display:inline-block;
   }
 }
 .nav-ul{
@@ -95,4 +97,5 @@
 .translate{
   width:270px;
   padding: 32px;
+  display:inline-block;
 }
