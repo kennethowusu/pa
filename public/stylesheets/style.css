@@ -387,6 +387,11 @@ body {
     background-color: #d2540e;
     color: #fff; }
 
+.btn-lg-rounded {
+  width: 250px;
+  height: 50px;
+  border-radius: 25px; }
+
 .r-f-form {
   margin-top: 40px; }
   @media (min-width: 370px) {
@@ -643,6 +648,9 @@ select {
 .feature-img {
   font-size: 80px; }
 
+.f-3 {
+  font-size: 3rem; }
+
 @media (min-width: 1020px) {
   .sec-div {
     margin-top: 510px !important; } }
@@ -666,3 +674,8 @@ select {
   .background-description {
     max-width: 555px;
     font-size: 1.4rem; } }
+
+.interest {
+  padding: 35px 0; }
+  .interest p {
+    font-size: 3rem; }

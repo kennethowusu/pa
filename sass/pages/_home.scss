@@ -3,7 +3,7 @@
 .sec-div{
   @media(min-width:1020px){
     margin-top:510px !important;
-  } 
+  }
 }
 .background-text-cont{
   top:110px;
@@ -27,5 +27,13 @@
   @media(min-width:620px){
     max-width:555px;
     font-size:1.4rem;
+  }
+}
+
+.interest{
+  padding:35px 0;
+
+  & p{
+    font-size:3rem;
   }
 }
