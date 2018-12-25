@@ -408,6 +408,9 @@ body {
   height: 50px;
   border-radius: 25px; }
 
+body {
+  font-family: lato,sans-serif; }
+
 .r-f-form {
   margin-top: 40px; }
   @media (min-width: 370px) {
