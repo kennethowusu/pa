@@ -323,6 +323,22 @@ body {
   padding: 32px;
   display: inline-block; }
 
+.footer {
+  padding: 45px 0;
+  background-color: #e4e4e4;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: flex;
+  -webkit-justify-content: center;
+     -moz-box-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+          align-items: center; }
+  .footer p {
+    color: grey;
+    margin: 0; }
+
 .banner-cont {
   z-index: -80;
   background-image: url("../images/rasta/background-image.jpg");
