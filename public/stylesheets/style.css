@@ -412,19 +412,13 @@ body {
   font-family: lato,sans-serif; }
 
 .r-f-form {
-  margin-top: 40px; }
+  margin: auto; }
   @media (min-width: 370px) {
     .r-f-form {
       width: 330px; } }
-  @media (min-width: 370px) and (min-width: 500px) {
+  @media (min-width: 500px) {
     .r-f-form {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      margin-left: -160px;
-      margin-right: -160px;
-      margin-top: -161px;
-      margin-bottom: -161px; } }
+      margin: auto; } }
 
 .form-box {
   color: #9DB2C2;
