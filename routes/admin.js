@@ -9,9 +9,10 @@ const adminController = require('../controllers/adminController');
 
 
 
-router.get('/',adminController.getSummaryPage);
-
-
+router.get('/summary',adminController.getSummaryPage);
+router.get('/daily-interest',adminController.getDailyInterest);
+router.get('/payment-requests',adminController.getPaymentRequest);
+router.get('/payment-confirmation',adminController.getPaymentConfirmation);
 
 
 

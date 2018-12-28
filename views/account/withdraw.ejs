@@ -1,13 +1,28 @@
 <%-include('../account/header');-%>
 <%-include('../account/nav');-%>
 
-<div class="row grid-margin">
-  <div class="card card-statistics w-100">
-    <div class="card-body">
+<%if(investment.investment_status == 'inactive' && investment.investment_type==null ){%>
+  <div class="row grid-margin">
+    <div class="card card-statistics w-100">
+      <div class="card-body">
 
-      <p>You are not on any investment package.</p>
+        <p>You are not on any investment package.</p>
+      </div>
     </div>
   </div>
-</div>
+
+<%}else if(investment.investment_status=='pending' && investment.investment_type){%>
+  <div class="row grid-margin">
+    <div class="card card-statistics w-100">
+      <div class="card-body">
+
+        <p>
+          Your investment status is pending.It will be active as soon as your investment principal is
+          settled (Your bank tranfers it into our account)
+        </p>
+      </div>
+    </div>
+  </div>
+<%}%>
 
 <%-include('../account/footer');-%>

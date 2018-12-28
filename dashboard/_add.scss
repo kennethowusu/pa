@@ -10,6 +10,27 @@
 .text-accent{
   color:$accent-color !important;
 }
+
+.status{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.status-pending{
+ background-color: #e0e010;
+}
+.text-pending{
+  color:#e0e010
+}
+.status-active{
+  background-color:#12d612;
+}
+.text-active{
+  color:#12d612;
+}
+.text-accent{
+  color:#e0e010;
+}
 .modal{
   background-color: rgba(0,0,0,.5) !important;
   display:block;
