@@ -143,3 +143,12 @@ module.exports.logout = function(req,res,next){
     console.log(err);
   })
 }
+
+
+module.exports.getFaqsPage = (req,res,next)=>{
+  return res.render('faqs',{title:"Frequently Asked Questions"});
+}
+
+module.exports.getTermsPage = (req,res,next)=>{
+  return res.render('terms',{title:"Terms and Conditions"});
+}

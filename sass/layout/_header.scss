@@ -61,6 +61,7 @@
   transition:.3s ease-in-out;
   display:none;
   @media(min-width:1055px){
+    max-width:600px;
     padding:32px !important;
     transition:none;
     position:static;

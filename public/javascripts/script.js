@@ -251,3 +251,18 @@ $('.form-box.reset-link').on('click',function(){
     $('.reset-link-notice').html(result);
   })
 })
+
+//===for faqs===//
+$('.tab-btn-investment').on('click',function(e){
+  $(e.target).addClass('active');
+  $('.tab-btn-info').removeClass('active');
+  $('.information-faq').hide();
+  $('.investment-faq').show();
+})
+
+$('.tab-btn-info').on('click',function(e){
+  $(e.target).addClass('active');
+  $('.tab-btn-investment').removeClass('active');
+  $('.investment-faq').hide();
+  $('.information-faq').show();
+})

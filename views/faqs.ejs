@@ -1,59 +1,39 @@
 <%- include('partials/header'); -%>
 
+<div class="container">
 
-<body>
-  <div class="banner-cont welc-background ">
-      <header class="header d-flex align-items-center p-relative">
+  <h1 class="text-center faq-heading">Frequently Asked Questions</h1>
 
-        <a href="" class="logo mr-auto ">
-          <img src="/images/svg/apple.svg" alt="image of logo" class="logo-img">
-        </a>
-        <nav class="nav js-nav p-absolute  ">
-          <ul class="nav-ul">
-              <li class="nav-list"><a href="" class="nav-link">About us</a></li>
-              <li class="nav-list"><a href="" class="nav-link">How it works</a></li>
-              <li class="nav-list"><a href="/" class="nav-link">investment plans</a></li>
-              <li class="nav-list"><a href="" class="nav-link">faqs</a></li>
-
-
-            <div  class="nav-user d-none">
-              <li class="nav-list signupforfree x-login "><a href="/login" class=" capitalize nav-link btn btn-hollow ">log in</a></li>
-              <li class="nav-list signupforfree  p-absolute"><a href="/register" class=" signup capitalize nav-link btn btn-hollow ">sign up </a></li>
-            </div>
-          </ul>
-        </nav>
-
-        <ul class=" sublist d-flex ml-auto align-items-center ">
-          <li class=""><a href="/login" class=" hamburger capitalize justify-content-center">log In</a></li>
-
-        </ul>
-        <div class=" hamburger mr-auto js-hamburger d-flex align-items-center justify-content-center pointer">
-          <span class="burger-cont">
-            <span class="burger1"></span>
-            <span class="burger2"></span>
-            <span class="burger3"></span>
-
-          </span>
-          <span class="hamburger-text">Menu</span>
+  <div class="p-20">
+        <div class="faq-tab">
+          <button type="button" name="button" class="faq-tab-btn active tab-btn-investment">Investment Offer</button>
+          <button type="button" name="button"  class="faq-tab-btn tab-btn-info">Basic Information</button>
         </div>
 
 
-
-
-      </header>
-
-      <div>
-
-
-          <div class=" text-white p-relative">
-            <div class=" background-text-cont p-absolute p-10">
-                <h1>Find answers to frequently asked questions.</h1>
-
-
-            </div>
-          </div>
-
+       <div class="investment-faq">
+           <div class="faqs-cont">
+               <h3 class="faq-head">What Investment packages do you offer?</h3>
+              <p>
+                High profit is ensured by the rapid growth rates of the cryptocurrency market in general and Bitcoin in particular. Our financial risks are
+                minimized by diversified investments
+                in various activities.
+              </p>
+         </div>
 
       </div>
-  </div>
-<%- include('partials/header'); -%>
+
+      <div class="information-faq">
+         <p>Something for here</p>
+      </div>
+
+
+
+
+
+</div><!--container-->
+
+
+</div>
+
+<%- include('partials/footer'); -%>

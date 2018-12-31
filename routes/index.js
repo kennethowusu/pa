@@ -26,7 +26,9 @@ router.post('/login',indexController.signin);
 /* GET home page. */
 router.get('/register',user.loggedIn,indexController.getSignupPage);
 
+router.get('/faqs',user.loggedIn,indexController.getFaqsPage);
 
+router.get('/terms',user.loggedIn,indexController.getTermsPage)
 
 //================logout==================//
 router.get('/account/logout',indexController.logout);
@@ -43,7 +45,7 @@ router.get('/test',function(req,res,next){
     publicKey: "pr4b4pyxkgk8qz4d",
     privateKey: "122b3988a3e1d13910c07aff551aae3e"
   });
-  
+
 
 })
 
