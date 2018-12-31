@@ -24,7 +24,7 @@ module.exports.sendDepositMail = ()=>{
 }
 module.exports.sendEmailVerificationLink = (verificationLink)=>{
   return `<div>
-           This is your link <a href='${verificationLink}'>${verificationLink}</a>
+           Please click on the following link to verify your email <a href='${verificationLink}'>${verificationLink}</a>
           </div>
   `
 }
