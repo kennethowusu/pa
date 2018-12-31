@@ -236,7 +236,7 @@ function signin(){
   })
 }
 //=======reset password ============//
-$('.form-notice').on('click',function(e){
+$('.form-notice.reset').on('click',function(e){
   e.preventDefault();
   $('.password-reset-form-cont').toggle();
 })

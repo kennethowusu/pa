@@ -51,9 +51,40 @@ module.exports.verifyInvestmentPackage = (req,res,next)=>{
     else if(investment.investment_status == 'pending' && investment.principal_credited_status == 'no'){
         gateway.transaction.find(transaction_id,function(err,transaction){
           if(transaction.status=="settled"){
-            Investment.update({principal_credited_status:'yes',investment_status:'active'},
+            Investment.update({principal_credited_status:'yes',investment_status:'active',investment_date:Date.now()},
             {where:{user_id:user_id}});
+            FINANCE.update({principal:transaction.amount},{where:{user_id:user_id}});
             Deposit.update({transaction_status:transaction.status},{where:{transaction_id:transaction_id}})
+            .then(function(){
+              //find users id  to find find's users referee id
+              User.find({where:{user_id:user_id}})
+              .then(function(user){
+                if(user.referee_id!=null){
+                  const amount =  transaction.amount;
+                  const referal_interest =  '0.03' * amount;
+                //find the referee user
+                User.find({where:{referal_id:user.referee_id}})
+                .then(function(found_user){
+                  //find User finance
+                  FINANCE.find({where:{user_id:found_user.user_id}})
+                  .then(function(found_user_finance){
+                    const interest = found_user_finance.referral_interest;
+
+                   // update user FINANCE
+                    // FINANCE.update({referral_interest:interest + referal_interest+ '.00'},
+                    //   {where:{user_id:found_user.user_id}})
+                    //   .then(function(){
+                    //     console.log('added the referral interest')
+                    //   })
+                    //continue froom here
+
+                  })
+
+                })
+               }//if
+
+              })//User.find
+            })
           }
           //cancel investment packages when it settlement fails
           else if(transaction.status=="failed"

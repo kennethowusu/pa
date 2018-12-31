@@ -157,10 +157,15 @@ module.exports.getWithdrawPage = (req,res,next)=>{
 
   })
   .then((person)=>{
+     const investment_date = new Date(person.investment.investment_date).getTime();
+     const weeks = investment_date + (24 * 60 * 60 * 1000 * 21)
+     const now             = new Date();
+     const date_difference = now - investment_date;
+     console.log(new Date(weeks))
+
 
     Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
     then(function(count){
-      console.log(count)
       return res.render('account/withdraw',{title:'Withdraw',
       user:person,notifications:person.notifications,
       moment:moment,truncate:truncate,notification_count:count,
