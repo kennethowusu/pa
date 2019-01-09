@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const user  = require('../functions/userFunctions');
 const mail  = require('../mail/mail');
-
+const util  = require('util');
+const CMC   = require('coinmarketcap-api')
 require('dotenv').config();
 //===============models==========================//
 var User = require('../models/userModel');
@@ -18,6 +19,8 @@ require('dotenv').config();
 
 //===========get index page ==============//
 module.exports.getIndexPage = (req,res,next)=>{
+
+  
   const i = req.query.i;
 
   return res.render('index',{title:"Prime Axis LLC",i:i});
