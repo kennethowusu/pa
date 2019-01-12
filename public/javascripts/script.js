@@ -266,3 +266,15 @@ $('.tab-btn-info').on('click',function(e){
   $('.investment-faq').hide();
   $('.information-faq').show();
 })
+ const headers = {'Access-Control-Allow-Credentials': true}
+$.ajax({
+  type:'get',
+  url:'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
+  xhrFields: {
+        withCredentials: true
+    },
+  crossDomain: true,
+  data:{'CMC_PRO_API_KEY':'ad9410ba-172b-4f51-866b-5812dccf5271'}
+}).done(function(data){
+  console.log(data)
+})
