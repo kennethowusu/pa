@@ -16509,4 +16509,11 @@ ul {
   align-items: center;
   display: none; }
 
+.crypto-div {
+  display: flex;
+  align-items: center;
+  border: 1px solid #eee;
+  padding: 0 22px;
+  height: 34px; }
+
 /*# sourceMappingURL=dashboard.css.map */

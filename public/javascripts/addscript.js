@@ -21,22 +21,79 @@ $('.clipboard').on('click',function(){
 })
 
 
+function uncopy(e){
+  const btn = $(e.target);
+  $('.clip').not(btn).html('Click to copy')
+}
+//=========copy crypto currency addresses=====//
+$('.btc-clip').on('click',function(e){
+  const clipboard = new Clipboard('.btc-clip');
+  clipboard.on('success', function(e) {
+    $('.btc-clip').html('Copied!');
+
+
+  });
+  uncopy(e);
+})
+
+
+$('.btc-cash-clip').on('click',function(e){
+  const clipboard = new Clipboard('.btc-cash-clip');
+  clipboard.on('success', function(e) {
+    $('.btc-cash-clip').html('Copied!');
+  });
+    uncopy(e);
+})
+
+$('.eth-clip').on('click',function(e){
+  const clipboard = new Clipboard('.eth-clip');
+  clipboard.on('success', function(e) {
+    $('.eth-clip').html('Copied!');
+
+
+  });
+  uncopy(e);
+})
+
+
+$('.stellar-clip').on('click',function(e){
+  const clipboard = new Clipboard('.stellar-clip');
+  clipboard.on('success', function(e) {
+    $('.stellar-clip').html('Copied!');
+
+
+  });
+    uncopy(e);
+})
+
+
+
 //======================for payment=============//
 const card_payment_section = $('.card-payment-section');
 const paypal_payment_section = $('.paypal-payment-section');
+const crypto_payment_section = $('.crypto-payement-section');
 
 const displayPaymentOptionAction =  function(){
   if($('#card-option').is(':checked')) {
     paypal_payment_section.hide();
+    crypto_payment_section.hide();
     card_payment_section.show();
    }
   else if($('#paypal-option').is(':checked')){
     card_payment_section.hide();
+    crypto_payment_section.hide();
     paypal_payment_section.show();
   }
+
+  else if($('#crypto-option').is(':checked')){
+    card_payment_section.hide();
+    paypal_payment_section.hide();
+    crypto_payment_section.show();
+  }
+
 }
 const displayPaymentOption = function(){
-  $('#card-option,#paypal-option').on('click',function(){
+  $('#card-option,#paypal-option,#crypto-option').on('click',function(){
      displayPaymentOptionAction();
   })
 }
