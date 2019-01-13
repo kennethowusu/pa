@@ -140,13 +140,13 @@ plan_modal_container.on('click','.plan-proceed-link',function(e){
       $('.error-message').html(error_message);
     }
   }else if(plan_type=='diamond-plan'){
-    if(amount >=10000){
+    if(amount >=11000  && amount<=50000){
       window.location.href = "/account/plan/deposit?type="+plan_type+'&amount='+amount+'&title='+title;
     }else{
       $('.error-message').html(error_message);
     }
   }else if(plan_type=='platinum-plan'){
-    if(amount >=1000){
+    if(amount >=50000){
       window.location.href = "/account/plan/deposit?type="+plan_type+'&amount='+amount+'&title='+title;
   }else{
     $('.error-message').html(error_message);

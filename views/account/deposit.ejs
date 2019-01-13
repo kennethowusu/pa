@@ -184,7 +184,42 @@
               </div>
 
 
-        </div>
+         <h3>Made payment?</h3>
+         <div class="row">
+            <div class="form-group grid-margin col-12">
+              <select class="" name="">
+                <option value="">Select Crypto Currency Type</option>
+                <option value="Bitcoin">Bitcoin</option>
+                <option value="Bitcoin Cash">Bitcoin Cash</option>
+                <option value="Ethereum">Ethereum</option>
+                <option value="Stellar">Stellar</option>
+              </select>
+            </div>
+
+
+            <div class="form-group col-12 grid-margin">
+              <label for="">Enter your crypto wallet address</label>
+              <input type="text" name="" value="" placeholder='Enter Address' class='form-control'>
+            </div>
+
+            <div class="form-group col-12 grid-margin">
+              <label for="">Enter your transaction id</label>
+              <input type="text" name="" value="" class="form-control">
+            </div>
+
+            <div class=" grid-margin col-12">
+              <button type="button"  class="btn  mb-3 stellar-clip clip btn-success text-white">Activate Package</button>
+
+            </div>
+         </div>
+
+
+
+
+
+        </div><!---for crypto payment-->
+
+
       </div>
 
     </div>
@@ -312,8 +347,7 @@ braintree.client.create({
       env: 'sandbox', // or 'production'
 
       payment: function () {
-        const amount = document.querySelector('#paypal-amount').value;
-        console.log(amount);
+
         return paypalCheckoutInstance.createPayment({
 
 
@@ -329,7 +363,7 @@ braintree.client.create({
 
       onAuthorize: function (data, actions) {
         return paypalCheckoutInstance.tokenizePayment(data, function (err, payload) {
-          const amount = document.querySelector('#paypal-amount').value;
+
           const data =  {method:'paypal',amount:amount,nonce:payload.nonce}
             $.ajax({
               type:'post',
