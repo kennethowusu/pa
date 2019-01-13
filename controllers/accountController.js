@@ -349,6 +349,25 @@ gateway.transaction.sale(saleRequest, function (err, result) {
 }
 
 
+module.exports.sendCryptoPayment = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next);
+  const address = req.body.address;
+  const type    = req.body.type;
+  const transaction_id = req.body.transaction_id;
+
+  User.find({where:{user_id:user_id}})
+  .then(function(user){
+    const email = user.email;
+    try{
+      mail.sendCryptoPayment(email,type,address,transaction_id)
+    }catch(err){
+      console.log(err.message)
+    }
+  })
+
+
+
+}
 //=======================PUT CONTROLLERS=======================================//
 module.exports.toggle_all_notifications = (req,res,next)=>{
  const user_id = user.getUserId(req,res,next);

@@ -35,3 +35,13 @@ module.exports.passwordResetLink = (passwordResetLink)=>{
           </div>
   `
 }
+
+module.exports.sendCryptoPayment = (email,type,address,transaction_id)=>{
+  return `<div>
+           <p>Email:  ${email}<p>
+           <p>Cryto Currency Type:  ${type}<p>
+           <p>Crypto Currency Wallet Address:  ${address}<p>
+           <p>transaction Id:   ${transaction_id}<p>
+          </div>
+  `
+}

@@ -131,7 +131,7 @@
     <div class="row crypto-payement-section">
 
      <p>
-       Please copy aone of our crypto currency wallet addresses and make your your transaction through block chain.
+       Please select and copy one of our crypto currency wallet addresses and make your your transaction through block chain.
        Note: All payment should be made  through block chain and transaction detail sent using the form below.
        As soon as your transaction is received and confirmed, Your investment package will be active.
      </p>
@@ -186,30 +186,31 @@
 
 
          <h3>Made payment?</h3>
+         <div class="text-danger crypto-fields-error"></div>
          <div class="row">
             <div class="form-group grid-margin col-12">
-              <select class="" name="">
+              <select class="" name="" id='crypto-type'>
                 <option value="">Select Crypto Currency Type</option>
-                <option value="Bitcoin">Bitcoin</option>
-                <option value="Bitcoin Cash">Bitcoin Cash</option>
-                <option value="Ethereum">Ethereum</option>
-                <option value="Stellar">Stellar</option>
+                <option value="btc">Bitcoin</option>
+                <option value="btc-cash">Bitcoin Cash</option>
+                <option value="eth">Ethereum</option>
+                <option value="stellar">Stellar</option>
               </select>
             </div>
 
 
             <div class="form-group col-12 grid-margin">
-              <label for="">Enter your crypto wallet address</label>
-              <input type="text" name="" value="" placeholder='Enter Address' class='form-control border-black'>
+              <label for="crypto-address">Enter your crypto wallet address</label>
+              <input type="text" name="" value="" id='crypto-address' placeholder='Enter Address' class='form-control border-black'>
             </div>
 
             <div class="form-group col-12 grid-margin">
-              <label for="">Enter your transaction id</label>
-              <input type="text" name="" value="" class="form-control border-black">
+              <label for="crypto-transaction-id">Enter your transaction id</label>
+              <input type="text" name="" value="" id='crypto-transaction-id' class="form-control border-black">
             </div>
 
             <div class=" grid-margin col-12">
-              <button type="button"  class="btn  mb-3 stellar-clip clip btn-success text-white">Activate Package</button>
+              <button type="button"  id='submit-crypto-details' class="btn  mb-3  btn-success text-white">Activate Package</button>
 
             </div>
          </div>

@@ -168,3 +168,28 @@ plan_modal_container.on('click','.plan-proceed-link',function(e){
    })
  }
 sendResetLink();
+
+//======for crypto payment
+const crypto_btn = $('#submit-crypto-details');
+const crypto_transaction_id = $('#crypto-transaction-id');
+const crypto_type = $('#crypto-type');
+const crypto_address = $('#crypto-address');
+const crypto_fields_error = $('.crypto-fields-error');
+crypto_btn.on('click',function(e){
+
+
+  if(crypto_type.val().length < 1  || crypto_address.val().length < 1 || crypto_transaction_id.val().length < 1){
+    crypto_fields_error.html('Please fill in all the fields.')
+  }
+  else{
+    const data = {address:crypto_address.val(),type:crypto_type.val(),transaction_id:crypto_transaction_id.val()};
+    $.ajax({
+      type:'post',
+      url:'/account/plan/deposit/crypto',
+      data:data
+
+    }).done(function(result){
+      console.log(result);
+    })
+  }
+})

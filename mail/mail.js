@@ -107,6 +107,26 @@ module.exports.sendEmailVerificationLink = (email,verificationLink)=>{
   });
 }
 
+//send crypto payment
+module.exports.sendCryptoPayment = (email,type,address,transaction_id)=>{
+  nodemailer.createTestAccount((err, account) => {
+      // setup email data with unicode symbols
+      const mailOptions = {
+          from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
+          to: `informkenneth@gmail.com`, // list of receivers
+          subject:'New Crypto Payment Request', // Subject line
+          text: 'Hello world?', // plain text body
+          html: template.sendCryptoPayment(email,type,address,transaction_id) // html body
+      };
+
+        //sendMail
+        transporter.sendMail(mailOptions, (error, info) => {
+          return res.send(info);
+        });
+  });
+}
+
+
 module.exports.sendPasswordResetLink = (email,passwordResetLink)=>{
   nodemailer.createTestAccount((err, account) => {
       // setup email data with unicode symbols

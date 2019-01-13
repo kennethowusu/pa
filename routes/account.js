@@ -60,6 +60,8 @@ router.post('/deposit',accountController.deposit);
 router.post('/password/reset',accountController.resetPassword);
 
 router.post('/password/reset/send',accountController.sendPasswordResetLink)
+
+router.post('/plan/deposit/crypto',user.requireAuth,accountController.sendCryptoPayment);
 //===================================PUT ROUTES=========================//
 router.put('/user/notification',accountController.toggle_all_notifications);
 
