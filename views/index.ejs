@@ -332,32 +332,22 @@
            <th>#</th>
            <th>Name</th>
            <th>Price</th>
-         </tr>
-         <tr>
-           <td>1</td>
-           <td> Bitcoin</td>
-           <td> $3,675.45</td>
+           <th>Percent Change(1 hr) </th>
          </tr>
 
-         <tr>
-           <td>2</td>
-           <td> Ethereum</td>
-           <td> $127.59</td>
-         </tr>
+         <%response.forEach(function(data){%>
+           <tr>
+             <td><%=data.cmc_rank%></td>
+             <td><%=data.name%></td>
+             <td> $<%=data.quote.USD.price.toFixed(2)%></td>
+             <td> <%=data.quote.USD.percent_change_1h.toFixed(2)+'%'%></td>
 
-         <tr>
-           <td>3</td>
-           <td> Bitcoin  Cash</td>
-           <td> $135.29 	</td>
-         </tr>
+           </tr>
+         <%})%>
 
-         <tr>
-           <td>4</td>
-           <td> Stellar</td>
-           <td> $0.106333 	</td>
-         </tr>
        </table>
 
      </section>
+
 
 <%- include('partials/footer'); -%>

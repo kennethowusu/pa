@@ -20,10 +20,33 @@ require('dotenv').config();
 //===========get index page ==============//
 module.exports.getIndexPage = (req,res,next)=>{
 
-  
+
   const i = req.query.i;
 
-  return res.render('index',{title:"Prime Axis LLC",i:i});
+  const rp = require('request-promise');
+  const requestOptions = {
+  method: 'GET',
+  uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
+  qs: {
+    start: 1,
+    limit:6,
+    convert: 'USD'
+  },
+  headers: {
+    'X-CMC_PRO_API_KEY': 'ad9410ba-172b-4f51-866b-5812dccf5271'
+  },
+  json: true,
+  gzip: true
+  };
+
+  rp(requestOptions).then(response => {
+
+  return res.render('index',{title:"Prime Axis LLC",i:i,response:response.data});
+  }).catch((err) => {
+  console.log('API call error:', err.message);
+  });
+
+
 
 }
 //=======get signup page========================//

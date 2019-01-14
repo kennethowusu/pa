@@ -18,6 +18,16 @@ const FINANCE = sequelize.define('finance',{
     type:Sequelize.DECIMAL(10, 2),
     allowNull: false,
     defaultValue:0
+  },
+  investment_type:{
+    type:Sequelize.ENUM,
+    defaultValue:null,
+    values:['gold-plan','diamond-plan','platinum-plan']
+  },
+  times_credited:{
+    type:Sequelize.INTEGER,
+    allowNull:false,
+    defaultValue:0
   }
 });
 
