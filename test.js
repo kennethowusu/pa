@@ -1,4 +1,5 @@
-const sequelize = require('sequelize');
+const Sequelize = require('sequelize');
+const sequelize = require('./config/database');
 const user  = require('./functions/userFunctions');
 const FINANCE = require('./models/financeModel');
 const User = require('./models/userModel');
@@ -9,9 +10,9 @@ const money = require('money-math');
 const interest = '0';
 const CMC = require('coinmarketcap-api');
 const cmc = new CMC();
+const moment = require('moment');
 
 
-//
 // FINANCE.update({ interest: sequelize.literal('principal * 0.01 + interest')
 // ,times_credited:sequelize.literal('times_credited+1') },
 // { where: { investment_type: 'gold-plan',times_credited:{lt:6} } })
@@ -20,30 +21,14 @@ const cmc = new CMC();
 // ,times_credited:sequelize.literal('times_credited+1') },
 // { where: { investment_type: 'gold-plan',times_credited:{gte:6} } })
 
+// var date   =  moment(new Date('01-07-2019'));
+// var compare_date = moment(new Date('01-28-2019'))
+// console.log(compare_date.diff(date,'weeks'))
 
-const rp = require('request-promise');
-const requestOptions = {
-  method: 'GET',
-  uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
-  qs: {
-    start: 1,
-    limit: 10,
-    convert: 'USD'
-  },
-  headers: {
-    'X-CMC_PRO_API_KEY': 'ad9410ba-172b-4f51-866b-5812dccf5271'
-  },
-  json: true,
-  gzip: true
-};
-
-rp(requestOptions).then(response => {
-console.log('API call response:', response.data);
-
-// var filter = response.data.filter(function(crypto){
-//   return crypto.id == 1  || crypto.id == 3;
+// sequelize.query(`UPDATE finances
+//   SET principal =
+//   IF(times_credited >= 6,principal + interest,principal)
+//   WHERE investment_type = 'gold-plan' OR investment_type = 'diamond-plan' OR investment_type = 'platinum-plan' `)
+//   .then(function(result){
+//   console.log('yeah!')
 // })
-// console.log(filter)
-}).catch((err) => {
-console.log('API call error:', err.message);
-});
