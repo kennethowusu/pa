@@ -28,6 +28,10 @@ const FINANCE = sequelize.define('finance',{
     type:Sequelize.INTEGER,
     allowNull:false,
     defaultValue:0
+  },
+  last_withdrawal_date:{
+    type:Sequelize.DATE,
+    defaultValue:null,
   }
 });
 

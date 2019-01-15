@@ -7,6 +7,7 @@ const truncate = require('truncate');
 const money    = require('money-math');
 const util   = require('util');
 const mail    =  require('../mail/mail');
+
 // const mail = require('../mail/mail');
 require('dotenv').config();
 
@@ -153,7 +154,10 @@ module.exports.getWithdrawPage = (req,res,next)=>{
   User.findOne({where:{user_id:user_id},
     include: [{model: Notification,where: {user_id:user_id},
       required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
-      {model:Investment,where:{user_id:user_id},required:true}]
+      {model:Investment,where:{user_id:user_id},required:true},
+      {model:Finance,where:{user_id:user_id},required:true}
+
+    ]
 
   })
   .then((person)=>{
@@ -169,7 +173,7 @@ module.exports.getWithdrawPage = (req,res,next)=>{
       return res.render('account/withdraw',{title:'Withdraw',
       user:person,notifications:person.notifications,
       moment:moment,truncate:truncate,notification_count:count,
-      investment:person.investment})
+      investment:person.investment,finance:person.finance,moment:moment})
     })//Notificatin.findAndCountAll
   })//then(person);
 }

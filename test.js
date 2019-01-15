@@ -13,22 +13,6 @@ const cmc = new CMC();
 const moment = require('moment');
 
 
-// FINANCE.update({ interest: sequelize.literal('principal * 0.01 + interest')
-// ,times_credited:sequelize.literal('times_credited+1') },
-// { where: { investment_type: 'gold-plan',times_credited:{lt:6} } })
-//
-// FINANCE.update({ interest: sequelize.literal('principal + interest * 0.01 + interest')
-// ,times_credited:sequelize.literal('times_credited+1') },
-// { where: { investment_type: 'gold-plan',times_credited:{gte:6} } })
-
-// var date   =  moment(new Date('01-07-2019'));
-// var compare_date = moment(new Date('01-28-2019'))
-// console.log(compare_date.diff(date,'weeks'))
-
-// sequelize.query(`UPDATE finances
-//   SET principal =
-//   IF(times_credited >= 6,principal + interest,principal)
-//   WHERE investment_type = 'gold-plan' OR investment_type = 'diamond-plan' OR investment_type = 'platinum-plan' `)
-//   .then(function(result){
-//   console.log('yeah!')
-// })
+const last_credited = new Date('2019-01-15');
+const next_two_weeks = moment(last_credited).add('2','weeks');
+console.log(next_two_weeks)

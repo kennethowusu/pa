@@ -24,15 +24,105 @@
     </div>
   </div>
 <%}else if(investment.investment_status=='active' && investment.investment_type){%>
-  <div class="row grid-margin">
-    <div class="card card-statistics w-100">
-      <div class="card-body">
 
-        <p>
-          fuck
-        </p>
+  <%
+   const last_withdrawal_date  = new Date(finance.last_withdrawal_date);
+   const today = moment(new Date())
+   const next_two_weeks = moment(last_withdrawal_date).add('2','weeks');
+   const next_one_month = moment(last_withdrawal_date).add('1','months')
+   const next_three_months = moment(last_withdrawal_date).add('3','months');
+
+   const gold_date_left  = next_two_weeks.diff(last_withdrawal_date,'days')
+   const duration  = today.diff(last_withdrawal_date,'days')
+
+   const diamond_date_left = next_one_month.diff(last_withdrawal_date,'days')
+
+   const platinum_date_left = next_three_months.diff(last_withdrawal_date,'days')
+
+  %>
+  <div class="row grid-margin">
+
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+      <div class="card card-statistics">
+        <div class="card-body">
+          <div class="clearfix">
+            <div class="float-left">
+              <i class="mdi mdi-cash text-primary icon-lg"></i>
+            </div>
+            <div class="float-right">
+              <p class="mb-0 text-right">Total Funds</p>
+              <div class="fluid-container">
+                <h3 class="font-weight-medium text-right mb-0">$<%=parseFloat(finance.principal) + parseFloat(finance.interest)%></h3>
+              </div>
+            </div>
+          </div>
+          <p class="text-muted mt-3 mb-0">
+            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Pricipal + Interest
+          </p>
+        </div>
       </div>
     </div>
+
+
+
+    <%if(finance.investment_type =='gold-plan'){%>
+        <%if(duration >=  gold_date_left ){%>
+          <div class="col-12 grid-margin">
+            <button type="button" name="button" class="btn btn-success btn-withdrawal">Request Withdrawal</button>
+          </div>
+          <div class="col-12">
+            <p>Withdrawal is  available. </p>
+          </div>
+        <%}else{%>
+          <div class="col-12 grid-margin">
+            <button type="button" name="button" class="btn btn-success  " disabled>Request Withdrawal</button>
+          </div>
+          <div class="col-12">
+            <p>Withdrawal is not available. Your next withdrawal is on <%=next_two_weeks.format('dddd, MMMM Do YYYY')%> </p>
+          </div>
+        <%}%>
+    <%}%>
+
+
+    <%if(finance.investment_type =='diamond-plan'){%>
+        <%if(duration >=  diamond_date_left ){%>
+          <div class="col-12">
+            <button type="button" name="button" class="btn btn-success btn-withdrawal">Request Withdrawal</button>
+          </div>
+
+          <div class="col-12 grid-margin">
+            <p>Withdrawal is  available. </p>
+          </div>
+        <%}else{%>
+          <div class="col-12 grid-margin">
+            <button type="button" name="button" class="btn btn-success" disabled>Request Withdrawal</button>
+          </div>
+          <div class="col-12">
+            <p>Withdrawal is not available. Your next withdrawal is on <%=next_one_month.format('dddd, MMMM Do YYYY')%> </p>
+          </div>
+        <%}%>
+    <%}%>
+
+
+    <%if(finance.investment_type =='platinum-plan'){%>
+        <%if(duration >=  platinum_date_left ){%>
+          <div class="col-12 grid-margin">
+            <button type="button" name="button" class="btn btn-success btn-withdrawal">Request Withdrawal</button>
+          </div>
+          <div class="col-12">
+            <p>Withdrawal is  available. </p>
+          </div>
+        <%}else{%>
+          <div class="col-12 grid-margin">
+            <button type="button" name="button" class="btn btn-success" disabled>Request Withdrawal</button>
+          </div>
+          <div class="col-12">
+            <p>Withdrawal is not available. Your next withdrawal is on <%=next_three_months.format('dddd, MMMM Do YYYY')%> </p>
+          </div>
+        <%}%>
+    <%}%>
+
+
   </div>
 <%}%>
 
