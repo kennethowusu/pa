@@ -38,10 +38,21 @@ module.exports.passwordResetLink = (passwordResetLink)=>{
 
 module.exports.sendCryptoPayment = (email,type,address,transaction_id)=>{
   return `<div>
-           <p>Email:  ${email}<p>
-           <p>Cryto Currency Type:  ${type}<p>
-           <p>Crypto Currency Wallet Address:  ${address}<p>
-           <p>transaction Id:   ${transaction_id}<p>
+           <p>Email:  ${email}</p>
+           <p>Cryto Currency Type:  ${type}</p>
+           <p>Crypto Currency Wallet Address:  ${address}</p>
+           <p>transaction Id:   ${transaction_id}</p>
+          </div>
+  `
+}
+
+module.exports.topupCryptoPayment = (email,type,address,transaction_id,amount)=>{
+  return `<div>
+           <p>Email:  ${email}</p>
+           <p>Amout: ${amount}</p>
+           <p>Cryto Currency Type:  ${type}</p>
+           <p>Crypto Currency Wallet Address:  ${address}</p>
+           <p>transaction Id:   ${transaction_id}</p>
           </div>
   `
 }

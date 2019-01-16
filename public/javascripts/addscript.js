@@ -193,3 +193,42 @@ crypto_btn.on('click',function(e){
     })
   }
 })
+
+
+
+
+
+//======for top up crypto payment
+const top_up_crypto_btn = $('#top-up-submit-crypto-details');
+const top_up_crypto_transaction_id = $('#top-up-crypto-transaction-id');
+const top_up_crypto_type = $('#top-up-crypto-type');
+const top_up_crypto_address = $('#top-up-crypto-address');
+const top_up_crypto_fields_error = $('.top-up-crypto-fields-error');
+const top_up_crypto_amount    = $('#top-up-crypto-amount')
+top_up_crypto_btn.on('click',function(e){
+   if(top_up_crypto_type.val().length == '0' ||
+      top_up_crypto_transaction_id.val().length == '0' ||
+      top_up_crypto_address.val().length == '0' ||
+      top_up_crypto_amount.val().length == '0'
+
+ ){
+    top_up_crypto_fields_error.html('Please fill in all the fields.')
+   }
+
+   else{
+     const data = {address:top_up_crypto_address.val(),
+               type:top_up_crypto_type.val(),
+               transaction_id:top_up_crypto_transaction_id.val(),
+               amount:top_up_crypto_amount.val()
+             };
+
+     top_up_crypto_fields_error.html('')
+     $.ajax({
+       type:'post',
+       url:'/account/plan/deposit/crypto/top-up',
+       data:data
+     }).done(function(result){
+       console.log($('.top-up-crypto-cont').html('Thank you for requesting to top up.'))
+     })
+   }
+})

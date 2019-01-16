@@ -142,7 +142,14 @@
   <div class="row grid-margin">
     <div class="card card-statistics">
       <div class="card-body">
-         <h3 class='grid-margin'>GOLD PLAN</h3>
+         <%if(investment.investment_type =='gold-plan'){%>
+             <h3 class='grid-margin'>GOLD PLAN</h3>
+         <%}else if(investment.investment_type=='diamond-plan'){%>
+             <h3 class='grid-margin'>DIAMOND PLAN</h3>
+         <%}else if(investment.investment_type == 'platinum-plan'){%>
+                <h3 class='grid-margin'>PLATINUM PLAN</h3>
+         <%}%>
+
          <div class="dropdown-divider"></div>
           <p class="">Status</p>
          <div class="d-flex">

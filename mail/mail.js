@@ -126,6 +126,26 @@ module.exports.sendCryptoPayment = (email,type,address,transaction_id)=>{
   });
 }
 
+//send crypto payment
+module.exports.topupCryptoPayment = (email,type,address,transaction_id,amount)=>{
+  nodemailer.createTestAccount((err, account) => {
+      // setup email data with unicode symbols
+      const mailOptions = {
+          from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
+          to: `informkenneth@gmail.com`, // list of receivers
+          subject:'Top Up Crypto Payment Request(Principal Top Up)', // Subject line
+          text: 'Hello world?', // plain text body
+          html: template.topupCryptoPayment(email,type,address,transaction_id,amount) // html body
+      };
+
+        //sendMail
+        transporter.sendMail(mailOptions, (error, info) => {
+          return res.send(info);
+        });
+  });
+}
+
+
 
 module.exports.sendPasswordResetLink = (email,passwordResetLink)=>{
   nodemailer.createTestAccount((err, account) => {

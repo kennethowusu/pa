@@ -240,7 +240,9 @@ module.exports.getInvestmentPage = (req,res,next)=>{
   User.findOne({where:{user_id:user_id},
     include: [{model: Notification,where: {user_id:user_id},
       required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
-    {model:Investment,where:{user_id:user_id},required:true}]
+    {model:Investment,where:{user_id:user_id},required:true},
+    {model:Finance,where:{user_id:user_id},required:true}
+   ]
   })
   .then((person)=>{
     console.log(person)
@@ -257,7 +259,31 @@ module.exports.getInvestmentPage = (req,res,next)=>{
 
 
 
+module.exports.getTopupPage = (req,res,next)=>{
 
+  const user_id = user.getUserId(req,res,next);
+
+  User.findOne({where:{user_id:user_id},
+    include: [{model: Notification,where: {user_id:user_id},
+      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
+    {model:Investment,where:{user_id:user_id},required:true},
+    {model:Finance,where:{user_id:user_id},required:true}
+   ]
+  })
+  .then((person)=>{
+    console.log(person)
+    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
+    then(function(count){
+      console.log(count)
+      return res.render('account/topup',{title:'Top up Investment Pricipal',
+      user:person,notifications:person.notifications,
+      moment:moment,truncate:truncate,notification_count:count,
+      investment:person.investment})
+    })//Notificatin.findAndCountAll
+  })//then(person)
+
+
+}
 //=================POST CONTROLLERS=====================//
 module.exports.sendPasswordResetLink = (req,res,next)=>{
   const email  = req.body.email;
@@ -369,8 +395,25 @@ module.exports.sendCryptoPayment = (req,res,next)=>{
     }
   })
 
+}
 
+module.exports.topupCryptoPayment = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next);
+  const address = req.body.address;
+  const type    = req.body.type;
+  const transaction_id = req.body.transaction_id;
+  const amount      = req.body.amount;
 
+  User.find({where:{user_id:user_id}})
+  .then(function(user){
+    const email = user.email;
+    try{
+      mail.topupCryptoPayment(email,type,address,transaction_id,amount);
+      return res.send('yeah')
+    }catch(err){
+      console.log(err.message)
+    }
+  })
 }
 //=======================PUT CONTROLLERS=======================================//
 module.exports.toggle_all_notifications = (req,res,next)=>{

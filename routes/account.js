@@ -38,6 +38,13 @@ router.get('/activity',
     account.verifyInvestmentPackage,
     accountController.getActivityPage);
 
+
+router.get('/top-up',
+        user.requireAuth,
+        user.isVerified,
+        account.verifyInvestmentPackage,
+        accountController.getTopupPage);
+
 router.get('/confirmation',  user.requireAuth,accountController.getConfirmationPage);
 router.get('/includes/plan',accountController.getPlanModal);
 //===================referral =======================//
@@ -62,8 +69,11 @@ router.post('/password/reset',accountController.resetPassword);
 router.post('/password/reset/send',accountController.sendPasswordResetLink)
 
 router.post('/plan/deposit/crypto',user.requireAuth,accountController.sendCryptoPayment);
+
+router.post('/plan/deposit/crypto/top-up',user.requireAuth,accountController.topupCryptoPayment);
 //===================================PUT ROUTES=========================//
 router.put('/user/notification',accountController.toggle_all_notifications);
+
 
 
 ///===========
