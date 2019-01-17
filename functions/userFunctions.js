@@ -155,7 +155,7 @@ module.exports = {
      referal_id += possible.charAt(Math.floor(Math.random() * possible.length));
 
    const date = Date.now().toString();
-   var firstname = firstname.toString().toLowerCase();
+   var firstname = firstname.toString().toLowerCase().trim();
    var lastTwoChars = date.substr(-2);
    return firstname+referal_id+lastTwoChars;
  },
@@ -164,3 +164,5 @@ module.exports = {
  }
 
 }
+ const refer = module.exports.make_referal_id('somename ')
+ console.log(refer)
