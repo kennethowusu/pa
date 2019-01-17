@@ -163,5 +163,4 @@ module.exports = {
    return FINANCE.find({where:{user_id:module.exports.getDecodedToken(req,res,next).id}});
  }
 
-
 }

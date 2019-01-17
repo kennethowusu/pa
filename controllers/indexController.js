@@ -22,7 +22,9 @@ module.exports.getIndexPage = (req,res,next)=>{
 
 
   const i = req.query.i;
-
+  if(req.query.i){
+    req.session.i=i;
+  }
   const rp = require('request-promise');
   const requestOptions = {
   method: 'GET',
@@ -56,6 +58,8 @@ module.exports.getSignupPage = (req,res,next)=>{
 }
 //===================================sign up ============================//
 module.exports.createUser = (req,res,next)=>{
+  var referee_id = req.session.i;
+
   const newUser = {
      firstname : req.body.firstname,
      lastname : req.body.lastname,
@@ -64,7 +68,7 @@ module.exports.createUser = (req,res,next)=>{
      country: req.body.country,
      user_id : user.generateId(),
      referal_id:user.make_referal_id(req.body.firstname),
-     referee_id: req.body.i
+     referee_id: referee_id
   }
 
 

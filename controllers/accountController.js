@@ -93,15 +93,19 @@ module.exports.getReferralPage = (req,res,next)=>{
     ]
   })
   .then((person)=>{
+     User.findAndCountAll({where:{referee_id:person.referal_id}})
+     .then(function(num_ref_count){
+       Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
+       then(function(count){
+         console.log(num_ref_count)
+         const ref_url = req.protocol + '://' + req.get('host') + '?i=' + person.referal_id;
+         return res.render('account/referral',{title:'Account Referral',
+         user:person,notifications:person.notifications,
+         moment:moment,truncate:truncate,notification_count:count,ref_url:ref_url,
+         finance:person.finance,num_ref_count:num_ref_count})
+       })//Notificatin.findAndCountAll
+     })
 
-    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
-    then(function(count){
-      const ref_url = req.protocol + '://' + req.get('host') + '?i=' + person.referal_id;
-      return res.render('account/referral',{title:'Account Referral',
-      user:person,notifications:person.notifications,
-      moment:moment,truncate:truncate,notification_count:count,ref_url:ref_url,
-      finance:person.finance})
-    })//Notificatin.findAndCountAll
   })//then(person)
 }
 

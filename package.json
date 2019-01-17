@@ -19,6 +19,8 @@
     "dotenv": "^6.1.0",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
+    "express-mysql-session": "^2.1.0",
+    "express-session": "^1.15.6",
     "flag-icon-css": "2.9.0",
     "font-awesome": "4.7.0",
     "grunt": "^1.0.3",
