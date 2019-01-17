@@ -177,7 +177,9 @@ module.exports.getWithdrawPage = (req,res,next)=>{
       return res.render('account/withdraw',{title:'Withdraw',
       user:person,notifications:person.notifications,
       moment:moment,truncate:truncate,notification_count:count,
-      investment:person.investment,finance:person.finance,moment:moment})
+      investment:person.investment,finance:person.finance,moment:moment,
+      money:money
+    })
     })//Notificatin.findAndCountAll
   })//then(person);
 }
