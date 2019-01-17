@@ -228,7 +228,7 @@ top_up_crypto_btn.on('click',function(e){
        url:'/account/plan/deposit/crypto/top-up',
        data:data
      }).done(function(result){
-       console.log($('.top-up-crypto-cont').html('Thank you for requesting to top up.'))
+       console.log($('.top-up-crypto-cont').html('Thank you for requesting to top up.Your request will be process shortly'))
      })
    }
 })
