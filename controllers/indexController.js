@@ -118,7 +118,25 @@ module.exports.createUser = (req,res,next)=>{
                           const  url = req.protocol + '://' + req.get('host') + '/account/confirmation/verification/';
                           const verificationLink = user.generateVerificationToken(req,res,next,newUser);
                           mail.sendEmailVerificationLink(newUser.email,url+verificationLink)
-                          return res.send({success:'/account/summary'});
+
+                        })
+                        .then(function(){
+                          if(referee_id){
+                            User.find({where:{referal_id:referee_id}})
+                            .then(function(refer_user){
+                               NOTIFICATION.create({
+                                 user_id : refer_user.user_id,
+                                 message:`<p>${refer_user.firstname}, someone recently registered with your referal link</p.
+                                         You will receive 3% of whatever this person deposits`
+                               })
+                               .then(function(){
+                                   User.update({is_read:0},{where:{user_id:refer_user.user_id}})
+                                   return res.send({success:'/account/summary'});
+                               })
+                            })
+                          }else{
+                              return res.send({success:'/account/summary'});
+                          }
                         })
                     })
 
