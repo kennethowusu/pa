@@ -507,7 +507,13 @@ module.exports.toggle_all_notifications = (req,res,next)=>{
  })
 }
 
-
+module.exports.makeNotificationRead = (req,res,next)=>{
+  const note_id = req.params.id;
+  Notification.update({is_read:1},{where:{id:note_id}})
+  .then(function(result){
+    return res.send('read');
+  })
+}
 module.exports.resetPassword = function(req,res,next){
   const email    = req.body.email;
   const password = req.body.password;

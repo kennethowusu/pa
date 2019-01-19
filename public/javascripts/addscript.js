@@ -232,3 +232,16 @@ top_up_crypto_btn.on('click',function(e){
      })
    }
 })
+
+
+$('.note_ind').on("click",function(e){
+  const target = $(e.target);
+  const note_id = target.attr('note_id');
+
+  $.ajax({
+    type:'put',
+    url:'/account/notifications/'+note_id
+  }).done(function(result){
+      target.parents('card').removeClass('unread');
+  })
+})

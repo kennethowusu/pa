@@ -8,13 +8,13 @@
 
               <%notes.forEach(function(notification){%>
 
-                    <div class=" grid-margin col-12 ">
+                    <div class=" grid-margin col-12" >
                       <%if(notification.is_read == 0){%>
-                        <div class="card card-statistics unread shadow">
+                        <div class="card card-statistics unread shadow pointer">
                       <%}else{%>
-                        <div class="card card-statistics shadow pointer">
+                        <div class="card card-statistics  shadow pointer" >
                       <%}%>
-                        <div class="card-body">
+                        <div class="card-body note_ind " note_id="<%=notification.id%>">
 
                           <div class="notification-body">
                             <h4><%=notification.topic%></h4>

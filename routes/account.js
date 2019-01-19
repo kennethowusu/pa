@@ -83,6 +83,8 @@ router.post('/password/reset/send',accountController.sendPasswordResetLink)
 router.post('/plan/deposit/crypto',user.requireAuth,accountController.sendCryptoPayment);
 
 router.post('/plan/deposit/crypto/top-up',user.requireAuth,accountController.topupCryptoPayment);
+
+
 //===================================PUT ROUTES=========================//
 router.put('/user/notification',accountController.toggle_all_notifications);
 
@@ -91,6 +93,12 @@ router.put('/user/notification',accountController.toggle_all_notifications);
 ///===========
 router.get('/password/reset/:token',accountController.confirmResetPasswordToken)
 
+
+router.put('/notifications/:id',
+    user.requireAuth,
+    user.isVerified,
+    account.verifyInvestmentPackage,
+    accountController.makeNotificationRead);
 
 
 
