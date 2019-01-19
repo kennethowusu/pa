@@ -61,7 +61,7 @@
               <%}%>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <a href="" class="dropdown-item">
+              <a href="/account/notification" class="dropdown-item">
                 <%if(user.is_read==0){%>
                   <p class="mb-0 font-weight-normal float-left">You have <%=notification_count.count%> new notifications</p>
                 <%}else{%>
@@ -72,9 +72,9 @@
               <div class="dropdown-divider"></div>
              <%notifications.forEach(function(notification){%>
                <%if(notification.is_read==0){%>
-                 <a class="dropdown-item preview-item unread">
+                 <a href=<%="/account/notifications/"+notification.id%> class="dropdown-item preview-item unread">
                 <%}else{%>
-                  <a class="dropdown-item preview-item ">
+                  <a href=<%="/account/notifications/"+notification.id%> class="dropdown-item preview-item ">
                  <%}%>
                 <div class="preview-thumbnail">
                   <div class="preview-icon bg-success">

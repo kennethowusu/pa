@@ -185,6 +185,83 @@ module.exports.getWithdrawPage = (req,res,next)=>{
 }
 
 
+
+module.exports.getNotificationsPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next);
+
+  User.findOne({where:{user_id:user_id},
+    include: [{model: Notification,where: {user_id:user_id},
+      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
+      {model:Investment,where:{user_id:user_id},required:true},
+      {model:Finance,where:{user_id:user_id},required:true}
+
+    ]
+
+  })
+  .then((person)=>{
+
+
+    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}})
+    .then(function(count){
+
+
+
+          Notification.findAll({where:{user_id:user_id}})
+          .then(function(notes){
+            return res.render('account/notifications',{title:'Notifications',
+            user:person,notifications:person.notifications,
+            moment:moment,truncate:truncate,notification_count:count,
+            investment:person.investment,finance:person.finance,notes:notes
+
+
+            })
+
+
+      })
+
+    })
+  })//then(person);
+}
+
+module.exports.getNotificationPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next);
+  const notification_id = req.params.id;
+
+  User.findOne({where:{user_id:user_id},
+    include: [{model: Notification,where: {user_id:user_id},
+      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
+      {model:Investment,where:{user_id:user_id},required:true},
+      {model:Finance,where:{user_id:user_id},required:true}
+
+    ]
+
+  })
+  .then((person)=>{
+
+
+    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}})
+    .then(function(count){
+
+
+          Notification.update({is_read:1},{where:{id:notification_id}});
+          Notification.findOne({where:{id:notification_id}})
+          .then(function(note){
+             console.log(note)
+            return res.render('account/notification',{title:'Notification',
+            user:person,notifications:person.notifications,
+            moment:moment,truncate:truncate,notification_count:count,
+            investment:person.investment,finance:person.finance,note:note
+
+
+            })
+
+
+      })
+
+    })
+  })//then(person);
+}
+
 module.exports.getDepositPage  = (req,res,next)=>{
   const type = req.query.type;
   const amount = req.query.amount;

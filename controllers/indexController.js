@@ -109,6 +109,7 @@ module.exports.createUser = (req,res,next)=>{
                         const welcome_message = `Hi, ${newUser.firstname} you are welcome to prime axis `;
 
                         NOTIFICATION.create({
+                          topic:"Welcome to Prime Axis LLC",
                           user_id:newUser.user_id,
                           message:welcome_message
                         }).
@@ -125,6 +126,7 @@ module.exports.createUser = (req,res,next)=>{
                             User.find({where:{referal_id:referee_id}})
                             .then(function(refer_user){
                                NOTIFICATION.create({
+                                 topic:"New User Registeration(Referral)",
                                  user_id : refer_user.user_id,
                                  message:`<p>${refer_user.firstname}, someone recently registered with your referal link</p.
                                          You will receive 3% of whatever this person deposits`

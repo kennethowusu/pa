@@ -1,0 +1,31 @@
+<%-include('../account/header');-%>
+<%-include('../account/nav');-%>
+
+
+        <div class="row">
+
+
+
+              <%notes.forEach(function(notification){%>
+
+                    <div class=" grid-margin col-12 ">
+                      <%if(notification.is_read == 0){%>
+                        <div class="card card-statistics unread shadow">
+                      <%}else{%>
+                        <div class="card card-statistics shadow pointer">
+                      <%}%>
+                        <div class="card-body">
+
+                          <div class="notification-body">
+                            <h4><%=notification.topic%></h4>
+                            <p class='mb-1'><%-notification.message%></p>
+                            <b class="d-block  small-text "><%=moment(new Date(notification.createdAt)).fromNow()%></b>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              <%})%>
+          </div>
+
+<%-include('../account/footer');-%>

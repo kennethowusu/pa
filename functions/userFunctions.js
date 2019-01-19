@@ -164,5 +164,3 @@ module.exports = {
  }
 
 }
- const refer = module.exports.make_referal_id('somename ')
- console.log(refer)

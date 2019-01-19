@@ -55,6 +55,18 @@ router.get('/referral',
     accountController.getReferralPage);
 
 
+    router.get('/notifications',
+        user.requireAuth,
+        user.isVerified,
+        account.verifyInvestmentPackage,
+        accountController.getNotificationsPage);
+
+
+            router.get('/notifications/:id',
+                user.requireAuth,
+                user.isVerified,
+                account.verifyInvestmentPackage,
+                accountController.getNotificationPage);
 
 
 
