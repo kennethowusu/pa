@@ -42,13 +42,7 @@ module.exports.postWithDrawalRequest = (req,res,next)=>{
   const paymentAddress = req.body.paymentAddress
 
   //==============Create payment============//
-  PaymentDetail.create({
-    paymentType:paymentOption,
-    paymentAddress:paymentAddress,
-    inUse:'yes',
-    user_id: user_id
-  })
-  .then(function(createdPaymentDetail){
+
     //===============find user and all details================//
     User.findOne({where:{user_id:user_id},include:[{all:true}]})
     .then(function(foundUser){
@@ -58,9 +52,10 @@ module.exports.postWithDrawalRequest = (req,res,next)=>{
         username: `${foundUser.firstname} ${foundUser.lastname}`,
         userpackage: foundUser.finance.investment_type,
         user_id:user_id,
-        paymentDetailId: createdPaymentDetail.id,
         balance: money.add(foundUser.finance.principal,foundUser.finance.interest),
-        status:'pending'
+        status:'pending',
+        paymentType:paymentOption,
+        paymentAddress:paymentAddress,
       })
 
       .then(function(){
@@ -86,6 +81,6 @@ module.exports.postWithDrawalRequest = (req,res,next)=>{
       })
     })
 
-  })
+
 
 }

@@ -18,6 +18,14 @@ const PAYMENTREQUEST  = sequelize.define('PAYMENTREQUEST',{
   },
   status:{
     type:Sequelize.STRING
+  },
+  paymentType:{
+    type:Sequelize.STRING,
+    allowNull:false
+  },
+  paymentAddress:{
+    type:Sequelize.STRING,
+    allowNull:false
   }
 
 });
