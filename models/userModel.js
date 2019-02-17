@@ -66,8 +66,8 @@ User.hasMany(Deposit, {foreignKey: 'user_id', sourceKey: 'user_id'});
 User.hasMany(paymentDetail, {foreignKey: 'user_id', sourceKey: 'user_id'});
 User.hasMany(paymentRequest,{foreignKey:'user_id',sourceKey:'user_id'})
 paymentDetail.hasMany(paymentRequest,{foreignKey:'paymentDetailId',sourceKey:'id'})
-// sequelize.sync({
-//   force:false
-// })
+sequelize.sync({
+  force:false
+})
 
 module.exports = User;
