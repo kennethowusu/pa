@@ -1,6 +1,9 @@
 <%-include('../account/header');-%>
 <%-include('../account/nav');-%>
 
+
+
+
 <%if(investment.investment_status == 'inactive' && investment.investment_type==null ){%>
   <div class="row grid-margin">
     <div class="card card-statistics w-100">
@@ -23,7 +26,7 @@
       </div>
     </div>
   </div>
-<%}else if(investment.investment_status=='active' && investment.investment_type){%>
+<%}else if(investment.investment_status=='active' && investment.investment_type && finance.withdrawal_status == null){%>
 
   <%
    const last_withdrawal_date  = new Date(finance.last_withdrawal_date);
@@ -68,7 +71,7 @@
     <%if(finance.investment_type =='gold-plan'){%>
         <%if(duration >=  gold_date_left ){%>
           <div class="col-12 grid-margin">
-            <button type="button" name="button" class="btn btn-success btn-withdrawal">Request Withdrawal</button>
+            <a href="#modal" class="btn btn-success btn-withdrawal">Request Withdrawal</a>
           </div>
           <div class="col-12">
             <p>Withdrawal is  available. </p>
@@ -87,7 +90,7 @@
     <%if(finance.investment_type =='diamond-plan'){%>
         <%if(duration >=  diamond_date_left ){%>
           <div class="col-12 grid-margin">
-            <button type="button" name="button" class="btn btn-success btn-withdrawal">Request Withdrawal</button>
+            <a href="#modal" class="btn btn-success btn-withdrawal">Request Withdrawal</a>
           </div>
 
           <div class="col-12 grid-margin">
@@ -107,7 +110,7 @@
     <%if(finance.investment_type =='platinum-plan'){%>
         <%if(duration >=  platinum_date_left ){%>
           <div class="col-12 grid-margin">
-            <button type="button" name="button" class="btn btn-success btn-withdrawal">Request Withdrawal</button>
+            <a href="#modal" class="btn btn-success btn-withdrawal">Request Withdrawal</a>
           </div>
           <div class="col-12">
             <p>Withdrawal is  available. </p>
@@ -124,6 +127,86 @@
 
 
   </div>
+
+
+
+
+
+<%}else if(investment.investment_status=='active' && investment.investment_type && finance.withdrawal_status == 'pending'){%>
+
+
+  <div class="row grid-margin">
+
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+      <div class="card card-statistics">
+        <div class="card-body">
+          <div class="clearfix">
+            <div class="float-left">
+              <i class="mdi mdi-cash text-primary icon-lg"></i>
+            </div>
+            <div class="float-right">
+              <p class="mb-0 text-right">Total Funds</p>
+              <div class="fluid-container">
+                <h3 class="font-weight-medium text-right mb-0">$<%=money.add(finance.principal,finance.interest)%></h3>
+              </div>
+            </div>
+          </div>
+          <p class="text-muted mt-3 mb-0">
+            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> Pricipal + Interest
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+          <div class="col-12 grid-margin">
+            <button type="button" name="button" class="btn btn-success" disabled>Pending Payment</button>
+          </div>
+          <div class="col-12">
+            <p>Payment peniding, you will receive a notification as a soon as tranasaction is complete.</p>
+          </div>
+
+
+
+
+
+  </div>
 <%}%>
+
+<div class="remodal-bg">
+
+    <div class="remodal" data-remodal-id="modal">
+        <h1>Withdrawal Request</h1>
+
+        <p>
+        <div class="row text-left">
+          <div class="form-group col-12 mb-4">
+            <label for="" >Select payment option</label>
+            <select class="form-control w-100" name="" id="withdrawPaymentOption">
+              <option value="" selected>Select </option>
+              <option value="Paypal" >Paypal</option>
+              <option value="Bitcoin" >Bitcoin</option>
+              <option value="Ethereum">Ethereum</option>
+            </select>
+            <small class="font-weight-bold text-danger withdrawPaymentErrors" id="withdrawPaymentOptionError"></small>
+          </div>
+
+          <div class="form-group col-12">
+            <label for="" >Enter paypal email,block chain address..</label>
+            <input type="text" class="form-control " name="" value=""  id="withdrawPaymentAddress">
+              <small class="font-weight-bold text-danger withdrawPaymentErrors" id="withdrawPaymentDetailError"></small>
+          </div>
+        </div>
+        </p>
+        <br>
+        <div class="d-flex">
+          <a class="remodal-cancel btn btn-danger p-2 mr-auto" href="#">Cancel</a>
+          <button class=" btn btn-success p-2" href="#" id="withdrawPaymentBtn">Request Withdrawal</button>
+        </div>
+  </div>
+</div>
+
 
 <%-include('../account/footer');-%>

@@ -55,7 +55,9 @@ router.get('/test',function(req,res,next){
 //   res.render('faqs', { title: 'Frequently asked questions ' });
 // });
 //
-
+router.get('/account/content/loader',function(req,res,next){
+  return res.render('content/loader')
+})
 //============================POST ROUTES ================================//
 
 //============sign up=========================//

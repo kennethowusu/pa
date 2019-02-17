@@ -32,9 +32,35 @@ module.exports = function(grunt) {
        sass: {
          files: ['sass/**/*'],
          tasks: ['sass','autoprefixer']
+       },
+       js:{
+         files:['js/**/*'],
+         tasks:['concat']
        }
     },
+    concat: {
+  options: {
+    separator: '',
+  },
+  dist: {
+    src: ['js/account-universal.js',
+           'js/main.js',
+           'js/remodal.js',
+           'js/withdraw.js'
 
+          ],
+    dest: 'public/javascripts/addscript.js',
+  },
+  home:{
+    // src:[
+    //    'js/util.js',
+    //   'js/carousel.js',
+    //   'js/home.js'
+    //
+    // ],
+    // dest:'public/javascripts/main.js'
+  }
+},
     //=================================configuring uglify================//
 
       uglify: {
@@ -58,6 +84,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
 
   //=============registering tasks=============//
