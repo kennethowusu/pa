@@ -12,7 +12,7 @@ function showLoader(){
 function hideLoader(){
   $("#loader").remove();
 }
-
+;
 //=================================for notifications==============================//
 const notificationDropdown = $('#notificationDropdown');
 const notificationCount    = $('.js-notification-count');
@@ -259,8 +259,8 @@ $('.note_ind').on("click",function(e){
       target.parents('card').removeClass('unread');
   })
 })
- 
-
+; 
+;
 
 
 const withdrawPaymentOption  = $("#withdrawPaymentOption");

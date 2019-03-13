@@ -4,8 +4,10 @@ const jwt = require("jsonwebtoken");
 const user  = require('../functions/userFunctions');
 const mail  = require('../mail/mail');
 const util  = require('util');
+const moment = require('moment')
 const CMC   = require('coinmarketcap-api')
 require('dotenv').config();
+const request = require('request')
 //===============models==========================//
 var User = require('../models/userModel');
 const NOTIFICATION = require('../models/notificationModel.js');
@@ -19,8 +21,15 @@ require('dotenv').config();
 
 //===========get index page ==============//
 module.exports.getIndexPage = (req,res,next)=>{
-  //
-  //
+
+
+  const cryptoNewsReq = request.get('https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=34fa603f537b4eeb82d4c6dea3ef2aac'
+          ,function(err,httpResponseBody,body){
+            const news  = JSON.parse(body).articles
+
+              return res.render('index',{title:"Prime Axis LLC",news:news,moment:moment});
+          });
+
   // const i = req.query.i;
   // if(req.query.i){
   //   req.session.i=i;
@@ -42,13 +51,13 @@ module.exports.getIndexPage = (req,res,next)=>{
   // };
   //
   // rp(requestOptions).then(response => {
-  //
-  // return res.render('index',{title:"Prime Axis LLC",i:i,response:response.data});
+
+
   // }).catch((err) => {
   // console.log('API call error:', err.message);
   // });
 
- return res.redirect('/login')
+
 
 }
 //=======get signup page========================//

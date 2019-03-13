@@ -40,7 +40,7 @@ module.exports = function(grunt) {
     },
     concat: {
   options: {
-    separator: '',
+    separator: ';',
   },
   dist: {
     src: ['js/account-universal.js',
@@ -52,13 +52,25 @@ module.exports = function(grunt) {
     dest: 'public/javascripts/addscript.js',
   },
   home:{
-    // src:[
-    //    'js/util.js',
-    //   'js/carousel.js',
-    //   'js/home.js'
-    //
-    // ],
-    // dest:'public/javascripts/main.js'
+    src:[
+       'js/vendors/jquery-3.2.1.min.js',
+      'js/vendors/jquery-migrate-3.0.1.min.js',
+      'js/vendors/popper.min.js',
+      'js/vendors/bootstrap.min.js',
+      'js/vendors/jquery.easing.1.3.js',
+      'js/vendors/jquery.waypoints.min.js',
+      'js/vendors/jquery.stellar.min.js',
+      'js/vendors/owl.carousel.min.js',
+      'js/vendors/jquery.magnific-popup.min.js',
+      'js/vendors/aos.js',
+      'js/vendors/jquery.animateNumber.min.js',
+      'js/vendors/bootstrap-datepicker.js',
+      'js/vendors/scrollax.min.js',
+      // 'js/vendors/google-map.js',
+      'js/vendors/main.js'
+
+    ],
+    dest:'public/javascripts/home.js'
   }
 },
     //=================================configuring uglify================//

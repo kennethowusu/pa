@@ -1,353 +1,739 @@
-<%- include('partials/header'); -%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%=title%></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 
 
+    <link rel="stylesheet" href="stylesheets/home.css">
+  </head>
+  <body>
 
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="/">Prime Axis</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
 
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">About Us</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Investment Plans</a></li>
+	          <li class="nav-item"><a class="nav-link" href="#">Faqs</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link">Log In</a></li>
+	          <li class="nav-item cta"><a href="/register" class="nav-link"><span>Register</span></a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
 
-        <div class="banner-cont welc-background">
+    <section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image: url(images/bg_1.jpg);">
+        <div class="overlay"></div>
+        <div class="container-fluid">
+          <div class="row slider-text align-items-center" data-scrollax-parent="true">
 
+            <div class="col-md-8 wrap col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 
-            <div class=" text-white p-relative">
-              <div class=" background-text-cont p-absolute p-10">
-                  <h3 class="background-head">Join Prime Axis</h3>
-                  <p class="background-description">
-                    Prime Axis LLC is an investment firm based in
-                     British Columbia. We are specialized in trading of
-                      forex, crypto-currency, CFDs and commodity trading.
-                       The firm seeks to help our customers achieve their
-                       financial dreams and goals..
-
-                  </p>
-                  <a href="/register" class=" capitalize nav-link btn btn-hollow learn-more">Get Started</a>
-
-              </div>
+              <p class="mb-4 mb-md-8 sub-p" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Prime Axis LLC is an investment firm based in British Columbia. We are specialized in trading of forex, crypto-currency, CFDs and commodity trading.
+                The firm seeks to help our customers achieve their financial dreams and goals..</p>
+              <p><a href="#whychooseus" class="btn btn-orange text-white p-3 px-xl-5 py-xl-3">Learn More</a>
+            </div>
+            <div class="col-md-4 ftco-animate">
+            	<img src="images/rasta/investment_img.png" class="img-fluid index-banner-img" alt="">
             </div>
 
-
+          </div>
         </div>
-    </div>
-    <div >
+      </div>
 
+      <!-- <div class="slider-item" style="background-image: url(images/bg_2.jpg);">
+        <div class="overlay"></div>
+        <div class="container-fluid">
+          <div class="row slider-text align-items-center" data-scrollax-parent="true">
 
-    <section class="">
-      <p class="section-head ">It's Easy!</p>
-      <dl class="text-center p-10 steps">
-        <div class="mb-25">
-           <img src="/images/svg/register-account.svg" alt="Register account" class='steps-img'>
-          <dt class="steps-name">1. Register an Account</dt>
-          <dd class="steps-description">
-            Become part of this dream by going through
-            a simple procedure by giving  us a minimum information about you
-          </dd>
+            <div class="col-md-5 wrap col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+              <h1 class="mb-4 mt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">The Web Hosting Platform Made for You</h1>
+              <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+              <p><a href="#whychooseus" class="btn btn-primary p-3 px-xl-5 py-xl-3">Get started</a> <a href="#" class="btn btn-primary btn-primary-2 p-3 px-xl-5 py-xl-3">Read more</a></p>
+            </div>
+            <div class="col-md-7 ftco-animate">
+            	<img src="images/rasta/dashboard_full_3.png" class="img-fluid" alt="">
+            </div>
+
+          </div>
         </div>
-        <div class="mb-25">
-          <img src="/images/svg/invest-with-us.svg" alt="Register account" class='steps-img'>
-          <dt class="steps-name">2. Invest With Us</dt>
-          <dd class="steps-description">
-            Make a deposit with us. You earn base on the investment package
-            you opt for. We accept a wide variety of payment methods, paypal,visa,payoneer...
-
-          </dd>
-        </div>
-        <div class="mb-25">
-          <img src="/images/svg/withdraw-your-payment.svg" alt="Register account" class='steps-img'>
-          <dt class="steps-name">
-            3. Withdraw
-          </dt>
-          <dd class="steps-description">
-            Withdraw.Withdrawals are made instantly by requesting.
-            First time investors can only withdraw after two weeks of investing
-            with us.
-          </dd>
-        </div>
-
-     </dl>
+      </div> -->
     </section>
 
-     <section class="p-20">
-        <p class="section-head">investment offers</p>
-          <div class="packages-cont d-flex">
-             <div class="package-cont">
-                <div class="package">
-                  <div class="package-title-cont">
-                    <p class="package-title text-center">Gold</p>
-                  </div>
-
-
-                  <div class="package-body">
-                    <div class="package-row ">
-                      <span>Investment Type:</span>
-                      <span>Gold</span>
-                    </div>
-
-                    <div class="package-row">
-                      <span>Minimal Investment</span>
-                      <span>$1,000.00</span>
-                    </div>
-
-                    <div class="package-row">
-                      <span>Maximal Invesment</span>
-                      <span>$10,000.00</span>
-                    </div>
-
-                    <div class="package-row">
-                      <span>Weekly profit</span>
-                      <span>6%</span>
-                    </div>
-
-                    <div class="package-row">
-                      <span>Withdrawal</span>
-                      <span>Every two weeks</span>
-                    </div>
-                    <div class="p-15">
-                      <a href="/login" class="btn btn-accent">Get Started</a>
-                    </div>
-                  </div>
+    <!-- <section class="ftco-domain">
+    	<div class="container">
+    		<div class="row d-flex">
+    			<div class="col-lg-5 heading-white mb-4 mb-sm-4 mb-lg-0 ftco-animate">
+    				<h2>Search You Domain Name</h2>
+    				<p>A small river named Duden flows by their place</p>
+    			</div>
+    			<div class="col-lg-7 ftco-wrap ftco-animate">
+    				<form action="#" class="domain-form d-flex">
+              <div class="form-group domain-name">
+                <input type="text" class="form-control name px-4" placeholder="Enter your domain name...">
+              </div>
+              <div class="form-group domain-select d-flex">
+	              <div class="select-wrap">
+                  <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                  <select name="" id="" class="form-control">
+                  	<option value="">.com</option>
+                    <option value="">.net</option>
+                    <option value="">.biz</option>
+                    <option value="">.co</option>
+                    <option value="">.me</option>
+                  </select>
                 </div>
+                <input type="submit" class="search-domain btn btn-primary text-center" value="Search">
+	            </div>
+            </form>
+            <p class="domain-price mt-2"><span><small>.com</small> $9.75</span> <span><small>.net</small> $9.50</span> <span><small>.biz</small> $8.95</span> <span><small>.co</small> $7.80</span><span><small>.me</small> $7.95</span></p>
+    			</div>
+    		</div>
+    	</div>
+    </section> -->
 
-            </div> <!--package cont-->
+    <section id="whychooseus" class="ftco-section services-section bg-light">
+      <div class="container">
+      	<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2 class="mb-4">Why Choose Prime Axis</h2>
+            <p></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class="service-icon">
+                      <%-include('../public/images/svg/income.svg')%>
+                  </span>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Progressive Daily Income</h3>
+                <p>Your daily earnings depend solely on the size of your deposits, the number of which is
+                   unlimited. Each of your deposits
+                   has its own conditions for calculating profits and does not sum up with the rest.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class=""><%-include('../public/images/svg/pay.svg')%></span>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Instant Payments</h3>
+                <p>Withdrawal is available on weekly bases, you can use the function to make a withdrawal request.
+                  All requests are processed automatically, and money is instantly sent to the details you specify.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class="">
+                    <%-include('../public/images/svg/shield.svg')%>
+                  </span>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Safe and Secure</h3>
+                <p>
+                    The company's website is under reliable protection by the leaders of the information security market: daily
+                    scanning and timely measures of virus prevention of the website and theft of user’s personal data.
+                </p>
+              </div>
+            </div>
+          </div>
+					<div class="col-md-4 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class="">
+                    <%-include('../public/images/svg/support.svg')%>
+                  </span>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">24/7 Customer Support</h3>
+                <p>You can get a full-fledged consultation and the necessary information by
+                  contacting any regional representative or customer support on
+                  the website through a feedback form in your account, email or online chat</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class="">
+                      <%-include('../public/images/svg/worldwide.svg')%>
+                  </span>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Representatives Around The World</h3>
+                <p>We have representatives in a number of countries around the world. We give investors the opportunity to become reps at various locations.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+              <div class="d-flex justify-content-center">
+              	<div class="icon d-flex align-items-center justify-content-center">
+              		<span class="">
+                      <%-include('../public/images/svg/bar-chart.svg')%>
+                  </span>
+              	</div>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Earn Higher Interest</h3>
+                <p>Prime Axis gives opportunity to you to earn higher returns on investments.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="package-cont">
-               <div class="package">
-                 <div class="package-title-cont">
-                   <p class="package-title text-center">Diamond</p>
-                 </div>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <span class="subheading">Services</span>
+            <h2 class="mb-4">How it works</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 nav-link-wrap mb-5 pb-md-5 pb-sm-1 ftco-animate">
+            <div class="nav ftco-animate nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" id="v-pills-nextgen-tab" data-toggle="pill" href="#v-pills-nextgen" role="tab" aria-controls="v-pills-nextgen" aria-selected="true">Register</a>
 
+              <a class="nav-link" id="v-pills-performance-tab" data-toggle="pill" href="#v-pills-performance" role="tab" aria-controls="v-pills-performance" aria-selected="false">Invest</a>
 
-                 <div class="package-body">
-                   <div class="package-row ">
-                     <span>Investment Type:</span>
-                     <span>Diamond</span>
-                   </div>
+              <a class="nav-link" id="v-pills-effect-tab" data-toggle="pill" href="#v-pills-effect" role="tab" aria-controls="v-pills-effect" aria-selected="false">Withdraw</a>
+            </div>
+          </div>
+          <div class="col-md-12 align-items-center ftco-animate">
 
-                   <div class="package-row">
-                     <span>Minimal Investment</span>
-                     <span>$11,000.00</span>
-                   </div>
+            <div class="tab-content ftco-animate" id="v-pills-tabContent">
 
-                   <div class="package-row">
-                     <span>Maximal Invesment</span>
-                     <span>$50,000.00</span>
-                   </div>
-
-                   <div class="package-row">
-                     <span>Weekly profit</span>
-                     <span>7%</span>
-                   </div>
-
-                   <div class="package-row">
-                     <span>Withdrawal</span>
-                     <span>Every month</span>
-                   </div>
-                   <div class="p-15">
-                     <a href="/login" class="btn btn-accent">Get Started</a>
-                   </div>
-                 </div>
-               </div>
-
-           </div><!--package-cont-->
-
-           <div class="package-cont">
-              <div class="package">
-                <div class="package-title-cont">
-                  <p class="package-title text-center">Platinum</p>
-                </div>
-
-
-                <div class="package-body">
-                  <div class="package-row ">
-                    <span>Investment Type:</span>
-                    <span>Platinum</span>
+              <div class="tab-pane fade show active" id="v-pills-nextgen" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+                <div class="d-md-flex">
+                  <div class="one-forth d-flex justify-content-center align-items-center align-self-center">
+                    <%-include('../public/images/svg/add-friend.svg')%>
                   </div>
-
-                  <div class="package-row">
-                    <span>Minimal Investment</span>
-                    <span>$50,000.00</span>
-                  </div>
-
-                  <div class="package-row">
-                    <span>Maximal Invesment</span>
-                    <span>No Limit</span>
-                  </div>
-
-                  <div class="package-row">
-                    <span>Weekly profit</span>
-                    <span>8%</span>
-                  </div>
-
-                  <div class="package-row">
-                    <span>Withdrawal</span>
-                    <span>Every three months</span>
-                  </div>
-                  <div class="p-15">
-                    <a href="/login" class="btn btn-accent">Get Started</a>
+                  <div class="one-half ml-md-5 align-self-center">
+                    <h2 class="mb-4">Register</h2>
+                   <p>Become part of this dream by going through a simple procedure by giving us a minimum information about you</p>
                   </div>
                 </div>
               </div>
 
-          </div><!--package-cont-->
-
-
-          </div><!---packages-cont-->
-
-
-     </section ><!--investment offers-->
-
-
-     <section class="p-20 feature-gradient text-white"><!--why prime axis-->
-        <p class="section-head text-white">Why choose us</p>
-        <div class="features">
-          <div class="feature-cont">
-            <div class="feature">
-              <div class="feature-img-cont">
-                <i class="feature-img mdi mdi-cash">
-
-                </i>
-
+              <div class="tab-pane fade" id="v-pills-performance" role="tabpanel" aria-labelledby="v-pills-performance-tab">
+                <div class="d-md-flex">
+                  <div class="one-forth d-flex justify-content-center align-items-center order-last align-self-center">
+                    <%-include('../public/images/svg/agreement.svg')%>
+                  </div>
+                  <div class="one-half order-first mr-md-5 align-self-center">
+                    <h2 class="mb-4">Invest With Us</h2>
+                  <p>
+                    Make a deposit with us. You earn base on the investment package you opt for. We accept a wide variety of payment methods, paypal,visa,payoneer...
+                  </p>
+                  </div>
+                </div>
               </div>
-              <div class="feature-body">
-                <h3 class="feature-head">Progressive daily income</h3>
-                <div class="feauture-text">
-                  Your daily earnings depend solely on the size of your deposits,
-                  the number of which is unlimited. Each of your deposits has its own
-                  conditions for calculating profits and does not sum up with the rest.
+
+              <div class="tab-pane fade" id="v-pills-effect" role="tabpanel" aria-labelledby="v-pills-effect-tab">
+                <div class="d-md-flex">
+                  <div class="one-forth d-flex justify-content-center align-items-center align-self-center">
+                    <%-include('../public/images/svg/investment.svg')%>
+                  </div>
+                  <div class="one-half ml-md-5 align-self-center">
+                    <h2 class="mb-4">Withdraw</h2>
+                      <p>
+                        Withdraw.Withdrawals are made instantly by requesting. First time investors can only withdraw after two weeks of investing with us.
+                      </p>
+                  </div>
                 </div>
               </div>
             </div>
-
           </div>
+        </div>
+      </div>
+    </section>
 
 
-          <div class="feature-cont">
-            <div class="feature">
-              <div class="feature-img-cont">
-                <i class="feature-img mdi mdi-credit-card">
-
-                </i>
-
+    <section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+            <span class="subheading">Customer Says</span>
+            <h2 class="mb-4">Our satisfied customer says</h2>
+            <p></p>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5">
+                  <div class="user-img mb-5" style="background-image: url(images/rasta/person_2.png)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-5">
+                      This company has been truly helpful to me...I'm very happy with prompt payment of dividends and profits and more
+                       importantly responsiveness of their executives,truly hardworking and committed...
+                    </p>
+                    <p class="name">Gita Calmane</p>
+                    <span class="position">Riga</span>
+                  </div>
+                </div>
               </div>
-              <div class="feature-body">
-                <h3 class="feature-head">Instant payments</h3>
-                <div class="feauture-text">
-                  Withdrawal is available on weekly bases, you can use
-                  the function to make a withdrawal request. All requests
-                   are processed automatically,
-                   and money is instantly sent to the details you specify.
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5">
+                  <div class="user-img mb-5" style="background-image: url(images/rasta/person_3.png)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-5">
+                      Prime Axis LLC has given me the opportunity  to make passive income and grow my income portfolio...
+                    </p>
+                    <p class="name">Richard Carvalho</p>
+                    <span class="position">Mexico</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5">
+                  <div class="user-img mb-5" style="background-image: url(images/rasta/person_4.png)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-5">
+                      Prime Axis LLC team has very hard working , responsive and committed executives..
+                      They respond to issues with urgency and deal with it showing ture professionalism
+                    </p>
+                    <p class="name">Domingos Fula</p>
+                    <span class="position">UK</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5">
+                  <div class="user-img mb-5" style="background-image: url(images/rasta/person_5.png)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-5">
+                      Great and committed executives ,truly happy to be part of this family
+                    </p>
+                    <p class="name">Taylor Fraser</p>
+                    <span class="position">Switzerland</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5">
+                  <div class="user-img mb-5" style="background-image: url(images/rasta/person_1.png)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                    <p class="mb-5">
+                        I am so happy with the kind of services I receive from Prime Axis..This is truly a life changing opportunity...
+                        I've been with this company
+                        since year and they never disappoint with payments.. True promptness and professionalism
+                    </p>
+                    <p class="name">Luiz Karen</p>
+                    <span class="position">USA</span>
+                  </div>
                 </div>
               </div>
             </div>
-
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="feature-cont">
-            <div class="feature">
-              <div class="feature-img-cont">
-                <i class="feature-img mdi mdi-earth">
+    <!-- <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_1.jpg);" data-stellar-background-ratio="0.5">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+            <span class="subheading">More than 100,000 websites hosted</span>
+          </div>
+        </div>
+    		<div class="row justify-content-center">
+    			<div class="col-md-10">
+		    		<div class="row">
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="2000">0</strong>
+		                <span>CMS Installation</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="100">0</strong>
+		                <span>Awards Won</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="32000">0</strong>
+		                <span>Registered Domains</span>
+		              </div>
+		            </div>
+		          </div>
+		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		                <strong class="number" data-number="31998">0</strong>
+		                <span>Satisfied Customers</span>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+        </div>
+    	</div>
+    </section> -->
 
-                </i>
+    <!-- <section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <span class="subheading">Pricing Plans</span>
+            <h2 class="mb-4">Our Best Pricing</h2>
+          </div>
+        </div>
+    		<div class="row d-flex">
+	        <div class="col-lg-3 col-md-6 ftco-animate">
+	          <div class="block-7">
+	            <div class="text-center">
+		            <h2 class="heading">Free</h2>
+		            <span class="price"><sup>$</sup> <span class="number">0</span></span>
+		            <span class="excerpt d-block">100% free. Forever</span>
+		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
 
-              </div>
-              <div class="feature-body">
-                <h3 class="feature-head">Representatives Around the world </h3>
-                <div class="feauture-text">
-                We have representatives in a number of countries around the world.
-                We give investors
-                the opportunity to become reps at various locations.
+		            <ul class="pricing-text mb-4">
+		              <li><strong>150 GB</strong> Bandwidth</li>
+		              <li><strong>100 GB</strong> Storage</li>
+		              <li><strong>$1.00 / GB</strong> Overages</li>
+		              <li>All features</li>
+		            </ul>
+		            <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="col-lg-3 col-md-6 ftco-animate">
+	          <div class="block-7">
+	            <div class="text-center">
+		            <h2 class="heading">Startup</h2>
+		            <span class="price"><sup>$</sup> <span class="number">19</span></span>
+		            <span class="excerpt d-block">All features are included</span>
+		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+
+		            <ul class="pricing-text mb-4">
+		              <li><strong>450 GB</strong> Bandwidth</li>
+		              <li><strong>400 GB</strong> Storage</li>
+		              <li><strong>$2.00 / GB</strong> Overages</li>
+		              <li>All features</li>
+		            </ul>
+		            <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="col-lg-3 col-md-6 ftco-animate">
+	          <div class="block-7">
+	            <div class="text-center">
+		            <h2 class="heading">Premium</h2>
+		            <span class="price"><sup>$</sup> <span class="number">49</span></span>
+		            <span class="excerpt d-block">All features are included</span>
+		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+
+		            <ul class="pricing-text mb-4">
+		              <li><strong>250 GB</strong> Bandwidth</li>
+		              <li><strong>200 GB</strong> Storage</li>
+		              <li><strong>$5.00 / GB</strong> Overages</li>
+		              <li>All features</li>
+		            </ul>
+		            <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="col-lg-3 col-md-6 ftco-animate">
+	          <div class="block-7">
+	            <div class="text-center">
+		            <h2 class="heading">Pro</h2>
+		            <span class="price"><sup>$</sup> <span class="number">99</span></span>
+		            <span class="excerpt d-block">All features are included</span>
+		            <h3 class="heading-2 mb-3">Enjoy All The Features</h3>
+
+		            <ul class="pricing-text mb-4">
+		              <li><strong>450 GB</strong> Bandwidth</li>
+		              <li><strong>400 GB</strong> Storage</li>
+		              <li><strong>$20.00 / GB</strong> Overages</li>
+		              <li>All features</li>
+		            </ul>
+			          <a href="#" class="btn btn-primary d-block px-3 py-3 mb-4">Choose Plan</a>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+    	</div>
+    </section> -->
+
+
+		<section class="ftco-services">
+			<div class="container-wrap">
+				<div class="row no-gutters">
+
+					<div class="col-lg-12">
+						<div class="services-wrap p-4 p-md-5">
+      				<div class="heading-section mb-5 ftco-animate">
+		            <h2 class="mb-2 text-center">Our Values</h2>
+		            <span class="subheading"></span>
+		          </div>
+      				<div class="d-md-flex">
+      					<div class="one-half mr-4">
+      						<div class="list-services d-flex ftco-animate">
+		      					<div class="icon d-flex order-md-last justify-content-center align-items-center">
+		      						<span class="">
+                            <%-include('../public/images/svg/checklist.svg')%>
+
+                      </span>
+		      					</div>
+		      					<div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
+			      					<h3>Responsibility and Accountability</h3>
+			      					<p>Every employee at Prime Axis is held responsible and accountable for their decisions.
+                         We take pride and stand behind our commitment to our clients.</p>
+		      					</div>
+		      				</div>
+		      				<div class="list-services d-flex ftco-animate">
+		      					<div class="icon d-flex order-md-last justify-content-center align-items-center">
+		      						<span class="">
+                          <%-include('../public/images/svg/hand-shake.svg')%>
+                      </span>
+		      					</div>
+		      					<div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
+			      					<h3>Excellence</h3>
+			      					<p>At Prime Axis, we go above and beyond to provide our clients with the best service and experience.
+                        Our goal is to exceed customers’ expectations
+                         and do whatever we can to help pursue their clients’ financial goals.</p>
+		      					</div>
+		      				</div>
+		      				<div class="list-services d-flex ftco-animate">
+		      					<div class="icon d-flex order-md-last justify-content-center align-items-center">
+		      						<span class="">
+                          <%-include('../public/images/svg/statistics.svg')%>
+                      </span>
+		      					</div>
+		      					<div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
+			      					<h3>Results Oriented</h3>
+			      					<p>We’re focused on achieving the best results that exceeds the
+                         perceived cost to our clients and investors.</p>
+		      					</div>
+		      				</div>
+      					</div>
+
+      					<div class="one-half">
+      						<div class="list-services d-flex ftco-animate">
+		      					<div class="icon d-flex justify-content-center align-items-center">
+		      						<span class="">
+                          <%-include('../public/images/svg/heart.svg')%>
+                      </span>
+		      					</div>
+		      					<div class="text pl-4 pl-sm-0 pl-md-4">
+			      					<h3>Loyalty</h3>
+			      					<p>
+                        We believe that relationships are more important than short-term profit. We work together with our clients,
+                         partners and investors to grow together.
+                      </p>
+		      					</div>
+		      				</div>
+		      				<div class="list-services d-flex ftco-animate">
+		      					<div class="icon d-flex justify-content-center align-items-center">
+		      						<span class="">
+                          <%-include('../public/images/svg/success.svg')%>
+                      </span>
+		      					</div>
+		      					<div class="text pl-4 pl-sm-0 pl-md-4">
+			      					<h3>Success</h3>
+			      					<p>We believe in achieving great success by creating value for customers, employees and investors</p>
+		      					</div>
+		      				</div>
+
+      					</div>
+      				</div>
+      			</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+    <!-- <section class="ftco-section ftco-partner">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+            <h2 class="mb-4">Our Clients</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+          </div>
+        </div>
+    		<div class="row">
+    			<div class="col-sm ftco-animate">
+    				<a href="#" class="partner"><img src="images/rasta/partner-1.png" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    			<div class="col-sm ftco-animate">
+    				<a href="#" class="partner"><img src="images/rasta/partner-2.png" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    			<div class="col-sm ftco-animate">
+    				<a href="#" class="partner"><img src="images/rasta/partner-3.png" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    			<div class="col-sm ftco-animate">
+    				<a href="#" class="partner"><img src="images/rasta/partner-4.png" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    			<div class="col-sm ftco-animate">
+    				<a href="#" class="partner"><img src="images/rasta/partner-5.png" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    		</div>
+    	</div>
+    </section> -->
+
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2>Latest News</h2>
+            <p></p>
+          </div>
+        </div>
+        <div class="row">
+
+          <%const latestNews = news.slice(0, 6);%>
+            <%if(latestNews){%>
+              <%latestNews.forEach(function(cryptoNews){%>
+                <div class="col-md-4 ftco-animate">
+                  <div class="blog-entry">
+                    <a href="<%=cryptoNews.url%>" target="_blank" class="block-20" style="background-image: url(<%=cryptoNews.urlToImage%>);">
+                    </a>
+                    <div class="text d-flex py-4">
+                      <div class="meta mb-3">
+                        <div><a ><%=moment(cryptoNews.publishedAt).format('MMM, Do, YYYY')%></a></div>
+                        <div><a><%=cryptoNews.author%></a></div>
+                        <!-- <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div> -->
+                      </div>
+                      <div class="desc pl-3">
+                        <h3 class="heading"><a href="<%=cryptoNews.url%>" target="_blank"><%=cryptoNews.title%></a></h3>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-          </div>
-
-          <div class="feature-cont">
-            <div class="feature">
-              <div class="feature-img-cont">
-                <i class="feature-img mdi mdi-security">
-
-                </i>
-
-              </div>
-              <div class="feature-body">
-                <h3 class="feature-head">Safe and Secure</h3>
-                <div class="feauture-text">
-                  The company's website is under reliable protection by the leaders
-                   of the information security market: daily scanning and timely measures
-                   of virus
-                  prevention of the website and theft of user’s personal data.
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="feature-cont">
-            <div class="feature">
-              <div class="feature-img-cont">
-                <i class="feature-img mdi mdi-headset">
-
-                </i>
-
-              </div>
-              <div class="feature-body">
-                <h3 class="feature-head">24/7 Customer Support</h3>
-                <div class="feauture-text">
-                  You can get a full-fledged consultation and the necessary information
-                  by contacting any regional representative or customer support on the website
-                  through a feedback form in your account, email or online chat
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="feature-cont">
-            <div class="feature">
-              <div class="feature-img-cont">
-                <i class="feature-img mdi mdi-cash-multiple">
-
-                </i>
-
-              </div>
-              <div class="feature-body">
-                <h3 class="feature-head">Earn higher interest </h3>
-                <div class="feauture-text">
-                Prime Axis gives opportunity to
-                you to earn higher returns on investments.
-                </div>
-              </div>
-            </div>
-
-          </div>
+              <%})%>
+            <%}%>
 
         </div>
-     </section><!--why prime axis-->
-     <section class="interest d-flex justify-content-center align-items-center flex-column">
-       <p class="mb-20">Sound Interesting?</p>
-         <a href="/register" class="btn btn-accent d-block btn-lg-rounded">Get Started</a>
-     </section>
-     <section class="market-section">
-       <p class="section-head ">Current Market Pricing</p>
-       <table>
-         <tr>
-           <th>#</th>
-           <th>Name</th>
-           <th>Price</th>
-           <th>Percent Change(1 hr) </th>
-         </tr>
+      </div>
+    </section>
 
-         <%response.forEach(function(data){%>
-           <tr>
-             <td><%=data.cmc_rank%></td>
-             <td><%=data.name%></td>
-             <td> $<%=data.quote.USD.price.toFixed(2)%></td>
-             <td> <%=data.quote.USD.percent_change_1h.toFixed(2)+'%'%></td>
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Prime Axis LLC</h2>
+              <p>Join Prime Axis, change your life.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
 
-           </tr>
-         <%})%>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Navigational</h2>
+              <ul class="list-unstyled">
+                <li><a href="/" class="py-2 d-block">Home</a></li>
+                <li><a href="#" class="py-2 d-block">About Us</a></li>
+                <li><a href="#" class="py-2 d-block">Investment Plans</a></li>
+                <li><a href="#" class="py-2 d-block">Faqs</a></li>
+                <li><a href="#" class="py-2 d-block">Contact</a></li>
+                <li><a href="/login" class="py-2 d-block">Log In</a></li>
+                  <li><a href="/register" class="py-2 d-block">Register</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Office</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@primeaxisllc.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
 
-       </table>
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Prime Axis LLC
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-     </section>
 
 
-<%- include('partials/footer'); -%>
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="/javascripts/home.js"></script>
+
+  </body>
+</html>
