@@ -34,7 +34,7 @@ module.exports = function(grunt) {
          tasks: ['sass','autoprefixer']
        },
        js:{
-         files:['js/**/*'],
+         files:['js/**/*','scripts/**/**/**/**'],
          tasks:['concat']
        }
     },
@@ -71,6 +71,14 @@ module.exports = function(grunt) {
 
     ],
     dest:'public/javascripts/home.js'
+  }
+  ,
+
+  account:{
+    src:[
+  
+    ],
+    dest:'public/javascripts/account.js'
   }
 },
     //=================================configuring uglify================//

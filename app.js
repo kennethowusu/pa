@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var accountRouter = require('./routes/account');
 var withdrawRouter   = require('./routes/withdraw')
+var summaryRouter   = require('./routes/summary')
 var app = express();
 
 var session = require('express-session');
@@ -55,7 +56,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/account',accountRouter);
 app.use('/account/withdraw',withdrawRouter)
-
+app.use('/account/summary',summaryRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

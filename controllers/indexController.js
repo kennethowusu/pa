@@ -214,3 +214,7 @@ module.exports.getFaqsPage = (req,res,next)=>{
 module.exports.getTermsPage = (req,res,next)=>{
   return res.render('terms',{title:"Terms and Conditions"});
 }
+
+module.exports.getContactPage = (req,res,next)=>{
+    return res.render('contact',{title:"Contact"});
+}
