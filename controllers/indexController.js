@@ -204,6 +204,9 @@ module.exports.logout = function(req,res,next){
 }
 
 
+module.exports.getAboutUsPage = (req,res,next)=>{
+    return res.render('about-us',{title:"About Us"});
+}
 module.exports.getFaqsPage = (req,res,next)=>{
   return res.render('faqs',{title:"Frequently Asked Questions"});
 }

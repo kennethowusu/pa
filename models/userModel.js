@@ -7,6 +7,7 @@ const INVESTMENT    = require('./investmentModel.js');
 const Deposit    = require('./depositModel');
 const paymentDetail = require('./paymentDetailModel')
 const paymentRequest = require('./paymentRequestModel')
+const Admin = require('./adminModel')
 //OiKAbN2kpP
 const User = sequelize.define('user',{
   user_id:{
@@ -68,5 +69,7 @@ User.hasMany(paymentRequest,{foreignKey:'user_id',sourceKey:'user_id'})
 // sequelize.sync({
 //   force:false
 // })
+
+
 
 module.exports = User;
