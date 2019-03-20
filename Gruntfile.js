@@ -66,7 +66,7 @@ module.exports = function(grunt) {
       'js/vendors/jquery.animateNumber.min.js',
       'js/vendors/bootstrap-datepicker.js',
       'js/vendors/scrollax.min.js',
-      'js/vendors/universal',
+      'js/vendors/universal.js',
       'js/vendors/addscript.js',
 
       'js/vendors/main.js',

@@ -62,7 +62,7 @@ module.exports.getIndexPage = (req,res,next)=>{
 }
 //=======get signup page========================//
 module.exports.getSignupPage = (req,res,next)=>{
-  res.render('register', { title: 'Create Account|Prime ' ,referee_id:req.query.ref});
+  res.render('register', { title: 'Create Account ' ,referee_id:req.query.ref});
 
 }
 //===================================sign up ============================//
@@ -177,10 +177,10 @@ module.exports.signin = function(req, res, next){
     })
     .then(person => {
       if (!person) {
-        return res.send({sign_in_mail_error:sign_in_mail_error})
+        return res.send({error:"Invalid Email or Password"})
       }
       if (!user.passwordIsCorrect(password, person.password)) {
-        return res.send({sign_in_password_error:"Password is  incorrect"});
+        return res.send({error:"Invalid Email or Password"});
       } else {
         var token = user.generateToken(req, res, next, person);
         //send this for the cookie to work

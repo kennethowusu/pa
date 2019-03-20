@@ -2083,7 +2083,117 @@ c.scrollTop)-c.clientTop;d=(k.pageXOffset||c.scrollLeft)-c.clientLeft;b={top:0,l
 function(a,g,e,d){a.addEventListener(g,e,d||!1);return e}:function(c,e,l){var d=e+l;c[d]=c[d]||function(){var b=window.event;b.target=b.srcElement;b.preventDefault=a;b.stopPropagation=g;l.call(c,b)};c.attachEvent("on"+e,c[d]);return l};N=window.removeEventListener?function(a,g,e,d){a.removeEventListener(g,e,d||!1);return e}:function(a,g,e){var d=g+e;a.detachEvent("on"+g,a[d]);try{delete a[d]}catch(b){a[d]=void 0}return e}})();(function(){function a(a){for(var e=0,d=g.length;e<d;e++){var b=g[e]?g[e]+
 a.charAt(0).toUpperCase()+a.slice(1):a;if(null!=c.style[b])return b}}var g=["","webkit","moz","ms","o"],c=document.createElement("div");da=a("transform");ea=a("perspective")?"translateZ(0) ":""})();q.defaults={horizontal:!1,offset:0,parentSelector:null,elementsSelector:null,performanceTrick:!1};window.Scrollax=q;e.fn.Scrollax=function(a,g){var c,k;if(!e.isPlainObject(a)){if("string"===typeof a||!1===a)c=!1===a?"destroy":a,k=slice.call(arguments,1);a={}}return this.each(function(l,d){var b=e.data(d,
 "scrollax");b||c?b&&c&&b[c]&&b[c].apply(b,k):e.data(d,"scrollax",(new q(d,a,g)).init())})};e.Scrollax=function(a,e){ba.Scrollax(a,e)};var v=document.head||document.getElementsByTagName("head")[0],w=document.createElement("style");w.type="text/css";w.styleSheet?w.styleSheet.cssText=".scrollax-performance, .scrollax-performance *, .scrollax-performance *:before, .scrollax-performance *:after { pointer-events: none !important; -webkit-animation-play-state: paused !important; animation-play-state: paused !important; };":
-w.appendChild(document.createTextNode(".scrollax-performance, .scrollax-performance *, .scrollax-performance *:before, .scrollax-performance *:after { pointer-events: none !important; -webkit-animation-play-state: paused !important; animation-play-state: paused !important; };"));v.appendChild(w);return q});;; AOS.init({
+w.appendChild(document.createTextNode(".scrollax-performance, .scrollax-performance *, .scrollax-performance *:before, .scrollax-performance *:after { pointer-events: none !important; -webkit-animation-play-state: paused !important; animation-play-state: paused !important; };"));v.appendChild(w);return q});;function isEmail(email)
+{
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+ 
+$('.isMoney,.isNumber').keypress(function(key) {
+       if(key.charCode < 48 || key.charCode > 57) return false;
+   });
+
+
+
+
+$('.isMoney').on('focusout',function(e){
+
+const target = $(e.target);
+const targetValue = parseFloat(Math.abs(target.val()))
+target.val(targetValue.toFixed(2))
+
+})
+
+
+
+
+function addToErrors(errorName,errorContainer){
+  if(errorContainer.includes(errorName)){
+    return;
+  }
+ errorContainer.push(errorName);
+ return console.log(errorContainer);
+}
+
+function removeFromErrors(errorName,errorContainer){
+ if(errorContainer.includes(errorName)){
+   var index = errorContainer.indexOf(errorName);
+   if (index > -1) {
+    errorContainer.splice(index, 1);
+   }
+   return console.log(errorContainer);
+ }
+ return;
+
+}
+;const email = $('#email');
+const password = $("#password");
+const loginBtn = $("#loginBtn");
+
+
+const loginErrorStore = {
+  emailInvalidErr : "Please provide a valid Email Address",
+  emailEmptyErr   : "Please provide an email",
+  passwordEmptyErr: "Please provide a passord"
+}
+
+const loginError = [
+  "emailInvalidErr",
+  'emailEmptyErr',
+  'passwordEmptyErr'
+]
+
+loginBtn.on('click',function(e){
+  $('.error').html('')
+  $('.form-control').removeClass('border-danger')
+  const emailVal = email.val();
+  const passwordVal = password.val()
+  e.preventDefault();
+
+  if(emailVal.length == '0'){
+    addToErrors('emailEmptyErr',loginError)
+  }else{
+    removeFromErrors('emailEmptyErr',loginError)
+  }
+
+  if(!isEmail(emailVal)){
+    addToErrors('emailInvalidErr',loginError)
+  }else{
+    removeFromErrors('emailInvalidErr',loginError)
+  }
+
+  if(passwordVal.length == '0'){
+    addToErrors('passwordEmptyErr',loginError)
+  }else{
+    removeFromErrors('passwordEmptyErr',loginError)
+  }
+
+
+  if(loginError.length > 0){
+    loginError.forEach(function(error){
+      $("."+error).html(loginErrorStore[error])
+      $('.'+error).siblings('.form-control').addClass('border-danger')
+    })
+  }else{
+    const data = {email:emailVal,password:passwordVal}
+    $.ajax({
+      type:'post',
+      url:'/login',
+      data:data
+    })
+    .done(function(ajaxResult){
+      if(ajaxResult.error){
+        $(".loginError").html(ajaxResult.error)
+
+      }else if(ajaxResult.success){
+        $(e.target).css('opacity','0.5');
+        window.location.replace('/account/summary')
+      }
+    })
+  }
+})
+; AOS.init({
  	duration: 800,
  	easing: 'slide'
  });

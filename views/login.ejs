@@ -17,6 +17,7 @@
 
   <style media="screen">
   .centered{
+
     position:absolute;
     color:#fff;
     width:100% !important;
@@ -36,21 +37,22 @@
          <a  href="/" class="d-flex justify-content-center align-items-center mb-4">
            <img src="/images/logo.png" style="width:60px;height:61.22px" alt="" class="t">
          </a>
-
-         <form class="" action="index.html" method="post">
+         <p class="error text-center loginError" id="#loginError"></p>
+         <form class="" action="" method="post">
            <div class="col-md-4 offset-lg-4 pr-md-5">
              <form action="#">
                <div class="form-group">
-                 <input type="text" class="form-control " placeholder="Enter Email">
-                 <label for="" class="error">Something is cool yeah</label>
+                 <input type="text" class="form-control" id="email" placeholder="Enter Email">
+                 <label for="" class="error emailEmptyErr emailInvalidErr"></label>
                </div>
                <div class="form-group">
-                 <input type="password" class="form-control" placeholder="Enter password">
+                 <input type="password" class="form-control" id="password" placeholder="Enter password">
+                 <label for="" class="error passwordEmptyErr"></label>
                </div>
 
 
                <div class="form-group">
-                 <input type="submit" value="Log In" class="btn w-100 btn-orange text-white rad-s py-3 px-5">
+                 <input type="submit" value="Log In" id="loginBtn" class="btn w-100 btn-orange text-white rad-s py-3 px-5">
                </div>
 
                <p><a href="#" class="text-muted">Forgot password?</a></p>

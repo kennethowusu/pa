@@ -19,7 +19,7 @@ router.get('/',indexController.getIndexPage);
 
 /* GET home page. */
 router.get('/login',user.loggedIn,function(req, res, next) {
-  res.render('login', { title: 'Account Login|Prime ' });
+  res.render('login', { title: 'Account Log In' });
 });
 
 router.post('/login',indexController.signin);
