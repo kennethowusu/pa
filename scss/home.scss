@@ -8204,7 +8204,7 @@ h1, h2, h3, h4, h5,
   box-shadow: none !important;
   border: 1px solid #ebebeb; }
   .form-control:focus, .form-control:active {
-    border-color: #000; }
+    border-color: #0070ba; }
 
 textarea.form-control {
   height: inherit !important; }
@@ -9403,8 +9403,13 @@ textarea.form-control {
   background-color:$orange !important;
 }
 
+.btn-muted{
+  background-color: #dddee2 !important;
+  color:#000;
+}
 .btn-orange{
   background-color: $orange !important;
+
 }
 
 .index-banner-img{
@@ -9413,4 +9418,15 @@ textarea.form-control {
   @media(min-width:1000px){
     max-width:240px !important;
   }
+}
+
+.rad-s{
+  border-radius: 4px !important;
+}
+.no-shadow{
+  box-shadow:none;
+}
+
+.error{
+  color: red !important;
 }
