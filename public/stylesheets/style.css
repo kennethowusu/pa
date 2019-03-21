@@ -6563,6 +6563,7 @@ hr {
   top: 0;
   transition: all 0.2s ease;
   width: 280px;
+  transform: translateX(-280px);
   z-index: 1000; }
   .sidebar ul {
     list-style-type: none; }

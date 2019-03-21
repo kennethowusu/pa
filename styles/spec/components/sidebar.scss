@@ -20,6 +20,7 @@
   top: 0;
   transition: all 0.2s ease;
   width: $offscreen-size;
+  transform:translateX(-$offscreen-size);
   z-index: 1000;
 
   ul {
