@@ -88,7 +88,7 @@ module.exports.createUser = (req,res,next)=>{
     .then(function(result) {
       if (result) {
         const emailError  = "Email Already Exists";
-        return res.send({email_error:emailError});
+        return res.send({error:"Email already Exists"});
       } else {
         //store user in database
             User.create({
@@ -101,8 +101,7 @@ module.exports.createUser = (req,res,next)=>{
               referal_id :    newUser.referal_id,
               referee_id:     newUser.referee_id
             }).then(newUser => {
-              // user.generateToken(req, res, next, newUser);
-              // return res.send({success:'/account'});
+
 
               //=======================CREATE FINANCE FOR USER================//
                 FINANCE.create({
@@ -137,8 +136,8 @@ module.exports.createUser = (req,res,next)=>{
                                NOTIFICATION.create({
                                  topic:"New User Registeration(Referral)",
                                  user_id : refer_user.user_id,
-                                 message:`<p>${refer_user.firstname}, someone recently registered with your referal link</p.
-                                         You will receive 3% of whatever this person deposits`
+                                 message:`<p>${refer_user.firstname}, ${newUser.firstname} ${newUser.lastname} recently registered with your referal link</p.
+                                         You will receive 3% of whatever ${newUser.firstname} deposits`
                                })
                                .then(function(){
                                    User.update({is_read:0},{where:{user_id:refer_user.user_id}})
@@ -155,7 +154,7 @@ module.exports.createUser = (req,res,next)=>{
 
             })
           .catch(err => {
-            return res.send(err);
+            console.log(err)
           })
       } //else
     })

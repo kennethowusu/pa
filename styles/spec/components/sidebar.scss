@@ -27,7 +27,7 @@
   }
 
   @include between($breakpoint-md, $breakpoint-xl) {
-    width: $collapsed-size;
+    width: $offscreen-size;
 
     .sidebar-inner {
       .sidebar-logo {
@@ -44,14 +44,6 @@
 
       .sidebar-menu {
         overflow-x: hidden;
-
-        > li {
-          > a {
-            .title {
-              display: none;
-            }
-          }
-        }
 
         li {
           &.dropdown {
@@ -106,8 +98,8 @@
   }
 
   @include to($breakpoint-md) {
-    left: -$offscreen-size;
-    width: calc(#{$offscreen-size} - 30px);
+
+    width: $offscreen-size;
   }
 }
 

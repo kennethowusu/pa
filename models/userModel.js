@@ -27,7 +27,7 @@ const User = sequelize.define('user',{
     allowNull: false
   },
   country:{
-    type:Sequelize.INTEGER,
+    type:Sequelize.STRING,
     allowNull: false
   },
   password:{
@@ -68,7 +68,7 @@ User.hasMany(paymentDetail, {foreignKey: 'user_id', sourceKey: 'user_id'});
 User.hasMany(paymentRequest,{foreignKey:'user_id',sourceKey:'user_id'})
 // sequelize.sync({
 //   force:false
-// })
+//  })
 
 
 
