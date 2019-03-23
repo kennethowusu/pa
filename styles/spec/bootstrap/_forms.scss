@@ -305,7 +305,7 @@ select.form-control-lg {
     .input-group {
       width: auto;
     }
-
+  
     // Remove default margin on radios/checkboxes that were used for stacking, and
     // then undo the floating of radios and checkboxes to match.
     .form-check {
@@ -330,4 +330,9 @@ select.form-control-lg {
       margin-bottom: 0;
     }
   }
+}
+
+
+.error{
+  color: red !important;
 }

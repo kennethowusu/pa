@@ -74,6 +74,19 @@ module.exports = function(grunt) {
 
     ],
     dest:'public/javascripts/home.js'
+  },
+
+  account:{
+    src:[
+
+      'js/account/universal.js',
+      'js/account/util.js',
+      'js/account/modal.js',
+      'node_modules/sweetalert/dist/sweetalert.min.js',
+      'js/account/settings.js'
+
+    ],
+    dest:'public/javascripts/account.js'
   }
 
 },

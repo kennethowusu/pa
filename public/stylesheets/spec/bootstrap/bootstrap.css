@@ -1737,6 +1737,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     .form-inline .custom-control-label {
       margin-bottom: 0; } }
 
+.error {
+  color: red !important; }
+
 .btn {
   display: inline-block;
   font-weight: 400;

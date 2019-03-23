@@ -28,8 +28,8 @@
   }
 
   @include between($breakpoint-md, $breakpoint-xl) {
+    transform:translateX(0) !important;
     width: $offscreen-size;
-
     .sidebar-inner {
       .sidebar-logo {
         border-bottom: 1px solid transparent;
@@ -62,47 +62,14 @@
       }
     }
 
-    &:hover {
-      width: $offscreen-size;
 
-      .sidebar-inner {
-        .sidebar-logo {
-          border-bottom: 1px solid $border-color;
-          padding: 0 20px;
-        }
-
-        .sidebar-menu {
-          > li {
-            > a {
-              .title {
-                display: inline-block;
-              }
-            }
-          }
-
-          li {
-            &.dropdown {
-              .arrow {
-                opacity: 1;
-              }
-            }
-
-            &.open {
-              > ul.dropdown-menu {
-                display: block !important;
-              }
-            }
-          }
-        }
-      }
-    }
   }
 
   @include to($breakpoint-md) {
-
     width: $offscreen-size;
   }
 }
+
 
 // ---------------------------------------------------------
 // @Sidebar Inner
@@ -161,7 +128,9 @@
     }
   }
 }
-
+.sidebar.no-translate{
+  transform: translateX(0);
+}
 // ---------------------------------------------------------
 // @Sidebar Menu
 // ---------------------------------------------------------

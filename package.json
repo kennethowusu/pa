@@ -47,6 +47,7 @@
     "request-promise": "^4.2.2",
     "sequelize": "^4.41.2",
     "simple-line-icons": "2.4.1",
+    "sweetalert": "^2.1.2",
     "truncate": "^2.0.1",
     "unirest": "^0.5.1"
   }

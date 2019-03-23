@@ -1737,6 +1737,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     .form-inline .custom-control-label {
       margin-bottom: 0; } }
 
+.error {
+  color: red !important; }
+
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -6569,6 +6572,7 @@ hr {
     list-style-type: none; }
   @media screen and (min-width: 992px) and (max-width: 1439px) {
     .sidebar {
+      transform: translateX(0) !important;
       width: 280px; }
       .sidebar .sidebar-inner .sidebar-logo {
         border-bottom: 1px solid transparent;
@@ -6581,18 +6585,7 @@ hr {
         .sidebar .sidebar-inner .sidebar-menu li.dropdown .arrow {
           opacity: 0; }
         .sidebar .sidebar-inner .sidebar-menu li.dropdown.open ul.dropdown-menu {
-          display: none !important; }
-      .sidebar:hover {
-        width: 280px; }
-        .sidebar:hover .sidebar-inner .sidebar-logo {
-          border-bottom: 1px solid rgba(0, 0, 0, 0.0625);
-          padding: 0 20px; }
-        .sidebar:hover .sidebar-inner .sidebar-menu > li > a .title {
-          display: inline-block; }
-        .sidebar:hover .sidebar-inner .sidebar-menu li.dropdown .arrow {
-          opacity: 1; }
-        .sidebar:hover .sidebar-inner .sidebar-menu li.open > ul.dropdown-menu {
-          display: block !important; } }
+          display: none !important; } }
   @media screen and (max-width: 991px) {
     .sidebar {
       width: 280px; } }
@@ -6632,6 +6625,9 @@ hr {
     @media screen and (min-width: 992px) and (max-width: 1439px) {
       .sidebar-logo .mobile-toggle {
         display: none; } }
+
+.sidebar.no-translate {
+  transform: translateX(0); }
 
 .sidebar-menu {
   border-right: 1px solid rgba(0, 0, 0, 0.0625);
@@ -6932,6 +6928,9 @@ hr {
   @media screen and (max-width: 991px) {
     .main-content {
       padding: 85px 5px 5px; } }
+  @media (min-width: 1010px) {
+    .main-content {
+      margin-left: 204px; } }
 
 .remain-height {
   height: calc(100vh - 126px); }

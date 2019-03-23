@@ -36,6 +36,10 @@
   @include to($breakpoint-md) {
     padding: 85px 5px 5px;
   }
+
+  @media(min-width:1010px){
+    margin-left:204px;
+  }
 }
 
 .remain-height {
