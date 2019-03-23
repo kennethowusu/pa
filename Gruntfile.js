@@ -3,26 +3,19 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     //=============configuring sass================//
-    sass: {
-      dist: {
-        files: {
-          'public/stylesheets/style.css': 'sass/style.scss'
-        }
-      }
-    },
 
     //======================configuring autoprefixer===================//
-    autoprefixer:{
-        options:{
-            // We need to `freeze` browsers versions for testing purposes.
-            browsers: ['opera 12', 'ff 15', 'chrome 25']
-        },
-
-         style: {
-          src: 'public/stylesheets/style.css',
-          dest: 'public/stylesheets/style.css'
-        }
-    },
+    // autoprefixer:{
+    //     options:{
+    //         // We need to `freeze` browsers versions for testing purposes.
+    //         browsers: ['opera 12', 'ff 15', 'chrome 25']
+    //     },
+    //
+    //      style: {
+    //       src: 'public/stylesheets/style.css',
+    //       dest: 'public/stylesheets/style.css'
+    //     }
+    // },
 
     //=========================configuring watch=================//
     watch: {
@@ -83,7 +76,8 @@ module.exports = function(grunt) {
       'js/account/util.js',
       'js/account/modal.js',
       'node_modules/sweetalert/dist/sweetalert.min.js',
-      'js/account/settings.js'
+      'js/account/settings.js',
+      'js/account/copy.js'
 
     ],
     dest:'public/javascripts/account.js'

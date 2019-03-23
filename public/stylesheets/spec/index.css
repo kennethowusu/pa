@@ -1,11 +1,11 @@
 /*
-Error: Undefined variable: "$font-primary".
-        on line 10 of styles/spec/generic/base.scss
+Error: Undefined variable: "$default-text-color".
+        on line 14 of styles/spec/generic/base.scss
         from line 1 of styles/spec/generic/index.scss
         from line 1 of styles/spec/index.scss
 
 Backtrace:
-styles/spec/generic/base.scss:10
+styles/spec/generic/base.scss:14
 styles/spec/generic/index.scss:1
 styles/spec/index.scss:1
 C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/script/tree/variable.rb:49:in `_perform'
@@ -87,4 +87,4 @@ C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/interna
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$font-primary\".\A         on line 10 of styles/spec/generic/base.scss\A         from line 1 of styles/spec/generic/index.scss\A         from line 1 of styles/spec/index.scss"; }
+  content: "Error: Undefined variable: \"$default-text-color\".\A         on line 14 of styles/spec/generic/base.scss\A         from line 1 of styles/spec/generic/index.scss\A         from line 1 of styles/spec/index.scss"; }

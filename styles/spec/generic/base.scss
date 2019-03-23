@@ -1,3 +1,5 @@
+$primary-font : "pt sans",sans-serif;
+
 html, html a, body {
   -webkit-font-smoothing: antialiased;
 }
@@ -7,7 +9,7 @@ a {
 }
 
 body {
-  font-family: $font-primary;
+  font-family: $primary-font;
   font-size: 14px;
   color: $default-text-color;
   line-height: 1.5;
@@ -36,7 +38,7 @@ h6 {
 }
 
 p {
-  font-family: $font-primary;
+  font-family: $primary-font;
   line-height: 1.9;
 }
 

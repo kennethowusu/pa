@@ -1,21 +1,21 @@
 /*
-Error: Undefined variable: "$font-primary".
-        on line 10 of styles/spec/generic/base.scss
+Error: Undefined variable: "$default-text-color".
+        on line 14 of styles/spec/generic/base.scss
 
-5: a {
-6:   transition: all 0.3s ease-in-out;
-7: }
-8: 
-9: body {
-10:   font-family: $font-primary;
-11:   font-size: 14px;
-12:   color: $default-text-color;
-13:   line-height: 1.5;
-14:   letter-spacing: 0.2px;
-15:   overflow-x: hidden;
+9: }
+10: 
+11: body {
+12:   font-family: $primary-font;
+13:   font-size: 14px;
+14:   color: $default-text-color;
+15:   line-height: 1.5;
+16:   letter-spacing: 0.2px;
+17:   overflow-x: hidden;
+18: }
+19: 
 
 Backtrace:
-styles/spec/generic/base.scss:10
+styles/spec/generic/base.scss:14
 C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/script/tree/node.rb:50:in `perform'
 C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
@@ -55,17 +55,18 @@ C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:46
 C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
 C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:209:in `each'
 C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:294:in `watch'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin.rb:109:in `method_missing'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/exec/sass_scss.rb:358:in `watch_or_update'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/exec/sass_scss.rb:51:in `process_result'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/exec/base.rb:50:in `parse'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/exec/base.rb:18:in `parse!'
-C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/bin/sass:13:in `<top (required)>'
-C:/Ruby26-x64/bin/sass:23:in `load'
-C:/Ruby26-x64/bin/sass:23:in `<main>'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:443:in `on_file_changed'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.3/lib/sass/plugin/compiler.rb:320:in `block in watch'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/event/config.rb:23:in `call'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:115:in `_process_changes'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:19:in `block in loop_for'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/event/processor.rb:15:in `loop_for'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:84:in `_wait_for_changes'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/event/loop.rb:42:in `block in setup'
+C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/internals/thread_pool.rb:6:in `block in add'
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$font-primary\".\A         on line 10 of styles/spec/generic/base.scss\A \A 5: a {\A 6:   transition: all 0.3s ease-in-out;\A 7: }\A 8: \A 9: body {\A 10:   font-family: $font-primary;\A 11:   font-size: 14px;\A 12:   color: $default-text-color;\A 13:   line-height: 1.5;\A 14:   letter-spacing: 0.2px;\A 15:   overflow-x: hidden;"; }
+  content: "Error: Undefined variable: \"$default-text-color\".\A         on line 14 of styles/spec/generic/base.scss\A \A 9: }\A 10: \A 11: body {\A 12:   font-family: $primary-font;\A 13:   font-size: 14px;\A 14:   color: $default-text-color;\A 15:   line-height: 1.5;\A 16:   letter-spacing: 0.2px;\A 17:   overflow-x: hidden;\A 18: }\A 19: "; }
