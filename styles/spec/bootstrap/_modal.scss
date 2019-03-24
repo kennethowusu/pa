@@ -166,3 +166,19 @@
 @include media-breakpoint-up(lg) {
   .modal-lg { max-width: $modal-lg; }
 }
+
+
+.modal-content{
+  background-color:#fff !important;
+}
+ .btn.btn-action {
+ padding: 0.1rem 1rem;
+ vertical-align: top;
+}
+.modal-backdrop{
+background-color:rgba(255,255,255,.8) !important;
+
+}
+
+.modal-backdrop.show {
+opacity: 1 !important }

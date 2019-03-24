@@ -77,7 +77,9 @@ module.exports = function(grunt) {
       'js/account/modal.js',
       'node_modules/sweetalert/dist/sweetalert.min.js',
       'js/account/settings.js',
-      'js/account/copy.js'
+      'js/account/copy.js',
+      'js/account/investment.js',
+      'js/account/withdraw.js'
 
     ],
     dest:'public/javascripts/account.js'

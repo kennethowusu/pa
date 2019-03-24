@@ -26,6 +26,11 @@ const PAYMENTREQUEST  = sequelize.define('PAYMENTREQUEST',{
   paymentAddress:{
     type:Sequelize.STRING,
     allowNull:false
+  },
+
+  amount:{
+    type:Sequelize.DECIMAL(10, 2),
+    allowNull: false
   }
 
 });

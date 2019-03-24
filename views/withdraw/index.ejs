@@ -1,0 +1,130 @@
+<%-include('../account/header')%>
+
+
+
+<div class="row gap-20 masonry pos-r">
+<%if(user.investment.investment_status=='active' && user.investment.investment_type){%>
+
+  <%
+   const last_withdrawal_date  = new Date(user.finance.last_withdrawal_date);
+   const today = moment(new Date())
+   const next_two_weeks = moment(last_withdrawal_date).add('2','weeks');
+
+
+   const gold_date_left  = next_two_weeks.diff(last_withdrawal_date,'days')
+   const duration  = today.diff(last_withdrawal_date,'days')
+
+
+
+  %>
+  <div class="masonry-item col-md-6">
+    <div class="bgc-white p-20 bd">
+      <p class="text-right">Total Funds</p>
+      <p class="text-right" style="font-size:1.4rem">Principal + Interest</p>
+      <p class="font-weight-bold text-right" style="font-size:1.2rem;color:#2b2b2b">$<%=money.add(user.finance.principal,user.finance.interest)%></p>
+    </div>
+  </div>
+
+  <div class="masonry-item col-md-6 ">
+
+  </div>
+  <%if(user.investment.investment_status=='active' && user.investment.investment_type && user.finance.withdrawal_status == 'pending'){%>
+  <div class="masonry-item col-md-6">
+    <div class="bgc-white p-20 bd">
+
+        <p>You have pending withrawal. You will receive notification as soon as payment is made.</p>
+
+    </div>
+  </div>
+
+
+ <%}else if(duration >=  gold_date_left ){%>
+  <div class="masonry-item col-md-6 ">
+    <button type="button" class="btn btn-success" id="withdrawalBtn">Request Withdrawal</button>
+    <p class="text-muted mT-10">Withdrawal Available</p>
+  </div>
+<%}else{%>
+  <div class="masonry-item col-md-6 ">
+    <button type="button" disabled class="btn btn-success">Request Withdrawal</button>
+    <p class="text-muted mT-10">Withdrawal Unavailable.  Your next withdrawal is on <%=next_two_weeks.format('dddd, MMMM Do YYYY')%></p>
+  </div>
+
+<%}%>
+
+
+
+<%}else if(user.investment.investment_status == 'inactive' && user.investment.investment_type==null ){%>
+  <div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+
+        <p>You are not on any investment package</p>
+
+    </div>
+  </div>
+
+<%}else if(user.investment.investment_status=='pending' && user.investment.investment_type == null){%>
+  <div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+
+        <p>Your investment is pending.Please check back later</p>
+
+    </div>
+  </div>
+
+<%}%>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="withdrawalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Withdrawal Request</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="mT-30">
+          <form>
+            <% const totalFunds = money.add(user.finance.principal,user.finance.interest);
+             const maximumWithdrawal = 0.05 * totalFunds;
+
+            %>
+            <p>Maximum withdrawal is <span class="font-weight-bold"> $<%=parseFloat(maximumWithdrawal).toFixed(2)%></span> (5% of your total funds)</p>
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input type="text" class="form-control isNumber isMoney" id="amount" placeholder="Enter Amount">
+              <label class="error amountErr"></label>
+            </div>
+            <div class="form-group">
+              <label for="paymentMode">Select Payment Mode</label>
+              <select class="form-control" id="paymentMode" >
+                <option value="">Select</option>
+                <option value="Paypal">Paypal</option>
+                <option value="Bitcoin">Bitcoin</option>
+                <option value="Bitcoin Cash">Bitcoin Cash</option>
+                <option value="Ethereum">Ethereum</option>
+                <option value="Stellar">Stellar</option>
+              </select>
+              <label class="error paymentErr"></label>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Wallet Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Your paypal email or curreny wallet address">
+              <label class="error addressErr"></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="requestWithdrawalBtn">Request Withdrawal</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<%-include('../account/footer')%>

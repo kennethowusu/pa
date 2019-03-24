@@ -28,6 +28,18 @@ const moment        = require('moment');
 
 
 
+module.exports.getWithdrawPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  User.findOne({where:{user_id:user_id},include:[{all:true}]})
+  .then(function(foundUser){
+
+    Notification.findAll()
+    .then(function(){
+      return res.render('withdraw/index',{title:"Withdraw",user:foundUser,money:money,moment:moment})
+    })
+  })
+}
+
 
 
 
@@ -38,47 +50,56 @@ const moment        = require('moment');
 //===========================POST ROUTES========================================//
 module.exports.postWithDrawalRequest = (req,res,next)=>{
   const user_id      =  user.getUserId(req,res,next)
-  const paymentOption = req.body.paymentOption
-  const paymentAddress = req.body.paymentAddress
+  const paymentOption = req.body.paymentMode;
+  const amount        = req.body.amount;
+  const paymentAddress = req.body.address
 
   //==============Create payment============//
 
     //===============find user and all details================//
     User.findOne({where:{user_id:user_id},include:[{all:true}]})
     .then(function(foundUser){
+       const totalFunds = money.add(foundUser.finance.principal,foundUser.finance.interest);
+       const maximumWithdrawal = 0.05 * totalFunds;
+       const maximumAmount = maximumWithdrawal.toFixed(2);
+       if(amount > maximumAmount){
+         return res.send({error: `$${amount} is greater than your maximum withdrawal amount of $${maximumAmount}`})
+       }else{
+         //================Create payment request for user==================//
+         PaymentRequest.create({
+           username: `${foundUser.firstname} ${foundUser.lastname}`,
+           userpackage: foundUser.finance.investment_type,
+           user_id:user_id,
+           balance: money.add(foundUser.finance.principal,foundUser.finance.interest),
+           status:'pending',
+           paymentType:paymentOption,
+           paymentAddress:paymentAddress,
+           amount:amount
+         })
 
-      //================Create payment request for user==================//
-      PaymentRequest.create({
-        username: `${foundUser.firstname} ${foundUser.lastname}`,
-        userpackage: foundUser.finance.investment_type,
-        user_id:user_id,
-        balance: money.add(foundUser.finance.principal,foundUser.finance.interest),
-        status:'pending',
-        paymentType:paymentOption,
-        paymentAddress:paymentAddress,
-      })
+         .then(function(){
+           Notification.create({
+             topic:"Withdrawal Request Received",
+             message:'Your request for withdrawal has been received,you will receive a notice... complete',
+             user_id:user_id,
+             is_read:0
+           })
+           .then(function(){
+             User.update({is_read:0},{where:{user_id:user_id}})
+             .then(function(){
+               Finance.update({
+                 withdrawal_status:'pending'},
+                 {where:{user_id:user_id}}
+               )
+               .then(function(){
+                 return res.send({success:'yes'});
+               })
+             })
+           })
 
-      .then(function(){
-        Notification.create({
-          topic:"Withdrawal Request Received",
-          message:'Your request for withdrawal has been received,you will receive a notice... complete',
-          user_id:user_id,
-          is_read:0
-        })
-        .then(function(){
-          User.update({is_read:0},{where:{user_id:user_id}})
-          .then(function(){
-            Finance.update({
-              withdrawal_status:'pending'},
-              {where:{user_id:user_id}}
-            )
-            .then(function(){
-              return res.send({success:'yes'});
-            })
-          })
-        })
+         })
+       }
 
-      })
     })
 
 

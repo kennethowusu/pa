@@ -1,0 +1,115 @@
+<%-include('../account/header')%>
+
+
+
+<div class="row gap-20 masonry pos-r">
+<%if(user.investment.investment_status=='active' && user.investment.investment_type){%>
+
+
+  <div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+      <h6 class="c-grey-900">Currency Adresses</h6>
+      <div class="mT-30">
+        <div class="form-group">
+          <p>Bitcoin</p>
+          <div class="form-control">
+          1D5oSCUsYRudTifQ6bAirVD1WY6nbjb9Kq  clip
+          </div>
+          <button type="button" data-clipboard-text="1D5oSCUsYRudTifQ6bAirVD1WY6nbjb9Kq" class=" bitcoin  clip  mT-10 btn btn-success" name="button">Copy</button>
+        </div>
+
+        <div class="form-group">
+          <p>Bitcon Cash</p>
+          <div class="form-control">
+          qrxr8ywqnzgpga2tyhdsapaf7k5hynxx7s8vldpxhy
+          </div>
+          <button type="button" data-clipboard-text="qrxr8ywqnzgpga2tyhdsapaf7k5hynxx7s8vldpxhy" class=" bitcoin-cash  clip mT-10 btn btn-success" name="button">Copy</button>
+        </div>
+
+        <div class="form-group">
+          <p>Ethereum</p>
+          <div class="form-control">
+          0x14B68DE16280155DAe2E42572CF77A4f67BA636D
+          </div>
+          <button type="button" data-clipboard-text="0x14B68DE16280155DAe2E42572CF77A4f67BA636D" class=" ethereum  clip mT-10 btn btn-success" name="button">Copy</button>
+        </div>
+
+        <div class="form-group">
+          <p>Stellar</p>
+          <div class="form-control">
+          GDTUDBLEPDLR2XMSDALYHWZDA37QLB3PCHBVJDCOCKQBVANESN5I234Y
+          </div>
+          <button type="button" data-clipboard-text="GDTUDBLEPDLR2XMSDALYHWZDA37QLB3PCHBVJDCOCKQBVANESN5I234Y" class=" stellar  clip mT-10 btn btn-success" name="button">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+
+
+      <h6 class="c-grey-900">Confirm Payment</h6>
+      <p>Made payment? Please fill this form to confirm payment. Investment package will be activated as soon as your payment details is confimed.</p>
+      <div class="mT-30">
+        <form>
+          <div class="form-group">
+            <label for="currentPassword">Currency Type </label>
+            <select class="form-control" name="" id="currency">
+              <option value="">Select Currency Type</option>
+              <option value="Bitcoin">Bitcoin</option>
+              <option value="Bitcoin Cash">Bitcoin Cash</option>
+              <option value="Ethereum">Ethereum</option>
+              <option value="Stellar">Stellar</option>
+            </select>
+            <label class="error emptyCurrency"></label>
+          </div>
+          <div class="form-group">
+            <label for="amount" >Amount Paid</label>
+            <input type="text" class="form-control isNumber isMoney" id="amount" placeholder="Enter Amount">
+            <label class="error amountEmpty"></label>
+          </div>
+
+          <div class="form-group">
+            <label for="wallet" >Wallet Address</label>
+            <input type="text" class="form-control" id="wallet" placeholder="Wallet Address">
+            <label class="error walletEmpty"></label>
+          </div>
+
+          <div class="form-group">
+            <label for="transactionId">Transaction ID</label>
+            <input type="password" class="form-control" id="transactionId" placeholder="Transaction ID">
+            <label class="error transactionIdEmpty"></label>
+          </div>
+          <input type="hidden" id="type" value="topup">
+
+          <button type="submit" class="btn btn-primary" id="confirmPaymentBtn">Confirm Payment</button>
+        </form>
+      </div>
+    </div>
+</div>
+<%}else if(user.investment.investment_status == 'inactive' && user.investment.investment_type==null ){%>
+  <div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+
+        <p>You are not on any investment package</p>
+
+    </div>
+  </div>
+
+<%}else if(user.investment.investment_status=='pending' && user.investment.investment_type == null){%>
+  <div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+
+        <p>Your investment is pending.Please check back later</p>
+
+    </div>
+  </div>
+
+<%}%>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<%-include('../account/footer')%>

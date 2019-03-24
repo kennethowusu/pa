@@ -3583,6 +3583,19 @@ button.close {
 @media (min-width: 992px) {
   .modal-lg {
     max-width: 800px; } }
+.modal-content {
+  background-color: #fff !important; }
+
+.btn.btn-action {
+  padding: 0.1rem 1rem;
+  vertical-align: top; }
+
+.modal-backdrop {
+  background-color: rgba(255, 255, 255, 0.8) !important; }
+
+.modal-backdrop.show {
+  opacity: 1 !important; }
+
 .tooltip {
   position: absolute;
   z-index: 1070;

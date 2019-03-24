@@ -908,3 +908,242 @@ changePasswordBtn.on('click',function(e){
 
   });
 })
+
+
+function uncopy(e){
+  const btn = $(e.target);
+  $('.clip').not(btn).html('Copy')
+}
+//=========copy crypto currency addresses=====//
+
+
+$('.bitcoin').on('click',function(e){
+  const clipboard = new ClipboardJS('.bitcoin');
+  clipboard.on('success', function(e) {
+    $('.bitcoin').html('Copied!');
+  });
+    uncopy(e);
+})
+
+$('.bitcoin-cash').on('click',function(e){
+  const clipboard = new ClipboardJS('.bitcoin-cash');
+  clipboard.on('success', function(e) {
+    $('.bitcoin-cash').html('Copied!');
+  });
+    uncopy(e);
+})
+
+$('.ethereum').on('click',function(e){
+  const clipboard = new ClipboardJS('.ethereum');
+  clipboard.on('success', function(e) {
+    $('.ethereum').html('Copied!');
+
+
+  });
+  uncopy(e);
+})
+
+
+$('.stellar').on('click',function(e){
+  const clipboard = new ClipboardJS('.stellar');
+  clipboard.on('success', function(e) {
+    $('.stellar').html('Copied!');
+  });
+    uncopy(e);
+})
+;const goldBtn = $("#goldBtn");
+const diamondBtn = $("#diamondBtn");
+const platinumBtn = $("#platinumBtn")
+
+
+goldBtn.on('click',function(){
+  swal({
+    text:"Continue activating Gold package?",
+    buttons:['Cancel','Continue'],
+    icon:"info"
+  })
+  .then(function(isConfirm){
+    if(isConfirm){
+      window.location.href = "/account/investment/deposit?package=gold"
+    }
+  })
+})
+
+
+diamondBtn.on('click',function(){
+  swal({
+    text:"Continue activating Diamond package?",
+    buttons:['Cancel','Continue'],
+    icon:"info"
+  })
+  .then(function(isConfirm){
+    if(isConfirm){
+      window.location.href = "/account/investment/deposit?package=diamond"
+    }
+  })
+})
+
+platinumBtn.on('click',function(){
+  swal({
+    text:"Continue activating Platinum package?",
+    buttons:['Cancel','Continue'],
+    icon:"info"
+  })
+  .then(function(isConfirm){
+    if(isConfirm){
+      window.location.href = "/account/investment/deposit?package=platinum"
+    }
+  })
+})
+
+
+const currency = $('#currency')
+const amount   = $("#amount");
+const wallet   = $("#wallet");
+const transactionId = $("#transactionId")
+const confirmPaymentBtn = $("#confirmPaymentBtn")
+
+const packageErrorStore = {
+  'emptyCurrency' : "Please select currency",
+  "amountEmpty"   : "Please enter amount",
+  "walletEmpty"   : "Provide wallet address",
+  "transactionIdEmpty" : "Enter Transaction ID"
+}
+
+packageError = [
+  'emptyCurrency',
+  "amountEmpty"  ,
+  "walletEmpty" ,
+  "transactionIdEmpty"
+]
+confirmPaymentBtn.on('click',function(e){
+  e.preventDefault()
+  $('.error').html('')
+  $('.form-control').removeClass('border-danger')
+
+   const currencyVal = currency.find(':selected').val()
+   const amountVal   = amount.val()
+   const walletVal  = wallet.val()
+   const transactionIdVal = transactionId.val()
+
+   check(isEmpty(currencyVal),'emptyCurrency',packageError)
+   check(isEmpty(amountVal),'amountEmpty',packageError)
+   check(isEmpty(walletVal),'walletEmpty',packageError)
+   check(isEmpty(transactionIdVal),'transactionIdEmpty',packageError)
+
+  if(packageError.length > 0 ){
+    packageError.forEach(function(error){
+      $('.'+error).html(packageErrorStore[error])
+      $('.'+error).siblings('.form-control').addClass('border-danger')
+    })
+  }else{
+    const data = {
+      amount:amountVal,
+      currency:currencyVal,
+      wallet:walletVal,
+      transactionId:transactionIdVal,
+      type:$("#type").val(),
+      package:$("#package").val()
+    }
+    $.ajax({
+      type:'post',
+      url:"/account/investment/deposit/confirm-deposit",
+      data:data
+    })
+    .done(function(ajaxResult){
+      if(ajaxResult.error){
+        swal({
+          text:ajaxResult.error,
+          icon:'error'
+        })
+      }else if(ajaxResult.success){
+        swal({
+          text:ajaxResult.success,
+          icon:"success"
+        })
+        .done(function(isConfirm){
+          if(isConfirm){
+            window.location.replace('/account/summary')
+          }
+        })
+      }
+    })
+  }
+})
+;const withdrawBtn = $("#withdrawalBtn")
+const requestWithdrawalBtn = $("#requestWithdrawalBtn")
+
+const paymentMode = $("#paymentMode")
+const address  = $("#address")
+withdrawBtn.on('click',function(e){
+  $("#withdrawalModal").modal()
+})
+
+const withdrawErrorStore = {
+  paymentErr : "Select payment mode",
+  addressErr : "Provide  wallet address",
+  amountErr  : "Enter amount to withdraw"
+}
+const withdrawError = [
+  "paymentErr" ,
+  "addressErr",
+  "amountErr"
+]
+requestWithdrawalBtn.on('click',function(e){
+  e.preventDefault()
+  $('.error').html('');
+  $('.form-control').removeClass('border-danger')
+
+  const amountVal = amount.val()
+  const paymentModeVal = paymentMode.find(":selected").val()
+  const addressVal = address.val()
+  check(isEmpty(paymentModeVal),'paymentErr',withdrawError)
+  check(isEmpty(amountVal),'amountErr',withdrawError)
+  check(isEmpty(addressVal),'addressErr',withdrawError)
+
+  if(withdrawError.length > 0){
+    withdrawError.forEach(function(error){
+      $('.'+error).html(withdrawErrorStore[error])
+      $('.'+error).siblings('.form-control').addClass('border-danger')
+    })
+  }else{
+    swal({
+      text:"Send payment Request?",
+      icon: "info",
+      buttons:["Cancel","Continue"]
+    })
+    .then(function(isConfirm){
+      if(isConfirm){
+        const data = {
+          amount:amountVal,
+          paymentMode:paymentModeVal,
+          address:addressVal
+        }
+        $.ajax({
+          type:'post',
+          url:'/account/withdraw/request',
+          data:data
+        })
+        .done(function(ajaxResult){
+          if(ajaxResult.error){
+            swal({
+              text:ajaxResult.error,
+              icon:"error"
+            })
+          }else if(ajaxResult.success){
+            $('.form-control').val('')
+            swal({
+              text : "Payment request sent successfully",
+              icon:"success"
+            })
+            .then(function(isConfirm){
+              if(isConfirm){
+                window.location.replace('/account/withdraw')
+              }
+            })
+          }
+        })
+      }
+    })
+  }
+})
