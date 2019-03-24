@@ -67,3 +67,22 @@ module.exports.getSingleNoticationPage = (req,res,next)=>{
       })
   })
 }
+
+module.exports.readNotification = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+
+  User.update({is_read:1},{where:{user_id:user_id}})
+    .then(function(){
+      return res.send({success:'yes'})
+    })
+}
+
+module.exports.readSingleNote = (req,res,next)=>{
+  const noteId = req.body.noteId;
+  const user_id = user.getUserId(req,res,next)
+
+  Notification.update({is_read:1},{where:{id:noteId,user_id:user_id}})
+    .then(function(){
+      return res.send('ok')
+    })
+}

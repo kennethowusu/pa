@@ -17,4 +17,7 @@ router.get('/',user.requireAuth,notificationController.getNotificationIndexPage)
 router.get('/:id',user.requireAuth,notificationController.getSingleNoticationPage)
 // router.post('/change-password',user.requireAuth,settingsController.changePassword)
 
+router.post('/read',user.requireAuth,notificationController.readNotification)
+
+router.post('/singlenote/read',user.requireAuth,notificationController.readSingleNote)
 module.exports = router;

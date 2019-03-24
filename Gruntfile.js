@@ -81,7 +81,8 @@ module.exports = function(grunt) {
       'js/account/settings.js',
       'js/account/copy.js',
       'js/account/investment.js',
-      'js/account/withdraw.js'
+      'js/account/withdraw.js',
+      'js/account/notification.js'
 
     ],
     dest:'public/javascripts/account.js'

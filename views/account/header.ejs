@@ -12,6 +12,10 @@
     </script>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
     <style>
+
+     .unread{
+       background-color:#eee !important;
+     }
       #loader {
         transition: all 0.3s ease-in-out;
         opacity: 1;
@@ -206,8 +210,8 @@
 
             </ul>
             <ul class="nav-right">
-              <li class="notifications dropdown">
-                <%if(user.is_read = '0'){%>
+              <li class="notifications dropdown" id="notificationHand">
+                <%if(user.is_read == '0'){%>
                   <%var newMessageCount = 0;
                     notifications.forEach(function(notification){
                       if(notification.is_read == '0'){
@@ -215,7 +219,7 @@
                       }
                     })
                   %>
-                  <span class="counter bgc-red"><%=newMessageCount%></span>
+                  <span class="counter bgc-red" id="notificationCount"><%=newMessageCount%></span>
                 <%}%>
                 <a href="" class="dropdown-toggle no-after" data-toggle="dropdown">
                   <i class="ti-bell"></i>
@@ -231,17 +235,22 @@
                       <li>
                         <%if(notifications){%>
                           <%notifications.forEach(function(notification){%>
-                            <a href="/account/notifications/<%=notification.id%>" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
+                            <%if(notification.is_read == '0'){%>
+                                <a href="/account/notifications/<%=notification.id%>" noteid="<%=notification.id%>" class=' singleNotePreview unread peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
+
+                            <%}else{%>
+                                <a href="/account/notifications/<%=notification.id%>" noteid="<%=notification.id%>" class=' singleNotePreview peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
+                            <%}%>
                               <!-- <div class="peer mR-15">
                                 <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
                               </div> -->
-                              <div class="peer peer-greed">
-                                <span>
-                                  <span class="fw-500"><%=notification.topic%></span>
+                              <div class="peer peer-greed singleNotePreview" noteid="<%=notification.id%>">
+                                <span class="singleNotePreview" noteid="<%=notification.id%>">
+                                  <span class="fw-500  singleNotePreview" noteid="<%=notification.id%>"><%=notification.topic%></span>
                                   <!-- <span class="c-grey-600">liked your <span class="text-dark">post</span>
                                   </span> -->
                                 </span>
-                                <p class="m-0">
+                                <p class="m-0  singleNotePreview" noteid="<%=notification.id%>">
                                   <small class="fsz-xs"><%=moment(notification.createdAt).fromNow()%></small>
                                 </p>
                               </div>
