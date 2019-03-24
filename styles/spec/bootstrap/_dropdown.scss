@@ -132,12 +132,14 @@
 
 .centerNotification{
 
-  right:-50px !important;
-
+  left: -155px !important;
+  min-width:300px !important;
   @media(min-width:350px){
+    min-width:300px !important;
     max-width: 350px !important;
   }
   @media(min-width:800px){
+    left:auto !important;
     right : 0 !important;
   }
 }

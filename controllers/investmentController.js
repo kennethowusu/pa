@@ -5,6 +5,7 @@ const user  = require('../functions/userFunctions');
 const mail  = require('../mail/mail');
 const util  = require('util');
 const moment = require('moment')
+const money = require('money-math')
 const CMC   = require('coinmarketcap-api')
 require('dotenv').config();
 const request = require('request')
@@ -24,7 +25,7 @@ module.exports.getInvestmentIndexPage = (req,res,next)=>{
     Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
     .then(function(notifications){
       return res.render('investment/index',
-      {title:"Investment",user:foundUser,notifications:notifications,moment:moment})
+      {title:"Investment",user:foundUser,notifications:notifications,moment:moment,money:money})
     })
   })
 }

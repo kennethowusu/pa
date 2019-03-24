@@ -31,6 +31,9 @@ router.get('/faqs',user.loggedIn,indexController.getFaqsPage);
 router.get('/terms',user.loggedIn,indexController.getTermsPage)
 
 router.get('/about-us',user.loggedIn,indexController.getAboutUsPage)
+
+router.get('/investment-plans',user.loggedIn,indexController.getInvestmentPage)
+
 router.get('/contact',user.loggedIn,indexController.getContactPage)
 //================logout==================//
 router.get('/account/logout',indexController.logout);
