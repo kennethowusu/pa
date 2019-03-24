@@ -30,34 +30,6 @@ module.exports.getIndexPage = (req,res,next)=>{
               return res.render('index',{title:"Prime Axis LLC",news:news,moment:moment});
           });
 
-  // const i = req.query.i;
-  // if(req.query.i){
-  //   req.session.i=i;
-  // }
-  // const rp = require('request-promise');
-  // const requestOptions = {
-  // method: 'GET',
-  // uri: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest',
-  // qs: {
-  //   start: 1,
-  //   limit:6,
-  //   convert: 'USD'
-  // },
-  // headers: {
-  //   'X-CMC_PRO_API_KEY': 'ad9410ba-172b-4f51-866b-5812dccf5271'
-  // },
-  // json: true,
-  // gzip: true
-  // };
-  //
-  // rp(requestOptions).then(response => {
-
-
-  // }).catch((err) => {
-  // console.log('API call error:', err.message);
-  // });
-
-
 
 }
 //=======get signup page========================//

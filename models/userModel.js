@@ -66,9 +66,6 @@ User.hasOne(FINANCE, {foreignKey: 'user_id', sourceKey: 'user_id'});
 User.hasMany(Deposit, {foreignKey: 'user_id', sourceKey: 'user_id'});
 User.hasMany(paymentDetail, {foreignKey: 'user_id', sourceKey: 'user_id'});
 User.hasMany(paymentRequest,{foreignKey:'user_id',sourceKey:'user_id'})
-// sequelize.sync({
-//   force:false
-//  })
 
 
 
