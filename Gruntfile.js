@@ -73,8 +73,10 @@ module.exports = function(grunt) {
     src:[
 
       'js/account/universal.js',
-      'js/account/util.js',
-      'js/account/modal.js',
+      // 'js/account/util.js',
+      // 'js/account/modal.js',
+      // 'js/account/popover.js',
+      // 'js/account/dropdown.js',
       'node_modules/sweetalert/dist/sweetalert.min.js',
       'js/account/settings.js',
       'js/account/copy.js',

@@ -22,9 +22,10 @@ module.exports.getReferralIndexPage = (req,res,next)=>{
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
     const refUrl = req.protocol + '://' + req.get('host') + '?i=' + foundUser.referal_id;
-    Notification.findAll()
-    .then(function(){
-      return res.render('referral/index',{title:"Referral",user:foundUser,refUrl:refUrl})
+    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+    .then(function(notifications){
+      return res.render('referral/index',
+      {title:"Referral",user:foundUser,refUrl:refUrl,notifications:notifications,moment:moment})
     })
   })
 }

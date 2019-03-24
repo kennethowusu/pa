@@ -33,9 +33,10 @@ module.exports.getWithdrawPage = (req,res,next)=>{
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
 
-    Notification.findAll()
-    .then(function(){
-      return res.render('withdraw/index',{title:"Withdraw",user:foundUser,money:money,moment:moment})
+    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+    .then(function(notifications){
+      return res.render('withdraw/index',
+      {title:"Withdraw",user:foundUser,money:money,notifications:notifications,moment:moment})
     })
   })
 }

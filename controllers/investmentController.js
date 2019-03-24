@@ -21,9 +21,10 @@ module.exports.getInvestmentIndexPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-    Notification.findAll()
-    .then(function(){
-      return res.render('investment/index',{title:"Investment",user:foundUser})
+    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+    .then(function(notifications){
+      return res.render('investment/index',
+      {title:"Investment",user:foundUser,notifications:notifications,moment:moment})
     })
   })
 }
@@ -34,9 +35,10 @@ module.exports.getDepositPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-    Notification.findAll()
-    .then(function(){
-      return res.render('investment/deposit',{title:"Deposit",user:foundUser,package:package})
+    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+    .then(function(notifications){
+      return res.render('investment/deposit',
+      {title:"Deposit",user:foundUser,package:package,notifications:notifications,moment:moment})
     })
   })
 }
@@ -45,9 +47,10 @@ module.exports.getTopupPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-    Notification.findAll()
-    .then(function(){
-      return res.render('investment/topup',{title:"Top Up",user:foundUser})
+    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+    .then(function(notifications){
+      return res.render('investment/topup',
+      {title:"Top Up",user:foundUser,notifications:notifications,moment:moment})
     })
   })
 }

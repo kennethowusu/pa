@@ -12,7 +12,8 @@ var accountRouter = require('./routes/account');
 var withdrawRouter   = require('./routes/withdraw')
 var summaryRouter   = require('./routes/summary');
 var investmentRouter = require('./routes/investment')
-var referralRouter  = require('./routes/referral')
+var referralRouter  = require('./routes/referral');
+var notificationRouter = require('./routes/notification')
 var settingsRouter  = require('./routes/settings')
 var app = express();
 
@@ -63,6 +64,7 @@ app.use('/account/summary',summaryRouter)
 app.use('/account/investment',investmentRouter)
 app.use('/account/settings',settingsRouter)
 app.use('/account/referral',referralRouter)
+app.use('/account/notifications',notificationRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

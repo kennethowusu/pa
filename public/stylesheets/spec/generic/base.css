@@ -5,7 +5,7 @@ Error: Undefined variable: "$default-text-color".
 9: }
 10: 
 11: body {
-12:   font-family: $primary-font;
+12:   font-family: $primary-font !important;
 13:   font-size: 14px;
 14:   color: $default-text-color;
 15:   line-height: 1.5;
@@ -69,4 +69,4 @@ C:/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-listen-4.0.0/lib/sass-listen/interna
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$default-text-color\".\A         on line 14 of styles/spec/generic/base.scss\A \A 9: }\A 10: \A 11: body {\A 12:   font-family: $primary-font;\A 13:   font-size: 14px;\A 14:   color: $default-text-color;\A 15:   line-height: 1.5;\A 16:   letter-spacing: 0.2px;\A 17:   overflow-x: hidden;\A 18: }\A 19: "; }
+  content: "Error: Undefined variable: \"$default-text-color\".\A         on line 14 of styles/spec/generic/base.scss\A \A 9: }\A 10: \A 11: body {\A 12:   font-family: $primary-font !important;\A 13:   font-size: 14px;\A 14:   color: $default-text-color;\A 15:   line-height: 1.5;\A 16:   letter-spacing: 0.2px;\A 17:   overflow-x: hidden;\A 18: }\A 19: "; }

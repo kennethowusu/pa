@@ -4,7 +4,7 @@ $('.refLink').on('click',function(){
     $('.refLink').html('Copied!');
 
   });
-})
+}) 
 
 
 function uncopy(e){

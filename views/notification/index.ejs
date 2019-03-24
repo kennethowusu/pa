@@ -1,0 +1,20 @@
+<%-include('../account/header')%>
+
+
+
+ <%notices.forEach(function(notice){%>
+   <div class="row gap-20 masonry pos-r">
+
+     <div class="masonry-item col-md-6">
+       <div class="bgc-white p-20 bd">
+         <h6 class="c-grey-900"><%=notice.topic%></h6>
+        <p><%=notice.message%></p>
+         <div class="d-flex">
+             <h6 class="c-grey-900 mr-1"><%=moment(notice.createdAt).format('Do MMMM YYYY')%> </h6> at   <h6 class="c-grey-900 ml-1"><%=moment(notice.createdAt).format('hh:mm a')%></h6>
+         </div>
+       </div>
+     </div>
+   </div>
+ <%})%>
+
+<%-include('../account/footer')%>

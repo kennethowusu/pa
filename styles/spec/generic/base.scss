@@ -1,4 +1,4 @@
-$primary-font : "pt sans",sans-serif;
+$primary-font : "work sans",sans-serif;
 
 html, html a, body {
   -webkit-font-smoothing: antialiased;
@@ -9,7 +9,7 @@ a {
 }
 
 body {
-  font-family: $primary-font;
+  font-family: $primary-font !important;
   font-size: 14px;
   color: $default-text-color;
   line-height: 1.5;
@@ -23,12 +23,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-secondary;
+  font-family: $primary-font !important;
   letter-spacing: 0.5px;
   line-height: 1.5;
 
   a {
-    font-family: $font-secondary;
+    font-family: $primary-font !important;
   }
 
   small {

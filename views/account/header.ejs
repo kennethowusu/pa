@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/images/favicon.png">
     <title><%=title%></title>
      <script
         src="http://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous">
     </script>
-
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
     <style>
       #loader {
         transition: all 0.3s ease-in-out;
@@ -103,8 +104,8 @@
                 <a class="sidebar-link td-n" href="/account/summary">
                   <div class="peers ai-c fxw-nw">
                     <div class="peer">
-                      <div class="logo">
-                        <img src="assets/static/images/logo.png" alt="">
+                      <div class="logo d-flex justify-content-center align-items-center">
+                        <img src="/images/logo.png" style="width:34px" alt="">
                       </div>
                     </div>
                     <div class="peer peer-greed">
@@ -166,14 +167,14 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class='sidebar-link' href="charts.html">
+              <a class='sidebar-link' href="/account/notifications">
                 <span class="icon-holder">
                   <i class="c-indigo-500 ti-bell"></i>
                 </span>
                 <span class="title">Notifications</span>
               </a>
             </li>
-      
+
             <li class="nav-item dropdown">
               <a class="sidebar-link" href="/account/settings">
                 <span class="icon-holder">
@@ -206,12 +207,21 @@
             </ul>
             <ul class="nav-right">
               <li class="notifications dropdown">
-                <span class="counter bgc-red">3</span>
+                <%if(user.is_read = '0'){%>
+                  <%var newMessageCount = 0;
+                    notifications.forEach(function(notification){
+                      if(notification.is_read == '0'){
+                        newMessageCount +=1;
+                      }
+                    })
+                  %>
+                  <span class="counter bgc-red"><%=newMessageCount%></span>
+                <%}%>
                 <a href="" class="dropdown-toggle no-after" data-toggle="dropdown">
                   <i class="ti-bell"></i>
                 </a>
 
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu centerNotification">
                   <li class="pX-20 pY-15 bdB">
                     <i class="ti-bell pR-10"></i>
                     <span class="fsz-sm fw-600 c-grey-900">Notifications</span>
@@ -219,61 +229,33 @@
                   <li>
                     <ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
                       <li>
-                        <a href="" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
-                          <div class="peer mR-15">
-                            <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
-                          </div>
-                          <div class="peer peer-greed">
-                            <span>
-                              <span class="fw-500">Kenneth Owusu</span>
-                              <span class="c-grey-600">liked your <span class="text-dark">post</span>
-                              </span>
-                            </span>
-                            <p class="m-0">
-                              <small class="fsz-xs">5 mins ago</small>
-                            </p>
-                          </div>
-                        </a>
+                        <%if(notifications){%>
+                          <%notifications.forEach(function(notification){%>
+                            <a href="/account/notifications/<%=notification.id%>" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
+                              <!-- <div class="peer mR-15">
+                                <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
+                              </div> -->
+                              <div class="peer peer-greed">
+                                <span>
+                                  <span class="fw-500"><%=notification.topic%></span>
+                                  <!-- <span class="c-grey-600">liked your <span class="text-dark">post</span>
+                                  </span> -->
+                                </span>
+                                <p class="m-0">
+                                  <small class="fsz-xs"><%=moment(notification.createdAt).fromNow()%></small>
+                                </p>
+                              </div>
+                            </a>
+                          <%})%>
+                        <%}%>
                       </li>
-                      <li>
-                        <a href="" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
-                          <div class="peer mR-15">
-                            <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/2.jpg" alt="">
-                          </div>
-                          <div class="peer peer-greed">
-                            <span>
-                              <span class="fw-500">Moo Doe</span>
-                              <span class="c-grey-600">liked your <span class="text-dark">cover image</span>
-                              </span>
-                            </span>
-                            <p class="m-0">
-                              <small class="fsz-xs">7 mins ago</small>
-                            </p>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="" class='peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100'>
-                          <div class="peer mR-15">
-                            <img class="w-3r bdrs-50p" src="https://randomuser.me/api/portraits/men/3.jpg" alt="">
-                          </div>
-                          <div class="peer peer-greed">
-                            <span>
-                              <span class="fw-500">Lee Doe</span>
-                              <span class="c-grey-600">commented on your <span class="text-dark">video</span>
-                              </span>
-                            </span>
-                            <p class="m-0">
-                              <small class="fsz-xs">10 mins ago</small>
-                            </p>
-                          </div>
-                        </a>
-                      </li>
+
+
                     </ul>
                   </li>
                   <li class="pX-20 pY-15 ta-c bdT">
                     <span>
-                      <a href="" class="c-grey-600 cH-blue fsz-sm td-n">View All Notifications <i class="ti-angle-right fsz-xs mL-10"></i></a>
+                      <a href="/account/notifications" class="c-grey-600 cH-blue fsz-sm td-n">View All Notifications <i class="ti-angle-right fsz-xs mL-10"></i></a>
                     </span>
                   </li>
                 </ul>
@@ -284,32 +266,22 @@
                   <div class="peer mR-10">
                     <img class="w-2r bdrs-50p" src="/images/rasta/user.png" alt="">
                   </div>
-                  <div class="peer">
+                  <div class="peer mr-2">
                     <span class="fsz-sm c-grey-900 text-capitalize"><%=user.firstname%> <%=user.lastname%></span>
                   </div>
+                    <i class="ti-angle-down mR-10" style="font-size: 14px !important;"></i>
                 </a>
                 <ul class="dropdown-menu fsz-sm">
                   <li>
-                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                    <a href="/account/settings" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                       <i class="ti-settings mR-10"></i>
                       <span>Setting</span>
                     </a>
                   </li>
-                  <li>
-                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                      <i class="ti-user mR-10"></i>
-                      <span>Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="email.html" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
-                      <i class="ti-email mR-10"></i>
-                      <span>Messages</span>
-                    </a>
-                  </li>
+
                   <li role="separator" class="divider"></li>
                   <li>
-                    <a href="" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                    <a href="/account/logout" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                       <i class="ti-power-off mR-10"></i>
                       <span>Logout</span>
                     </a>

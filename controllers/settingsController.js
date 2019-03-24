@@ -21,9 +21,10 @@ module.exports.getSettingsIndexPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-    Notification.findAll()
-    .then(function(){
-      return res.render('settings/index',{title:"Settings",user:foundUser})
+    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+    .then(function(notifications){
+      return res.render('settings/index',
+       {title:"Settings",user:foundUser,notifications:notifications,moment:moment})
     })
   })
 }

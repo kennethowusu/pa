@@ -1,0 +1,22 @@
+<%-include('../account/header')%>
+
+
+
+<div class="row gap-20 masonry pos-r">
+
+  <div class="masonry-item col-md-6">
+    <div class="bgc-white p-20 bd">
+      <h6 class="c-grey-900"><%=singleNote.topic%></h6>
+     <p><%=singleNote.message%></p>
+      <div class="d-flex">
+         <h6 class="c-grey-900 mr-1"><%=moment(singleNote.createdAt).format('Do MMMM YYYY')%> </h6> at   <h6 class="c-grey-900 ml-1"><%=moment(singleNote.createdAt).format('hh:mm a')%></h6>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+<%-include('../account/footer')%>
