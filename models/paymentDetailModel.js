@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
 
 //3P81teTCfC
-const PAYMENT  = sequelize.define('paymentDetail',{
+const PAYMENT  = sequelize.define('paymentdetail',{
 
   paymentType:{
     type:Sequelize.STRING,
