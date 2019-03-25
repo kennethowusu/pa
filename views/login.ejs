@@ -46,7 +46,7 @@
                  <input type="submit" value="Log In" id="loginBtn" class="btn w-100 btn-orange text-white rad-s py-3 px-5">
                </div>
 
-               <p><a href="#" class="text-muted">Forgot password?</a></p>
+               <p><a href="#" id="forgotpassword" class="text-muted">Forgot password?</a></p>
 
                <div class="form-group">
                  <a href="/register" class="btn w-100 btn-muted text-black rad-s py-3 px-5 no-shadow">Register</a>
@@ -57,6 +57,50 @@
            </div>
          </form>
    </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+           <div class="">
+
+                 <p class="error text-center" ></p>
+                 <div method="post">
+                   <div class="col-md-12 offset-lg-12 pr-md-5">
+                     <div action="#">
+                       <p>If your email exists a reset link will be sent to you.</p>
+                       <div class="form-group">
+                         <input type="text" class="form-control form" id="email" placeholder="Enter your Email">
+                         <label for="" class="error resetEmail"></label>
+                       </div>
+
+                     </div>
+
+                   </div>
+                 </div>
+           </div>
+
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+          <input type="submit" value="Reset Password" id="loginBtn" class="btn w-100 btn-orange text-white rad-s py-3 px-5">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

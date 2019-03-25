@@ -12,12 +12,23 @@ const notificationController = require('../controllers/notificationController')
 
 
 
-router.get('/',user.requireAuth,notificationController.getNotificationIndexPage)
+router.get('/',user.requireAuth,
+          user.isVerified,
+         notificationController.getNotificationIndexPage)
 
-router.get('/:id',user.requireAuth,notificationController.getSingleNoticationPage)
+router.get('/:id',
+          user.requireAuth,
+          user.isVerified,
+          notificationController.getSingleNoticationPage)
 // router.post('/change-password',user.requireAuth,settingsController.changePassword)
 
-router.post('/read',user.requireAuth,notificationController.readNotification)
+router.post('/read',
+            user.requireAuth,
+            user.isVerified,
+            notificationController.readNotification)
 
-router.post('/singlenote/read',user.requireAuth,notificationController.readSingleNote)
+router.post('/singlenote/read',
+              user.requireAuth,
+              user.isVerified,
+              notificationController.readSingleNote)
 module.exports = router;

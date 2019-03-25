@@ -19,7 +19,9 @@ const withdrawController  = require('../controllers/withdrawController')
 
 
 
-router.get('/',user.requireAuth,withdrawController.getWithdrawPage)
+router.get('/',user.requireAuth,
+             user.isVerified,
+             withdrawController.getWithdrawPage)
 
 
 

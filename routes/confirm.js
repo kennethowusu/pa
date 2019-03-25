@@ -6,19 +6,22 @@ const account = require("../functions/accountFunctions");
 const util = require('util');
 
 
-const settingsController = require('../controllers/settingsController')
+const confirmController = require('../controllers/confirmController')
+
 
 
 
 
 
 router.get('/',user.requireAuth,
-          user.isVerified,
-          settingsController.getSettingsIndexPage)
 
+         confirmController.getConfirmationPage)
 
-router.post('/change-password',
-            user.requireAuth,
-            settingsController.changePassword)
+router.get('/verification/:token',user.requireAuth,
+        confirmController.verifyEmail)
+
+router.post('/send-confirmation-link',user.requireAuth,
+        confirmController.resendConfirmationLink)
+
 
 module.exports = router;

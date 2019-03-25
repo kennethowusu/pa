@@ -17,8 +17,8 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: process.env.NAMECHEAPEMAILADDRESS, // generated ethereal user
-        pass: process.env.NAMECHEAPPASSWORD // generated ethereal password
+        user:'support@primeaxisllc.com', // generated ethereal user
+        pass: 'Prim#axim22' // generated ethereal password
     }
 });
 

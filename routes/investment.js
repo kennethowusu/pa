@@ -12,12 +12,24 @@ const investmentController = require('../controllers/investmentController')
 
 
 
-router.get('/',user.requireAuth,investmentController.getInvestmentIndexPage)
+router.get('/',
+      user.requireAuth,
+      user.isVerified,
+      investmentController.getInvestmentIndexPage)
 
 
-router.get('/top-up',user.requireAuth,investmentController.getTopupPage)
+router.get('/top-up',
+          user.requireAuth,
+          user.isVerified,
+          investmentController.getTopupPage)
 
-router.get('/deposit',user.requireAuth,investmentController.getDepositPage)
+router.get('/deposit',
+            user.requireAuth,
+            user.isVerified,
+            investmentController.getDepositPage)
 
-router.post('/deposit/confirm-deposit',user.requireAuth,investmentController.confirmPayment)
+router.post('/deposit/confirm-deposit',
+            user.requireAuth,
+            user.isVerified,
+            investmentController.confirmPayment)
 module.exports = router;

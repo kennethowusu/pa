@@ -12,7 +12,10 @@ const referralController = require('../controllers/referralController')
 
 
 
-router.get('/',user.requireAuth,referralController.getReferralIndexPage)
+router.get('/',
+     user.requireAuth,
+     user.isVerified,
+     referralController.getReferralIndexPage)
 
 
 // router.post('/change-password',user.requireAuth,settingsController.changePassword)

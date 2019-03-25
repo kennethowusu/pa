@@ -110,17 +110,6 @@ module.exports.getReferralPage = (req,res,next)=>{
 }
 
 
-module.exports.sendResetLink = function(req,res,next){
-  const  user_id = user.getUserId(req,res,next);
-  const  url = req.protocol + '://' + req.get('host') + '/account/confirmation/verification/';
-  User.find({where:{user_id:user_id}})
-      .then(function(person){
-        const verificationLink = user.generateVerificationToken(req,res,next,person);
-        mail.sendEmailVerificationLink(person.email,url+verificationLink);
-      }).then(function(){
-        return res.send('sent');
-      })
-}
 
 module.exports.confirmResetPasswordToken = (req,res,next)=>{
   const token = req.params.token;
@@ -132,96 +121,12 @@ module.exports.confirmResetPasswordToken = (req,res,next)=>{
       return res.render('password-reset',{title:"Password Reset",email:user.email});
     })
 }
-module.exports.getActivityPage = (req,res,next)=>{
-  const user_id = user.getUserId(req,res,next);
-
-  User.findOne({where:{user_id:user_id},
-    include: [{model: Notification,where: {user_id:user_id},
-      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3}]
-  })
-  .then((person)=>{
-
-    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
-    then(function(count){
-      return res.render('account/activity',{title:'Activity',
-      user:person,notifications:person.notifications,
-      moment:moment,truncate:truncate,notification_count:count})
-    })//Notificatin.findAndCountAll
-  })//then(person)
-}
 
 
 
-module.exports.getWithdrawPage = (req,res,next)=>{
-  const user_id = user.getUserId(req,res,next);
-
-  User.findOne({where:{user_id:user_id},
-    include: [{model: Notification,where: {user_id:user_id},
-      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
-      {model:Investment,where:{user_id:user_id},required:true},
-      {model:Finance,where:{user_id:user_id},required:true}
-
-    ]
-
-  })
-  .then((person)=>{
-     const investment_date = new Date(person.investment.investment_date).getTime();
-     const weeks = investment_date + (24 * 60 * 60 * 1000 * 21)
-     const now             = new Date();
-     const date_difference = now - investment_date;
-     console.log(new Date(weeks))
-
-
-    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
-    then(function(count){
-      return res.render('account/withdraw',{title:'Withdraw',
-      user:person,notifications:person.notifications,
-      moment:moment,truncate:truncate,notification_count:count,
-      investment:person.investment,finance:person.finance,moment:moment,
-      money:money
-    })
-    })//Notificatin.findAndCountAll
-  })//then(person);
-}
 
 
 
-module.exports.getNotificationsPage = (req,res,next)=>{
-  const user_id = user.getUserId(req,res,next);
-
-  User.findOne({where:{user_id:user_id},
-    include: [{model: Notification,where: {user_id:user_id},
-      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
-      {model:Investment,where:{user_id:user_id},required:true},
-      {model:Finance,where:{user_id:user_id},required:true}
-
-    ]
-
-  })
-  .then((person)=>{
-
-
-    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}})
-    .then(function(count){
-
-
-
-          Notification.findAll({where:{user_id:user_id}})
-          .then(function(notes){
-            return res.render('account/notifications',{title:'Notifications',
-            user:person,notifications:person.notifications,
-            moment:moment,truncate:truncate,notification_count:count,
-            investment:person.investment,finance:person.finance,notes:notes
-
-
-            })
-
-
-      })
-
-    })
-  })//then(person);
-}
 
 module.exports.getNotificationPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next);
@@ -262,111 +167,10 @@ module.exports.getNotificationPage = (req,res,next)=>{
   })//then(person);
 }
 
-module.exports.getDepositPage  = (req,res,next)=>{
-  const type = req.query.type;
-  const amount = req.query.amount;
-  const title  = req.query.title;
-  const user_id = user.getUserId(req,res,next);
-
-  if(type==null || amount==null){
-    return res.redirect('/account/summary');
-  }
-  if(type=='gold-plan' || type=='diamond-plan' || type=='platinum-plan'){
-  }else{
-    return res.redirect('/account/summary');
-  }
-  if(type=='gold-plan'){
-    if(amount > 999 && amount<=10000){
-
-    }else{
-      return res.redirect('/account/summary');
-    }
-  }else if(type=='diamond-plan'){
-    if(amount >=10000){
-
-    }else{
-      return res.redirect('/account/summary');
-    }
-  }else if(type=='platinum-plan'){
-    if(amount >=1000){
-
-  }else{
-    return res.redirect('/account/summary');
-  }
-}
 
 
 
-  User.findOne({where:{user_id:user_id},
-    include: [{model: Notification,where: {user_id:user_id},
-      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3}]
-  })
-  .then((person)=>{
 
-    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
-    then(function(count){
-
-      gateway.clientToken.generate({}, function (err, response) {
-        return res.render('account/deposit',{title:'Deposit',
-        user:person,notifications:person.notifications,
-        moment:moment,truncate:truncate,notification_count:count,
-        token:response.clientToken,type:type,amount:amount,package_title:title})
-    })
-
-    })//Notificatin.findAndCountAll
-  })//then(person)
-}
-
-module.exports.getInvestmentPage = (req,res,next)=>{
-  const user_id = user.getUserId(req,res,next);
-
-  User.findOne({where:{user_id:user_id},
-    include: [{model: Notification,where: {user_id:user_id},
-      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
-    {model:Investment,where:{user_id:user_id},required:true},
-    {model:Finance,where:{user_id:user_id},required:true}
-   ]
-  })
-  .then((person)=>{
-    console.log(person)
-    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
-    then(function(count){
-      console.log(count)
-      return res.render('account/investment',{title:'Investment',
-      user:person,notifications:person.notifications,
-      moment:moment,truncate:truncate,notification_count:count,
-      investment:person.investment})
-    })//Notificatin.findAndCountAll
-  })//then(person)
-}
-
-
-
-module.exports.getTopupPage = (req,res,next)=>{
-
-  const user_id = user.getUserId(req,res,next);
-
-  User.findOne({where:{user_id:user_id},
-    include: [{model: Notification,where: {user_id:user_id},
-      required: true,order:[['createdAt','DESC']],count:{where:{is_read:0}},limit:3},
-    {model:Investment,where:{user_id:user_id},required:true},
-    {model:Finance,where:{user_id:user_id},required:true}
-   ]
-  })
-  .then((person)=>{
-    console.log(person)
-    Notification.findAndCountAll({where:{user_id:user_id,is_read:0}}).
-    then(function(count){
-      console.log(count)
-      return res.render('account/topup',{title:'Top up Investment Pricipal',
-      user:person,notifications:person.notifications,
-      moment:moment,truncate:truncate,notification_count:count,
-      investment:person.investment})
-    })//Notificatin.findAndCountAll
-  })//then(person)
-
-
-}
 //=================POST CONTROLLERS=====================//
 module.exports.sendPasswordResetLink = (req,res,next)=>{
   const email  = req.body.email;
@@ -383,83 +187,7 @@ module.exports.sendPasswordResetLink = (req,res,next)=>{
         }
       })
 }
-module.exports.deposit = (req,res,next)=>{
 
-  const user_id = user.getUserId(req,res,next);
-  const nonce  = req.body.nonce;
-  const amount = req.body.amount;
-  const payment_type = req.body.method;
-  const investment_type = req.body.investment_type;
-
-
-  if(payment_type=="card"){
-    gateway.transaction.sale({
-      amount: amount,
-      paymentMethodNonce: req.body.nonce,
-      options: {
-        submitForSettlement: true
-      }
-    }, function (err, result) {
-      if(result.success && result.transaction.status == 'submitted_for_settlement' && result.transaction.processorResponseCode =='1000' && result.transaction.processorResponseText == 'Approved'){
-           //=======if transaction is authorized update investment data
-           Investment.update({
-             user_id:user_id,
-             investment_amount:result.transaction.amount,
-             investment_type:investment_type,
-             investment_status:'pending',
-             principal_transaction_id:result.transaction.id,
-             principal_credited_status:'no',
-             investment_date:Date.now(),
-           },{where:{user_id:user_id}})
-           .then(function(){
-             //=========store transaction in depsosit table
-             Deposit.create({
-               user_id:user_id,
-               transaction_id:result.transaction.id,
-               transaction_status:result.transaction.status,
-               transaction_amount:result.transaction.amount,
-               transaction_credited:'no'
-
-             })
-             .then(function(){
-               console.log('Just did what you asked');
-             })
-
-
-           })
-
-      }else if(!result.success){
-        console.log(util.inspect(result,false,null,true))
-      }
-    });
-
-  }else if(payment_type="paypal"){
-    var saleRequest = {
-        amount: req.body.amount,
-        paymentMethodNonce: req.body.nonce,
-        orderId: "Mapped to PayPal Invoice Number",
-        options: {
-          submitForSettlement: true,
-          paypal: {
-            customField: "PayPal custom field",
-            description: "Description for PayPal email receipt",
-          },
-        }
-      };
-
-gateway.transaction.sale(saleRequest, function (err, result) {
-        if (err) {
-          res.send("<h1>Error:  " + err + "</h1>");
-        } else if (result.success) {
-          res.send("<h1>Success! Transaction ID: " + result.transaction.id + "</h1>");
-        } else {
-          res.send("<h1>Error:  " + result.message + "</h1>");
-        }
-    });
-}//else if
-
-
-}
 
 
 module.exports.sendCryptoPayment = (req,res,next)=>{

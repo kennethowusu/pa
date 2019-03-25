@@ -186,3 +186,25 @@ registerBtn.on('click',function(e){
     })
   }
 })
+
+
+
+
+
+const resendConfirmationLink = $("#resendConfirmationLink");
+resendConfirmationLink.on('click',function(e){
+  e.preventDefault()
+  $.ajax({
+    type:'post',
+    url :'/account/confirmation/send-confirmation-link'
+  })
+})
+
+
+
+//===============for resetting password==============//
+const forgotpassword = $("#forgotpassword")
+forgotpassword.on('click',function(e){
+  e.preventDefault();
+  $("#resetPasswordModal").modal()
+})

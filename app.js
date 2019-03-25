@@ -11,6 +11,7 @@ var usersRouter = require('./routes/users');
 var accountRouter = require('./routes/account');
 var withdrawRouter   = require('./routes/withdraw')
 var summaryRouter   = require('./routes/summary');
+var confirmRouter = require('./routes/confirm')
 var investmentRouter = require('./routes/investment')
 var referralRouter  = require('./routes/referral');
 var notificationRouter = require('./routes/notification')
@@ -61,6 +62,7 @@ app.use('/users', usersRouter);
 app.use('/account',accountRouter);
 app.use('/account/withdraw',withdrawRouter)
 app.use('/account/summary',summaryRouter)
+app.use('/account/confirmation',confirmRouter)
 app.use('/account/investment',investmentRouter)
 app.use('/account/settings',settingsRouter)
 app.use('/account/referral',referralRouter)

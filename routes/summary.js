@@ -18,6 +18,9 @@ const mail = require('../mail/mail');
 
 
 
-router.get('/',summaryController.getSummaryIndexPage)
+router.get('/',
+       user.requireAuth,
+       user.isVerified,
+       summaryController.getSummaryIndexPage)
 
 module.exports = router;
