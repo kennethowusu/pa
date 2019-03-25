@@ -6,7 +6,7 @@
     <title><%=title%></title>
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/images/favicon.png" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
     <link rel='stylesheet' href='/stylesheets/home.css' />
     <script
 			  src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -17,16 +17,7 @@
 
   <style media="screen">
   .centered{
-
-    position:absolute;
-    color:#fff;
-    width:100% !important;
-    top:50%;
-    left:50%;
-    padding:15px;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+    margin: 80px auto;
   }
   </style>
 
@@ -42,16 +33,16 @@
            <div class="col-md-4 offset-lg-4 pr-md-5">
              <form action="#">
                <div class="form-group">
-                 <input type="text" class="form-control" id="firstname" placeholder="Firstname">
+                 <input type="text" class="form-control form" id="firstname" placeholder="Firstname">
                  <label for="" class="error firstnameEmptyErr"></label>
                </div>
                <div class="form-group">
-                 <input type="text" class="form-control" id="lastname" placeholder="Lastname">
+                 <input type="text" class="form-control form" id="lastname" placeholder="Lastname">
                  <label for="" class="error lastnameEmptyErr"></label>
                </div>
 
                <div class="form-group">
-                 <select class="form-control" id="country">
+                 <select class="form-control form" id="country">
                       <option value="" selected >Select Country</option>
                       <option value="Afghanistan">Afghanistan</option>
                       <option value="Albania">Albania</option>
@@ -296,16 +287,16 @@
                   <label for="" class="error countryEmptyErr"></label>
                </div>
                <div class="form-group">
-                 <input type="text" class="form-control" id="email" placeholder="Email">
+                 <input type="text" class="form-control form" id="email" placeholder="Email">
                  <label for="" class="error emailEmptyErr emailInvalidErr"></label>
                </div>
                <div class="form-group">
-                 <input type="password" class="form-control" id="password" placeholder="Password">
+                 <input type="password" class="form-control form" id="password" placeholder="Password">
                  <label for="" class="error passwordEmptyErr"></label>
                </div>
 
                <div class="form-group">
-                 <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                 <input type="password" class="form-control form" id="confirmPassword" placeholder="Confirm Password">
                  <label for="" class="error confirmPasswordEmptyErr passwordInvalidErr"></label>
                </div>
 

@@ -22613,4 +22613,17 @@ textarea.form-control {
 .error {
   color: red !important; }
 
+.form-control.form {
+  color: #9DB2C2;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #E1EAF0;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: text;
+  width: 100%;
+  transition: border-left  0.2s linear; }
+  .form-control.form:focus {
+    border-left: 2px solid #ff6814; }
+
 /*# sourceMappingURL=home.css.map */

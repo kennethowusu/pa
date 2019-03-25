@@ -9431,3 +9431,23 @@ textarea.form-control {
 .error{
   color: red !important;
 }
+
+
+//================for form================//
+.form-control.form{
+
+      color: #9DB2C2;
+      width:100%;
+      background-color: #fff;
+      border: 1px solid #E1EAF0;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: text;
+      width: 100%;
+      transition: border-left  0.2s linear;
+
+      &:focus{
+        border-left:2px solid $orange;
+      }
+
+}
