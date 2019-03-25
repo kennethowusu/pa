@@ -22622,8 +22622,16 @@ textarea.form-control {
   border-radius: 5px;
   cursor: text;
   width: 100%;
-  transition: border-left  0.2s linear; }
+  transition: border-left  0.2s linear;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
   .form-control.form:focus {
     border-left: 2px solid #ff6814; }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; }
 
 /*# sourceMappingURL=home.css.map */

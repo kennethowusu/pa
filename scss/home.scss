@@ -9445,9 +9445,16 @@ textarea.form-control {
       cursor: text;
       width: 100%;
       transition: border-left  0.2s linear;
-
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
       &:focus{
         border-left:2px solid $orange;
       }
 
+}
+select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
