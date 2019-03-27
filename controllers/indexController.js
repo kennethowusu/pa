@@ -23,7 +23,8 @@ require('dotenv').config();
 //===========get index page ==============//
 module.exports.getIndexPage = (req,res,next)=>{
 
-            const minApiRequest = request.get(process.env.MINAPIURL,function(err,coinPricesResponse,coinPricesBody){
+            const minApiRequest = request.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,XRP,LTC,EOS,BCH,BNB,USDT,XLM,ADA,TRX,BSV&tsyms=USD&api_key=379b5182dd9b7093d03b35a8457e52c897f73b12071e47fe87ddded38997ac38'
+              ,function(err,coinPricesResponse,coinPricesBody){
               const coinPrices = JSON.parse(coinPricesBody).RAW;
 
 
@@ -175,12 +176,8 @@ module.exports.logout = function(req,res,next){
 
 
 module.exports.getAboutUsPage = (req,res,next)=>{
-  const minApiRequest = request.get(process.env.MINAPIURL,function(err,coinPricesResponse,coinPricesBody){
-    const coinPrices = JSON.parse(coinPricesBody).RAW;
-
-
     return res.render('about-us',{title:"About Us"});
-  })
+
 }
 module.exports.getInvestmentPage = (req,res,next)=>{
     return res.render('investment-plans',{title:"Investment Plans"});
