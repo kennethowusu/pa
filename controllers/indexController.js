@@ -5,6 +5,7 @@ const user  = require('../functions/userFunctions');
 const mail  = require('../mail/mail');
 const util  = require('util');
 const moment = require('moment')
+const _   = require('lodash')
 const CMC   = require('coinmarketcap-api')
 require('dotenv').config();
 const request = require('request')
@@ -27,10 +28,19 @@ module.exports.getIndexPage = (req,res,next)=>{
           ,function(err,httpResponseBody,body){
             const news  = JSON.parse(body).articles
 
-              return res.render('index',{title:"Prime Axis LLC",news:news,moment:moment});
+            const minApiRequest = request.get(process.env.MINAPIURL,function(err,coinPricesResponse,coinPricesBody){
+              const coinPrices = JSON.parse(coinPricesBody).RAW;
+
+
+
+             return res.render('index',{title:"Prime Axis LLC",news:news,moment:moment,coinPrices:coinPrices});
+
+
+
           });
 
 
+})
 }
 //=======get signup page========================//
 module.exports.getSignupPage = (req,res,next)=>{

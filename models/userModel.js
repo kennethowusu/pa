@@ -5,6 +5,7 @@ const NOTIFICATION = require('./notificationModel.js');
 const FINANCE       = require('./financeModel.js');
 const INVESTMENT    = require('./investmentModel.js');
 const Deposit    = require('./depositModel');
+const Payment    = require('./paymentModel')
 const paymentDetail = require('./paymentDetailModel')
 const paymentRequest = require('./paymentRequestModel')
 const Admin = require('./adminModel')
@@ -60,12 +61,14 @@ const User = sequelize.define('user',{
   }
 });
 
-User.hasMany(NOTIFICATION,{foreignKey:"user_id",sourceKey: 'user_id'});
-User.hasOne(INVESTMENT,{foreignKey:"user_id",sourceKey:"user_id"});
-User.hasOne(FINANCE, {foreignKey: 'user_id', sourceKey: 'user_id'});
-User.hasMany(Deposit, {foreignKey: 'user_id', sourceKey: 'user_id'});
-User.hasMany(paymentDetail, {foreignKey: 'user_id', sourceKey: 'user_id'});
-User.hasMany(paymentRequest,{foreignKey:'user_id',sourceKey:'user_id'})
+User.hasMany(NOTIFICATION,{foreignKey:"user_id",sourceKey: 'user_id',onDelete:'NO ACTION',hooks:true });
+User.hasOne(INVESTMENT,{foreignKey:"user_id",sourceKey:"user_id",onDelete:'NO ACTION' ,hooks:true});
+User.hasOne(FINANCE, {foreignKey: 'user_id', sourceKey: 'user_id',onDelete: 'NO ACTION',hooks:true});
+User.hasMany(Deposit, {foreignKey: 'user_id', sourceKey: 'user_id',onDelete: 'NO ACTION',hooks:true});
+User.hasMany(paymentDetail, {foreignKey: 'user_id', sourceKey: 'user_id',onDelete:'NO ACTION' ,hooks:true});
+User.hasOne(paymentRequest,{foreignKey:'user_id',sourceKey:'user_id',onDelete:'NO ACTION',hooks:true });
+User.hasMany(Payment,{foreignKey:'user_id',sourceKey:'user_id',onDelete:'NO ACTION',hooks:true })
+
 
 
 

@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
 const moment = require('moment');
 //PxVaipCgx3
-const adminNotification = sequelize.define('adminNotification',{
+const adminNotification = sequelize.define('adminnotification',{
 
   topic:{
     type:Sequelize.STRING
