@@ -23,22 +23,11 @@ require('dotenv').config();
 //===========get index page ==============//
 module.exports.getIndexPage = (req,res,next)=>{
 
-
-  const cryptoNewsReq = request.get('https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=34fa603f537b4eeb82d4c6dea3ef2aac'
-          ,function(err,httpResponseBody,body){
-            const news  = JSON.parse(body).articles
-
             const minApiRequest = request.get(process.env.MINAPIURL,function(err,coinPricesResponse,coinPricesBody){
               const coinPrices = JSON.parse(coinPricesBody).RAW;
 
 
-
-             return res.render('index',{title:"Prime Axis LLC",news:news,moment:moment,coinPrices:coinPrices});
-
-
-
-          });
-
+             return res.render('index',{title:"Prime Axis LLC",moment:moment,coinPrices:coinPrices});
 
 })
 }
@@ -186,7 +175,12 @@ module.exports.logout = function(req,res,next){
 
 
 module.exports.getAboutUsPage = (req,res,next)=>{
+  const minApiRequest = request.get(process.env.MINAPIURL,function(err,coinPricesResponse,coinPricesBody){
+    const coinPrices = JSON.parse(coinPricesBody).RAW;
+
+
     return res.render('about-us',{title:"About Us"});
+  })
 }
 module.exports.getInvestmentPage = (req,res,next)=>{
     return res.render('investment-plans',{title:"Investment Plans"});

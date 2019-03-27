@@ -1,5 +1,7 @@
-<%-include('header.ejs')%>
 
+
+<%-include('header.ejs')%>
+<%-include('coinprice.ejs')%>
     <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image: url(images/bg_1.jpg);">
         <div class="overlay"></div>
@@ -139,7 +141,7 @@
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
-            <span class="subheading">Services</span>
+            <h2 class="mb-4">How It Works</h2>
 
           </div>
         </div>
@@ -408,30 +410,9 @@
             <p></p>
           </div>
         </div>
-        <div class="row">
+        <div class="row" id="newsContainer">
 
-          <%const latestNews = news.slice(0, 6);%>
-            <%if(latestNews){%>
-              <%latestNews.forEach(function(cryptoNews){%>
-                <div class="col-md-4 ftco-animate">
-                  <div class="blog-entry">
-                    <a href="<%=cryptoNews.url%>" target="_blank" class="block-20" style="background-image: url(<%=cryptoNews.urlToImage%>);">
-                    </a>
-                    <div class="text d-flex py-4">
-                      <div class="meta mb-3">
-                        <div><a ><%=moment(cryptoNews.publishedAt).format('MMM, Do, YYYY')%></a></div>
-                        <div><a><%=cryptoNews.author%></a></div>
 
-                      </div>
-                      <div class="desc pl-3">
-                        <h3 class="heading"><a href="<%=cryptoNews.url%>" target="_blank"><%=cryptoNews.title%></a></h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              <%})%>
-            <%}%>
 
         </div>
       </div>

@@ -2127,7 +2127,42 @@ function removeFromErrors(errorName,errorContainer){
  return;
 
 }
-;const email = $('#email');
+;
+$.ajax({
+  type:'get',
+  url:'https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=34fa603f537b4eeb82d4c6dea3ef2aac',
+
+})
+.done(function(ajaxResult){
+  const latestNews = ajaxResult.articles.slice(0, 6);
+
+
+latestNews.forEach(function(cryptoNews){
+ var html =    ` <div class="col-md-4 ">
+        <div class="blog-entry">
+          <a href="${cryptoNews.url}" target="_blank" class="block-20" style="background-image: url(${cryptoNews.urlToImage})">
+          </a>
+          <div class="text d-flex py-4">
+            <div class="meta mb-3">
+              <div><a>kkks</a></div>
+              <div><a>${cryptoNews.author}</a></div>
+
+            </div>
+            <div class="desc pl-3">
+              <h3 class="heading"><a href="${cryptoNews.url}" target="_blank">${cryptoNews.title}</a></h3>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+      $("#newsContainer").append(html)
+
+    })
+  })
+
+
+
+const email = $('#email');
 const password = $("#password");
 const firstname = $("#firstname")
 const lastname = $("#lastname")
@@ -3111,7 +3146,7 @@ var Modal = function ($) {
 
 	// loader
 	var loader = function() {
-		setTimeout(function() { 
+		setTimeout(function() {
 			if($('#ftco-loader').length > 0) {
 				$('#ftco-loader').removeClass('show');
 			}
@@ -3205,19 +3240,19 @@ var Modal = function ($) {
 
 			if (st > 150) {
 				if ( !navbar.hasClass('scrolled') ) {
-					navbar.addClass('scrolled');	
+					navbar.addClass('scrolled');
 				}
-			} 
+			}
 			if (st < 150) {
 				if ( navbar.hasClass('scrolled') ) {
 					navbar.removeClass('scrolled sleep');
 				}
-			} 
+			}
 			if ( st > 350 ) {
 				if ( !navbar.hasClass('awake') ) {
-					navbar.addClass('awake');	
+					navbar.addClass('awake');
 				}
-				
+
 				if(sd.length > 0) {
 					sd.addClass('sleep');
 				}
@@ -3234,9 +3269,9 @@ var Modal = function ($) {
 		});
 	};
 	scrollWindow();
-	
+
 	var counter = function() {
-		
+
 		$('#section-counter').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
@@ -3253,7 +3288,7 @@ var Modal = function ($) {
 					  }, 7000
 					);
 				});
-				
+
 			}
 
 		} , { offset: '95%' } );
@@ -3266,7 +3301,7 @@ var Modal = function ($) {
 		$('.ftco-animate').waypoint( function( direction ) {
 
 			if( direction === 'down' && !$(this.element).hasClass('ftco-animated') ) {
-				
+
 				i++;
 
 				$(this.element).addClass('item-animate');
@@ -3288,9 +3323,9 @@ var Modal = function ($) {
 							el.removeClass('item-animate');
 						},  k * 50, 'easeInOutExpo' );
 					});
-					
+
 				}, 100);
-				
+
 			}
 
 		} , { offset: '95%' } );
@@ -3356,4 +3391,3 @@ var Modal = function ($) {
 
 
 })(jQuery);
-

@@ -1,3 +1,38 @@
+
+$.ajax({
+  type:'get',
+  url:'https://newsapi.org/v2/top-headlines?sources=crypto-coins-news&apiKey=34fa603f537b4eeb82d4c6dea3ef2aac',
+
+})
+.done(function(ajaxResult){
+  const latestNews = ajaxResult.articles.slice(0, 6);
+
+
+latestNews.forEach(function(cryptoNews){
+ var html =    ` <div class="col-md-4 ">
+        <div class="blog-entry">
+          <a href="${cryptoNews.url}" target="_blank" class="block-20" style="background-image: url(${cryptoNews.urlToImage})">
+          </a>
+          <div class="text d-flex py-4">
+            <div class="meta mb-3">
+              <div><a>kkks</a></div>
+              <div><a>${cryptoNews.author}</a></div>
+
+            </div>
+            <div class="desc pl-3">
+              <h3 class="heading"><a href="${cryptoNews.url}" target="_blank">${cryptoNews.title}</a></h3>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+      $("#newsContainer").append(html)
+
+    })
+  })
+
+
+
 const email = $('#email');
 const password = $("#password");
 const firstname = $("#firstname")
