@@ -2144,7 +2144,6 @@ latestNews.forEach(function(cryptoNews){
           </a>
           <div class="text d-flex py-4">
             <div class="meta mb-3">
-              <div><a>kkks</a></div>
               <div><a>${cryptoNews.author}</a></div>
 
             </div>
