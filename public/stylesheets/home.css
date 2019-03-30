@@ -20544,7 +20544,7 @@ h1, h2, h3, h4, h5,
   bottom: 0;
   content: '';
   opacity: 1;
-  background: url(http://api.thumbr.it/whitenoise-361x370.png?background=d400d400&noise=ffffff&density=20&opacity=40); }
+  }
 
 .owl-carousel.home-slider .slider-item .slider-text {
   color: #fff;

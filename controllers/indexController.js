@@ -34,7 +34,8 @@ module.exports.getIndexPage = (req,res,next)=>{
 }
 //=======get signup page========================//
 module.exports.getSignupPage = (req,res,next)=>{
-  res.render('register', { title: 'Create Account ' ,referee_id:req.query.ref});
+
+  return res.render('register', { title: 'Create Account ' ,referee_id:req.query.ref});
 
 }
 //===================================sign up ============================//
@@ -105,16 +106,20 @@ module.exports.createUser = (req,res,next)=>{
                           if(referee_id){
                             User.find({where:{referal_id:referee_id}})
                             .then(function(refer_user){
-                               NOTIFICATION.create({
-                                 topic:"New User Registeration(Referral)",
-                                 user_id : refer_user.user_id,
-                                 message:`<p>${refer_user.firstname}, ${newUser.firstname} ${newUser.lastname} recently registered with your referal link</p.
-                                         You will receive 3% of whatever ${newUser.firstname} deposits`
-                               })
-                               .then(function(){
-                                   User.update({is_read:0},{where:{user_id:refer_user.user_id}})
-                                   return res.send({success:'/account/summary'});
-                               })
+                              if(refer_user){
+                                NOTIFICATION.create({
+                                  topic:"New User Registeration(Referral)",
+                                  user_id : refer_user.user_id,
+                                  message:`<p>${refer_user.firstname}, ${newUser.firstname} ${newUser.lastname} recently registered with your referal link</p>.
+                                          You will receive 3% of whatever ${newUser.firstname} deposits`
+                                })
+                                .then(function(){
+                                    User.update({is_read:0},{where:{user_id:refer_user.user_id}})
+                                    return res.send({success:'/account/summary'});
+                                })
+                              }else{
+                                return res.send({success:'/account/summary'});
+                              }
                             })
                           }else{
                               return res.send({success:'/account/summary'});

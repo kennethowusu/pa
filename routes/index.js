@@ -14,27 +14,35 @@ const Deposit = require('../models/depositModel')
 const depsosit = require('../models/depositModel')
 const mail = require('../mail/mail');
 
+
+
+module.exports.checkReferral = (req,res,next)=>{
+  if(req.query.i){
+    req.session.i = req.query.i;
+  }
+  next();
+}
 /* GET home page. */
-router.get('/',user.loggedIn,indexController.getIndexPage);
+router.get('/',user.loggedIn,module.exports.checkReferral,indexController.getIndexPage);
 
 /* GET home page. */
-router.get('/login',user.loggedIn,function(req, res, next) {
+router.get('/login',user.loggedIn,module.exports.checkReferral,function(req, res, next) {
   res.render('login', { title: 'Account Log In' });
 });
 
-router.post('/login',user.loggedIn,indexController.signin);
+router.post('/login',user.loggedIn,module.exports.checkReferral,indexController.signin);
 /* GET home page. */
-router.get('/register',user.loggedIn,indexController.getSignupPage);
+router.get('/register',user.loggedIn,module.exports.checkReferral,indexController.getSignupPage);
 
-router.get('/faqs',user.loggedIn,indexController.getFaqsPage);
+router.get('/faqs',user.loggedIn,module.exports.checkReferral,indexController.getFaqsPage);
 
 
 
-router.get('/about-us',user.loggedIn,indexController.getAboutUsPage)
+router.get('/about-us',user.loggedIn,module.exports.checkReferral,indexController.getAboutUsPage)
 
-router.get('/investment-plans',user.loggedIn,indexController.getInvestmentPage)
+router.get('/investment-plans',user.loggedIn,module.exports.checkReferral,indexController.getInvestmentPage)
 
-router.get('/contact',user.loggedIn,indexController.getContactPage)
+router.get('/contact',user.loggedIn,module.exports.checkReferral,indexController.getContactPage)
 //================logout==================//
 router.get('/account/logout',indexController.logout);
 
