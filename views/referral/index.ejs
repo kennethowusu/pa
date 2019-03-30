@@ -39,7 +39,7 @@
                                        <!-- <td class="sorting_1">1</td> -->
                                        <td class="text-capitalize font-weight-bold">Referrals </td>
                                        <td class="text-capitalize accountFirstname">People who have signed up using your link.</td>
-                                       <td class="text-capitalize accountFirstname">0</td>
+                                       <td class="text-capitalize accountFirstname"><%=referrals.count%></td>
 
 
                                 </tr>
@@ -62,7 +62,7 @@
                                       <!-- <td class="sorting_1">1</td> -->
                                       <td class="text-capitalize font-weight-bold">Earned </td>
                                       <td class="text-capitalize accountFirstname">Amount that will be applied to your account balance.</td>
-                                      <td class="text-capitalize accountFirstname">$0.00</td>
+                                      <td class="text-capitalize accountFirstname">$<%=user.finance.referral_interest%></td>
 
 
                                   </tr>
@@ -71,7 +71,7 @@
                                       <!-- <td class="sorting_1">1</td> -->
                                       <td class="text-capitalize font-weight-bold">Paid</td>
                                       <td class="text-capitalize accountFirstname">Amount that has already been applied to your account.</td>
-                                      <td class="text-capitalize accountFirstname">$0.00</td>
+                                      <td class="text-capitalize accountFirstname">$<%=user.finance.referral_interest%></td>
 
 
                                   </tr>

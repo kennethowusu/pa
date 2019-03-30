@@ -24,8 +24,13 @@ module.exports.getReferralIndexPage = (req,res,next)=>{
     const refUrl = req.protocol + '://' + req.get('host') + '?i=' + foundUser.referal_id;
     Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
     .then(function(notifications){
-      return res.render('referral/index',
-      {title:"Referral",user:foundUser,refUrl:refUrl,notifications:notifications,moment:moment})
+      User.findAndCountAll({where:{referee_id:foundUser.referal_id}})
+      .then(function(referrals){
+        return res.render('referral/index',
+        {title:"Referral",user:foundUser,refUrl:refUrl,notifications:notifications,moment:moment,referrals:referrals})
+
+      })
+
     })
   })
 }
