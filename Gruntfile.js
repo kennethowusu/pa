@@ -60,9 +60,6 @@ module.exports = function(grunt) {
       'js/vendors/bootstrap-datepicker.js',
       'js/vendors/scrollax.min.js',
       'js/vendors/universal.js',
-      'js/vendors/addscript.js',
-      'js/account/util.js',
-       'js/account/modal.js',
       'js/vendors/main.js',
       'js/vendors/addscript.js'
 
