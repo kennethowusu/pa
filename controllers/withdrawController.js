@@ -20,6 +20,7 @@ const Investment    = require('../models/investmentModel.js');
 const Deposit       = require('../models/depositModel');
 const PaymentDetail = require('../models/paymentDetailModel');
 const PaymentRequest = require('../models/paymentRequestModel')
+const Payment        = require('../models/paymentModel');
 const moment        = require('moment');
 //==============variables=============/
 
@@ -41,6 +42,24 @@ module.exports.getWithdrawPage = (req,res,next)=>{
   })
 }
 
+
+module.exports.getWithdrawHistoryPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  User.findOne({where:{user_id:user_id},include:[{all:true}]})
+  .then(function(foundUser){
+
+    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+    .then(function(notifications){
+
+       Payment.findAll({where:{user_id:user_id}})
+       .then(function(payments){
+         return res.render('withdraw/withdrawal-history',
+         {title:"Withdraw",user:foundUser,money:money,notifications:notifications,payments:payments,moment:moment})
+       })
+
+    })
+  })
+}
 
 
 

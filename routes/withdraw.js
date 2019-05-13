@@ -23,6 +23,10 @@ router.get('/',user.requireAuth,
              user.isVerified,
              withdrawController.getWithdrawPage)
 
+             router.get('/withdrawal-history',user.requireAuth,
+                          user.isVerified,
+                          withdrawController.getWithdrawHistoryPage)
+
 
 
 

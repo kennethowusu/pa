@@ -1,0 +1,97 @@
+<%-include('../account/header')%>
+
+
+
+<div class="row gap-20 masonry pos-r">
+
+<%if(payments.length < 1){%>
+
+  <div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+      <p>
+        You have not made any withdrawals yet.
+      </p>
+
+    </div>
+  </div>
+
+
+
+<%}else{%>
+
+
+  <div class="masonry-item col-md-12">
+    <div class="bgc-white p-20 bd">
+      <h6 class="c-grey-900">Your Withdrawal History</h6>
+      <div class="mT-30" style="overflow-x:scroll">
+        <table id="order-listing" class="table table-responsive dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                              <thead>
+                                 <tr role="row">
+
+                                       <!-- <td class="sorting_1">1</td> -->
+                                       <th class="text-capitalize font-weight-bold pl-3">Amount</th>
+                                       <th class="text-capitalize accountFirstname pl-3">Principal After</th>
+                                       <th class="text-capitalize accountFirstname pl-3">Payment Option</th>
+                                      <th class="text-capitalize accountFirstname pl-3">Payment Address</th>
+                                      <th class="text-capitalize accountFirstname pl-3">Date</th>
+
+                                </tr>
+
+                              </thead>
+                              <tbody>
+
+
+
+
+
+
+
+
+                              <%payments.forEach(function(payment){%>
+
+                                <tr role="row" class="odd">
+
+
+                                    <td class="text-capitalize accountFirstname">$<%=payment.amount%></td>
+                                    <td class="text-capitalize accountFirstname">$<%=payment.principalAfter%></td>
+                                    <td class="text-capitalize accountFirstname"><%=payment.paymentOption%></td>
+                                    <td class="text-lowercase accountFirstname"><%=payment.paymentAddress%></td>
+                                    <td class="text-capitalize accountFirstname"><%=moment(payment.createdAt).format('l')%></td>
+
+
+                                </tr>
+
+                              <%})%>
+
+
+
+
+
+
+
+
+
+
+
+
+                              </tbody>
+                            </table>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<%}%>
+
+
+
+
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<%-include('../account/footer')%>
