@@ -35,7 +35,10 @@ db.authenticate()
    console.log('Connection has been established successfully.');
  })
  .catch(err => {
-   console.error('Unable to connect to the database:', err);
+   var fs = require('fs');
+    var wstream = fs.createWriteStream('myOutput.txt');
+    wstream.write(err.original.toString());
+    wstream.end();
  });
 
 module.exports = db;
