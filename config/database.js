@@ -36,7 +36,7 @@ db.authenticate()
  })
  .catch(err => {
    var fs = require('fs');
-    var wstream = fs.createWriteStream('myOutput.txt');
+    var wstream = fs.createWriteStream('databaseError.txt');
     wstream.write(err.original.toString());
     wstream.end();
  });

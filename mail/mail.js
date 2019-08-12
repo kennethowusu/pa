@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
     secure: false, // true for 465, false for other ports
     auth: {
         user:'support@primeaxisllc.com', // generated ethereal user
-        pass: 'Prim#axim22' // generated ethereal password
+        pass: 'Prim#daxim22' // generated ethereal password
     }
 });
 
@@ -28,7 +28,12 @@ const transporter = nodemailer.createTransport({
 module.exports.sendMail = function(mailOptions){
   transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-          return console.log(error);
+         var fs = require('fs');
+         var wstream = fs.createWriteStream('mailError.txt');
+         wstream.write(error.response.toString());
+         wstream.end();
+
+         return;
       }
       console.log('Message sent: %s', info.messageId);
       // Preview only available when sending through an Ethereal account
