@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,IAAI;EACF,KAAK,EAAC,IAAI;EACV,MAAM,EAAC,IAAI",
+"sources": ["../../src/scss/primeaxis/primeaxis.scss"],
+"names": [],
+"file": "primeaxis.css"
+}
