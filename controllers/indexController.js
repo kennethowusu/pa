@@ -23,15 +23,11 @@ require('dotenv').config();
 //===========get index page ==============//
 module.exports.getIndexPage = (req,res,next)=>{
 
-            const minApiRequest = request.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,XRP,LTC,EOS,BCH,BNB,USDT,XLM,ADA,TRX,BSV&tsyms=USD&api_key=379b5182dd9b7093d03b35a8457e52c897f73b12071e47fe87ddded38997ac38'
-              ,function(err,coinPricesResponse,coinPricesBody){
-              const coinPrices = JSON.parse(coinPricesBody).RAW;
 
+return res.render('index',{title:"Prime Axis LLC"});
 
-             return res.render('index',{title:"Prime Axis LLC",moment:moment,coinPrices:coinPrices});
-
-})
 }
+
 //=======get signup page========================//
 module.exports.getSignupPage = (req,res,next)=>{
 

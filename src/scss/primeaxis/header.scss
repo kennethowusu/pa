@@ -1,0 +1,46 @@
+body,*{
+  font-family:'work sans' !important;
+}
+.logo{
+   img{
+     width:43px;
+     height:43px;
+     cursor:pointer;
+   }
+}
+.burger{
+  & .burger-bar{
+      width: 30px;
+      height: 2px;
+      background-color: blue;
+      margin-bottom: 8px;
+  }
+}
+.main-nav-cont{
+  background-color: orange;
+  width: 100%;
+  height: 100%;
+  background-color:#3d5afe;
+
+  .main-nav{
+    position:fixed;
+    top:80px;
+
+    list-style-type: none;
+    padding:0;
+    padding: 0 2em;
+    margin:0;
+    .main-nav-li{
+      margin-bottom:1em;
+    }
+    a{
+      color:#fff;
+      text-transform:capitalize;
+      font-size:1.6em;
+      text-decoration:none;
+      display:block;
+
+    }
+
+  }
+}
