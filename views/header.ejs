@@ -11,28 +11,31 @@
    <link rel="stylesheet" href="/css/bootstrap.css">
    <link rel="stylesheet" href="/css/general.css">
    <link rel="stylesheet" href="/css/primeaxis.css">
+   <script
+   src="https://code.jquery.com/jquery-3.4.1.js"
+   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+   crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navbar header align-items-sm-start p-0 ">
+
+    <nav class="navbar header align-items-sm-start position-static">
 
 
           <a href="/" class=" d-inline-block logo navbar-brand">
             <img src="/images/logo.png" alt="">
           </a>
 
-          <div class="burger d-flex flex-column">
-            <span class="burger-bar"></span>
-            <span class="burger-bar"></span>
-            <span class="burger-bar"></span>
+          <div id="burger" class="burger  d-flex flex-column">
+            <span class="burger-bar  bar1"></span>
+            <span class="burger-bar bar2"></span>
+            <span class="burger-bar   bar3"></span>
           </div>
 
 
 
-           <ul class="main-nav">
+           <ul id="main-nav" class="main-nav">
 
-             <button class="btn bg-transparent main-nav-close">
 
-             </button>
              <div class="main-nav-cont">
                <li class="main-nav-li"><a href="" class="main-nav-link">Home</a></li>
                <li class="main-nav-li"><a href="" class="main-nav-link">About</a></li>
@@ -53,15 +56,10 @@
 
            <div class="main-nav-action desktop">
                <a href="" class="login">Log In</a>
-             <div class="divide ">
+             <div class="divide">
 
                <a href="" class=" signup btn btn-primary d-inline-block">Sign Up</a>
              </div>
            </div>
-
-
-
-
-
 
     </nav>
