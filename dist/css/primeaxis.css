@@ -2,12 +2,24 @@ body, * {
   font-family: 'work sans' !important;
 }
 
+@media (min-width: 1060px) {
+  .header {
+    align-items: center !important;
+    padding: 0.5rem 1rem !important;
+  }
+}
+
 .logo img {
   width: 43px;
   height: 43px;
   cursor: pointer;
 }
 
+@media (min-width: 1060px) {
+  .burger {
+    display: none !important;
+  }
+}
 .burger .burger-bar {
   width: 30px;
   height: 2px;
@@ -23,10 +35,17 @@ body, * {
   width: 100%;
   height: 100%;
   padding: 0;
-  padding: 0 3em;
   padding-bottom: 5em;
   margin: 0;
   overflow-y: scroll;
+}
+.main-nav .main-nav-cont {
+  padding: 0 3em;
+}
+@media (min-width: 1060px) {
+  .main-nav {
+    display: none;
+  }
 }
 .main-nav .main-nav-li {
   margin-bottom: 1em;
@@ -48,6 +67,11 @@ body, * {
   position: fixed;
   right: 30px;
   font-size: 3em;
+}
+
+.main-nav-action .divide {
+  border-top: 1px solid orange;
+  padding: 2em 3em;
 }
 
 /*# sourceMappingURL=primeaxis.css.map */
