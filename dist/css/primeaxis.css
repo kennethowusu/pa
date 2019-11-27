@@ -14,6 +14,11 @@ body, * {
   height: 43px;
   cursor: pointer;
 }
+@media (min-width: 1060px) {
+  .logo img {
+    margin-right: auto !important;
+  }
+}
 
 @media (min-width: 1060px) {
   .burger {
@@ -28,19 +33,39 @@ body, * {
 }
 
 .main-nav {
-  position: fixed;
+  position: absolute !important;
   top: 0;
   background-color: #3d5afe;
   list-style-type: none;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 0;
   padding-bottom: 5em;
   margin: 0;
   overflow-y: scroll;
 }
+@media (min-width: 1060px) {
+  .main-nav {
+    position: static !important;
+    display: flex !important;
+    padding: 0 !important;
+    overflow: hidden;
+    width: auto !important;
+    background-color: transparent !important;
+    height: auto !important;
+  }
+}
 .main-nav .main-nav-cont {
   padding: 0 3em;
+}
+@media (min-width: 1060px) {
+  .main-nav .main-nav-cont {
+    display: flex !important;
+    justify-content: space-between;
+    padding: 0 !important;
+    align-items: center !important;
+    min-width: 473px !important;
+  }
 }
 @media (min-width: 1060px) {
   .main-nav {
@@ -50,12 +75,29 @@ body, * {
 .main-nav .main-nav-li {
   margin-bottom: 1em;
 }
+@media (min-width: 1060px) {
+  .main-nav .main-nav-li {
+    margin-bottom: 0 !important;
+  }
+}
 .main-nav a {
   color: #fff;
   text-transform: capitalize;
   font-size: 1.6em;
   text-decoration: none;
   display: block;
+}
+@media (min-width: 1060px) {
+  .main-nav a {
+    color: orange !important;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1060px) {
+  .main-nav-close {
+    display: none  !important;
+  }
 }
 
 .main-nav-close::after {
@@ -69,9 +111,61 @@ body, * {
   font-size: 3em;
 }
 
+.main-nav-action {
+  width: 100%;
+}
+@media (min-width: 1060px) {
+  .main-nav-action {
+    padding: 0 !important;
+    display: flex !important;
+    min-width: 213px;
+    position: static;
+    width: auto;
+  }
+}
+.main-nav-action .login {
+  padding-left: 2em;
+}
+@media (min-width: 1060px) {
+  .main-nav-action .login {
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+  }
+}
 .main-nav-action .divide {
   border-top: 1px solid orange;
   padding: 2em 3em;
+  margin-top: 2em;
+}
+@media (min-width: 1060px) {
+  .main-nav-action .divide {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0;
+  }
+}
+@media (min-width: 1060px) {
+  .main-nav-action .divide .signup {
+    width: 125px;
+  }
+}
+
+@media (min-width: 1060px) {
+  .main-nav-action.mobile {
+    display: none !important;
+  }
+}
+
+.main-nav-action.desktop {
+  display: none;
+}
+@media (min-width: 1060px) {
+  .main-nav-action.desktop {
+    display: flex;
+  }
 }
 
 /*# sourceMappingURL=primeaxis.css.map */
