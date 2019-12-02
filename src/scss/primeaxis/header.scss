@@ -195,7 +195,9 @@ body.mobileNavActive{
 
 
 @keyframes mobileNavActive {
-  0%{transform: translateX(-30px)};
-  50%{width:0;}
+  0%{transform: translateX(-10px)};
+  50%{transform: translateX(-20px)}
+  50%{width:15px}
+  50%{opacity:0.5;}
   100%{opacity:0;}
 }

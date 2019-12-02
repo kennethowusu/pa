@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
 
-const NOTIFICATION = require('./notificationModel.js');
-const FINANCE       = require('./financeModel.js');
-const INVESTMENT    = require('./investmentModel.js');
+const Notification = require('./notificationModel.js');
+const Finance      = require('./financeModel.js');
+const Investment   = require('./investmentModel.js');
+const Earning      = require('./dailyEarningsModel')
 const Deposit    = require('./depositModel');
 const Payment    = require('./paymentModel')
 const paymentDetail = require('./paymentDetailModel')
@@ -61,13 +62,16 @@ const User = sequelize.define('user',{
   }
 });
 
-User.hasMany(NOTIFICATION,{foreignKey:"user_id",sourceKey: 'user_id',onDelete:'NO ACTION',hooks:true });
-User.hasOne(INVESTMENT,{foreignKey:"user_id",sourceKey:"user_id",onDelete:'NO ACTION' ,hooks:true});
-User.hasOne(FINANCE, {foreignKey: 'user_id', sourceKey: 'user_id',onDelete: 'NO ACTION',hooks:true});
+User.hasMany(Notification,{foreignKey:"user_id",sourceKey: 'user_id',onDelete:'NO ACTION',hooks:true });
+User.hasOne(Investment,{foreignKey:"user_id",sourceKey:"user_id",onDelete:'NO ACTION' ,hooks:true});
+User.hasOne(Finance, {foreignKey: 'user_id', sourceKey: 'user_id',onDelete: 'NO ACTION',hooks:true});
 User.hasMany(Deposit, {foreignKey: 'user_id', sourceKey: 'user_id',onDelete: 'NO ACTION',hooks:true});
 User.hasMany(paymentDetail, {foreignKey: 'user_id', sourceKey: 'user_id',onDelete:'NO ACTION' ,hooks:true});
 User.hasOne(paymentRequest,{foreignKey:'user_id',sourceKey:'user_id',onDelete:'NO ACTION',hooks:true });
 User.hasMany(Payment,{foreignKey:'user_id',sourceKey:'user_id',onDelete:'NO ACTION',hooks:true })
+User.hasMany(Earning,{foreignKey:'user_id',sourceKey:'user_id',onDelete:'NO ACTION',hooks:true })
 
-
+sequelize.sync({
+  force:false
+})
 module.exports = User;

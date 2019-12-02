@@ -1,8 +1,10 @@
 
+//templates
+const verificationEmailLinkTemplate  = require('./verificationEmailLinkTemplate')
 'use strict';
 const nodemailer = require('nodemailer');
 //require mail Template
-var template = require('./mailTemplate');
+
 
 //require dotenv
 require('dotenv').config();
@@ -18,7 +20,7 @@ const transporter = nodemailer.createTransport({
     secure: false, // true for 465, false for other ports
     auth: {
         user:'support@primeaxisllc.com', // generated ethereal user
-        pass: 'Prim#daxim22' // generated ethereal password
+        pass: 'Prim#axim22' // generated ethereal password
     }
 });
 
@@ -50,9 +52,9 @@ module.exports.sendResetCode = function(resetCode){
       const mailOptions = {
           from: '"Glammycare " <support@primeaxisllc.com>', // sender address
           to: 'consultkenneth@gmail.com', // list of receivers
-          subject:'GlammyCare Reset Password', // Subject line
+          subject:' Reset Password', // Subject line
           text: 'Hello world?', // plain text body
-          html: template.generateResetCodeTemplate(resetCode) // html body
+          html: '' // html body
       };
 
       //sendMail
@@ -61,42 +63,7 @@ module.exports.sendResetCode = function(resetCode){
 
 }
 
-//Send Deposit Notification
-module.exports.sendDepositMail = function(){
-  nodemailer.createTestAccount((err, account) => {
-      // setup email data with unicode symbols
-      const mailOptions = {
-          from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
-          to: 'consultkenneth@gmail.com', // list of receivers
-          subject:'Depsit', // Subject line
-          text: 'Hello world?', // plain text body
-          html: template.sendDepositMail() // html body
-      };
-
-      //sendMail
-      module.exports.sendMail(mailOptions);
-  });
-}
-
-
-module.exports.sendSettlementFailedMessage = function(){
-  nodemailer.createTestAccount((err, account) => {
-      // setup email data with unicode symbols
-      const mailOptions = {
-          from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
-          to: 'consultkenneth@gmail.com', // list of receivers
-          subject:'Depsit', // Subject line
-          text: 'Hello world?', // plain text body
-          html: 'sorry we could not charge your credit card' // html body
-      };
-
-      //sendMail
-      module.exports.sendMail(mailOptions);
-  });
-}
-
-
-module.exports.sendEmailVerificationLink = (email,verificationLink)=>{
+module.exports.sendEmailVerificationLink = (name,email,verificationLink)=>{
   nodemailer.createTestAccount((err, account) => {
       // setup email data with unicode symbols
       const mailOptions = {
@@ -104,7 +71,7 @@ module.exports.sendEmailVerificationLink = (email,verificationLink)=>{
           to: `${email}`, // list of receivers
           subject:'Email Verification', // Subject line
           text: 'Hello world?', // plain text body
-          html: template.sendEmailVerificationLink(verificationLink) // html body
+          html: verificationEmailLinkTemplate(name,verificationLink) // html body
       };
 
       //sendMail
@@ -112,43 +79,6 @@ module.exports.sendEmailVerificationLink = (email,verificationLink)=>{
   });
 }
 
-//send crypto payment
-module.exports.sendCryptoPayment = (email,type,address,transaction_id)=>{
-  nodemailer.createTestAccount((err, account) => {
-      // setup email data with unicode symbols
-      const mailOptions = {
-          from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
-          to: `informkenneth@gmail.com`, // list of receivers
-          subject:'New Crypto Payment Request', // Subject line
-          text: 'Hello world?', // plain text body
-          html: template.sendCryptoPayment(email,type,address,transaction_id) // html body
-      };
-
-        //sendMail
-        transporter.sendMail(mailOptions, (error, info) => {
-          return res.send(info);
-        });
-  });
-}
-
-//send crypto payment
-module.exports.topupCryptoPayment = (email,type,address,transaction_id,amount)=>{
-  nodemailer.createTestAccount((err, account) => {
-      // setup email data with unicode symbols
-      const mailOptions = {
-          from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
-          to: `informkenneth@gmail.com`, // list of receivers
-          subject:'Top Up Crypto Payment Request(Principal Top Up)', // Subject line
-          text: 'Hello world?', // plain text body
-          html: template.topupCryptoPayment(email,type,address,transaction_id,amount) // html body
-      };
-
-        //sendMail
-        transporter.sendMail(mailOptions, (error, info) => {
-          return res.send(info);
-        });
-  });
-}
 
 
 
@@ -160,7 +90,7 @@ module.exports.sendPasswordResetLink = (email,passwordResetLink)=>{
           to: `${email}`, // list of receivers
           subject:'Email Verification', // Subject line
           text: 'Hello world?', // plain text body
-          html: template.passwordResetLink(passwordResetLink) // html body
+          html: '' // html body
       };
 
       //sendMail
