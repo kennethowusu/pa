@@ -11,7 +11,6 @@ module.exports = function(grunt) {
             style: 'expanded'
           },
           files: {                         // Dictionary of files
-            //'dist/css/bootstrap.css': 'node_modules/bootstrap/scss/bootstrap.scss',
               'dist/css/primeaxis.css':'src/scss/primeaxis/primeaxis.scss',
               'dist/css/general.css':'src/scss/general/general.scss'
           }

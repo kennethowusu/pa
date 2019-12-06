@@ -18,9 +18,16 @@ const mail = require('../mail/mail');
 
 
 
-router.get('/',
-       user.requireAuth,
-       user.isVerified,
-       summaryController.getSummaryIndexPage)
+router.get('/name',
+      user.requireAuth,
+      user.isVerified,
+      (req,res,next)=>{
+         const userId = user.getUserId(req,res,next)
+
+         User.findOne({where:{user_id:userId}})
+         .then(foundUser=>{
+           return res.send(foundUser)
+         })
+       })
 
 module.exports = router;

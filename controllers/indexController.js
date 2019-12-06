@@ -136,12 +136,14 @@ module.exports.createUser = (req,res,next)=>{
 
 //===============================sign in==================//
 module.exports.signin = function(req, res, next){
-  var userToken = req.cookies.auth;
+  //var userToken = req.cookies.auth;
   //implement sign in
-  var email = req.body.email;
-  var password = req.body.password;
+  var email = req.query.email;
+  var password = req.query.password;
   const sign_in_mail_error = "Email does not exist";
   // //check if email exist;
+
+
   User.findOne({
       where: {
         email: email
@@ -155,8 +157,10 @@ module.exports.signin = function(req, res, next){
         return res.send({error:"Invalid Email or Password"});
       } else {
         var token = user.generateToken(req, res, next, person);
+
+        console.log(token)
         //send this for the cookie to work
-        res.send({success:'/account/summary'});
+        res.send({token:token});
         //redirect to a url
       } //else
     }) //then
