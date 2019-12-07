@@ -8,7 +8,7 @@ body,*{
   @media(min-width:1060px){
     align-items: center !important;
     padding: 0.5rem 1rem !important;
-    height:0;
+
 
   }
 
@@ -29,7 +29,10 @@ body,*{
   }
 
   @keyframes headerScrolled{
-    0%{border-bottom:  1px solid rgba(61, 90, 254, 0.2)};
+    0%{
+      height:0;
+      border-bottom:  1px solid rgba(61, 90, 254, 0.2)
+    };
     30%{height:27.3px}
     60%{height:54.6px}
     100%{
@@ -140,8 +143,12 @@ body,*{
       display:block;
 
       @media(min-width:1060px){
-        color: orange !important;
-        font-size: 15px;
+        color: $color-accent;
+        font-size: 1.1em;
+
+        &:hover{
+          color: $accent-hover !important;
+        }
       }
 
     }
@@ -165,11 +172,13 @@ body,*{
   .login{
     padding-left: 2em;
     @media(min-width:1060px){
+      font-size:1.1em;
       padding: 0 !important;
       display: flex;
       justify-content: center;
       align-items: center;
       margin-right:auto;
+      text-decoration: none;
     }
   }
   & .divide{

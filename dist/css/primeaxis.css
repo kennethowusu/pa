@@ -14,7 +14,6 @@ body, * {
   .header {
     align-items: center !important;
     padding: 0.5rem 1rem !important;
-    height: 0;
   }
 }
 @media (min-width: 1060px) {
@@ -31,6 +30,7 @@ body, * {
 }
 @keyframes headerScrolled {
   0% {
+    height: 0;
     border-bottom: 1px solid rgba(61, 90, 254, 0.2);
   }
   30% {
@@ -152,8 +152,11 @@ body, * {
 }
 @media (min-width: 1060px) {
   .main-nav a {
-    color: orange !important;
-    font-size: 15px;
+    color: #ff6814;
+    font-size: 1.1em;
+  }
+  .main-nav a:hover {
+    color: #ef9563 !important;
   }
 }
 
@@ -174,11 +177,13 @@ body, * {
 }
 @media (min-width: 1060px) {
   .main-nav-action .login {
+    font-size: 1.1em;
     padding: 0 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: auto;
+    text-decoration: none;
   }
 }
 .main-nav-action .divide {
