@@ -4,13 +4,41 @@ body,*{
 
 .header{
   padding:0;
+  background-color:  #fff;
   @media(min-width:1060px){
     align-items: center !important;
     padding: 0.5rem 1rem !important;
+    height:0;
+
   }
+
   &.scrolled{
-    background-color: black !important;
+
+    @media(min-width:1060px){
+      position:fixed !important;
+      width:100%;
+      top:0;
+      right:0;
+      animation-name: headerScrolled;
+      animation-duration: .4s;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+
+    }
+
   }
+
+  @keyframes headerScrolled{
+    0%{border-bottom:  1px solid rgba(61, 90, 254, 0.2)};
+    30%{height:27.3px}
+    60%{height:54.6px}
+    100%{
+      height:91px;
+
+      border-bottom:1px solid rgba(61, 90, 254, 0.2);
+    }
+  }
+
 }
 .logo{
      margin: 11px 30px !important;

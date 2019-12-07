@@ -10,9 +10,9 @@ burger.click(function(){
 //burger
 //close button
 
-//Add style to header on scroll
+//Add style to burger on scroll
 $(window).scroll(function() {
-    
+
      var scroll = $(window).scrollTop();
      if (scroll >= 75) {
          burger.addClass("scrolled");
@@ -20,3 +20,14 @@ $(window).scroll(function() {
          burger.removeClass("scrolled");
      }
  });
+
+ //Add style to header on scroll
+ $(window).scroll(function() {
+     const header = $('.header');
+      var scroll = $(window).scrollTop();
+      if (scroll >= 15) {
+          header.addClass("scrolled");
+      } else {
+          header.removeClass("scrolled");
+      }
+  });
