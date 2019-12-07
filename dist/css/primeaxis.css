@@ -15,9 +15,12 @@ body, * {
     padding: 0.5rem 1rem !important;
   }
 }
+.header.scrolled {
+  background-color: black !important;
+}
 
 .logo {
-  padding: 0.5rem 1rem !important;
+  margin: 11px 30px !important;
 }
 .logo img {
   width: 43px;
@@ -31,8 +34,24 @@ body, * {
 }
 
 .burger {
-  padding: 0.5rem 1rem !important;
+  width: 90px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: 55px;
   cursor: pointer;
+}
+.burger.scrolled {
+  border-radius: 50%;
+  position: fixed;
+  background-color: #3d5afe;
+  top: 10px;
+  right: 12px;
+}
+.burger.scrolled .burger-bar {
+  background-color: #fff;
 }
 @media (min-width: 1060px) {
   .burger {
@@ -45,9 +64,12 @@ body, * {
   background-color: blue;
   margin-bottom: 8px;
 }
+.burger .burger-bar:last-child {
+  margin: 0;
+}
 
 .main-nav {
-  position: absolute !important;
+  position: fixed !important;
   top: 0;
   background-color: #3d5afe;
   list-style-type: none;
@@ -178,6 +200,8 @@ body.mobileNavActive {
 }
 
 .burger.change {
+  border-radius: 0 !important;
+  background-color: transparent !important;
   z-index: 22;
 }
 

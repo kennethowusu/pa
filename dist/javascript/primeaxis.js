@@ -9,3 +9,14 @@ burger.click(function(){
 })
 //burger
 //close button
+
+//Add style to header on scroll
+$(window).scroll(function() {
+    
+     var scroll = $(window).scrollTop();
+     if (scroll >= 75) {
+         burger.addClass("scrolled");
+     } else {
+         burger.removeClass("scrolled");
+     }
+ });
