@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46" height="101" viewBox="0 0 227.513 500">
+  <g id="crystal_1_" data-name="crystal (1)" transform="translate(-139.514 0)">
+    <path id="Path_13" data-name="Path 13" d="M366.547,390.629v-274.4h.478L259.36,2.511A10.977,10.977,0,0,0,255.223.169V.189A8.683,8.683,0,0,0,251.564.2L251.5.208a8.1,8.1,0,0,0-4.231,2.3L139.514,116.224h.479v274.4h-.479L247.452,497.481a8.279,8.279,0,0,0,7.526,2.308,8.451,8.451,0,0,0,4.106-2.322L367.025,390.63h-.478Z" transform="translate(0 0)" fill="#dbf8ff"/>
+    <path id="Path_20" data-name="Path 20" d="M0,0H227.511V274.5H0Z" transform="translate(139.516 116.393)" fill="#dbf8ff"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="59.528" height="274.502" transform="translate(139.516 116.393)" fill="#dbf8ff"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" width="108.453" height="274.502" transform="translate(199.044 116.393)" fill="#dbf8ff"/>
+    <path id="Path_14" data-name="Path 14" d="M308.926,116.4,256.486.212a8.3,8.3,0,0,0-3.576,0L200.47,116.4Z" transform="translate(-1.429 0)" fill="#dbf8ff"/>
+    <path id="Path_15" data-name="Path 15" d="M310.27,116.4H369.8L262.052,2.6A8.221,8.221,0,0,0,257.831.217Z" transform="translate(-2.773 -0.005)" fill="#dbf8ff"/>
+    <path id="Path_16" data-name="Path 16" d="M247.261,2.6,139.514,116.4h59.528L251.482.217A8.221,8.221,0,0,0,247.261,2.6Z" transform="translate(0 -0.005)" fill="#dbf8ff"/>
+    <path id="Path_17" data-name="Path 17" d="M200.471,400.28,252.989,509.2a8.294,8.294,0,0,0,3.418,0L308.926,400.28Z" transform="translate(-1.429 -9.383)" fill="#dbf8ff"/>
+    <path id="Path_18" data-name="Path 18" d="M261.856,507,369.8,400.279H310.269L257.751,509.2A8.222,8.222,0,0,0,261.856,507Z" transform="translate(-2.771 -9.383)" fill="#dbf8ff"/>
+    <path id="Path_19" data-name="Path 19" d="M139.514,400.28,247.452,507a8.23,8.23,0,0,0,4.108,2.207L199.041,400.28Z" transform="translate(0 -9.383)" fill="#dbf8ff"/>
+  </g>
+</svg>
