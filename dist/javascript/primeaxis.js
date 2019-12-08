@@ -10,6 +10,11 @@ burger.click(function(){
 //burger
 //close button
 
+//close nav on click on link
+$('.main-nav-link').click(function(){
+  mainNav.removeClass('mobileNavActive')
+  burger.removeClass('change')
+})
 //Add style to burger on scroll
 $(window).scroll(function() {
 

@@ -63,9 +63,9 @@ module.exports = {
          }
          var token = jwt.sign(payload,process.env.JWTSECRET,options);
 
-         return token;
+
          //save token in cookie
-         //res.cookie('auth',token);
+         res.cookie('auth',token);
        },
   generateVerificationToken: function(req,res,next,person){
     const payload = {

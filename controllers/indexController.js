@@ -138,8 +138,8 @@ module.exports.createUser = (req,res,next)=>{
 module.exports.signin = function(req, res, next){
   //var userToken = req.cookies.auth;
   //implement sign in
-  var email = req.query.email;
-  var password = req.query.password;
+  var email = req.body.email;
+  var password = req.body.password;
   const sign_in_mail_error = "Email does not exist";
   // //check if email exist;
 
