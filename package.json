@@ -36,7 +36,7 @@
     "install": "^0.12.2",
     "jquery": "3.2.1",
     "jsonwebtoken": "^8.4.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "mdi": "2.1.19",
     "moment": "^2.22.2",
     "money-math": "^2.5.1",
