@@ -1,0 +1,76 @@
+body {
+  font-family: "Work Sans",sans-serif;
+}
+
+.wrapper {
+  min-height: calc(100vh - 182px);
+}
+
+.header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 91px;
+  padding: 0.5rem 2rem;
+}
+.header .logo {
+  width: 43px;
+  height: 43px;
+}
+.header .header-nav {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.form-control {
+  font-size: 1em;
+  padding: .7em;
+  outline: none !important;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+.form-control[type="submit"] {
+  color: #fff !important;
+  cursor: pointer !important;
+}
+@media (min-width: 500px) {
+  .form-control {
+    width: 400px;
+  }
+}
+
+.auth-cont {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.auth-head {
+  margin-bottom: 15px;
+}
+
+.auth-notice {
+  margin-bottom: 30px;
+}
+
+.auth-form-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.auth-footer {
+  height: 91px;
+  display: flex;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=auth.css.map */

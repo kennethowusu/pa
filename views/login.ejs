@@ -1,109 +1,33 @@
+<%-include('./auth/header.ejs')%>
+
+   <div class="wrapper">
 
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%=title%></title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="/images/favicon.png" />
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
-    <link rel='stylesheet' href='/stylesheets/home.css' />
-    <script
-			  src="https://code.jquery.com/jquery-3.3.1.min.js"
-			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			  crossorigin="anonymous">
+      <div class="auth-cont">
+        <h3 class=" font-weight-bold text-primary auth-head">Welcome Back</h3>
+        <p class=" auth-notice"  >New to Prime Axis? <a href="/register">Register</a></p>
 
-    </script>
-
-
-  <style media="screen">
-    .centered{
-      margin: 80px auto;
-    }
-  </style>
-  </head>
-  <body class="">
-
-   <div class="centered">
-         <a  href="/" class="d-flex justify-content-center align-items-center mb-4">
-           <img src="/images/logo.png" style="width:60px;height:61.22px" alt="" class="t">
-         </a>
-         <p class="error text-center loginError" id="#loginError"></p>
-         <form class="" action="" method="post">
-           <div class="col-md-4 offset-lg-4 pr-md-5">
-             <form action="#">
-               <div class="form-group">
-                 <input type="text" class="form-control form" id="email" placeholder="Enter Email">
-                 <label for="" class="error emailEmptyErr emailInvalidErr"></label>
-               </div>
-               <div class="form-group">
-                 <input type="password" class="form-control form" id="password" placeholder="Enter password">
-                 <label for="" class="error passwordEmptyErr"></label>
-               </div>
-
-
-               <div class="form-group">
-                 <input type="submit" value="Log In" id="loginBtn" class="btn w-100 btn-orange text-white rad-s py-3 px-5">
-               </div>
-
-               <p><a href="#" id="forgotpassword" class="text-muted">Forgot password?</a></p>
-
-               <div class="form-group">
-                 <a href="/register" class="btn w-100 btn-muted text-black rad-s py-3 px-5 no-shadow">Register</a>
-               </div>
-
-             </form>
-
-           </div>
-         </form>
-   </div>
-
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-           <div class="">
-
-                 <p class="error text-center" ></p>
-                 <div method="post">
-                   <div class="col-md-12 offset-lg-12 pr-md-5">
-                     <div action="#">
-                       <p>If your email exists a reset link will be sent to you.</p>
-                       <div class="form-group">
-                         <input type="text" class="form-control form" id="email" placeholder="Enter your Email">
-                         <label for="" class="error resetEmail"></label>
-                       </div>
-
-                     </div>
-
-                   </div>
-                 </div>
-           </div>
+        <section class="auth-form-cont">
+          <form action="">
+            <div class="form-group">
+              <input type="text" placeholder="Your email address"class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Your password" class="form-control">
+            </div>
+            <div class="form-group">
+               <input class="form-control bg-primary" type="submit" value="Login">
+            </div>
+          </form>
+          <div>
+            <a  class="text-right d-block font-weight-bold" href="">Forgot Password?</a>
+          </div>
+        </section>
 
       </div>
-      <div class="modal-footer">
-        <div class="form-group">
-          <input type="submit" value="Reset Password" id="loginBtn" class="btn w-100 btn-orange text-white rad-s py-3 px-5">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
-    <script src="/javascripts/home.js"></script>
-  </body>
-  </html>
+   </div><!--Wrapper ends-->
+
+<%-include('./auth/footer.ejs')%>

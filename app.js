@@ -7,15 +7,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var accountRouter = require('./routes/account');
-var withdrawRouter   = require('./routes/withdraw')
-var summaryRouter   = require('./routes/summary');
-var confirmRouter = require('./routes/confirm')
-var investmentRouter = require('./routes/investment')
-var referralRouter  = require('./routes/referral');
-var notificationRouter = require('./routes/notification')
-var settingsRouter  = require('./routes/settings')
+var userRouter = require('./routes/user');
+// var accountRouter = require('./routes/account');
+// var withdrawRouter   = require('./routes/withdraw')
+// var summaryRouter   = require('./routes/summary');
+// var confirmRouter = require('./routes/confirm')
+// var investmentRouter = require('./routes/investment')
+// var referralRouter  = require('./routes/referral');
+// var notificationRouter = require('./routes/notification')
+// var settingsRouter  = require('./routes/settings')
 var app = express();
 
 var session = require('express-session');
@@ -59,15 +59,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/account',accountRouter);
-app.use('/account/withdraw',withdrawRouter)
-app.use('/account/summary',summaryRouter)
-app.use('/account/confirmation',confirmRouter)
-app.use('/account/investment',investmentRouter)
-app.use('/account/settings',settingsRouter)
-app.use('/account/referral',referralRouter)
-app.use('/account/notifications',notificationRouter)
+app.use('/user', userRouter);
+// app.use('/account',accountRouter);
+// app.use('/account/withdraw',withdrawRouter)
+// app.use('/account/summary',summaryRouter)
+// app.use('/account/confirmation',confirmRouter)
+// app.use('/account/investment',investmentRouter)
+// app.use('/account/settings',settingsRouter)
+// app.use('/account/referral',referralRouter)
+// app.use('/account/notifications',notificationRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
