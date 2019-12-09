@@ -7,72 +7,82 @@ class Login extends React.Component{
       emailErr: "dfdfs",
       email: 'dfs',
       password: 'sds',
+      formError:'',
+      errorClass:''
     }
 
-    this.handleLogin = this.handleLogin.bind(this)
+    this.handleEmail = this.handleEmail.bind(this)
     this.handlePassword = this.handlePassword.bind(this)
+    this.handleLogin = this.handleLogin.bind(this)
   }
 
-  handleLogin(e){
+  handleEmail(e){
     this.setState({
-      email: e.target.value
+      email: e.target.value,
+      formError:'',
+      errorClass:''
     })
 
-    if(this.state.email == 'kennethowusu@gmail.com'){
-      this.setState({
-        emailErr: 'Email already exists'
-      })
-    }else{
-      this.setState({
-        emailErr:''
-      })
-    }
+
   }
 
   handlePassword(e){
     this.setState({
-      password: e.target.value
+      password: e.target.value,
+      formError:'',
+      errorClass:''
+    })
+  }
+
+  handleLogin(e){
+
+    e.preventDefault();
+    const email = this.state.email;
+    const password = this.state.password;
+    fetch('/login',{method:'post',
+                        headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: JSON.stringify({email:email,password:password})
+                  })
+    .then((response)=>{
+      return response.json();
+    })
+    .then((result)=>{
+       if(result.error){
+         this.setState({formError:"Email or password is incorrect",errorClass:"alert alert-danger"})
+       }else if(result.success){
+         window.location.href = "/user/dashboard"
+       }
+      // window.location.href = "/register/something"
     })
   }
   render(){
     return(
 
-      <div className="centered">
-            <a  href="/" className="d-flex justify-content-center align-items-center mb-4">
-              <img src="/images/logo.png" alt="" className="t"/>
-            </a>
-            <p className="error text-center" >{this.state.emailErr}</p>
-            <form className="" action="" method="post">
-              <div className="col-md-4 offset-lg-4 pr-md-5">
-
-                  <div className="form-group">
-                    <input type="text" value={this.state.email} onChange={this.handleLogin} className="form-control form" id="email" placeholder="Enter Email"/>
-                    <label  className="error emailEmptyErr emailInvalidErr"></label>
-                  </div>
-                  <div className="form-group">
-                    <input type="password"  value={this.state.password} onChange={this.handlePassword} className="form-control form" id="password" placeholder="Enter password"/>
-                    <label  className="error passwordEmptyErr"></label>
-                  </div>
-
-
-                  <div className="form-group">
-                    <input type="submit" value="Log In" id="loginBtn" className="btn w-100 btn-orange text-white rad-s py-3 px-5"/>
-                  </div>
-
-                  <p><a href="#" id="forgotpassword" className="text-muted">Forgot password?</a></p>
-
-                  <div className="form-group">
-                    <a href="/register" className="btn w-100 btn-muted text-black rad-s py-3 px-5 no-shadow">Register</a>
-                  </div>
-
-
-
-              </div>
-            </form>
+      <div>
+        <div className={this.state.errorClass}>
+          {this.state.formError}
+        </div>
+        <form action="" onSubmit={this.handleLogin}>
+          <div className="form-group">
+            <input type="text" value={this.state.email} onChange={this.handleEmail} placeholder="Your email address"className="form-control"/>
+          </div>
+          <div className="form-group">
+            <input type="password" value={this.state.password} onChange={this.handlePassword} placeholder="Your password" className="form-control"/>
+          </div>
+          <div className="form-group">
+             <input className="form-control bg-primary" onClick={this.handleLogin}  type="submit" value="Login"/>
+          </div>
+        </form>
+        <div>
+          <a  className="text-right d-block font-weight-bold" href="">Forgot Password?</a>
+        </div>
       </div>
 
     )
   }
 }
 
-ReactDOM.render(<Login/>,document.getElementById('login-root'))
+ReactDOM.render(<Login/>,document.getElementById('login-form'))

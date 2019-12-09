@@ -158,12 +158,11 @@ module.exports.signin = function(req, res, next){
       } else {
         var token = user.generateToken(req, res, next, person);
 
-        console.log(token)
-        //send this for the cookie to work
-        res.send({token:token});
+         return res.send({success:true})
         //redirect to a url
       } //else
     }) //then
+
 } //module.exports
 //===================log out===========================//
 module.exports.logout = function(req,res,next){

@@ -7,21 +7,8 @@
         <h3 class=" font-weight-bold text-primary auth-head">Welcome Back</h3>
         <p class=" auth-notice"  >New to Prime Axis? <a href="/register">Register</a></p>
 
-        <section class="auth-form-cont">
-          <form action="">
-            <div class="form-group">
-              <input type="text" placeholder="Your email address"class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Your password" class="form-control">
-            </div>
-            <div class="form-group">
-               <input class="form-control bg-primary" type="submit" value="Login">
-            </div>
-          </form>
-          <div>
-            <a  class="text-right d-block font-weight-bold" href="">Forgot Password?</a>
-          </div>
+        <section class="auth-form-cont" id="login-form">
+
         </section>
 
       </div>
@@ -29,5 +16,5 @@
 
 
    </div><!--Wrapper ends-->
-
+<script type="text/babel" src="/login.js"></script>
 <%-include('./auth/footer.ejs')%>
