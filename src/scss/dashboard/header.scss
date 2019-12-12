@@ -7,10 +7,17 @@ $color-accent-hover:#d2540e;
 .header{
   width:100%;
   height:70px;
+  background-color:#3d5afe;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display:flex;
   align-items: center;
   padding: 0 25px;
+
+  @media(min-width:760px){
+    position:fixed;
+    width:100vw;
+    background-color:#fff;
+  }
 }
 
 input[type="checkbox"]{
@@ -27,10 +34,14 @@ input[type="checkbox"]{
   align-items: center;
   cursor:pointer;
 
+  @media(min-width:760px){
+     display:none;
+  }
+
    .burger-bar{
      width: 26px;
      height: 3px;
-     background-color: $color-accent;
+     background-color: #fff;
      margin-bottom: 5px;
      border-radius: 2px;
 
@@ -41,20 +52,28 @@ input[type="checkbox"]{
 }
 
 .sidebar{
+  width:100%;
   position:fixed;
   top:0;
   left:0;
+  display:flex;
 
-  display: none;
+  transform:translateX(-100%);
 
+  @media(min-width:760px){
+     transform:translateX(0) !important;
+     width:264px !important;
+  }
 }
 .sidebar-cont{
 
+  flex: 1 60%;
   height:100vh;
   padding:0;
   padding-top:80px;
   list-style-type: none;
   background-color:#3d5afe;
+  overflow: scroll;
 
   .sidebar-img{
     margin-right:15px;
@@ -116,17 +135,25 @@ input[type="checkbox"]{
 }
 
 .sidebar-close-cont{
-  width:100vw;
+  flex: 1 40%;
   height:100vh;
-  background-color:rgba(0,0,0,0.2)
+  background-color:rgba(0,0,0,0.2);
+  position:relative;
+
+  @media(min-width:760px){
+    display:none !important;
+  }
 
 }
 
 .sidebar-check:checked ~ .sidebar{
- transition: 2s ease-in-out;
- transition-property: display;
-  display:flex ;
+  transition: .3s ease-in-out;
+  transition-property: transform;
+  transform: rotateX(0);
+
 }
+
+
 
 .header-action{
   display:flex;
@@ -136,8 +163,13 @@ input[type="checkbox"]{
   .header-action-notication{
     cursor:pointer;
      svg{
+       fill:#fff;
        width:23px;
        height:23px;
+
+       @media(min-width:760px){
+         fill: $color-accent !important;
+       }
      }
   }
 
@@ -147,7 +179,33 @@ input[type="checkbox"]{
     svg{
       width:40px;
       height:40px;
-      fill:#d0d0d0
+      fill:#fff;
+
+      @media(min-width:760px){
+        fill: #d0d0d0 !important;
+      }
+    }
+  }
+}
+
+.sidebar-close{
+  position:absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 30px;
+  left: 27px;
+  span{
+    width:27px;
+    height:3px;
+    border-radius:1.5px;
+    background-color:$color-accent;
+    &:first-child{
+      transform: rotate(45deg) translate(7px,7px);
+    }
+    &:nth-child(2){
+      transform: rotate(-45deg) translate(-5px,5px);
     }
   }
 }

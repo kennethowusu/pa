@@ -5,10 +5,18 @@ body {
 .header {
   width: 100%;
   height: 70px;
+  background-color: #3d5afe;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   padding: 0 25px;
+}
+@media (min-width: 760px) {
+  .header {
+    position: fixed;
+    width: 100vw;
+    background-color: #fff;
+  }
 }
 
 input[type="checkbox"] {
@@ -26,10 +34,15 @@ input[type="checkbox"] {
   align-items: center;
   cursor: pointer;
 }
+@media (min-width: 760px) {
+  .burger {
+    display: none;
+  }
+}
 .burger .burger-bar {
   width: 26px;
   height: 3px;
-  background-color: #ff6814;
+  background-color: #fff;
   margin-bottom: 5px;
   border-radius: 2px;
 }
@@ -38,18 +51,28 @@ input[type="checkbox"] {
 }
 
 .sidebar {
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  display: none;
+  display: flex;
+  transform: translateX(-100%);
+}
+@media (min-width: 760px) {
+  .sidebar {
+    transform: translateX(0) !important;
+    width: 264px !important;
+  }
 }
 
 .sidebar-cont {
+  flex: 1 60%;
   height: 100vh;
   padding: 0;
   padding-top: 80px;
   list-style-type: none;
   background-color: #3d5afe;
+  overflow: scroll;
 }
 .sidebar-cont .sidebar-img {
   margin-right: 15px;
@@ -101,15 +124,21 @@ input[type="checkbox"] {
 }
 
 .sidebar-close-cont {
-  width: 100vw;
+  flex: 1 40%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+@media (min-width: 760px) {
+  .sidebar-close-cont {
+    display: none !important;
+  }
 }
 
 .sidebar-check:checked ~ .sidebar {
-  transition: 2s ease-in-out;
-  transition-property: display;
-  display: flex;
+  transition: .3s ease-in-out;
+  transition-property: transform;
+  transform: rotateX(0);
 }
 
 .header-action {
@@ -121,8 +150,14 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 .header-action .header-action-notication svg {
+  fill: #fff;
   width: 23px;
   height: 23px;
+}
+@media (min-width: 760px) {
+  .header-action .header-action-notication svg {
+    fill: #ff6814 !important;
+  }
 }
 .header-action .header-action-profile {
   cursor: pointer;
@@ -131,7 +166,34 @@ input[type="checkbox"] {
 .header-action .header-action-profile svg {
   width: 40px;
   height: 40px;
-  fill: #d0d0d0;
+  fill: #fff;
+}
+@media (min-width: 760px) {
+  .header-action .header-action-profile svg {
+    fill: #d0d0d0 !important;
+  }
+}
+
+.sidebar-close {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 30px;
+  left: 27px;
+}
+.sidebar-close span {
+  width: 27px;
+  height: 3px;
+  border-radius: 1.5px;
+  background-color: #ff6814;
+}
+.sidebar-close span:first-child {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+.sidebar-close span:nth-child(2) {
+  transform: rotate(-45deg) translate(-5px, 5px);
 }
 
 /*# sourceMappingURL=dashboard.css.map */
