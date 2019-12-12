@@ -1,0 +1,137 @@
+body {
+  font-family: "Work Sans";
+}
+
+.header {
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 25px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.burger-label {
+  margin-right: auto;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.burger .burger-bar {
+  width: 26px;
+  height: 3px;
+  background-color: #ff6814;
+  margin-bottom: 5px;
+  border-radius: 2px;
+}
+.burger .burger-bar:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.sidebar-cont {
+  height: 100vh;
+  padding: 0;
+  padding-top: 80px;
+  list-style-type: none;
+  background-color: #3d5afe;
+}
+.sidebar-cont .sidebar-img {
+  margin-right: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+.sidebar-cont .sidebar-img svg {
+  width: 20px;
+  height: 20px;
+  fill: #dedede;
+}
+.sidebar-cont .sidebar-link-test {
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 30px;
+  width: 100%;
+  text-decoration: none;
+}
+.sidebar-link.active {
+  background-color: #1515d6;
+  border-left: 2px solid #ff6814;
+}
+.sidebar-link.active svg {
+  fill: #ff6814;
+}
+.sidebar-link.active .sidebar-link-test {
+  color: #ff6814;
+}
+.sidebar-link:hover {
+  text-decoration: none;
+}
+.sidebar-link:hover > .sidebar-link-test {
+  transition: .3s ease-in-out;
+  transition-property: color;
+  color: #ff6814;
+}
+.sidebar-link:hover svg {
+  transition: .3s ease-in-out;
+  transition-property: fill;
+  fill: #ff6814;
+}
+
+.sidebar-close-cont {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-check:checked ~ .sidebar {
+  transition: 2s ease-in-out;
+  transition-property: display;
+  display: flex;
+}
+
+.header-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-action .header-action-notication {
+  cursor: pointer;
+}
+.header-action .header-action-notication svg {
+  width: 23px;
+  height: 23px;
+}
+.header-action .header-action-profile {
+  cursor: pointer;
+  margin-left: 20px;
+}
+.header-action .header-action-profile svg {
+  width: 40px;
+  height: 40px;
+  fill: #d0d0d0;
+}
+
+/*# sourceMappingURL=dashboard.css.map */

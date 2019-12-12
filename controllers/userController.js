@@ -24,9 +24,6 @@ const moment        = require('moment');
 
 
 
-
-
-
 module.exports.getSummaryIndexPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
@@ -37,4 +34,31 @@ module.exports.getSummaryIndexPage = (req,res,next)=>{
                     user:foundUser,notifications:notifications,moment:moment})
     })
   })
+}
+
+
+module.exports.getDashboardPage = (req,res,next)=>{
+  return res.render('user/dashboard',{title:"Dashboard"});
+
+}
+
+module.exports.getInvest = (req,res,next)=>{
+
+}
+
+module.exports.getWithdrawPage = (req,res,next)=>{
+
+}
+
+module.exports.getHistoryPage = (req,res,next)=>{
+
+}
+
+module.exports.getReferralPage = (req,res,next)=>{
+
+}
+
+
+module.exports.getSettingsPage = (req,res,next)=>{
+
 }

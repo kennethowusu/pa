@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+
+  <title><%=title%></title>
+</head>
+<body>
+
+<div class="header ">
+  <label for="sidebar-check" class="burger-label">
+    <div class="burger ">
+      <span class="burger-bar"></span>
+      <span class="burger-bar"></span>
+      <span class="burger-bar"></span>
+    </div>
+  </label>
+
+  <div class="header-action" class="sidebar-label">
+    <div class="header-action-notication">
+      <%-include('../../dist/images/notification.svg')%>
+    </div>
+    <div class="header-action-profile">
+        <%-include('../../dist/images/profile.svg')%>
+    </div>
+  </div>
+
+</div>
+
+
+
+  <input type="checkbox" id="sidebar-check" class="sidebar-check">
+
+
+<nav class="sidebar">
+  <ul class="sidebar-cont">
+    <li class="sidebar-list">
+      <a href="#" class="sidebar-link active">
+        <span class="sidebar-img">
+          <%-include('../../dist/images/dashboard.svg')%>
+        </span>
+        <span class="sidebar-link-test">Dashboard</span>
+      </a>
+    </li>
+    <li class="sidebar-list">
+      <a href="#" class="sidebar-link">
+        <span class="sidebar-img">
+          <%-include('../../dist/images/investment.svg')%>
+        </span>
+        <span class="sidebar-link-test">Invest / Top Up</span>
+      </a>
+    </li>
+
+    <li class="sidebar-list">
+      <a href="#" class="sidebar-link">
+        <span class="sidebar-img">
+          <%-include('../../dist/images/credit-card.svg')%>
+        </span>
+        <span class="sidebar-link-test">Withdraw</span>
+      </a>
+    </li>
+
+    <li class="sidebar-list">
+      <a href="#" class="sidebar-link">
+        <span class="sidebar-img">
+          <%-include('../../dist/images/history.svg')%>
+        </span>
+        <span class="sidebar-link-test">History</span>
+      </a>
+    </li>
+
+    <li class="sidebar-list">
+      <a href="#" class="sidebar-link">
+        <span class="sidebar-img">
+          <%-include('../../dist/images/referral.svg')%>
+        </span>
+        <span class="sidebar-link-test">Referral</span>
+      </a>
+    </li>
+
+  </ul>
+  <label for="sidebar-check"  class="sidebar-close-cont"></label>
+
+</nav>
+
+
+</body>
+</html>

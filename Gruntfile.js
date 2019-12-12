@@ -13,7 +13,8 @@ module.exports = function(grunt) {
           files: {                         // Dictionary of files
               'dist/css/primeaxis.css':'src/scss/primeaxis/primeaxis.scss',
               'dist/css/general.css':'src/scss/general/general.scss',
-              'dist/css/auth.css':'src/scss/auth.scss'
+              'dist/css/auth.css':'src/scss/auth.scss',
+              'dist/css/dashboard.css':'src/scss/dashboard/dashboard.scss'
           }
         }
       },
