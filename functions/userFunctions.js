@@ -2,8 +2,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 
-
-
 //models
 var User = require('../models/userModel');
 const NOTIFICATION = require('../models/notificationModel.js');
@@ -42,7 +40,7 @@ module.exports = {
 
   },
   getUserId:function(req, res, next) {
-    const userToken = req.query.token;
+    const userToken = req.cookies.auth;
 
     var decoded = jwt.decode(userToken);
     return decoded.id; //verify token
@@ -59,10 +57,9 @@ module.exports = {
          }//payload
 
          const options = {
-           expiresIn:"5h"
+           expiresIn:"1h"
          }
          var token = jwt.sign(payload,process.env.JWTSECRET,options);
-
 
          //save token in cookie
          res.cookie('auth',token);
@@ -83,7 +80,7 @@ module.exports = {
     User.find({where:{user_id:user_id}})
       .then(function(user){
         if(!user.is_verified){
-          return res.send({userNotVerified:true});
+          return res.redirect('/account/confirmation');
         }
       next();
       })
@@ -101,11 +98,11 @@ module.exports = {
 
    },
    requireAuth:(req,res,next)=>{
-     var userToken = req.cookies.token;
+     var userToken = req.cookies.auth;
 
       module.exports.tokenIsValid(userToken).then(function(result){
         if(!result){
-         return res.send({notAuthorized:true});
+         return res.redirect('/');
         }
       next();
       })

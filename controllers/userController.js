@@ -24,25 +24,46 @@ const moment        = require('moment');
 
 
 
-module.exports.getSummaryIndexPage = (req,res,next)=>{
-  const user_id = user.getUserId(req,res,next)
-  User.findOne({where:{user_id:user_id},include:[{all:true}]})
-  .then(function(foundUser){
-    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-    .then(function(notifications){
-      return res.render('summary/index',{title:"Summary",
-                    user:foundUser,notifications:notifications,moment:moment})
-    })
-  })
-}
 
 
 module.exports.getDashboardPage = (req,res,next)=>{
-  return res.render('user/dashboard',{title:"Dashboard"});
+  const user_id = user.getUserId(req,res,next)
+  User.findOne({where:{user_id:user_id},include:[{all:true}]})
+  .then(function(foundUser){
+        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+        .then(function(notifications){
+                return res.render('user/dashboard',{
+                                title:"Summary",
+                                user:foundUser,
+                                page:'dashboard',
+                                notifications:notifications,
+                                moment:moment
+                            })
 
-}
+                //return res.send({user:foundUser})
+        })
+  })
 
-module.exports.getInvest = (req,res,next)=>{
+
+}//getDashboardPage
+
+module.exports.getInvestPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  User.findOne({where:{user_id:user_id},include:[{all:true}]})
+  .then(function(foundUser){
+        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+        .then(function(notifications){
+                return res.render('user/invest',{
+                                title:"Referral",
+                                user:foundUser,
+                                page:'referral',
+                                notifications:notifications,
+                                moment:moment
+                            })
+
+                //return res.send({user:foundUser})
+        })
+  })
 
 }
 
@@ -55,6 +76,23 @@ module.exports.getHistoryPage = (req,res,next)=>{
 }
 
 module.exports.getReferralPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  User.findOne({where:{user_id:user_id},include:[{all:true}]})
+  .then(function(foundUser){
+        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+        .then(function(notifications){
+                return res.render('user/referral',{
+                                title:"Referral",
+                                user:foundUser,
+                                page:'referral',
+                                notifications:notifications,
+                                moment:moment
+                            })
+
+                //return res.send({user:foundUser})
+        })
+  })
+
 
 }
 

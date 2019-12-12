@@ -4,7 +4,7 @@ var router = express.Router();
 const userController = require('../controllers/userController')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  return res.render('summary/index',{title:"View"})
+  return res.render('summary/index',{title:"View",page:"dashboard"})
 });
 
 
@@ -12,7 +12,9 @@ router.get('/', function(req, res, next) {
 router.get('/dashboard',userController.getDashboardPage)
 
 
+router.get('/referral',userController.getReferralPage);
 
+router.get('/invest',userController.getInvestPage);
 
 // router.get('/')
 

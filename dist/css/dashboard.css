@@ -1,5 +1,21 @@
 body {
-  font-family: "Work Sans";
+  font-family: "Work Sans",sans-serif !important;
+}
+
+@media (min-width: 760px) {
+  .content-wrapper {
+    display: flex !important;
+  }
+}
+
+.dash-content {
+  background-color: #F5F7F9;
+  padding-top: 50px;
+}
+@media (min-width: 760px) {
+  .dash-content {
+    padding-top: 106px;
+  }
 }
 
 .header {
@@ -10,6 +26,7 @@ body {
   display: flex;
   align-items: center;
   padding: 0 25px;
+  z-index: 2;
 }
 @media (min-width: 760px) {
   .header {
@@ -56,10 +73,12 @@ input[type="checkbox"] {
   top: 0;
   left: 0;
   display: flex;
+  z-index: 4;
   transform: translateX(-100%);
 }
 @media (min-width: 760px) {
   .sidebar {
+    position: static !important;
     transform: translateX(0) !important;
     width: 264px !important;
   }
@@ -73,6 +92,11 @@ input[type="checkbox"] {
   list-style-type: none;
   background-color: #3d5afe;
   overflow: scroll;
+}
+@media (min-width: 760px) {
+  .sidebar-cont {
+    overflow: hidden !important;
+  }
 }
 .sidebar-cont .sidebar-img {
   margin-right: 15px;
@@ -128,6 +152,7 @@ input[type="checkbox"] {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
   position: relative;
+  cursor: pointer;
 }
 @media (min-width: 760px) {
   .sidebar-close-cont {

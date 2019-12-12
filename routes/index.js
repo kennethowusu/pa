@@ -38,11 +38,7 @@ router.get('/faqs',user.loggedIn,module.exports.checkReferral,indexController.ge
 
 
 
-router.get('/about-us',user.loggedIn,module.exports.checkReferral,indexController.getAboutUsPage)
 
-router.get('/investment-plans',user.loggedIn,module.exports.checkReferral,indexController.getInvestmentPage)
-
-router.get('/contact',user.loggedIn,module.exports.checkReferral,indexController.getContactPage)
 //================logout==================//
 router.get('/account/logout',indexController.logout);
 

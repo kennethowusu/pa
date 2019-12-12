@@ -179,21 +179,7 @@ module.exports.logout = function(req,res,next){
 }
 
 
-module.exports.getAboutUsPage = (req,res,next)=>{
-    return res.render('about-us',{title:"About Us"});
 
-}
-module.exports.getInvestmentPage = (req,res,next)=>{
-    return res.render('investment-plans',{title:"Investment Plans"});
-}
 module.exports.getFaqsPage = (req,res,next)=>{
   return res.render('faqs',{title:"Frequently Asked Questions"});
-}
-
-module.exports.getTermsPage = (req,res,next)=>{
-  return res.render('terms',{title:"Terms and Conditions"});
-}
-
-module.exports.getContactPage = (req,res,next)=>{
-    return res.render('contact',{title:"Contact"});
 }

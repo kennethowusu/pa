@@ -9,6 +9,7 @@ body, * {
 .header {
   padding: 0;
   background-color: #fff;
+  z-index: 2500 !important;
 }
 @media (min-width: 1060px) {
   .header {
@@ -106,6 +107,7 @@ body, * {
   margin: 0;
   overflow-y: scroll;
   transition: width .3s ease-in-out;
+  z-index: 3000 !important;
 }
 @media (min-width: 1060px) {
   .main-nav {

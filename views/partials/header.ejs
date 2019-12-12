@@ -1,70 +1,97 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" href="/images/favicon.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap-reboot.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/3.2.89/css/materialdesignicons.min.css">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    
-    <script
-			  src="https://code.jquery.com/jquery-3.3.1.min.js"
-			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			  crossorigin="anonymous">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
 
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
-  </head>
-        <!-- Start of Tawk.to Script-->
-      <!-- <script type="text/javascript">
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/5c07f075fd65052a5c93e738/default';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-      })();
-      </script> -->
-      <!--End of Tawk.to Script -->
+  <title><%=title%></title>
+</head>
+<body class="">
 
-    <body>
+ <div class="wrapper content-wrapper">
 
-              <!-- Load Facebook SDK for JavaScript -->
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+   <div class="header ">
+     <label for="sidebar-check" class="burger-label">
+       <div class="burger ">
+         <span class="burger-bar"></span>
+         <span class="burger-bar"></span>
+         <span class="burger-bar"></span>
+       </div>
+     </label>
 
-        <!-- Your customer chat code -->
-        <div class="fb-customerchat"
-          attribution=setup_tool
-          page_id="443004146104681">
-        </div>
-      <header class="header d-flex align-items-center">
-        <a href="#" class="logo mr-auto">
-          <img src="/images/logo.png" class='logo-img' alt="">
-        </a>
+     <div class="header-action" class="sidebar-label">
+       <div class="header-action-notication">
+         <%-include('../../dist/images/notification.svg')%>
+       </div>
+       <div class="header-action-profile">
+           <%-include('../../dist/images/profile.svg')%>
+       </div>
+     </div>
 
-        <div class="hamburger pointer">
-          <span class="rod"></span>
-          <span class="rod"></span>
-          <span class="rod"></span>
-        </div>
-        <nav class="nav p-absolute">
-          <ul class="nav-ul">
-            <li class="nav-list"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-list"><a class="nav-link" href="/faqs">Faqs</a></li>
-            <li class="nav-list"><a class="nav-link" href="/terms">Terms</a></li>
-            <li class="nav-list"><a class="nav-link" href="/login">Log In</a></li>
-            <li class="nav-list"><a class="nav-link" href="/register">Register</a></li>
-          </ul>
-        </nav>
-      </header>
+   </div>
+
+
+
+     <input type="checkbox" id="sidebar-check" class="sidebar-check">
+
+
+   <nav class="sidebar">
+     <ul class="sidebar-cont">
+       <li class="sidebar-list">
+         <a href="/user/dashboard" class="<%=(page=='dashboard') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/dashboard.svg')%>
+           </span>
+           <span class="sidebar-link-test">Dashboard</span>
+         </a>
+       </li>
+       <li class="sidebar-list">
+         <a href="/user/invest" class="<%=(page=='invest') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/investment.svg')%>
+           </span>
+           <span class="sidebar-link-test">Invest / Top Up</span>
+         </a>
+       </li>
+
+       <li class="sidebar-list">
+         <a href="/user/withdraw" class="<%=(page=='withdraw') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/credit-card.svg')%>
+           </span>
+           <span class="sidebar-link-test">Withdraw</span>
+         </a>
+       </li>
+
+       <li class="sidebar-list">
+         <a href="/user/history"class="<%=(page=='history') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/history.svg')%>
+           </span>
+           <span class="sidebar-link-test">History</span>
+         </a>
+       </li>
+
+       <li class="sidebar-list">
+         <a href="/user/referral" class="<%=(page=='referral') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/referral.svg')%>
+           </span>
+           <span class="sidebar-link-test">Referral</span>
+         </a>
+       </li>
+
+     </ul>
+     <label for="sidebar-check"  class="sidebar-close-cont">
+       <div class="sidebar-close">
+         <span></span>
+         <span></span>
+       </div>
+     </label>
+
+   </nav>
