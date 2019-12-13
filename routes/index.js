@@ -36,7 +36,7 @@ router.get('/register',user.loggedIn,module.exports.checkReferral,indexControlle
 
 router.get('/faqs',user.loggedIn,module.exports.checkReferral,indexController.getFaqsPage);
 
-
+router.get('/support',user.loggedIn,module.exports.checkReferral,indexController.getSupportPage);
 
 
 //================logout==================//

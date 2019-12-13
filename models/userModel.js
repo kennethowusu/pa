@@ -71,7 +71,5 @@ User.hasOne(paymentRequest,{foreignKey:'user_id',sourceKey:'user_id',onDelete:'N
 User.hasMany(Payment,{foreignKey:'user_id',sourceKey:'user_id',onDelete:'NO ACTION',hooks:true })
 User.hasMany(Earning,{foreignKey:'user_id',sourceKey:'user_id',onDelete:'NO ACTION',hooks:true })
 
-sequelize.sync({
-  force:false
-})
+
 module.exports = User;

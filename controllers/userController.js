@@ -18,6 +18,7 @@ const Notification = require('../models/notificationModel.js');
 const Finance       = require('../models/financeModel.js');
 const Investment    = require('../models/investmentModel.js');
 const Deposit       = require('../models/depositModel');
+const Earning       = require('../models/dailyEarningsModel')
 const moment        = require('moment');
 
 
@@ -32,15 +33,20 @@ module.exports.getDashboardPage = (req,res,next)=>{
   .then(function(foundUser){
         Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
         .then(function(notifications){
-                return res.render('user/dashboard',{
-                                title:"Summary",
-                                user:foundUser,
-                                page:'dashboard',
-                                notifications:notifications,
-                                moment:moment
-                            })
 
-                //return res.send({user:foundUser})
+           Earning.findAll({limit:5,where:{user_id:user_id},order:[['createdAt','DESC']]})
+           .then(function(earnings){
+             return res.render('user/dashboard',{
+                             title:"Summary",
+                             user:foundUser,
+                             page:'dashboard',
+                             notifications:notifications,
+                             earnings:earnings,
+                             moment:moment
+                         })
+
+             //return res.send({user:foundUser})
+           })
         })
   })
 

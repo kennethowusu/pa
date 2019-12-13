@@ -7,6 +7,10 @@ const Earning = sequelize.define('earning',{
   balance:{
     type:Sequelize.DECIMAL(10, 2),
     allowNull:false
+  },
+  principal:{
+    type:Sequelize.DECIMAL(10, 2),
+    allowNull:false
   }
 
 

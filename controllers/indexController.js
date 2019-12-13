@@ -183,3 +183,7 @@ module.exports.logout = function(req,res,next){
 module.exports.getFaqsPage = (req,res,next)=>{
   return res.render('faqs',{title:"Frequently Asked Questions"});
 }
+
+module.exports.getSupportPage = (req,res,next)=>{
+  return res.render('support',{title:"Support"});
+}

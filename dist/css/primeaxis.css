@@ -429,6 +429,10 @@ body.mobileNavActive {
   justify-content: center;
   align-items: center;
 }
+.price-img svg {
+  width: 112px;
+  height: 120px;
+}
 
 .price-detail-cont {
   text-align: center;
@@ -443,6 +447,10 @@ body.mobileNavActive {
 .price-detail:nth-child(4) {
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+}
+
+.section-bg {
+  background-color: #F4F6FF;
 }
 
 @media (min-width: 700px) {
@@ -511,6 +519,47 @@ body.mobileNavActive {
 .choose-title {
   margin-top: 25px;
   color: #ff6814;
+  font-size: 1.4em;
+}
+
+.footer {
+  padding: 50px 50px;
+  background-color: #3d5afe;
+}
+.footer ul {
+  margin: 0;
+  padding: 0;
+}
+.footer a {
+  color: #fff !important;
+  font-size: 1.4em;
+}
+
+.payment-img-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.payment-img-cont svg {
+  width: 40px;
+  height: 40px;
+}
+@media (min-width: 760px) {
+  .payment-img-cont svg {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.footer .contact {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.footer .contact p {
+  color: #fff !important;
   font-size: 1.4em;
 }
 
