@@ -7,6 +7,7 @@ const truncate = require('truncate');
 const money    = require('money-math');
 const util   = require('util');
 const mail    =  require('../mail/mail');
+const colors = require('colors')
 
 // const mail = require('../mail/mail');
 require('dotenv').config();
@@ -29,18 +30,6 @@ const moment        = require('moment');
 
 
 
-module.exports.getWithdrawPage = (req,res,next)=>{
-  const user_id = user.getUserId(req,res,next)
-  User.findOne({where:{user_id:user_id},include:[{all:true}]})
-  .then(function(foundUser){
-
-    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-    .then(function(notifications){
-      return res.render('withdraw/index',
-      {title:"Withdraw",user:foundUser,money:money,notifications:notifications,moment:moment})
-    })
-  })
-}
 
 
 module.exports.getWithdrawHistoryPage = (req,res,next)=>{
@@ -82,7 +71,7 @@ module.exports.postWithDrawalRequest = (req,res,next)=>{
        const totalFunds = money.add(foundUser.finance.principal,foundUser.finance.interest);
        const maximumWithdrawal = 0.05 * totalFunds;
        const maximumAmount = maximumWithdrawal.toFixed(2);
-
+       console.log('Everything worked'.green)
        if(parseFloat(amount) > parseFloat(maximumAmount)){
          return res.send({error: `$${amount} is greater than your maximum withdrawal amount of $${maximumAmount}`})
        }else{

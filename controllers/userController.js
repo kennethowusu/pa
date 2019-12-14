@@ -59,13 +59,25 @@ module.exports.getInvestPage = (req,res,next)=>{
   .then(function(foundUser){
         Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
         .then(function(notifications){
-                return res.render('user/invest',{
-                                title:"Referral",
-                                user:foundUser,
-                                page:'referral',
-                                notifications:notifications,
-                                moment:moment
-                            })
+
+                 if(!foundUser.finance.investment_type){
+                   return res.render('user/invest',{
+                                   title:"Referral",
+                                   user:foundUser,
+                                   page:'invest',
+                                   notifications:notifications,
+                                   moment:moment
+                               })
+                 }else{
+                   return res.render('user/topup',{
+                                   title:"Referral",
+                                   user:foundUser,
+                                   page:'invest',
+                                   notifications:notifications,
+                                   moment:moment
+                               })
+                 }
+
 
                 //return res.send({user:foundUser})
         })
@@ -74,6 +86,34 @@ module.exports.getInvestPage = (req,res,next)=>{
 }
 
 module.exports.getWithdrawPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  User.findOne({where:{user_id:user_id},include:[{all:true}]})
+  .then(function(foundUser){
+        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+        .then(function(notifications){
+
+                 if(!foundUser.finance.investment_type){
+                   return res.render('user/not-invest',{
+                                   title:"Withdraw",
+                                   user:foundUser,
+                                   page:'withdraw',
+                                   notifications:notifications
+                               })
+                 }else{
+                   return res.render('user/withdraw',{
+                                   title:"Withdraw",
+                                   user:foundUser,
+                                   page:'withdraw',
+                                   notifications:notifications,
+                                   money:money,
+                                   moment:moment
+                               })
+                 }
+
+
+                //return res.send({user:foundUser})
+        })
+  })
 
 }
 

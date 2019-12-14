@@ -1,0 +1,178 @@
+<%-include('../partials/header')%>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <%
+   const last_withdrawal_date  = new Date(user.finance.last_withdrawal_date);
+   const today = moment(new Date())
+   const next_two_weeks = moment(last_withdrawal_date).add('2','weeks');
+   const gold_date_left  = next_two_weeks.diff(last_withdrawal_date,'days')
+   const duration  = today.diff(last_withdrawal_date,'days')
+  %>
+
+       <div class="container-fluid dash-content">
+
+         <!-- Page Heading -->
+         <div class="d-sm-flex align-items-center justify-content-between mb-4">
+           <h1 class="h3 mb-0 text-gray-800">Withdraw</h1>
+
+         </div>
+
+         <!-- Content Row -->
+         <div class="row">
+
+           <!-- Earnings (Monthly) Card Example -->
+           <div class="col-xl-3 col-md-6 mb-4">
+             <div class="card border-left-primary shadow h-100 py-2">
+               <div class="card-body">
+                 <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-primary  mb-1">Principal</div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800">$<%=user.finance.principal%></div>
+                   </div>
+                   <div class="col-auto">
+                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!-- Earnings (Monthly) Card Example -->
+           <div class="col-xl-3 col-md-6 mb-4">
+             <div class="card border-left-success shadow h-100 py-2">
+               <div class="card-body">
+                 <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-success   mb-1">Interest</div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800">$<%=user.finance.interest%></div>
+                   </div>
+                   <div class="col-auto">
+                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!-- Earnings (Monthly) Card Example -->
+           <div class="col-xl-3 col-md-6 mb-4">
+             <div class="card border-left-info shadow h-100 py-2">
+               <div class="card-body">
+                 <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-info   mb-1">Total(Principal + Interest)</div>
+                     <div class="row no-gutters align-items-center">
+                       <div class="col-auto">
+                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$<%=money.add(user.finance.principal,user.finance.interest)%></div>
+                       </div>
+                       <!-- <div class="col">
+                         <div class="progress progress-sm mr-2">
+                           <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                         </div>
+                       </div> -->
+                     </div>
+                   </div>
+                   <div class="col-auto">
+                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+         </div>
+         <!--row-->
+
+         <!-- Content Row -->
+
+         <div class="row">
+
+           <!-- Area Chart -->
+           <div class="col-xl-9 col-lg-9">
+                               <%if(user.investment.investment_status=='active' && user.investment.investment_type && user.finance.withdrawal_status == 'pending'){%>
+                    
+                      <div class="alert alert-info">
+
+                          You have pending withrawal. You will receive notification as soon as payment is made
+
+                      </div>
+
+
+
+                   <%}else if(duration >=  gold_date_left ){%>
+                    <div class="masonry-item col-md-6 ">
+                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" id="withdrawalBtn">Request Withdrawal</button>
+                      <p class="text-muted mT-10">Withdrawal Available</p>
+                    </div>
+                  <%}else{%>
+                    <div class="masonry-item col-md-6 ">
+                      <button type="button" disabled class="btn btn-success">Request Withdrawal</button>
+                      <p class="text-muted mT-10">Withdrawal Unavailable.  Your next withdrawal is on <%=next_two_weeks.format('dddd, MMMM Do YYYY')%></p>
+                    </div>
+
+                  <%}%>
+              </div>
+
+
+         </div><!--row-->
+
+
+
+
+
+       </div>
+       <!-- /.container-fluid -->
+
+       <!-- Button trigger modal -->
+
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+       <div class="modal-dialog" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel"></h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+             <% const totalFunds = money.add(user.finance.principal,user.finance.interest);
+             const maximumWithdrawal = 0.05 * totalFunds;
+
+            %>
+            <p>Maximum withdrawal is <span class="font-weight-bold"> $<%=parseFloat(maximumWithdrawal).toFixed(2)%></span> (5% of your total funds)</p>
+             <div class="form-group">
+              <label for="amount">Amount</label>
+              <input type="text" class="form-control isNumber isMoney" id="amount" placeholder="Enter Amount">
+              <label class="error amountErr"></label>
+            </div>
+            <div class="form-group">
+              <label for="paymentMode">Select Payment Mode</label>
+              <select class="form-control" id="paymentMode" >
+                <option value="">Select</option>
+                <option value="Paypal">Paypal</option>
+                <option value="Bitcoin">Bitcoin</option>
+              </select>
+              <label class="error paymentErr"></label>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Wallet Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Your paypal email or curreny wallet address">
+              <label class="error addressErr"></label>
+            </div>
+
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+             <button type="button" class="btn btn-primary" id="requestWithdrawalBtn">Request</button>
+           </div>
+         </div>
+       </div>
+     </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/withdraw.js" type="text/javascript"></script>
+<%-include('../partials/footer')%>

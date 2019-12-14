@@ -16,6 +16,9 @@ router.get('/referral',userController.getReferralPage);
 
 router.get('/invest',userController.getInvestPage);
 
+router.get('/withdraw',userController.getWithdrawPage);
+
+
 // router.get('/')
 
 module.exports = router;

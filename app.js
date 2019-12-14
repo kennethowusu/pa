@@ -9,7 +9,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 // var accountRouter = require('./routes/account');
-// var withdrawRouter   = require('./routes/withdraw')
+var withdrawRouter   = require('./routes/withdraw')
 // var summaryRouter   = require('./routes/summary');
 // var confirmRouter = require('./routes/confirm')
 // var investmentRouter = require('./routes/investment')
@@ -61,7 +61,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 // app.use('/account',accountRouter);
-// app.use('/account/withdraw',withdrawRouter)
+app.use('/account/withdraw',withdrawRouter)
 // app.use('/account/summary',summaryRouter)
 // app.use('/account/confirmation',confirmRouter)
 // app.use('/account/investment',investmentRouter)
