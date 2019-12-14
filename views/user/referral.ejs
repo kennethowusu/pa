@@ -1,5 +1,5 @@
 <%-include('../partials/header')%>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
        <div class="container-fluid dash-content">
@@ -7,52 +7,102 @@
          <!-- Page Heading -->
          <div class="d-sm-flex align-items-center justify-content-between mb-4">
            <h1 class="h3 mb-0 text-gray-800">Referral</h1>
-           <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+           <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></a>
          </div>
+
 
          <!-- Content Row -->
          <div class="row">
 
-           <!-- DataTales Example -->
-           <div class="card shadow mb-4">
-             <div class="card-header py-3">
-               <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+           <!-- Earnings (Monthly) Card Example -->
+           <div class="col-md-9 mb-4">
+             <div class="card border-left-primary shadow h-100 py-2">
+               <div class="card-body">
+                 <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                     <div class="alert alert-info">
+                       Earn 3% of whatever the earnings of whoever you refer. There is no limit to the amount of money or number of peope you refer.
+                     </div>
+
+                   </div>
+                   <div class="col-auto">
+                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                   </div>
+                 </div>
+               </div>
              </div>
-             <div class="card-body">
-               <div class="table-responsive">
-                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                   <thead>
-                     <tr>
-                       <th>Referrals</th>
-                       <td>People Who Have Signed Up Using Your Link.</td>
-                       <th>$0.00</th>
+           </div>
+        </div>
+         <!-- Content Row -->
+         <div class="row">
 
-                     </tr>
-                   </thead>
-
-                   <tbody>
-                     <tr>
-                       <th>Earned</th>
-                       <td>Amount That Will Be Applied To Your Account Balance.</td>
-                       <td>$0.00</td>
-
-                     </tr>
-                     <tr>
-                       <th>Paid</th>
-                       <td>Amount That Has Already Been Applied To Your Account.</td>
-                       <td>$0.00</td>
-
-                     </tr>
-
-
-                   </tbody>
-                 </table>
+           <!-- Earnings (Monthly) Card Example -->
+           <div class="col-xl-3 col-md-6 mb-4">
+             <div class="card border-left-primary shadow h-100 py-2">
+               <div class="card-body">
+                 <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-primary  mb-1">People who have signed up wiht your link</div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800"><%=referrals.count%></div>
+                   </div>
+                   <div class="col-auto">
+                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                   </div>
+                 </div>
                </div>
              </div>
            </div>
 
+           <!-- Earnings (Monthly) Card Example -->
+           <div class="col-xl-3 col-md-6 mb-4">
+             <div class="card border-left-success shadow h-100 py-2">
+               <div class="card-body">
+                 <div class="row no-gutters align-items-center">
+                   <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-success   mb-1">Referral Commission</div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800">$<%=user.finance.referral_interest%></div>
+                   </div>
+                   <div class="col-auto">
+                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <!-- Earnings (Monthly) Card Example -->
+
+
          </div>
          <!--row-->
+
+         <!-- Content Row -->
+
+
+
+
+          <div class="row">
+
+
+
+            <div class="col-md-9 mb-4">
+              <div class="masonry-item col-md-12">
+                <div class="bgc-white p-20 bd">
+                  <h6 class="c-grey-900">Your Referral link</h6>
+                  <div class="mT-30">
+                    <div class="form-group">
+                      <div class="form-control mb-2">
+                        <%=refUrl%>
+                      </div>
+                      <button type="button" data-clipboard-text="<%=refUrl%>" class=" refLink mT-10 btn btn-success" name="button">Copy</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!--row-->
+
+
 
 
 
@@ -60,5 +110,27 @@
 
        </div>
        <!-- /.container-fluid -->
+       <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+       <script type="text/javascript">
+         $('.refLink').on('click',function(){
+           const clipboard = new ClipboardJS('.refLink');;
+           clipboard.on('success', function(e) {
+             $('.refLink').html('Copied!');
+
+           });
+         })
+
+
+         function uncopy(e){
+           const btn = $(e.target);
+           $('.clip').not(btn).html('Copy')
+         }
+
+
+
+
+
+
+       </script>
 
        <%-include('../partials/footer')%>

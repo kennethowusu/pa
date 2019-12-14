@@ -125,15 +125,25 @@ module.exports.getReferralPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
+        const refUrl = req.protocol + '://' + req.get('host') + '?i=' + foundUser.referal_id;
         Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
         .then(function(notifications){
-                return res.render('user/referral',{
-                                title:"Referral",
-                                user:foundUser,
-                                page:'referral',
-                                notifications:notifications,
-                                moment:moment
-                            })
+
+          User.findAndCountAll({where:{referee_id:foundUser.referal_id}})
+          .then(function(referrals){
+            return res.render('user/referral',{
+                            title:"Referral",
+                            user:foundUser,
+                            page:'referral',
+                            notifications:notifications,
+                            moment:moment,
+                            refUrl:refUrl,
+                            referrals:referrals
+                        })
+
+          })
+
+
 
                 //return res.send({user:foundUser})
         })
