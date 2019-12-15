@@ -83,23 +83,25 @@
 
           <div class="row">
 
-
-
             <div class="col-md-9 mb-4">
-              <div class="masonry-item col-md-12">
-                <div class="bgc-white p-20 bd">
-                  <h6 class="c-grey-900">Your Referral link</h6>
-                  <div class="mT-30">
-                    <div class="form-group">
-                      <div class="form-control mb-2">
-                        <%=refUrl%>
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="bgc-white p-20 bd">
+                    <h6 class="c-grey-900">Your Referral link</h6>
+                    <div class="mT-30">
+                      <div class="form-group">
+                        <div class="form-control mb-2">
+                          <%=refUrl%>
+                        </div>
+                        <button type="button" data-clipboard-text="<%=refUrl%>" class=" refLink mT-10 btn btn-success" name="button">Copy</button>
                       </div>
-                      <button type="button" data-clipboard-text="<%=refUrl%>" class=" refLink mT-10 btn btn-success" name="button">Copy</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            
           </div><!--row-->
 
 

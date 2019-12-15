@@ -23,24 +23,24 @@ module.exports.checkReferral = (req,res,next)=>{
   next();
 }
 /* GET home page. */
-router.get('/',user.loggedIn,module.exports.checkReferral,indexController.getIndexPage);
+router.get('/',module.exports.checkReferral,indexController.getIndexPage);
 
 /* GET home page. */
 router.get('/login',user.loggedIn,module.exports.checkReferral,function(req, res, next) {
   res.render('login', { title: 'Account Log In' });
 });
 
-router.post('/login',user.loggedIn,module.exports.checkReferral,indexController.signin);
+router.post('/login',user.loggedIn,indexController.signin);
 /* GET home page. */
 router.get('/register',user.loggedIn,module.exports.checkReferral,indexController.getSignupPage);
 
-router.get('/faqs',user.loggedIn,module.exports.checkReferral,indexController.getFaqsPage);
+router.get('/faqs',module.exports.checkReferral,indexController.getFaqsPage);
 
-router.get('/support',user.loggedIn,module.exports.checkReferral,indexController.getSupportPage);
+router.get('/support',module.exports.checkReferral,indexController.getSupportPage);
 
 
 //================logout==================//
-router.get('/account/logout',indexController.logout);
+router.get('/user/logout',indexController.logout);
 
 
 

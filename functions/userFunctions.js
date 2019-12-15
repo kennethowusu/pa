@@ -91,7 +91,7 @@ module.exports = {
 
       module.exports.tokenIsValid(userToken).then(function(result){
         if(result){
-         return res.redirect('/account/summary');
+         return res.redirect('/user/dashboard');
         }
       next();
       })

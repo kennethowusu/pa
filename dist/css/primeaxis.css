@@ -67,6 +67,7 @@ body, * {
   align-items: center;
   width: 55px;
   height: 55px;
+  z-index: 3500;
   cursor: pointer;
 }
 .burger.scrolled {
@@ -107,7 +108,7 @@ body, * {
   margin: 0;
   overflow-y: scroll;
   transition: width .3s ease-in-out;
-  z-index: 3000 !important;
+  z-index: 2500 !important;
 }
 @media (min-width: 1060px) {
   .main-nav {
@@ -234,7 +235,7 @@ body.mobileNavActive {
 .burger.change {
   border-radius: 0 !important;
   background-color: transparent !important;
-  z-index: 22;
+  z-index: 3000;
 }
 
 .burger-bar.change {
@@ -373,6 +374,14 @@ body.mobileNavActive {
   .certificate-img {
     width: auto;
   }
+}
+
+button {
+  white-space: normal !important;
+}
+
+.btn.btn-link {
+  text-align: left !important;
 }
 
 .pricing-section {

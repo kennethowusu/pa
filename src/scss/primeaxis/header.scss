@@ -64,6 +64,7 @@ body,*{
   align-items: center;
   width: 55px;
   height: 55px;
+  z-index: 3500;
   cursor:pointer;
   &.scrolled{
     border-radius: 50%;
@@ -105,7 +106,7 @@ body,*{
     margin:0;
     overflow-y: scroll;
     transition: width .3s ease-in-out;
-    z-index: 3000 !important;
+    z-index: 2500 !important;
 
     @media(min-width:1060px){
       position:static !important;
@@ -228,7 +229,7 @@ body.mobileNavActive{
 .burger.change{
   border-radius:0 !important;
   background-color:transparent !important;
-  z-index:22;
+  z-index:3000;
 
 }
 .burger-bar.change{
