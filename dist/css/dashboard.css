@@ -227,6 +227,11 @@ input[type="checkbox"] {
   font-size: .9em;
   text-align: justify;
 }
+@media (min-width: 760px) {
+  .notification-top-bar {
+    position: fixed;
+  }
+}
 .notification-top-bar .notice {
   margin-bottom: 0;
 }
