@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAIA,gBAAmB;EAAE,OAAO,EAAE,eAAe;;AAC7C,kBAAmB;EAAE,OAAO,EAAE,eAAe",
-"sources": ["../../../../../../styles/spec/utils/layout/helpers/pseudo.scss"],
-"names": [],
-"file": "pseudo.css"
-}

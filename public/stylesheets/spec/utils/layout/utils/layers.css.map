@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,OAAQ;EACN,OAAO,EAAE,IAAI;EACb,SAAS,EAAE,aAAa;EACxB,WAAW,EAAE,MAAM",
-"sources": ["../../../../../../styles/spec/utils/layout/utils/layers.scss"],
-"names": [],
-"file": "layers.css"
-}

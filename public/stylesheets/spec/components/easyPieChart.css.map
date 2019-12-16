@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,eAAgB;EACd,QAAQ,EAAE,QAAQ;EAElB,oBAAK;IACH,QAAQ,EAAE,QAAQ;IAClB,GAAG,EAAE,GAAG;IACR,IAAI,EAAE,GAAG;IACT,SAAS,EAAE,qBAAqB;IAChC,WAAW,EAAE,CAAC",
-"sources": ["../../../../styles/spec/components/easyPieChart.scss"],
-"names": [],
-"file": "easyPieChart.css"
-}
