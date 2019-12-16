@@ -221,4 +221,25 @@ input[type="checkbox"] {
   transform: rotate(-45deg) translate(-5px, 5px);
 }
 
+.notification-top-bar {
+  display: flex;
+  padding: 15px;
+  font-size: .9em;
+  text-align: justify;
+}
+.notification-top-bar .notice {
+  margin-bottom: 0;
+}
+.notification-top-bar .close-label {
+  cursor: pointer;
+  height: 100%;
+  width: 60px;
+  margin-left: 10px;
+  font-size: 2.2em;
+}
+
+#topNotificationBar[type="checkbox"]:checked ~ .notification-top-bar {
+  display: none;
+}
+
 /*# sourceMappingURL=dashboard.css.map */

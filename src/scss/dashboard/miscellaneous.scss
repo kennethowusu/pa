@@ -1,0 +1,26 @@
+.notification-top-bar{
+  display: flex;
+  padding:15px;
+  font-size: .9em;
+  text-align: justify;
+
+
+
+  .notice{
+   margin-bottom: 0;
+  }
+
+  .close-label{
+    cursor: pointer;
+    height: 100%;
+    width:60px;
+    margin-left:10px;
+    font-size: 2.2em;
+
+  }
+}
+
+#topNotificationBar[type="checkbox"]:checked ~ .notification-top-bar{
+  display: none;
+
+}
