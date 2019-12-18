@@ -183,8 +183,21 @@ input[type="checkbox"]{
   display:flex;
   justify-content: center;
   align-items: center;
+  height:100%;
 
-  .header-action-notication{
+  a:hover{
+    text-decoration: none;
+  }
+  .header-action-notification{
+    width:50px;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:20;
+    @media(min-width:700px){
+      position:relative !important;
+    }
     cursor:pointer;
      svg{
        fill:#fff;
@@ -194,12 +207,24 @@ input[type="checkbox"]{
        @media(min-width:760px){
          fill: $color-accent !important;
        }
+
+
      }
   }
 
   .header-action-profile{
+    z-index:20;
+    width:50px;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor:pointer;
     margin-left:20px;
+
+    @media(min-width:700px){
+      position: relative !important;
+    }
     svg{
       width:40px;
       height:40px;

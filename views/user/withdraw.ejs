@@ -1,5 +1,5 @@
 <%-include('../partials/header')%>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
   <%
    const last_withdrawal_date  = new Date(user.finance.last_withdrawal_date);
    const today = moment(new Date())
@@ -89,7 +89,7 @@
            <!-- Area Chart -->
            <div class="col-xl-9 col-lg-9">
                                <%if(user.investment.investment_status=='active' && user.investment.investment_type && user.finance.withdrawal_status == 'pending'){%>
-                    
+
                       <div class="alert alert-info">
 
                           You have pending withrawal. You will receive notification as soon as payment is made

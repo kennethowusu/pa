@@ -10,12 +10,13 @@
   <link rel="stylesheet" href="/css/dashboard.css">
 
   <title><%=title%></title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body class="">
 
  <div class="wrapper content-wrapper">
   <input type="checkbox" id="topNotificationBar" class="d-none">
-  <div class="notification-top-bar">
+  <!-- <div class="notification-top-bar">
      <p class="notice">
        Cherished Investor, due to maintenance you will experience some infunctionalities in your dashboard.
        We sincerely apologize for the inconvenience, we are working to fix this as soon as possible.
@@ -23,7 +24,7 @@
      <label class="close-label" for="topNotificationBar">
        &times;
      </label>
-  </div>
+  </div> -->
 
    <div class="header ">
      <label for="sidebar-check" class="burger-label">
@@ -35,12 +36,87 @@
      </label>
 
      <div class="header-action" class="sidebar-label">
-       <div class="header-action-notication">
+       <div class="header-action-notification">
          <%-include('../../dist/images/notification.svg')%>
+
+
+         <div class="dropdown-note notification isClosed">
+         <div class="dropdown-note-cont">
+           <div class="dropdown-arrow-cont notification"><%-include('../../dist/images/left-arrow.svg')%></div>
+           <div class="dropdown-note-body">
+               <div class="dropdown-note-title">
+                 Notifications
+               </div>
+           </div>
+           <div class="notification-body">
+               <a href="#" class="notification">
+                 <!-- <div class="notification-head">
+                   <span class="notification-title">Withdrawal Received</span>
+                   <div class="notification-date">25th Nov.</div>
+                 </div> -->
+                 <div class="notification-message">
+                    You have no new notification
+                 </div>
+               </a>
+
+
+
+                   <!-- <a href="#" class="notification">
+                     <div class="notification-head">
+                       <span class="notification-title">Withdrawal Received</span>
+                       <div class="notification-date">25th Nov.</div>
+                     </div>
+                     <div class="notification-message">
+                         Your direct Debit with PAYPAL DEBIT has been setup successfully
+                     </div>
+                   </a> -->
+
+
+
+           </div>
+
+
+         </div>
        </div>
+
+
+
+       </div><!--notiification-->
        <div class="header-action-profile">
            <%-include('../../dist/images/profile.svg')%>
+
+           <div class="dropdown-note setting isClosed">
+           <div class="dropdown-note-cont">
+             <div class="dropdown-arrow-cont setting"><%-include('../../dist/images/left-arrow.svg')%></div>
+
+                  <div class="dropdown-note-body">
+
+                  <div class="settings-body">
+                    <div class="profile-cont">
+                         <%-include('../../dist/images/profile.svg')%>
+                    </div>
+                    <div class="name text-capitalize">
+                      <%=user.firstname%> <%=user.lastname%>
+                    </div>
+                    <div class="settings-actions">
+                      <a href="#" class="setting-action">
+                        <span class=" mr-2 setting-action-icon"><%-include('../../dist/images/settings.svg')%></span>
+                        <span class="setting-action-text">Settings</span>
+                      </a>
+                      <a href="/user/logout" class="setting-action">
+                        <span class="mr-2 setting-action-icon"> <%-include('../../dist/images/log-out.svg')%></span>
+                        <span class="setting-action-text">Logout</span>
+                      </a>
+                    </div>
+                  </div>
+
+
+                </div>
+           </div>
        </div>
+
+
+       </div><!--header-action-profile-->
      </div>
 
    </div>
