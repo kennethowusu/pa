@@ -118,6 +118,28 @@ module.exports.getWithdrawPage = (req,res,next)=>{
 }
 
 module.exports.getHistoryPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  User.findOne({where:{user_id:user_id},include:[{all:true}]})
+  .then(function(foundUser){
+        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+        .then(function(notifications){
+
+           Earning.findAll({limit:5,where:{user_id:user_id},order:[['createdAt','DESC']]})
+           .then(function(earnings){
+             return res.render('user/history',{
+                             title:"History",
+                             user:foundUser,
+                             page:'history',
+                             notifications:notifications,
+                             earnings:earnings,
+                             moment:moment
+                         })
+
+             //return res.send({user:foundUser})
+           })
+        })
+  })
+
 
 }
 

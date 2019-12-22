@@ -27,6 +27,11 @@ user.requireAuth,
 userController.getWithdrawPage);
 
 
+router.get('/history',
+user.requireAuth,
+userController.getHistoryPage);
+
+
 // router.get('/')
 
 module.exports = router;

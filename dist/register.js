@@ -1,4 +1,20 @@
 
+function isEmpty(fieldVal){
+ if(!fieldVal){
+   return true
+ }else{
+   return false;
+ }
+}
+
+
+function isEmail(email)
+{
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+
 class Register extends React.Component{
   constructor(props){
     super(props);
@@ -8,23 +24,24 @@ class Register extends React.Component{
        lastname: "",
        email: "",
        confirmEmail: "",
-       password: "",
-       confirmPassword: "",
+       password: null,
+       confirmPassword: null,
        errorClass:"",
+       errorMessage:"",
        formError: [
-          "firstname",
-          "lastname",
-          "email",
-          "confirmEmail",
+          //"confirmPassword",
           "password",
-          "confirmEmail"
+          "email",
+          "lastname",
+          "firstname"
        ],
        formErrorMessage:{
          firstname: "Enter firstname",
          lastname: "Enter lastname",
          confirmEmail: "Emails do not match",
+         email:"Please enter a valid email",
          password: "Enter password",
-         confirmPassword: "Confirm Password"
+         confirmPassword: "Passwords do not match"
        }
 
     }
@@ -42,18 +59,62 @@ class Register extends React.Component{
   }
 
    handleSubmit(e){
-      e.preventDefault();
-   }
+     e.preventDefault();
+     const formErrors = this.state.formError;
+
+     if(formErrors.length > 0 ){
+       formErrors.forEach(formError=>{
+         this.setState({errorClass:"alert alert-danger",errorMessage:this.state.formErrorMessage[formError]})
+       })
+     }else if(this.state.password !== this.state.confirmPassword){
+       this.setState({errorClass:"alert alert-danger",errorMessage:this.state.formErrorMessage["confirmPassword"]})
+       console.log('again')
+     }else if(this.state.email != this.state.confirmEmail){
+       this.setState({errorClass:"alert alert-danger",errorMessage:this.state.formErrorMessage["confirmEmail"]})
+
+     }else{
+       const firstname = this.state.firstname;
+       const lastname = this.state.lastname;
+       const email = this.state.email;
+       const password = this.state.password;
+      fetch('/register',{method:'post',
+                          headers: {
+                      'Content-Type': 'application/json'
+                      // 'Content-Type': 'application/x-www-form-urlencoded',
+                      },
+                      body: JSON.stringify({firstname:firstname,lastname:lastname,email:email,password:password})
+                    })
+      .then((response)=>{
+        return response.json();
+      })
+      .then((result)=>{
+         if(result.error){
+           console.log(result)
+           this.setState({errorClass:"alert alert-danger",errorMessage:result.error})
+         }else if(result.success){
+           window.location.href = "/user/dashboard"
+         }
+        // window.location.href = "/register/something"
+      })
+     }
+
+
+
+   }//handleSubmit
 
   handleFirstname(e){
     this.setState({
       firstname: e.target.value
     })
-    if(this.state.firstname !== ""){
+
+    if(!isEmpty(this.state.firstname)){
       this.removeFromErrors("firstname",this.state.formError)
-      return;
+    }else{
+      this.addToErrors("firstname",this.state.formError)
     }
-    this.addToErrors("firstname",this.state.formError)
+
+
+
   }
 
   handleLastname(e){
@@ -61,51 +122,55 @@ class Register extends React.Component{
       lastname : e.target.value
     })
 
-    if(this.state.lastname !== ""){
+    if(!isEmpty(this.state.lastname)){
       this.removeFromErrors("lastname",this.state.formError)
-      return;
+
+    }else{
+      this.addToErrors("lastname",this.state.formError)
     }
-    this.addToErrors("lastname",this.state.formError)
+
   }
 
   handleEmail(e){
+
+
     this.setState({
       email: e.target.value
     })
+
+    if(isEmail(this.state.email)){
+      this.removeFromErrors("email",this.state.formError)
+    }else{
+      this.addToErrors("email",this.state.formError)
+    }
+
   }
 
   handleConfirmemail(e){
     this.setState({
       confirmEmail : e.target.value
     })
-    if(this.state.email == this.state.confirmEmail){
-      this.removeFromErrors("confirmEmail",this.state.formError)
-      return;
-    }
-    this.addToErrors("confirmEmail",this.state.formError)
+
   }
 
   handlePassword(e){
+
+    if(!isEmpty(this.state.password)){
+      this.removeFromErrors("password",this.state.formError)
+
+    }else{
+      this.addToErrors("password",this.state.formError)
+    }
+
     this.setState({
       password : e.target.value
     })
-    if(this.state.password !== ""){
-      this.removeFromErrors("password",this.state.formError)
-      return;
-    }
-    this.addToErrors("password",this.state.formError)
   }
 
   handleConfirmpassword(e){
     this.setState({
       confirmPassword : e.target.value
     })
-
-    if(this.state.password == this.state.confirmPassword){
-      this.removeFromErrors("confirmPassword",this.state.formError)
-      return;
-    }
-    this.addToErrors("confirmPassword",this.state.formError)
   }
 
    addToErrors(errorName,errorContainer){
@@ -113,7 +178,7 @@ class Register extends React.Component{
       return;
     }
    errorContainer.push(errorName);
-   return console.log(errorContainer);
+
   }
 
    removeFromErrors(errorName,errorContainer){
@@ -122,9 +187,8 @@ class Register extends React.Component{
      if (index > -1) {
       errorContainer.splice(index, 1);
      }
-     return console.log(errorContainer);
+
    }
-   return;
 
   }
 
@@ -135,10 +199,10 @@ class Register extends React.Component{
 
       <div>
           <div className={this.state.errorClass}>
-
+              {this.state.errorMessage}
           </div>
-          <form action="">
-            <div className="form-group" onSubmit={this.handleSubmit}>
+          <form action="" onSubmit={this.handleSubmit}>
+            <div className="form-group" >
               <input type="text" value={this.firstname} onChange={this.handleFirstname} placeholder="Your firstname" className="form-control"/>
             </div>
             <div className="form-group">

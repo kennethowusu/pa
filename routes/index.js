@@ -47,9 +47,7 @@ router.get('/user/logout',indexController.logout);
 
 
 
-router.get('/account/content/loader',function(req,res,next){
-  return res.render('content/loader')
-})
+
 //============================POST ROUTES ================================//
 
 //============sign up=========================//

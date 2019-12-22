@@ -22,9 +22,12 @@ require('dotenv').config();
 
 //===========get index page ==============//
 module.exports.getIndexPage = (req,res,next)=>{
+  const i = req.query.i;
+  if(i === "undefined"){
+    i = "";
+  }
 
-
-return res.render('index',{title:"Prime Axis LLC"});
+  return res.render('index',{title:"Prime Axis LLC"});
 
 }
 
@@ -43,11 +46,13 @@ module.exports.createUser = (req,res,next)=>{
      lastname : req.body.lastname,
      email : req.body.email,
      password : req.body.password,
-     country: req.body.country,
+     country: "",
      user_id : user.generateId(),
      referal_id:user.make_referal_id(req.body.firstname),
      referee_id: referee_id
   }
+
+  
 
 
   const  hashedPassword =  user.hashedPassword(newUser.password);
@@ -93,9 +98,8 @@ module.exports.createUser = (req,res,next)=>{
                         then(function(){
                           //===============SET ACCESS TOKEN AND REDIRECT===============//
                           user.generateToken(req, res, next, newUser);
-                          const  url = req.protocol + '://' + req.get('host') + '/account/confirmation/verification/';
-                          const verificationLink = user.generateVerificationToken(req,res,next,newUser);
-                          mail.sendEmailVerificationLink(newUser.email,url+verificationLink)
+
+                          //mail.sendEmailVerificationLink(newUser.email,url+verificationLink)
 
                         })
                         .then(function(){
@@ -109,16 +113,13 @@ module.exports.createUser = (req,res,next)=>{
                                   message:`<p>${refer_user.firstname}, ${newUser.firstname} ${newUser.lastname} recently registered with your referal link</p>.
                                           You will receive 3% of whatever ${newUser.firstname} deposits`
                                 })
-                                .then(function(){
-                                    User.update({is_read:0},{where:{user_id:refer_user.user_id}})
-                                    return res.send({success:'/account/summary'});
-                                })
+
                               }else{
-                                return res.send({success:'/account/summary'});
+                                return res.send({success:'/user/summary'});
                               }
                             })
                           }else{
-                              return res.send({success:'/account/summary'});
+                              return res.send({success:'/user/summary'});
                           }
                         })
                     })
