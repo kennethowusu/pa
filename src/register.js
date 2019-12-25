@@ -207,10 +207,10 @@ class Register extends React.Component{
           </div>
           <form action="" onSubmit={this.handleSubmit}>
             <div className="form-group" >
-              <input type="text" value={this.firstname} onChange={this.handleFirstname} placeholder="Your firstname" className="form-control"/>
+              <input type="text" name="firstname" value={this.firstname} onChange={this.handleFirstname} placeholder="Your firstname" className="form-control"/>
             </div>
             <div className="form-group">
-              <input type="text" value={this.lastname}  onChange={this.handleLastname} placeholder="Your lastname" className="form-control"/>
+              <input type="text" name="lastname" value={this.lastname}  onChange={this.handleLastname} placeholder="Your lastname" className="form-control"/>
             </div>
             <div className="form-group">
               <input type="email" value={this.email}  onChange={this.handleEmail} placeholder="Your email address" className="form-control"/>
