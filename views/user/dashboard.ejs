@@ -148,24 +148,5 @@
        </div>
        <!-- /.container-fluid -->
 
-       <script type="text/javascript">
-
-         $('.header-action-notification').click(function(e){
-           $('.header-action-notification').children('.dropdown-note.notification').toggleClass('isClosed').toggleClass('desktopisOpened')
-         })
-
-         $('.header-action-profile').click(function(e){
-           $('.header-action-profile').children('.dropdown-note.setting').toggleClass('isClosed').toggleClass('desktopisOpened')
-         })
-
-         $('.dropdown-arrow-cont.notification').click(function(e){
-           $('.dropdown-arrow-cont.notification').parent('.dropdown-note.notification').toggleClass('isClosed');
-         })
-
-         $('.dropdown-arrow-cont.setting').click(function(e){
-           $('.dropdown-arrow-cont.setting').parent('.dropdown-note.setting').toggleClass('isClosed');
-         })
-
-
-       </script>
+      
        <%-include('../partials/footer')%>

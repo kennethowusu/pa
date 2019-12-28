@@ -8,6 +8,11 @@ const money    = require('money-math');
 const util   = require('util');
 const mail    =  require('../mail/mail');
 
+
+
+
+
+
 // const mail = require('../mail/mail');
 require('dotenv').config();
 
@@ -60,9 +65,14 @@ module.exports.getInvestPage = (req,res,next)=>{
         Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
         .then(function(notifications){
 
+          //var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY });
+
+
+
+
                  if(!foundUser.finance.investment_type){
                    return res.render('user/invest',{
-                                   title:"Referral",
+                                   title:"Invest",
                                    user:foundUser,
                                    page:'invest',
                                    notifications:notifications,
@@ -70,7 +80,7 @@ module.exports.getInvestPage = (req,res,next)=>{
                                })
                  }else{
                    return res.render('user/topup',{
-                                   title:"Referral",
+                                   title:"Top Up",
                                    user:foundUser,
                                    page:'invest',
                                    notifications:notifications,
@@ -176,5 +186,77 @@ module.exports.getReferralPage = (req,res,next)=>{
 
 
 module.exports.getSettingsPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  User.findOne({where:{user_id:user_id},include:[{all:true}]})
+  .then(function(foundUser){
+        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+        .then(function(notifications){
+
+           Earning.findAll({limit:5,where:{user_id:user_id},order:[['createdAt','DESC']]})
+           .then(function(earnings){
+             return res.render('user/settings',{
+                             title:"Settings",
+                             user:foundUser,
+                             page:'settings',
+                             notifications:notifications,
+                             earnings:earnings,
+                             moment:moment
+                         })
+
+             //return res.send({user:foundUser})
+           })
+        })
+  })
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports.changeAccountName = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+
+  User.update({firstname:firstname,lastname:lastname},{where:{user_id:user_id}})
+  .then(function(){
+    return res.send({success:"Account name updated successfully"});
+  })
+}
+
+
+
+module.exports.changePassword = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  const password = req.body.password;
+  const newPassword = req.body.newPassword;
+  const confirmPassword = req.body.confirmPassword
+
+  User.findOne({where:{user_id:user_id}})
+    .then(function(foundUser){
+      const userPassword = foundUser.password;
+      if(!user.passwordIsCorrect(password,userPassword)){
+         return res.send({error: "Current password is incorrect"})
+         console.log('yes incorrect')
+      }else{
+        const changePassword  = user.hashedPassword(newPassword)
+        User.update({password:changePassword},{where:{user_id:user_id}})
+        .then(function(){
+          return res.send({success:'Password updated successfully'})
+        })
+      }
+    })
 
 }

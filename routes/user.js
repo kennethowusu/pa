@@ -31,7 +31,22 @@ router.get('/history',
 user.requireAuth,
 userController.getHistoryPage);
 
+router.get('/settings',
+user.requireAuth,
+userController.getSettingsPage);
+
 
 // router.get('/')
+
+//post routes
+
+router.post('/settings/accountname',
+user.requireAuth,
+userController.changeAccountName);
+
+router.post('/settings/password',
+user.requireAuth,
+userController.changePassword);
+
 
 module.exports = router;

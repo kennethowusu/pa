@@ -52,7 +52,7 @@
                </div>
            </div>
            <div class="notification-body">
-               <a href="#" class="notification">
+               <a href="/" class="notification">
                  <!-- <div class="notification-head">
                    <span class="notification-title">Withdrawal Received</span>
                    <div class="notification-date">25th Nov.</div>
@@ -102,7 +102,7 @@
                       <%=user.firstname%> <%=user.lastname%>
                     </div>
                     <div class="settings-actions">
-                      <a href="#" class="setting-action">
+                      <a href="/user/settings" class="setting-action">
                         <span class=" mr-2 setting-action-icon"><%-include('../../dist/images/settings.svg')%></span>
                         <span class="setting-action-text">Settings</span>
                       </a>
@@ -140,7 +140,7 @@
          </a>
        </li>
        <li class="sidebar-list">
-         <a href="#" class="<%=(page=='invest') ? "sidebar-link active" : "sidebar-link" %>">
+         <a href="/user/invest" class="<%=(page=='invest') ? "sidebar-link active" : "sidebar-link" %>">
            <span class="sidebar-img">
              <%-include('../../dist/images/investment.svg')%>
            </span>

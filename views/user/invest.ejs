@@ -6,75 +6,11 @@
 
          <!-- Page Heading -->
          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-           <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+           <h1 class="h3 mb-0 text-gray-800">Invest</h1>
            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
          </div>
 
-         <!-- Content Row -->
-         <div class="row">
 
-           <!-- Earnings (Monthly) Card Example -->
-           <div class="col-xl-3 col-md-6 mb-4">
-             <div class="card border-left-primary shadow h-100 py-2">
-               <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                   <div class="col mr-2">
-                     <div class="text-xs font-weight-bold text-primary  mb-1">Principal</div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800">$<%=user.finance.principal%></div>
-                   </div>
-                   <div class="col-auto">
-                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
-           <!-- Earnings (Monthly) Card Example -->
-           <div class="col-xl-3 col-md-6 mb-4">
-             <div class="card border-left-success shadow h-100 py-2">
-               <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                   <div class="col mr-2">
-                     <div class="text-xs font-weight-bold text-success   mb-1">Interest</div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800">$<%=user.finance.interest%></div>
-                   </div>
-                   <div class="col-auto">
-                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
-           <!-- Earnings (Monthly) Card Example -->
-           <div class="col-xl-3 col-md-6 mb-4">
-             <div class="card border-left-info shadow h-100 py-2">
-               <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                   <div class="col mr-2">
-                     <div class="text-xs font-weight-bold text-info   mb-1">Referral Interest</div>
-                     <div class="row no-gutters align-items-center">
-                       <div class="col-auto">
-                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$<%=user.finance.referral_interest%></div>
-                       </div>
-                       <!-- <div class="col">
-                         <div class="progress progress-sm mr-2">
-                           <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                         </div>
-                       </div> -->
-                     </div>
-                   </div>
-                   <div class="col-auto">
-                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
-         </div>
-         <!--row-->
 
          <!-- Content Row -->
 
@@ -85,25 +21,78 @@
              <div class="card shadow mb-4">
                <!-- Card Header - Dropdown -->
                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                 <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                 <div class="dropdown no-arrow">
-                   <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                   </a>
-                   <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                     <div class="dropdown-header">Dropdown Header:</div>
-                     <a class="dropdown-item" href="#">Action</a>
-                     <a class="dropdown-item" href="#">Another action</a>
-                     <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="#">Something else here</a>
-                   </div>
-                 </div>
+                 <h6 class="m-0 font-weight-bold text-primary">Select a Package</h6>
+
                </div>
                <!-- Card Body -->
                <div class="card-body">
-                 <div class="chart-area">
-                   <canvas id="myAreaChart"></canvas>
+                 <div class="row">
+
+                   <!-- Earnings (Monthly) Card Example -->
+                   <div class="col-xl-4 col-md-6 mb-4">
+                     <div class=" package-type border-left-primary  py-2 "
+                     name="Gold Package" min="$1000 Min." max="$4999 Max." weekly="5% Weekly profit"
+                      minAmount="1000" maxAmount="5000"
+                     >
+                        <div class=" package-type-body">
+                          <div class="package-type-img gold">
+                            <%-include('../../dist/images/gold-package.svg')%>
+                          </div>
+                          <div class="package-type-head">
+                            GOLD
+                          </div>
+                          <div class="package-type-check">
+                              <%-include('../../dist/images/check.svg')%>
+                          </div>
+                        </div>
+                     </div>
+                   </div>
+
+
+                   <div class="col-xl-4 col-md-6 mb-4">
+                       <div class=" package-type border-left-primary  py-2 "
+                       name="Diamond Package" min="$5000 Min." max="$9999 Max." weekly="5.5% Weekly profit"
+                        minAmount="5000" maxAmount="9999"
+                       >
+                         <div class=" package-type-body">
+                          <div class="package-type-img gold">
+                            <%-include('../../dist/images/diamond-package.svg')%>
+                          </div>
+                          <div class="package-type-head">
+                            DIAMOND
+                          </div>
+                          <div class="package-type-check">
+                              <%-include('../../dist/images/check.svg')%>
+                          </div>
+                        </div>
+                     </div>
+                   </div>
+
+                   <div class="col-xl-4 col-md-6 mb-4">
+                     <div class=" package-type border-left-primary  py-2 "
+                     name="Platinum Package" min="$10000 Min." max="No Limit" weekly="6% Weekly profit"
+                      minAmount="10000" maxAmount="1000000000000"
+                     >
+                        <div class=" package-type-body">
+                          <div class="package-type-img gold">
+                            <%-include('../../dist/images/chest.svg')%>
+                          </div>
+                          <div class="package-type-head">
+                            PLATINUM
+                          </div>
+                          <div class="package-type-check">
+                              <%-include('../../dist/images/check.svg')%>
+                          </div>
+                        </div>
+                     </div>
+                   </div>
+
+
+
+
+
                  </div>
+                 <!--row-->
                </div>
              </div>
            </div>
@@ -112,10 +101,65 @@
          </div><!--row-->
 
 
+        <div class="row" style="margin-bottom:80px">
+          <div class="col">
+            <button  class="btn btn-primary btn-lg "  disabled id="investProcceed" type="button" name="button">Proceed</button>
+          </div>
+        </div>
 
 
 
        </div>
+
+
+
+
+
+
+
+
+
+
+
+       <!--Invest Modal-->
+       <div class="modal fade show"  id="investModal" tabindex="-1" role="dialog" aria-labelledby="investModal" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <form action="" method="POST" class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="name"></h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+
+              <div class="form-group">
+                <p id="min">.</p>
+                <p id="max"></p>
+                <p id="weekly"></p>
+              </div>
+
+              <div class="form-group">
+
+                <input type="text" class="form-control" id="amount" placeholder="Enter amount ">
+                <label class="error amountError"></label>
+              </div>
+
+             </div>
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+               <input type="image" src="https://www.bitpay.com/cdn/en_US/bp-btn-pay.svg" alt="Pay with BitPay" width="250px" />
+             </div>
+           </form>
+         </div>
+       </div>
+
+
        <!-- /.container-fluid -->
+
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <script type="text/javascript" src="/invest.js"></script>
 
        <%-include('../partials/footer')%>

@@ -1,0 +1,48 @@
+
+.package-type{
+  border: 0;
+  box-shadow: 0 0 8px #d4d3d3;
+  height:200px;
+  border-radius: 14px;
+  cursor:pointer;
+  z-index: 30;
+  &.selected{
+    box-shadow: 0 0 8px #ff6814;
+
+    .package-type-check{
+      .background{
+        fill: #ff6814;
+      }
+    }
+  }
+}
+
+.package-type-body{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  height:200px;
+}
+
+
+.package-type-head{
+  font-size:1.4em;
+}
+.package-type-check{
+  margin-top:auto;
+  padding:15px;
+
+  .background{
+    fill:#000;
+  }
+}
+.package-type-img{
+
+  &.gold{
+    svg{
+      width:60px;
+      height:auto;
+    }
+
+  }
+}
