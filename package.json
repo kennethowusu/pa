@@ -28,7 +28,7 @@
     "grunt": "^1.0.3",
     "http-errors": "~1.6.2",
     "install": "^0.12.2",
-    "jquery": "3.2.1",
+    "jquery": "3.4.0",
     "jsonwebtoken": "^8.4.0",
     "moment": "^2.22.2",
     "money-math": "^2.5.1",
