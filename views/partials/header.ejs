@@ -52,27 +52,24 @@
                </div>
            </div>
            <div class="notification-body">
-               <a href="/" class="notification">
-                 <!-- <div class="notification-head">
-                   <span class="notification-title">Withdrawal Received</span>
-                   <div class="notification-date">25th Nov.</div>
-                 </div> -->
-                 <div class="notification-message">
-                    You have no new notification
-                 </div>
-               </a>
+
+           <%notifications.forEach(function(notification){%>
+
+
+             <a href="/user/notifications/<%=notification.id%>" class="notification">
+              <div class="notification-head">
+                <span class="notification-title"><%=notification.topic%></span>
+                <div class="notification-date"><%=moment(notification.createdAt).format('Do MMM')%>.</div>
+              </div>
+              <div class="notification-message">
+                  <%-truncate(notification.message,40)%>
+              </div>
+            </a>
+
+           <%})%>
 
 
 
-                   <!-- <a href="#" class="notification">
-                     <div class="notification-head">
-                       <span class="notification-title">Withdrawal Received</span>
-                       <div class="notification-date">25th Nov.</div>
-                     </div>
-                     <div class="notification-message">
-                         Your direct Debit with PAYPAL DEBIT has been setup successfully
-                     </div>
-                   </a> -->
 
 
 

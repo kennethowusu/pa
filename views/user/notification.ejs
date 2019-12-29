@@ -1,0 +1,37 @@
+<%-include('../partials/header')%>
+
+        <style media="screen">
+          body{
+            background-color:#F5F7F9
+          }
+        </style>
+       <div class="container-fluid dash-content ">
+
+         <!-- Page Heading -->
+         <div class="d-sm-flex align-items-center justify-content-between mb-4">
+           <h1 class="h3 mb-0 text-gray-800">Notification</h1>
+           <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></a>
+         </div>
+
+         <!-- Content Row -->
+         <div class="row">
+            <div class="col single-note" style="opacity:0.8;background-color: #eee;padding: 15px;">
+
+              <div class="" style="display:flex">
+                <span class="mb-2" style="font-weight:bold;margin-right:auto"><%=notification.topic%></span>
+                <span><%=moment(notification.createdAt).format('Do MMM')%>.</span>
+              </div>
+
+              <div class="">
+                <%-notification.message%>
+              </div>
+
+            </div>
+         </div>
+
+
+       </div>
+       <!-- /.container-fluid -->
+
+
+       <%-include('../partials/footer')%>

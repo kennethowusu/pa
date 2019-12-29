@@ -13,6 +13,7 @@ const mail    =  require('../mail/mail');
 
 
 
+
 // const mail = require('../mail/mail');
 require('dotenv').config();
 
@@ -47,7 +48,8 @@ module.exports.getDashboardPage = (req,res,next)=>{
                              page:'dashboard',
                              notifications:notifications,
                              earnings:earnings,
-                             moment:moment
+                             moment:moment,
+                             truncate:truncate
                          })
 
              //return res.send({user:foundUser})
@@ -76,7 +78,8 @@ module.exports.getInvestPage = (req,res,next)=>{
                                    user:foundUser,
                                    page:'invest',
                                    notifications:notifications,
-                                   moment:moment
+                                   moment:moment,
+                                   truncate:truncate
                                })
                  }else{
                    return res.render('user/topup',{
@@ -84,7 +87,8 @@ module.exports.getInvestPage = (req,res,next)=>{
                                    user:foundUser,
                                    page:'invest',
                                    notifications:notifications,
-                                   moment:moment
+                                   moment:moment,
+                                   truncate:truncate
                                })
                  }
 
@@ -107,7 +111,9 @@ module.exports.getWithdrawPage = (req,res,next)=>{
                                    title:"Withdraw",
                                    user:foundUser,
                                    page:'withdraw',
-                                   notifications:notifications
+                                   notifications:notifications,
+                                   truncate:truncate,
+                                   moment:moment
                                })
                  }else{
                    return res.render('user/withdraw',{
@@ -116,7 +122,8 @@ module.exports.getWithdrawPage = (req,res,next)=>{
                                    page:'withdraw',
                                    notifications:notifications,
                                    money:money,
-                                   moment:moment
+                                   moment:moment,
+                                   truncate:truncate
                                })
                  }
 
@@ -142,7 +149,8 @@ module.exports.getHistoryPage = (req,res,next)=>{
                              page:'history',
                              notifications:notifications,
                              earnings:earnings,
-                             moment:moment
+                             moment:moment,
+                             truncate:truncate
                          })
 
              //return res.send({user:foundUser})
@@ -170,7 +178,8 @@ module.exports.getReferralPage = (req,res,next)=>{
                             notifications:notifications,
                             moment:moment,
                             refUrl:refUrl,
-                            referrals:referrals
+                            referrals:referrals,
+                            truncate:truncate
                         })
 
           })
@@ -200,8 +209,42 @@ module.exports.getSettingsPage = (req,res,next)=>{
                              page:'settings',
                              notifications:notifications,
                              earnings:earnings,
-                             moment:moment
+                             moment:moment,
+                             truncate:truncate
                          })
+
+             //return res.send({user:foundUser})
+           })
+        })
+  })
+
+}
+
+
+module.exports.getSettingsPage = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  const notificationId = req.params.notificationId;
+
+  User.findOne({where:{user_id:user_id},include:[{all:true}]})
+  .then(function(foundUser){
+        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
+        .then(function(notifications){
+
+           Notification.findOne({where:{user_id:user_id,id:notificationId}})
+           .then(function(notification){
+             if(!notification){
+               return res.render('/user/dashboard')
+             }else{
+               return res.render('user/notification',{
+                               title:"Notification",
+                               user:foundUser,
+                               page:'notification',
+                               notifications:notifications,
+                               notification:notification,
+                               moment:moment,
+                               truncate:truncate
+                           })
+             }
 
              //return res.send({user:foundUser})
            })

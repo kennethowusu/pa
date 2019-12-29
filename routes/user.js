@@ -36,6 +36,10 @@ user.requireAuth,
 userController.getSettingsPage);
 
 
+router.get('/notifications/:notificationId',
+user.requireAuth,
+userController.getSettingsPage);
+
 // router.get('/')
 
 //post routes

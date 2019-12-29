@@ -52,7 +52,7 @@ module.exports.createUser = (req,res,next)=>{
      referee_id: referee_id
   }
 
-  
+
 
 
   const  hashedPassword =  user.hashedPassword(newUser.password);
@@ -172,7 +172,7 @@ module.exports.logout = function(req,res,next){
     resolve('cookie cleared');
   })
   .then(function(result){
-    return res.redirect('/login');
+    return res.redirect('/');
   })
   .catch(function(err){
     console.log(err);
