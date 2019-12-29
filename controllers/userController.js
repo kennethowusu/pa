@@ -221,7 +221,7 @@ module.exports.getSettingsPage = (req,res,next)=>{
 }
 
 
-module.exports.getSettingsPage = (req,res,next)=>{
+module.exports.getNotificationPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   const notificationId = req.params.notificationId;
 
@@ -233,7 +233,7 @@ module.exports.getSettingsPage = (req,res,next)=>{
            Notification.findOne({where:{user_id:user_id,id:notificationId}})
            .then(function(notification){
              if(!notification){
-               return res.render('/user/dashboard')
+               return res.render('user/dashboard')
              }else{
                return res.render('user/notification',{
                                title:"Notification",

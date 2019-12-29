@@ -38,7 +38,7 @@ userController.getSettingsPage);
 
 router.get('/notifications/:notificationId',
 user.requireAuth,
-userController.getSettingsPage);
+userController.getNotificationPage);
 
 // router.get('/')
 
