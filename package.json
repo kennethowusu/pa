@@ -8,7 +8,7 @@
   "dependencies": {
     "async": "^2.6.1",
     "bcryptjs": "^2.4.3",
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.3.1",
     "bootstrap-datepicker": "^1.9.0",
     "braintree": "^2.13.1",
     "chart.js": "2.7.1",
