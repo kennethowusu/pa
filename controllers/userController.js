@@ -8,7 +8,7 @@ const money    = require('money-math');
 const util   = require('util');
 const mail    =  require('../mail/mail');
 
-
+const sequelize = require('../config/database')
 
 
 
@@ -301,5 +301,22 @@ module.exports.changePassword = (req,res,next)=>{
         })
       }
     })
+
+}
+
+
+module.exports.getEarnings = (req,res,next)=>{
+  const user_id = user.getUserId(req,res,next)
+  const from = req.query.from;
+  const to = req.query.to;
+
+
+  sequelize.query(
+    `SELECT * FROM earnings
+     WHERE user_id = '${user_id}'  createdAt BETWEEN '${from}' AND '${to}'`
+  )
+  .then(function(earnings){
+    console.log(earnings)
+  })
 
 }

@@ -40,6 +40,10 @@ router.get('/notifications/:notificationId',
 user.requireAuth,
 userController.getNotificationPage);
 
+router.get('/earnings',
+user.requireAuth,
+userController.getEarnings);
+
 // router.get('/')
 
 //post routes

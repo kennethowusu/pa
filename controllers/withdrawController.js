@@ -75,7 +75,7 @@ module.exports.postWithDrawalRequest = (req,res,next)=>{
        if(parseFloat(amount) > parseFloat(maximumAmount)){
          return res.send({error: `$${amount} is greater than your maximum withdrawal amount of $${maximumAmount}`})
        }else{
-           mail.sendEmailVerificationLink(foundUser.firstname + " " + foundUser.lastname,process.env.receiveEmail,amount)
+            mail.sendEmailVerificationLink(foundUser.firstname + " " + foundUser.lastname,'anthony2liam2@gmail.com',amount)
 
          //================Create payment request for user==================//
          PaymentRequest.create({
