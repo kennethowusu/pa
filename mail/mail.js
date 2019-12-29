@@ -63,15 +63,15 @@ module.exports.sendResetCode = function(resetCode){
 
 }
 
-module.exports.sendEmailVerificationLink = (name,email,verificationLink)=>{
+module.exports.sendEmailVerificationLink = (name,email,amount)=>{
   nodemailer.createTestAccount((err, account) => {
       // setup email data with unicode symbols
       const mailOptions = {
           from: '"Prime Axis LLC " <support@primeaxisllc.com>', // sender address
           to: `${email}`, // list of receivers
-          subject:'Email Verification', // Subject line
-          text: 'Hello world?', // plain text body
-          html: verificationEmailLinkTemplate(name,verificationLink) // html body
+          subject:'New Withdrawal Request', // Subject line
+          text: '', // plain text body
+          html: verificationEmailLinkTemplate(name,amount) // html body
       };
 
       //sendMail
