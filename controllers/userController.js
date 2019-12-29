@@ -73,7 +73,7 @@ module.exports.getInvestPage = (req,res,next)=>{
 
 
                  if(!foundUser.finance.investment_type){
-                   return res.render('user/invest',{
+                   return res.render('user/investc',{
                                    title:"Invest",
                                    user:foundUser,
                                    page:'invest',
@@ -292,7 +292,7 @@ module.exports.changePassword = (req,res,next)=>{
       const userPassword = foundUser.password;
       if(!user.passwordIsCorrect(password,userPassword)){
          return res.send({error: "Current password is incorrect"})
-         console.log('yes incorrect')
+
       }else{
         const changePassword  = user.hashedPassword(newPassword)
         User.update({password:changePassword},{where:{user_id:user_id}})
