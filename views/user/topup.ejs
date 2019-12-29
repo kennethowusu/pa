@@ -13,101 +13,44 @@
          <!-- Content Row -->
          <div class="row">
 
-           <!-- Earnings (Monthly) Card Example -->
-           <div class="col-xl-3 col-md-6 mb-4">
-             <div class="card border-left-primary shadow h-100 py-2">
-               <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                   <div class="col mr-2">
-                     <div class="text-xs font-weight-bold text-primary  mb-1">Principal</div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800">$<%=user.finance.principal%></div>
-                   </div>
-                   <div class="col-auto">
-                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                   </div>
-                 </div>
+           <div class="masonry-item col-md-12">
+         <div class="bgc-white p-20 bd">
+
+           <div class="mb-4 ">
+             <button type="button" name="button" onclick="openTopupModal()" class="btn btn-primary btn-log">Click to view topup instructions</button>
+           </div>
+           <div class="mT-30">
+             <div class="form-group">
+               <p>Bitcoin</p>
+               <div class="form-control mb-2">
+               1D5oSCUsYRudTifQ6bAirVD1WY6nbjb9Kq  clip
                </div>
+               <button type="button" data-clipboard-text="1D5oSCUsYRudTifQ6bAirVD1WY6nbjb9Kq" class=" bitcoin  clip  mT-10 btn btn-success" name="button">Copy</button>
+             </div>
+             <div class="form-group">
+               <p>Bitcon Cash</p>
+               <div class="form-control mb-2">
+               qrxr8ywqnzgpga2tyhdsapaf7k5hynxx7s8vldpxhy
+               </div>
+               <button type="button" data-clipboard-text="qrxr8ywqnzgpga2tyhdsapaf7k5hynxx7s8vldpxhy" class=" bitcoin-cash  clip mT-10 btn btn-success" name="button">Copy</button>
+             </div>
+             <div class="form-group">
+               <p>Ethereum</p>
+               <div class="form-control mb-2">
+               0x14B68DE16280155DAe2E42572CF77A4f67BA636D
+               </div>
+               <button type="button" data-clipboard-text="0x14B68DE16280155DAe2E42572CF77A4f67BA636D" class=" ethereum  clip mT-10 btn btn-success" name="button">Copy</button>
+             </div>
+             <div class="form-group ">
+               <p>Stellar</p>
+               <div class="form-control mb-2">
+               GDTUDBLEPDLR2XMSDALYHWZDA37QLB3PCHBVJDCOCKQBVANESN5I234Y
+               </div>
+               <button type="button" data-clipboard-text="GDTUDBLEPDLR2XMSDALYHWZDA37QLB3PCHBVJDCOCKQBVANESN5I234Y" class=" stellar  clip mT-10 btn btn-success" name="button">Copy</button>
              </div>
            </div>
-
-           <!-- Earnings (Monthly) Card Example -->
-           <div class="col-xl-3 col-md-6 mb-4">
-             <div class="card border-left-success shadow h-100 py-2">
-               <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                   <div class="col mr-2">
-                     <div class="text-xs font-weight-bold text-success   mb-1">Interest</div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800">$<%=user.finance.interest%></div>
-                   </div>
-                   <div class="col-auto">
-                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
-           <!-- Earnings (Monthly) Card Example -->
-           <div class="col-xl-3 col-md-6 mb-4">
-             <div class="card border-left-info shadow h-100 py-2">
-               <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                   <div class="col mr-2">
-                     <div class="text-xs font-weight-bold text-info   mb-1">Referral Interest</div>
-                     <div class="row no-gutters align-items-center">
-                       <div class="col-auto">
-                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$<%=user.finance.referral_interest%></div>
-                       </div>
-                       <!-- <div class="col">
-                         <div class="progress progress-sm mr-2">
-                           <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                         </div>
-                       </div> -->
-                     </div>
-                   </div>
-                   <div class="col-auto">
-                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
          </div>
-         <!--row-->
-
-         <!-- Content Row -->
-
-         <div class="row">
-
-           <!-- Area Chart -->
-           <div class="col-xl-9 col-lg-9">
-             <div class="card shadow mb-4">
-               <!-- Card Header - Dropdown -->
-               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                 <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                 <div class="dropdown no-arrow">
-                   <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                   </a>
-                   <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                     <div class="dropdown-header">Dropdown Header:</div>
-                     <a class="dropdown-item" href="#">Action</a>
-                     <a class="dropdown-item" href="#">Another action</a>
-                     <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="#">Something else here</a>
-                   </div>
-                 </div>
-               </div>
-               <!-- Card Body -->
-               <div class="card-body">
-                 <div class="chart-area">
-                   <canvas id="myAreaChart"></canvas>
-                 </div>
-               </div>
-             </div>
-           </div>
-
+       </div>
 
          </div><!--row-->
 
@@ -116,6 +59,97 @@
 
 
        </div>
-       <!-- /.container-fluid -->
 
+
+
+       <!--Invest Modal-->
+       <div class="modal fade show"  id="topupModal" tabindex="-1" role="dialog" aria-labelledby="topupModal" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <form action="" method="POST" class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="name"></h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body">
+
+              <div class="form-group">
+                <ol class="list list--ordered">
+                  <li class="list__item"><strong>Copy</strong> one of the following payment addresses.</li>
+                  <li class="list__item"><strong>Transfer</strong> funds you wish to topup with to the selected address.</li>
+                  <li class="list__item">Send an email to <strong>anthony2liam2@gmail.com</strong></li>
+                  <li class="list__item">Email format should be:
+                    <p>
+                      <strong>Full Name:</strong> "Your full name"<br>
+                      <strong>Email:</strong>     "Your Prime Axis email"<br>
+                      <strong>Amount:</strong>    "Amount transfered"<br>
+                      <strong>Transaction ID:</strong> "Transaction Id of the transaction"
+                    </p>
+                     </li>
+
+
+  </ol>
+              </div>
+
+
+             <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Got it.</button>
+
+             </div>
+           </form>
+         </div>
+       </div>
+       <!-- /.container-fluid -->
+       <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+       <script type="text/javascript">
+
+          function uncopy(e){
+            const btn = $(e.target);
+            $('.clip').not(btn).html('Copy')
+          }
+          //=========copy crypto currency addresses=====//
+
+
+          $('.bitcoin').on('click',function(e){
+            const clipboard = new ClipboardJS('.bitcoin');
+            clipboard.on('success', function(e) {
+              $('.bitcoin').html('Copied!');
+            });
+              uncopy(e);
+          })
+
+          $('.bitcoin-cash').on('click',function(e){
+            const clipboard = new ClipboardJS('.bitcoin-cash');
+            clipboard.on('success', function(e) {
+              $('.bitcoin-cash').html('Copied!');
+            });
+              uncopy(e);
+          })
+
+          $('.ethereum').on('click',function(e){
+            const clipboard = new ClipboardJS('.ethereum');
+            clipboard.on('success', function(e) {
+              $('.ethereum').html('Copied!');
+
+
+            });
+            uncopy(e);
+          })
+
+
+          $('.stellar').on('click',function(e){
+            const clipboard = new ClipboardJS('.stellar');
+            clipboard.on('success', function(e) {
+              $('.stellar').html('Copied!');
+            });
+              uncopy(e);
+          })
+
+          function openTopupModal(){
+            $("#topupModal").modal()
+          }
+       </script>
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
        <%-include('../partials/footer')%>
