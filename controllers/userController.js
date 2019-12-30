@@ -135,26 +135,70 @@ module.exports.getWithdrawPage = (req,res,next)=>{
 }
 
 module.exports.getHistoryPage = (req,res,next)=>{
+
   const user_id = user.getUserId(req,res,next)
+  let from = req.query.from;
+  let  to = req.query.to;
+  let  search = req.query.search;
+  From  = moment(from).format("YYYY-MM-DD HH:mm:ss")
+  To    = moment(to).add(1,'day').format("YYYY-MM-DD HH:mm:ss")
+
+
+
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
         Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
         .then(function(notifications){
 
-           Earning.findAll({limit:5,where:{user_id:user_id},order:[['createdAt','DESC']]})
-           .then(function(earnings){
-             return res.render('user/history',{
-                             title:"History",
-                             user:foundUser,
-                             page:'history',
-                             notifications:notifications,
-                             earnings:earnings,
-                             moment:moment,
-                             truncate:truncate
-                         })
+          console.log('from is '+from)
+             sequelize.query(
+               `SELECT * FROM earnings
+                WHERE user_id = '${user_id}'  AND createdAt BETWEEN '${From}' AND '${To}'
+                ORDER BY createdAt DESC
+                `
+             )
+             .then(function(earnings){
+                   earnings[0].forEach(function(earning){
+                        console.log(earning.createdAt)
+
+                   })
+
+
+
+                if(!from){
+                  return res.render('user/history-none',{
+                                  title:"History",
+                                  user:foundUser,
+                                  page:'history',
+                                  notifications:notifications,
+                                  earnings:earnings[0],
+                                  moment:moment,
+                                  truncate:truncate
+                              })
+                }
+
+                else{
+
+                  return res.render('user/history',{
+                                  title:"History",
+                                  user:foundUser,
+                                  page:'history',
+                                  notifications:notifications,
+                                  earnings:earnings[0],
+                                  moment:moment,
+                                  from:from,
+                                  to:to,
+                                  truncate:truncate
+                              })
+                }
+
+
+             })
+
+
 
              //return res.send({user:foundUser})
-           })
+
         })
   })
 
@@ -306,19 +350,7 @@ module.exports.changePassword = (req,res,next)=>{
 
 
 module.exports.getEarnings = (req,res,next)=>{
-  const user_id = user.getUserId(req,res,next)
-  let from = req.query.from;
-  let  to = req.query.to;
 
-  from  = moment(from).format("YYYY-MM-DD HH:mm:ss")
-  to    = moment(to).format("YYYY-MM-DD HH:mm:ss")
 
-  sequelize.query(
-    `SELECT * FROM earnings
-     WHERE user_id = '${user_id}'  AND createdAt BETWEEN '${from}' AND '${to}'`
-  )
-  .then(function(earnings){
-    console.log(earnings)
-  })
 
 }
