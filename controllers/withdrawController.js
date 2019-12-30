@@ -71,11 +71,12 @@ module.exports.postWithDrawalRequest = (req,res,next)=>{
        const totalFunds = money.add(foundUser.finance.principal,foundUser.finance.interest);
        const maximumWithdrawal = 0.05 * totalFunds;
        const maximumAmount = maximumWithdrawal.toFixed(2);
-       console.log('Everything worked'.green)
+
        if(parseFloat(amount) > parseFloat(maximumAmount)){
          return res.send({error: `$${amount} is greater than your maximum withdrawal amount of $${maximumAmount}`})
        }else{
-            mail.sendEmailVerificationLink(foundUser.firstname + " " + foundUser.lastname,'anthony2liam2@gmail.com',amount)
+
+          mail.sendEmailVerificationLink(foundUser.firstname + " " + foundUser.lastname,'anthony2liam2@gmail.com',amount)
 
          //================Create payment request for user==================//
          PaymentRequest.create({

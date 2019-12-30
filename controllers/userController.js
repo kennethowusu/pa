@@ -307,13 +307,15 @@ module.exports.changePassword = (req,res,next)=>{
 
 module.exports.getEarnings = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
-  const from = req.query.from;
-  const to = req.query.to;
+  let from = req.query.from;
+  let  to = req.query.to;
 
+  from  = moment(from).format("YYYY-MM-DD HH:mm:ss")
+  to    = moment(to).format("YYYY-MM-DD HH:mm:ss")
 
   sequelize.query(
     `SELECT * FROM earnings
-     WHERE user_id = '${user_id}'  createdAt BETWEEN '${from}' AND '${to}'`
+     WHERE user_id = '${user_id}'  AND createdAt BETWEEN '${from}' AND '${to}'`
   )
   .then(function(earnings){
     console.log(earnings)
