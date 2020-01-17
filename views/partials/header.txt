@@ -1,0 +1,165 @@
+
+ <div class="wrapper content-wrapper">
+  <input type="checkbox" id="topNotificationBar" class="d-none">
+  <!-- <div class="notification-top-bar">
+     <p class="notice">
+       Cherished Investor, due to maintenance you will experience some infunctionalities in your dashboard.
+       We sincerely apologize for the inconvenience, we are working to fix this as soon as possible.
+     </p>
+     <label class="close-label" for="topNotificationBar">
+       &times;
+     </label>
+  </div> -->
+
+   <div class="header ">
+     <label for="sidebar-check" class="burger-label">
+       <div class="burger ">
+         <span class="burger-bar"></span>
+         <span class="burger-bar"></span>
+         <span class="burger-bar"></span>
+       </div>
+     </label>
+
+     <div class="header-action" class="sidebar-label">
+       <div class="header-action-notification">
+         <%-include('../../dist/images/notification.svg')%>
+
+
+         <div class="dropdown-note notification isClosed">
+         <div class="dropdown-note-cont">
+           <div class="dropdown-arrow-cont notification"><%-include('../../dist/images/left-arrow.svg')%></div>
+           <div class="dropdown-note-body">
+               <div class="dropdown-note-title">
+                 Notifications
+               </div>
+           </div>
+           <div class="notification-body">
+
+           <%notifications.forEach(function(notification){%>
+
+
+             <a href="/user/notifications/<%=notification.id%>" class="notification">
+              <div class="notification-head">
+                <span class="notification-title"><%=notification.topic%></span>
+                <div class="notification-date"><%=moment(notification.createdAt).format('Do MMM')%>.</div>
+              </div>
+              <div class="notification-message">
+                  <%-truncate(notification.message,40)%>
+              </div>
+            </a>
+
+           <%})%>
+
+
+
+
+
+
+           </div>
+
+
+         </div>
+       </div>
+
+
+
+       </div><!--notiification-->
+       <div class="header-action-profile">
+           <%-include('../../dist/images/profile.svg')%>
+
+           <div class="dropdown-note setting isClosed">
+           <div class="dropdown-note-cont">
+             <div class="dropdown-arrow-cont setting"><%-include('../../dist/images/left-arrow.svg')%></div>
+
+                  <div class="dropdown-note-body">
+
+                  <div class="settings-body">
+                    <div class="profile-cont">
+                         <%-include('../../dist/images/profile.svg')%>
+                    </div>
+                    <div class="name text-capitalize">
+                      <%=user.firstname%> <%=user.lastname%>
+                    </div>
+                    <div class="settings-actions">
+                      <a href="/user/settings" class="setting-action">
+                        <span class=" mr-2 setting-action-icon"><%-include('../../dist/images/settings.svg')%></span>
+                        <span class="setting-action-text">Settings</span>
+                      </a>
+                      <a href="/user/logout" class="setting-action">
+                        <span class="mr-2 setting-action-icon"> <%-include('../../dist/images/log-out.svg')%></span>
+                        <span class="setting-action-text">Logout</span>
+                      </a>
+                    </div>
+                  </div>
+
+
+                </div>
+           </div>
+       </div>
+
+
+       </div><!--header-action-profile-->
+     </div>
+
+   </div>
+
+
+
+     <input type="checkbox" id="sidebar-check" class="sidebar-check">
+
+
+   <nav class="sidebar">
+     <ul class="sidebar-cont">
+       <li class="sidebar-list">
+         <a href="/user/dashboard" class="<%=(page=='dashboard') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/dashboard.svg')%>
+           </span>
+           <span class="sidebar-link-test">Dashboard</span>
+         </a>
+       </li>
+       <li class="sidebar-list">
+         <a href="/user/invest" class="<%=(page=='invest') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/investment.svg')%>
+           </span>
+           <span class="sidebar-link-test">Invest / Top Up</span>
+         </a>
+       </li>
+
+       <li class="sidebar-list">
+         <a href="/user/withdraw" class="<%=(page=='withdraw') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/credit-card.svg')%>
+           </span>
+           <span class="sidebar-link-test">Withdraw</span>
+         </a>
+       </li>
+
+       <li class="sidebar-list">
+         <a href="/user/history"class="<%=(page=='history') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/history.svg')%>
+           </span>
+           <span class="sidebar-link-test">History</span>
+         </a>
+       </li>
+
+       <li class="sidebar-list">
+         <a href="/user/referral" class="<%=(page=='referral') ? "sidebar-link active" : "sidebar-link" %>">
+           <span class="sidebar-img">
+             <%-include('../../dist/images/referral.svg')%>
+           </span>
+           <span class="sidebar-link-test">Referral</span>
+         </a>
+       </li>
+
+     </ul>
+     <label for="sidebar-check"  class="sidebar-close-cont">
+       <div class="sidebar-close">
+         <span></span>
+         <span></span>
+       </div>
+     </label>
+
+   </nav>

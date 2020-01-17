@@ -1,3 +1,18 @@
+
+body{
+  font-family: "PT Sans",sans-serif !important;
+}
+
+
+
+$primary-color : #3d5afe;
+$accent-color    : #ff6814 ;
+$color-accent-hover:#d2540e;
+
+.section-title{
+  margin:0;
+  color:#6f6f6f;
+}
 .notification-top-bar{
   display: flex;
   padding:15px;
@@ -29,5 +44,14 @@
 }
 
 .modal{
-  background: rgba(255,255,255,0.9) !important; 
+  background: rgba(255,255,255,0.9) !important;
+}
+
+.container{
+  max-width:1136px !important;
+  height:100vh;
+}
+//********************************background colors ***********************//
+.bg-default{
+  background-color: #f2f5f7;
 }

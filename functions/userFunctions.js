@@ -57,7 +57,7 @@ module.exports = {
          }//payload
 
          const options = {
-           expiresIn:"1h"
+           expiresIn:"3h"
          }
          var token = jwt.sign(payload,process.env.JWTSECRET,options);
 

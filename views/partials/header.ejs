@@ -5,179 +5,130 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/bootstrap.css">
   <link rel="stylesheet" href="/css/dashboard.css">
 
   <title><%=title%></title>
+
   <script
     src="https://code.jquery.com/jquery-2.2.4.min.js"
     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
     crossorigin="anonymous"></script>
 </head>
-<body class="">
-
- <div class="wrapper content-wrapper">
-  <input type="checkbox" id="topNotificationBar" class="d-none">
-  <!-- <div class="notification-top-bar">
-     <p class="notice">
-       Cherished Investor, due to maintenance you will experience some infunctionalities in your dashboard.
-       We sincerely apologize for the inconvenience, we are working to fix this as soon as possible.
-     </p>
-     <label class="close-label" for="topNotificationBar">
-       &times;
-     </label>
-  </div> -->
-
-   <div class="header ">
-     <label for="sidebar-check" class="burger-label">
-       <div class="burger ">
-         <span class="burger-bar"></span>
-         <span class="burger-bar"></span>
-         <span class="burger-bar"></span>
-       </div>
-     </label>
-
-     <div class="header-action" class="sidebar-label">
-       <div class="header-action-notification">
-         <%-include('../../dist/images/notification.svg')%>
+<body class="bg-default">
 
 
-         <div class="dropdown-note notification isClosed">
-         <div class="dropdown-note-cont">
-           <div class="dropdown-arrow-cont notification"><%-include('../../dist/images/left-arrow.svg')%></div>
-           <div class="dropdown-note-body">
-               <div class="dropdown-note-title">
-                 Notifications
-               </div>
-           </div>
-           <div class="notification-body">
+<header class="header">
 
-           <%notifications.forEach(function(notification){%>
+    <div class="header__cont">
+
+      <!-- <div class="header__logo">
+
+      </div> -->
+
+      <!--header content-->
+
+      <div class="header__burger">
+        <span class="header__burger--bar"></span>
+        <span class="header__burger--bar"></span>
+        <span class="header__burger--bar"></span>
+
+      </div>
 
 
-             <a href="/user/notifications/<%=notification.id%>" class="notification">
-              <div class="notification-head">
-                <span class="notification-title"><%=notification.topic%></span>
-                <div class="notification-date"><%=moment(notification.createdAt).format('Do MMM')%>.</div>
+      <!--header-icon-------------------------->
+      <div class="header__icon">
+          <div class="icon notification ">
+            <div class="icon--cont notification "><%-include('../../dist/images/notification.svg')%></div>
+
+          </div>
+
+          <div class="icon profile">
+            <div class="icon--cont profile">
+              <div class="background">
+                    <%-include('../../dist/images/profile.svg')%>
               </div>
-              <div class="notification-message">
-                  <%-truncate(notification.message,40)%>
-              </div>
-            </a>
 
-           <%})%>
+            </div>
 
-
+          </div>
+      </div>
+      <!--header icon--->
 
 
+    </div>
 
 
-           </div>
+</header>
 
 
-         </div>
-       </div>
+<!--sidebar-------------------------------------------------------->
+<div class="sidebar">
+  <div class="sidebar--inner">
+        <!--sidebar-inner__cont-------------------->
+        <div class="sidebar--inner__cont">
+
+          <div class="sidebar--inner__logo"></div>
+
+          <ul class="sidebar--inner__nav">
+            <li class="list">
+              <a class="link active" href="#"><span class="icon-cont"><%-include('../../dist/images/dashboard.svg')%></span><span class="text">Dashboard</span></a>
+            </li>
+            <li class="list">
+              <a class="link" href="#"><span class="icon-cont"><%-include('../../dist/images/investment.svg')%></span><span class="text">Invest / Top Up</span></a>
+            </li>
+            <li class="list">
+              <a class="link" href="#"><span class="icon-cont"><%-include('../../dist/images/credit-card.svg')%></span><span class="text">Withdraw</span></a>
+            </li>
+            <li class="list">
+              <a class="link" href="#"><span class="icon-cont"><%-include('../../dist/images/history.svg')%></span><span class="text">History</span></a>
+            </li>
+            <li class="list">
+              <a class="link" href="#"><span class="icon-cont"><%-include('../../dist/images/referral.svg')%></span><span class="text">Referral</span></a>
+            </li>
+
+          </ul>
+
+          <div class="sidebar--inner__footer">
+
+          </div>
+
+        </div>
+  </div>
+
+
+  <div class="sidebar--outer">
+
+    <div class="sidebar--outer__background"></div>
+    <div class="sidebar--outer__foreground">
+      <span class="close">
+        &times;
+      </span>
+    </div>
+
+  </div>
+
+
+</div>
 
 
 
-       </div><!--notiification-->
-       <div class="header-action-profile">
-           <%-include('../../dist/images/profile.svg')%>
+<script type="text/javascript">
+  let header__burger = $('.header__burger');
+  let sidebarOuter   = $('.sidebar--outer');
+  header__burger.click(function(){
+    openSidebar();
+  })
 
-           <div class="dropdown-note setting isClosed">
-           <div class="dropdown-note-cont">
-             <div class="dropdown-arrow-cont setting"><%-include('../../dist/images/left-arrow.svg')%></div>
+ sidebarOuter.click(function(){
+   openSidebar();
 
-                  <div class="dropdown-note-body">
+ })
 
-                  <div class="settings-body">
-                    <div class="profile-cont">
-                         <%-include('../../dist/images/profile.svg')%>
-                    </div>
-                    <div class="name text-capitalize">
-                      <%=user.firstname%> <%=user.lastname%>
-                    </div>
-                    <div class="settings-actions">
-                      <a href="/user/settings" class="setting-action">
-                        <span class=" mr-2 setting-action-icon"><%-include('../../dist/images/settings.svg')%></span>
-                        <span class="setting-action-text">Settings</span>
-                      </a>
-                      <a href="/user/logout" class="setting-action">
-                        <span class="mr-2 setting-action-icon"> <%-include('../../dist/images/log-out.svg')%></span>
-                        <span class="setting-action-text">Logout</span>
-                      </a>
-                    </div>
-                  </div>
-
-
-                </div>
-           </div>
-       </div>
-
-
-       </div><!--header-action-profile-->
-     </div>
-
-   </div>
-
-
-
-     <input type="checkbox" id="sidebar-check" class="sidebar-check">
-
-
-   <nav class="sidebar">
-     <ul class="sidebar-cont">
-       <li class="sidebar-list">
-         <a href="/user/dashboard" class="<%=(page=='dashboard') ? "sidebar-link active" : "sidebar-link" %>">
-           <span class="sidebar-img">
-             <%-include('../../dist/images/dashboard.svg')%>
-           </span>
-           <span class="sidebar-link-test">Dashboard</span>
-         </a>
-       </li>
-       <li class="sidebar-list">
-         <a href="/user/invest" class="<%=(page=='invest') ? "sidebar-link active" : "sidebar-link" %>">
-           <span class="sidebar-img">
-             <%-include('../../dist/images/investment.svg')%>
-           </span>
-           <span class="sidebar-link-test">Invest / Top Up</span>
-         </a>
-       </li>
-
-       <li class="sidebar-list">
-         <a href="/user/withdraw" class="<%=(page=='withdraw') ? "sidebar-link active" : "sidebar-link" %>">
-           <span class="sidebar-img">
-             <%-include('../../dist/images/credit-card.svg')%>
-           </span>
-           <span class="sidebar-link-test">Withdraw</span>
-         </a>
-       </li>
-
-       <li class="sidebar-list">
-         <a href="/user/history"class="<%=(page=='history') ? "sidebar-link active" : "sidebar-link" %>">
-           <span class="sidebar-img">
-             <%-include('../../dist/images/history.svg')%>
-           </span>
-           <span class="sidebar-link-test">History</span>
-         </a>
-       </li>
-
-       <li class="sidebar-list">
-         <a href="/user/referral" class="<%=(page=='referral') ? "sidebar-link active" : "sidebar-link" %>">
-           <span class="sidebar-img">
-             <%-include('../../dist/images/referral.svg')%>
-           </span>
-           <span class="sidebar-link-test">Referral</span>
-         </a>
-       </li>
-
-     </ul>
-     <label for="sidebar-check"  class="sidebar-close-cont">
-       <div class="sidebar-close">
-         <span></span>
-         <span></span>
-       </div>
-     </label>
-
-   </nav>
+  function openSidebar(){
+    $('.sidebar').toggleClass('opened')
+    $('.sidebar--outer__background').toggleClass('opened')
+    $('.close').toggleClass('opened')
+  }
+</script>

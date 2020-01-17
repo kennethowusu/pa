@@ -3,6 +3,9 @@ require('dotenv').config();
 const mysql = require('mysql2');
 const Sequelize = require('sequelize');
 require('dotenv').config();
+
+
+console.log(process.env.DB_NAME)
 class Database{
   constructor(database,user,password,host){
     this.database = database;
