@@ -1,138 +1,95 @@
 <%-include('../partials/header')%>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
 
-
-       <div class="container-fluid dash-content">
-
-         <!-- Page Heading -->
-         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-           <h1 class="h3 mb-0 text-gray-800">Referral</h1>
-           <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></a>
-         </div>
-
-
-         <!-- Content Row -->
-         <div class="row">
-
-           <!-- Earnings (Monthly) Card Example -->
-           <div class="col-md-9 mb-4">
-             <div class="card border-left-primary shadow h-100 py-2">
-               <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                   <div class="col mr-2">
-                     <div class="alert alert-info">
-                       Earn 3% of whatever the earnings of whoever you refer. There is no limit to the amount of money or number of peope you refer.
-                     </div>
-
-                   </div>
-                   <div class="col-auto">
-                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-        </div>
-         <!-- Content Row -->
-         <div class="row">
-
-           <!-- Earnings (Monthly) Card Example -->
-           <div class="col-xl-3 col-md-6 mb-4">
-             <div class="card border-left-primary shadow h-100 py-2">
-               <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                   <div class="col mr-2">
-                     <div class="text-xs font-weight-bold text-primary  mb-1">People who have signed up with your link</div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800"><%=referrals.count%></div>
-                   </div>
-                   <div class="col-auto">
-                     <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
-           <!-- Earnings (Monthly) Card Example -->
-           <div class="col-xl-3 col-md-6 mb-4">
-             <div class="card border-left-success shadow h-100 py-2">
-               <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                   <div class="col mr-2">
-                     <div class="text-xs font-weight-bold text-success   mb-1">Referral Commission</div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800">$<%=user.finance.referral_interest%></div>
-                   </div>
-                   <div class="col-auto">
-                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-
-           <!-- Earnings (Monthly) Card Example -->
-
-
-         </div>
-         <!--row-->
-
-         <!-- Content Row -->
+<div class="container bg-default">
 
 
 
 
-          <div class="row">
 
-            <div class="col-md-9 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="bgc-white p-20 bd">
-                    <h6 class="c-grey-900">Your Referral link</h6>
-                    <div class="mT-30">
-                      <div class="form-group">
-                        <div class="form-control mb-2">
-                          <%=refUrl%>
-                        </div>
-                        <button type="button" data-clipboard-text="<%=refUrl%>" class=" refLink mT-10 btn btn-success" name="button">Copy</button>
-                      </div>
+
+    <div class="" style="padding:15px">
+
+
+      <div class="invite">
+        <div class="invite--cont">
+
+          <div class="invite--cont__img">
+            <%-include('../../dist/images/handshake.svg')%>
+
+          </div>
+
+        </div><!--invite--cont-->
+
+
+
+
+          <form class="mb-4">
+            <div class="">
+              <p class="invite-head">Copy and share your link...</p>
+              <div class="">
+                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                <div class="input-group mb-2">
+                  <input type="text" value="<%=refUrl%>"  class="form-control text-muted" disabled id="inlineFormInputGroup" placeholder="Username">
+                  <div class="input-group-prepend">
+
+                    <div id="dd" class="wrapper-dropdown-2 " tabindex="1">Share
+                      <ul class="dropdown">
+                        <li ><a href="#" data-clipboard-text="<%=refUrl%>" ><i class="icon-twitter icon-large inviteLink"><img src="https://d2gsv5cx9d46bp.cloudfront.net/v2/img/dropdown-icons/link-icn.svg" alt=""></i>Copy</a></li>
+                        <li><a href="#"><i class="icon-github icon-large"><img src="https://d2gsv5cx9d46bp.cloudfront.net/v2/img/dropdown-icons/whats-app-icn.svg" alt=""></i>WhatsApp</a></li>
+                        <li><a href="#"><i class="icon-facebook icon-large"><img src="https://d2gsv5cx9d46bp.cloudfront.net/v2/img/dropdown-icons/messenger-icn.svg" alt=""></i>Messenger</a></li>
+                        <li><a href="#"><i class="icon-facebook icon-large"><img src="https://d2gsv5cx9d46bp.cloudfront.net/v2/img/dropdown-icons/fb-icn.svg" alt=""></i>Facebook</a></li>
+                        <li><a href="#"><i class="icon-facebook icon-large"><img src="https://d2gsv5cx9d46bp.cloudfront.net/v2/img/dropdown-icons/twitter-icn.svg" alt=""></i>Tweet</a></li>
+                      </ul>
                     </div>
+
                   </div>
+
                 </div>
               </div>
+
+
             </div>
+         </form>
+         <p class="text-muted"> Earn 3% of principal of whoever you invite. There is no limit to the amount of money or number of peope you invite.</p>
 
 
-          </div><!--row-->
-
-
-
-
-
-
-
-       </div>
-       <!-- /.container-fluid -->
-       <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-       <script type="text/javascript">
-         $('.refLink').on('click',function(){
-           const clipboard = new ClipboardJS('.refLink');;
-           clipboard.on('success', function(e) {
-             $('.refLink').html('Copied!');
-
-           });
-         })
-
-
-         function uncopy(e){
-           const btn = $(e.target);
-           $('.clip').not(btn).html('Copy')
-         }
+      </div>
 
 
 
 
 
 
-       </script>
 
-       <%-include('../partials/footer')%>
+
+
+
+
+
+</div><!--container-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+  $('.inviteLink').click(function(e){
+    e.preventDefault();
+   const clipboard = new ClipboardJS('.inviteLink');;
+
+  })
+
+
+</script>
+ <%-include('../partials/footer')%>

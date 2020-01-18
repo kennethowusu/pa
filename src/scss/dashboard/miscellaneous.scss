@@ -8,7 +8,16 @@ body{
 $primary-color : #3d5afe;
 $accent-color    : #ff6814 ;
 $color-accent-hover:#d2540e;
+.form-control{
+  border-left-width: 1px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    height:48px;
 
+    &:focus{
+      box-shadow:none;
+    }
+}
 .section-title{
   margin:0;
   color:#6f6f6f;

@@ -1,0 +1,28 @@
+.invite--cont{
+
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+  .invite--cont__img{
+    background-color: #eee;
+    width:200px;
+    height:200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-bottom: 60px;
+  }
+
+  svg{
+    width:160px;
+    height:160px;
+  }
+}
+
+
+.invite-head{
+  font-size: 1.5em;
+  text-align: center;
+}

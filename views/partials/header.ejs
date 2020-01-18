@@ -11,10 +11,7 @@
 
   <title><%=title%></title>
 
-  <script
-    src="https://code.jquery.com/jquery-2.2.4.min.js"
-    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 </head>
 <body class="bg-default">
 
@@ -73,19 +70,19 @@
 
           <ul class="sidebar--inner__nav">
             <li class="list">
-              <a class="link active" href="#"><span class="icon-cont"><%-include('../../dist/images/dashboard.svg')%></span><span class="text">Dashboard</span></a>
+              <a class="link  <%=(page=='dashboard') ? "sidebar-link active" : "sidebar-link" %>" href="/user/dashboard"><span class="icon-cont"><%-include('../../dist/images/dashboard.svg')%></span><span class="text">Dashboard</span></a>
             </li>
             <li class="list">
-              <a class="link" href="#"><span class="icon-cont"><%-include('../../dist/images/investment.svg')%></span><span class="text">Invest / Top Up</span></a>
+              <a class="link <%=(page=='invest') ? "sidebar-link active" : "sidebar-link" %>" href="/user/invest"><span class="icon-cont"><%-include('../../dist/images/investment.svg')%></span><span class="text">Invest / Top Up</span></a>
             </li>
             <li class="list">
-              <a class="link" href="#"><span class="icon-cont"><%-include('../../dist/images/credit-card.svg')%></span><span class="text">Withdraw</span></a>
+              <a class="link <%=(page=='withdraw') ? "sidebar-link active" : "sidebar-link" %>" href="/user/withdraw"><span class="icon-cont"><%-include('../../dist/images/credit-card.svg')%></span><span class="text">Withdraw</span></a>
             </li>
             <li class="list">
-              <a class="link" href="#"><span class="icon-cont"><%-include('../../dist/images/history.svg')%></span><span class="text">History</span></a>
+              <a class="link <%=(page=='history') ? "sidebar-link active" : "sidebar-link" %>" href="/user/history"><span class="icon-cont"><%-include('../../dist/images/history.svg')%></span><span class="text">History</span></a>
             </li>
             <li class="list">
-              <a class="link" href="#"><span class="icon-cont"><%-include('../../dist/images/referral.svg')%></span><span class="text">Referral</span></a>
+              <a class="link <%=(page=='referral') ? "sidebar-link active" : "sidebar-link" %>" href="/user/referral"><span class="icon-cont"><%-include('../../dist/images/referral.svg')%></span><span class="text">Invite</span></a>
             </li>
 
           </ul>

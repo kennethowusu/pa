@@ -1,0 +1,125 @@
+<%-include('../partials/header')%>
+<link href="/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+
+       <div class="container-fluid dash-content">
+
+         <!-- Page Heading -->
+         <div class="d-sm-flex align-items-center justify-content-between mb-4">
+           <h1 class="h3 mb-0 text-gray-800">History</h1>
+           <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></a>
+         </div>
+
+         <!-- Content Row -->
+         <div class="row">
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container-fluid bg-light ">
+	<form action="" method="get" class="row align-items-center ">
+            	        <div class="col-md-2 pt-3">
+                           <div class="form-group ">
+                              <select id="inputState " class="form-control">
+
+                                <option selected>Earnings</option>
+
+                              </select>
+                           </div>
+                        </div>
+
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group">
+                            <input class="fromDatepicker form-control" value="<%=(!from) == "undefined" ? "" : from%>" name="from" placeholder="From" data-date-format="mm/dd/yyyy">
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group">
+                            <input class="toDatepicker form-control" name="to" value="<%=(!to) ? "" : to %>"  placeholder="To" data-date-format="mm/dd/yyyy">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+            	           <button type="submit" id="activityBtn" class="btn btn-primary btn-block">Search</button>
+            	        </div>
+                	</form>
+</div>
+
+
+
+
+         </div><!--row-->
+
+
+         <div class="row">
+            <%if(earnings.length == 0){%>
+               <div class="col py-4">
+                 <div class="alert alert-primary">
+                   Sorry, no records found
+                 </div>
+               </div>
+            <%}else{%>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Principal</th>
+                        <th>Interest Earned</th>
+
+
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <%earnings.forEach(function(earning){%>
+                        <tr>
+                          <td><%=moment(earning.createdAt).format('l')%></td>
+                          <td><%=earning.principal%></td>
+                          <td><%=earning.balance%></td>
+
+
+                        </tr>
+
+
+                      <%})%>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            <%}%>
+         </div>
+
+
+
+
+
+       </div>
+       <!-- /.container-fluid -->
+
+       <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"> -->
+
+       </script>
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+       <script src="/bootstrap-datepicker.min.js"></script>
+       <script type="text/javascript">
+        let from =  $('.fromDatepicker').datepicker();
+        let to  = $('.toDatepicker').datepicker();
+         $("#activityBtn").click(function(e){
+
+           const From = from.val();
+           const To   = to.val();
+
+           //=========ajax request========//
+           $.ajax({
+             method:'get',
+             url:'/user/earnings',
+             data:{from:From,to:To}
+           })
+         })
+      </script>
+
+       <%-include('../partials/footer')%>
