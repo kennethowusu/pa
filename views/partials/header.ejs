@@ -108,24 +108,3 @@
 
 
 </div>
-
-
-
-<script type="text/javascript">
-  let header__burger = $('.header__burger');
-  let sidebarOuter   = $('.sidebar--outer');
-  header__burger.click(function(){
-    openSidebar();
-  })
-
- sidebarOuter.click(function(){
-   openSidebar();
-
- })
-
-  function openSidebar(){
-    $('.sidebar').toggleClass('opened')
-    $('.sidebar--outer__background').toggleClass('opened')
-    $('.close').toggleClass('opened')
-  }
-</script>

@@ -2,12 +2,26 @@
 body{
   font-family: "PT Sans",sans-serif !important;
 }
-
+body.active{
+  overflow:hidden !important;
+}
 
 
 $primary-color : #3d5afe;
 $accent-color    : #ff6814 ;
 $color-accent-hover:#d2540e;
+select{
+  height: 48px !important;
+}
+.btn{
+  height:48px;
+}
+
+.btn:focus, .btn.focus{
+  outline:0;
+  box-shadow:none;
+  border:0 !important;
+}
 .form-control{
   border-left-width: 1px;
     border-top-left-radius: 3px;

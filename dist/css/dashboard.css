@@ -3,6 +3,24 @@ body {
   font-family: "PT Sans",sans-serif !important;
 }
 
+body.active {
+  overflow: hidden !important;
+}
+
+select {
+  height: 48px !important;
+}
+
+.btn {
+  height: 48px;
+}
+
+.btn:focus, .btn.focus {
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+}
+
 .form-control {
   border-left-width: 1px;
   border-top-left-radius: 3px;
@@ -279,6 +297,24 @@ body {
 }
 body {
   font-family: "PT Sans",sans-serif !important;
+}
+
+body.active {
+  overflow: hidden !important;
+}
+
+select {
+  height: 48px !important;
+}
+
+.btn {
+  height: 48px;
+}
+
+.btn:focus, .btn.focus {
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
 }
 
 .form-control {
@@ -947,6 +983,54 @@ ul.dropdown {
 .invite-head {
   font-size: 1.5em;
   text-align: center;
+}
+
+.overlay {
+  z-index: 50;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  top: 0;
+  left: 0;
+  transition: .5s ease-out;
+  transition-property: transform;
+  overflow-y: scroll;
+}
+.overlay.active {
+  transform: translateY(0) !important;
+}
+.overlay .overlay--btn {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 60;
+  top: 10px;
+  right: 10px;
+}
+.overlay .overlay--btn svg {
+  width: 30px;
+  height: 30px;
+}
+.overlay .overlay--body {
+  padding: 72px 17px 30px 17px;
+}
+.overlay .overlay--body .overlay--body__form {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overlay__slide-up {
+  transform: translateY(100%);
+}
+
+.overlay__slide-down {
+  transform: translateY(-100%);
 }
 
 /*# sourceMappingURL=dashboard.css.map */
