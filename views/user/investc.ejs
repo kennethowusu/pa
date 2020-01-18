@@ -1,158 +1,170 @@
 <%-include('../partials/header')%>
 
 
+<div class="container bg-default">
 
-       <div class="container-fluid dash-content">
 
-         <!-- Page Heading -->
-         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-           <h1 class="h3 mb-0 text-gray-800">Invest</h1>
-           <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-         </div>
+  <div class="" style="padding:15px">
 
-         <!-- Content Row -->
-         <div class="row">
-
-           <div class="masonry-item col-md-12">
-         <div class="bgc-white p-20 bd">
-
-           <div class="mb-4 ">
-             <button type="button" name="button" onclick="openTopupModal()" class="btn btn-primary btn-log">Click to view payment procedure</button>
-           </div>
-           <div class="mT-30">
-             <div class="form-group">
-               <p>Bitcoin</p>
-               <div class="form-control mb-2">
-               1D5oSCUsYRudTifQ6bAirVD1WY6nbjb9Kq  clip
-               </div>
-               <button type="button" data-clipboard-text="1D5oSCUsYRudTifQ6bAirVD1WY6nbjb9Kq" class=" bitcoin  clip  mT-10 btn btn-success" name="button">Copy</button>
-             </div>
-             <div class="form-group">
-               <p>Bitcon Cash</p>
-               <div class="form-control mb-2">
-               qrxr8ywqnzgpga2tyhdsapaf7k5hynxx7s8vldpxhy
-               </div>
-               <button type="button" data-clipboard-text="qrxr8ywqnzgpga2tyhdsapaf7k5hynxx7s8vldpxhy" class=" bitcoin-cash  clip mT-10 btn btn-success" name="button">Copy</button>
-             </div>
-             <div class="form-group">
-               <p>Ethereum</p>
-               <div class="form-control mb-2">
-               0x14B68DE16280155DAe2E42572CF77A4f67BA636D
-               </div>
-               <button type="button" data-clipboard-text="0x14B68DE16280155DAe2E42572CF77A4f67BA636D" class=" ethereum  clip mT-10 btn btn-success" name="button">Copy</button>
-             </div>
-             <div class="form-group ">
-               <p>Stellar</p>
-               <div class="form-control mb-2">
-               GDTUDBLEPDLR2XMSDALYHWZDA37QLB3PCHBVJDCOCKQBVANESN5I234Y
-               </div>
-               <button type="button" data-clipboard-text="GDTUDBLEPDLR2XMSDALYHWZDA37QLB3PCHBVJDCOCKQBVANESN5I234Y" class=" stellar  clip mT-10 btn btn-success" name="button">Copy</button>
-             </div>
-           </div>
-         </div>
-       </div>
-
-         </div><!--row-->
+    <div class="row">
 
 
 
 
 
-       </div>
 
+            <div class="masonry-item col-md-12">
+          <div class="bgc-white p-20 bd">
 
-
-       <!--Invest Modal-->
-       <div class="modal fade show"  id="topupModal" tabindex="-1" role="dialog" aria-labelledby="topupModal" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <form action="" method="POST" class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="name"></h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-
+            <div class="mb-4 ">
+              <button type="button" name="button" overlay-target="topupprocedure" class="btn btn-primary overlay-btn btn-log">Click to view payment procedure</button>
+            </div>
+            <div class="mT-30">
               <div class="form-group">
-                <ol class="list list--ordered">
-                  <li class="list__item"><strong>Copy</strong> one of the following payment addresses.</li>
-                  <li class="list__item"><strong>Transfer</strong> funds you wish to signup with(according to your investment package choice) to the selected address.</li>
-                  <li class="list__item">Send an email to <strong>support@primeaxisllc.com</strong></li>
-                  <li class="list__item">Email format should be:
-                    <p>
-                      <strong>Full Name:</strong> "Your full name"<br>
-                      <strong>Email:</strong>     "Your Prime Axis email"<br>
-                      <strong>Amount:</strong>    "Amount transfered"<br>
-                      <strong>Transaction ID:</strong> "Transaction Id of the transaction"
-                    </p>
-                     </li>
-
-                    <small><strong>Note:</strong>If there is an underpayment for an investment package, you will be contacted to topup or
-                          you will receive a refund.
-                    </small>
-
-  </ol>
+                <p>Bitcoin</p>
+                <div class="form-control mb-2">
+                1D5oSCUsYRudTifQ6bAirVD1WY6nbjb9Kq  clip
+                </div>
+                <button type="button" data-clipboard-text="1D5oSCUsYRudTifQ6bAirVD1WY6nbjb9Kq" class=" bitcoin  clip  mT-10 btn btn-info" name="button">Copy</button>
               </div>
+              <div class="form-group">
+                <p>Bitcon Cash</p>
+                <div class="form-control mb-2">
+                qrxr8ywqnzgpga2tyhdsapaf7k5hynxx7s8vldpxhy
+                </div>
+                <button type="button" data-clipboard-text="qrxr8ywqnzgpga2tyhdsapaf7k5hynxx7s8vldpxhy" class=" bitcoin-cash  clip mT-10 btn btn-info" name="button">Copy</button>
+              </div>
+              <div class="form-group">
+                <p>Ethereum</p>
+                <div class="form-control mb-2">
+                0x14B68DE16280155DAe2E42572CF77A4f67BA636D
+                </div>
+                <button type="button" data-clipboard-text="0x14B68DE16280155DAe2E42572CF77A4f67BA636D" class=" ethereum  clip mT-10 btn btn-info" name="button">Copy</button>
+              </div>
+              <div class="form-group ">
+                <p>Stellar</p>
+                <div class="form-control mb-2" style="overflow:hidden">
+                GDTUDBLEPDLR2XMSDALYHWZDA37QLB3PCHBVJDCOCKQBVANESN5I234Y
+                </div>
+                <button type="button"  data-clipboard-text="GDTUDBLEPDLR2XMSDALYHWZDA37QLB3PCHBVJDCOCKQBVANESN5I234Y" class=" stellar  clip mT-10 btn btn-info" name="button">Copy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
 
 
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Got it.</button>
-
-             </div>
-           </form>
-         </div>
-       </div>
-       <!-- /.container-fluid -->
-       <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-       <script type="text/javascript">
-
-          function uncopy(e){
-            const btn = $(e.target);
-            $('.clip').not(btn).html('Copy')
-          }
-          //=========copy crypto currency addresses=====//
 
 
-          $('.bitcoin').on('click',function(e){
-            const clipboard = new ClipboardJS('.bitcoin');
-            clipboard.on('success', function(e) {
-              $('.bitcoin').html('Copied!');
-            });
-              uncopy(e);
-          })
+<style media="screen">
+  button{
+    width:300px;
+  }
 
-          $('.bitcoin-cash').on('click',function(e){
-            const clipboard = new ClipboardJS('.bitcoin-cash');
-            clipboard.on('success', function(e) {
-              $('.bitcoin-cash').html('Copied!');
-            });
-              uncopy(e);
-          })
-
-          $('.ethereum').on('click',function(e){
-            const clipboard = new ClipboardJS('.ethereum');
-            clipboard.on('success', function(e) {
-              $('.ethereum').html('Copied!');
+  p{
+    margin-bottom:5px;
+  }
+</style>
 
 
-            });
-            uncopy(e);
-          })
 
 
-          $('.stellar').on('click',function(e){
-            const clipboard = new ClipboardJS('.stellar');
-            clipboard.on('success', function(e) {
-              $('.stellar').html('Copied!');
-            });
-              uncopy(e);
-          })
+  <div class="overlay overlay__slide-down" id="topupprocedure">
 
-          function openTopupModal(){
-            $("#topupModal").modal()
-          }
-       </script>
-       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-       <%-include('../partials/footer')%>
+    <span class="overlay--btn"><%-include('../../dist/images/cancel.svg')%></span>
+    <div class="overlay--cont">
+
+      <div class="overlay--body ">
+                  <div class="overlay--body__form">
+                    <ol class="list list--ordered">
+                      <li class="list__item"><strong>Copy</strong> one of the following payment addresses.</li>
+                      <li class="list__item"><strong>Transfer</strong> funds you wish to signup with(according to your investment package choice) to the selected address.</li>
+                      <li class="list__item">Send an email to <strong>support@primeaxisllc.com</strong></li>
+                      <li class="list__item">Email format should be:
+                        <p>
+                          <strong>Full Name:</strong> "Your full name"<br>
+                          <strong>Email:</strong>     "Your Prime Axis email"<br>
+                          <strong>Amount:</strong>    "Amount transfered"<br>
+                          <strong>Transaction ID:</strong> "Transaction Id of the transaction"
+                        </p>
+                         </li>
+
+                        <small><strong>Note:</strong>If there is an underpayment for an investment package, you will be contacted to topup or
+                              you will receive a refund.
+                        </small>
+
+                        </ol>
+                  </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+  <script type="text/javascript">
+
+     function uncopy(e){
+       const btn = $(e.target);
+       $('.clip').not(btn).html('Copy')
+     }
+     //=========copy crypto currency addresses=====//
+
+
+     $('.bitcoin').on('click',function(e){
+       const clipboard = new ClipboardJS('.bitcoin');
+       clipboard.on('success', function(e) {
+         $('.bitcoin').html('Copied!');
+       });
+         uncopy(e);
+     })
+
+     $('.bitcoin-cash').on('click',function(e){
+       const clipboard = new ClipboardJS('.bitcoin-cash');
+       clipboard.on('success', function(e) {
+         $('.bitcoin-cash').html('Copied!');
+       });
+         uncopy(e);
+     })
+
+     $('.ethereum').on('click',function(e){
+       const clipboard = new ClipboardJS('.ethereum');
+       clipboard.on('success', function(e) {
+         $('.ethereum').html('Copied!');
+
+
+       });
+       uncopy(e);
+     })
+
+
+     $('.stellar').on('click',function(e){
+       const clipboard = new ClipboardJS('.stellar');
+       clipboard.on('success', function(e) {
+         $('.stellar').html('Copied!');
+       });
+         uncopy(e);
+     })
+
+     function openTopupModal(){
+       $("#topupModal").modal()
+     }
+  </script>
+  <%-include('../partials/footer')%>
