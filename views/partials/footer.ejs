@@ -3,6 +3,49 @@
 
 
 
+<div class="overlay overlay__slide-down" id="notificationOverlay">
+
+  <span class="overlay--btn"><%-include('../../dist/images/cancel.svg')%></span>
+  <div class="overlay--cont">
+
+    <div class="overlay--body ">
+                <div class="overlay--body__form">
+
+
+
+                  <div class="notification-body" style="margin-top:50px;">
+
+                      <%notifications.forEach(function(notification){%>
+
+
+                        <a href="/user/notifications/<%=notification.id%>" class="notification">
+                         <div class="notification-head">
+                           <span class="notification-title"><%=notification.topic%></span>
+                           <div class="notification-date"><%=moment(notification.createdAt).format('Do MMM')%>.</div>
+                         </div>
+                         <div class="notification-message">
+                             <%-truncate(notification.message,40)%>
+                         </div>
+                       </a>
+
+                      <%})%>
+
+                  </div>
+
+
+
+
+
+                </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
 
 
 

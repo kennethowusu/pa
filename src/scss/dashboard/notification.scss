@@ -26,3 +26,31 @@
     height: 26px;
   }
 }
+
+a{
+  &:hover{
+    text-decoration:none;
+  }
+}
+.notification-head{
+  display:flex;
+  color:#212529;
+}
+.notification-title{
+  margin-right:auto;
+}
+.notification-message{
+  color:#777777
+}
+
+a.notification{
+  display: block;
+    border: 1px solid #dadada !important;
+    padding: 12px;
+    border-radius: 8px;
+    transition:.3s ease-out;
+    transition-property: background-color;
+    &:hover{
+      background-color:#f9f9f9;
+    }
+}
