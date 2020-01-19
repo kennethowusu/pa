@@ -17,15 +17,15 @@
             </div>
             <div class="settings--text">
                 <div class="settings--text__head">
-                  <%=user.firstname%> <%=user.lastname%>
+                  Account Name
                 </div>
                 <div class="settings--text__desc">
-                  Kenneth owusu
+                  <%=user.firstname%> <%=user.lastname%>
                 </div>
 
 
               </div>
-            <div class="settings--action">
+            <div class="settings--action overlay-btn" overlay-target="settingsName">
               Edit
             </div>
 
@@ -47,7 +47,7 @@
 
 
                 </div>
-              <div class="settings--action">
+              <div class="settings--action overlay-btn" overlay-target="settingsPassword">
                 Edit
               </div>
 
@@ -70,6 +70,92 @@
 
 
 </div><!--bg-default-->
+
+
+
+
+
+
+
+<div class="overlay overlay__slide-up" id="settingsName">
+
+  <span class="overlay--btn"><%-include('../../dist/images/cancel.svg')%></span>
+  <div class="overlay--cont">
+
+    <div class="overlay--body ">
+                <div class="overlay--body__form">
+                  <form>
+                        <div id="accountNameAlert"></div>
+                        <div class="form-group">
+                          <label for="firstname">Firstname</label>
+                          <input type="text" class="form-control text-capitalize" id="firstname" value="<%=user.firstname%>" aria-describedby="emailHelp" placeholder="Enter firstname">
+                          <div class="invalid-feedback">Enter lastname</div>
+                        </div>
+                        <div class="form-group mb-2">
+                          <label for="lastname">Lastname</label>
+                          <input type="text" class="form-control text-capitalize" id="lastname" value="<%=user.lastname%>"  placeholder="Enter lastname">
+                            <div class="invalid-feedback">Enter Lastname</div>
+                        </div>
+
+                        <div class="form-group">
+                          <button type="submit" id="accountNameSubmit" class="btn btn-primary w-100">Change Account Name</button>
+                        </div>
+                  </form>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div class="overlay overlay__slide-up" id="settingsPassword">
+
+  <span class="overlay--btn"><%-include('../../dist/images/cancel.svg')%></span>
+  <div class="overlay--cont">
+
+    <div class="overlay--body ">
+                <div class="overlay--body__form">
+                  <form>
+                         <div class="" id="changePasswordError">
+
+                         </div>
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+                            <div class="invalid-feedback">Enter current password</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+                            <div class="invalid-feedback">Enter new password</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+                            <div class="invalid-feedback">Passwords do not match</div>
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-primary w-100" id="changePasswordSubmit" type="button" name="button">Change Password</button>
+                        </div>
+
+                  </form>
+
+                </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
 
 
 
