@@ -1,206 +1,77 @@
 <%-include('../partials/header')%>
 
 
-
-       <div class="container-fluid dash-content">
-
-         <!-- Page Heading -->
-         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-           <h1 class="h3 mb-0 text-gray-800">Settings</h1>
-           <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"></a>
-         </div>
-
-         <!-- Content Row -->
-         <div class="row p-3">
-           <!-- Used some part of the code from Chris Wright (https://codepen.io/chriswrightdesign/)'s Pen  -->
+<div class="container bg-default">
 
 
-<div class="accordion">
- <dl>
-   <!-- description list -->
-   <dt>
-       <!-- accordion tab 2 - Shipping Info -->
-       <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">Account Name</a>
-     </dt>
-   <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
+  <div class="" style="padding:15px">
 
-     <div class="container-fluid" style="padding-top: 20px;">
-       <div class=" accountError">
-
-       </div>
-       <p class="headings">Change Account Name</p>
-       <form class="main-container">
-         <div class="row">
-           <div class="col-md-12">
-             <label for="firstname" class="label-style">First Name</label>
-           </div>
-           <div class="form-group col-md-12">
-             <input type="text" id="firstname" value="<%=user.firstname%>" class="form-control" placeholder="Enter your firstname" required>
-           </div>
-
-         </div>
+    <div class="row">
 
 
+      <div class="col-md-12">
+        <div class="settings">
 
-         <div class="row">
-           <div class="col-md-12">
-             <label for="lastname" class="label-style">Last Name</label>
-           </div>
-           <div class="form-group col-md-12">
-             <input type="text" id="lastname" value="<%=user.lastname%>" class="form-control" placeholder="Enter Lastname" required>
-           </div>
-
-         </div>
-
-
-
-         <div class="button-container">
-           <button class="btn btn-primary" id="accountNameSubmit" type="submit">Submit</button>
-
-         </div>
-       </form>
-     </div>
-   </dd>
-   <!-- end accordion tab 2 -->
-
-   <dt>
-       <!-- accordion tab 2 - Shipping Info -->
-       <a href="#accordion2" aria-expanded="false" aria-controls="accordion2" class="accordion-title accordionTitle js-accordionTrigger"> Password</a>
-     </dt>
-   <dd class="accordion-content accordionItem is-collapsed" id="accordion2" aria-hidden="true">
-     <div class="container-fluid" style="padding-top: 20px;">
-       <div class=" changePasswordError">
-
-       </div>
-       <p class="headings">Change Password</p>
-       <form class="main-container">
-
-
-
-         <div class="row">
-           <div class="col-md-12">
-             <label for="password" class="label-style">Current Password</label>
-           </div>
-           <div class="form-group col-md-12">
-             <input type="password" id="password" class="form-control" placeholder="Enter current password" required>
-           </div>
-
-         </div>
-
-         <div class="row">
-           <div class="col-md-12">
-             <label for="newPassword" class="label-style">New Password</label>
-           </div>
-           <div class="form-group col-md-12">
-             <input type="password" id="newPassword" class="form-control" placeholder="Enter new password" required>
-           </div>
-
-         </div>
-
-
-          <div class="row">
-            <div class="col-md-12">
-                <label for="confirmPassword" class="label-style">Confirm Password</label>
+            <div class="settings--icon profile">
+              <%-include('../../dist/images/name.svg')%>
             </div>
-            <div class="form-group col-md-12">
-              <input type="password" id="confirmPassword" class="form-control" placeholder="Enter new password again" required>
+            <div class="settings--text">
+                <div class="settings--text__head">
+                  <%=user.firstname%> <%=user.lastname%>
+                </div>
+                <div class="settings--text__desc">
+                  Kenneth owusu
+                </div>
+
+
+              </div>
+            <div class="settings--action">
+              Edit
             </div>
 
           </div>
 
 
-         <div class="button-container">
-           <button class="btn btn-primary" id="changePasswordSubmit" type="submit">Submit</button>
+          <div class="settings">
 
-         </div>
-       </form>
-     </div>
-   </dd>
-   <!-- end accordion tab 2 -->
-
-
-   <!-- end accordion tab 3 -->
-
- </dl>
- <!-- end description list -->
-</div>
-<!-- end accordion -->
+              <div class="settings--icon password">
+                <%-include('../../dist/images/padlock.svg')%>
+              </div>
+              <div class="settings--text">
+                  <div class="settings--text__head">
+                    Change Password
+                  </div>
+                  <div class="settings--text__desc">
+                    ********
+                  </div>
 
 
+                </div>
+              <div class="settings--action">
+                Edit
+              </div>
 
-         </div>
-         <!--row-->
+            </div>
+
+          </div><!---settings-->
+
+
+        </div>
 
 
 
-       </div>
-       <!-- /.container-fluid -->
+
+
+      </div><!--col-->
+
+    </div><!--row-->
+
+  </div>
+
+
+</div><!--bg-default-->
 
 
 
-<script type="text/javascript">
-  //uses classList, setAttribute, and querySelectorAll
-//if you want this to work in IE8/9 youll need to polyfill these
-(function() {
-  var d = document,
-    accordionToggles = d.querySelectorAll('.js-accordionTrigger'),
-    setAria,
-    setAccordionAria,
-    switchAccordion,
-    touchSupported = ('ontouchstart' in window),
-    pointerSupported = ('pointerdown' in window);
 
-  skipClickDelay = function(e) {
-    e.preventDefault();
-    e.target.click();
-  }
-
-  setAriaAttr = function(el, ariaType, newProperty) {
-    el.setAttribute(ariaType, newProperty);
-  };
-  setAccordionAria = function(el1, el2, expanded) {
-    switch (expanded) {
-      case "true":
-        setAriaAttr(el1, 'aria-expanded', 'true');
-        setAriaAttr(el2, 'aria-hidden', 'false');
-        break;
-      case "false":
-        setAriaAttr(el1, 'aria-expanded', 'false');
-        setAriaAttr(el2, 'aria-hidden', 'true');
-        break;
-      default:
-        break;
-    }
-  };
-  //function
-  switchAccordion = function(e) {
-    e.preventDefault();
-    var thisAnswer = e.target.parentNode.nextElementSibling;
-    var thisQuestion = e.target;
-    if (thisAnswer.classList.contains('is-collapsed')) {
-      setAccordionAria(thisQuestion, thisAnswer, 'true');
-    } else {
-      setAccordionAria(thisQuestion, thisAnswer, 'false');
-    }
-    thisQuestion.classList.toggle('is-collapsed');
-    thisQuestion.classList.toggle('is-expanded');
-    thisAnswer.classList.toggle('is-collapsed');
-    thisAnswer.classList.toggle('is-expanded');
-
-    thisAnswer.classList.toggle('animateIn');
-  };
-  for (var i = 0, len = accordionToggles.length; i < len; i++) {
-    if (touchSupported) {
-      accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
-    }
-    if (pointerSupported) {
-      accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
-    }
-    accordionToggles[i].addEventListener('click', switchAccordion, false);
-  }
-})();
-</script>
-<script type="text/javascript" src="/settings.js">
-
-</script>
-       <%-include('../partials/footer')%>
+<%-include('../partials/footer')%>
