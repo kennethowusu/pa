@@ -293,3 +293,13 @@ changePasswordSubmit.click(function(e){
   }
 
 })
+
+
+//===================user action links=========================//
+$("#settingsLink").click(function(){
+  window.location.href = "/user/settings";
+})
+
+$("#logoutLink").click(function(){
+  window.location.href = "/user/logout";
+})

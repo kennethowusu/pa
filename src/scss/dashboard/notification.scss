@@ -1,0 +1,28 @@
+
+
+.profile-dropdown{
+  transform:none !important;
+  top:-2px !important;
+  left:-88px !important;
+
+  &::after{
+    border-top: 0 !important;
+  }
+}
+.dropdown-toggle::after{
+  border-top:0 !important;
+}
+
+.profile-dropdown{
+  i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    margin-right: 15px;
+  }
+  svg{
+    width: 17px;
+    height: 26px;
+  }
+}
