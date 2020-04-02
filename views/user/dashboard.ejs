@@ -5,8 +5,27 @@
 
 
   <div class="" style="padding:15px">
-
+  <style media="screen">
+    .plan-type{
+        background-color:green;
+        color:white;
+    }
+  </style>
     <div class="row">
+
+      <%if(user.investment.investment_status=='active' && user.finance.investment_type){%>
+            <div class=" col-sm-12">
+              <p class="section-title  text-center">PACKAGE</p>
+
+                <%if( user.finance.investment_type =='gold-plan'){%>
+                    <p class="section-title plan-type text-center">GOLD</p>
+                <%}else if(user.finance.investment_type =='diamond-plan'){%>
+                    <p class="section-title plan-type text-center">DIAMOND</p>
+                <%}else if(user.finance.investment_type =="convid-plan"){%>
+                    <p class="section-title plan-type text-center">CONVID-19</p>
+                <%}%>
+            </div>
+      <%}%>
 
       <div class=" col-md-12 mt-4">
          <p class="section-title">Balances</p>
@@ -51,7 +70,7 @@
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <p class="text-xs font-weight-bold text-primary  mb-3 onefourem">Referral Commission</p>
-                <p class="h5 mb-0  text-gray-800  twoem">$<%=user.finance.interest%></p>
+                <p class="h5 mb-0  text-gray-800  twoem">$<%=user.finance.referral_interest%></p>
               </div>
               <div class="col-auto">
                 <i class="fas fa-calendar fa-2x text-gray-300"></i>

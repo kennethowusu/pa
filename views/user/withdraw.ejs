@@ -2,7 +2,9 @@
  const last_withdrawal_date  = new Date(user.finance.last_withdrawal_date);
  const today = moment(new Date())
  const next_two_weeks = moment(last_withdrawal_date).add('2','weeks');
+  const next_one_week = moment(last_withdrawal_date).add('1','weeks');
  const gold_date_left  = next_two_weeks.diff(last_withdrawal_date,'days')
+ const convid_date_left = next_one_week.diff(last_withdrawal_date,'days')
  const duration  = today.diff(last_withdrawal_date,'days')
 %>
 <%-include('../partials/header')%>
@@ -96,23 +98,38 @@
                             </div>
 
 
+                     <%}else if(user.investment.investment_status=='active' && user.investment.investment_type == "gold-plan" || user.investment.investment_type == "diamond-plan"){%>
+
+                                 <%if(duration >=  gold_date_left ){%>
+
+                                    <button type="button" class="col-md-12 mb-2 btn btn-primary overlay-btn" overlay-target="requestWithdrawal"  id="withdrawalBtn">Request Withdrawal</button>
+                                    <p class="text-muted mT-10">Withdrawal Available</p>
 
 
+                                <%}else{%>
 
-                      <%}else if(duration >=  gold_date_left ){%>
+                                        <button type="button" class="col-md-12 mb-2 btn btn-primary" disabled >Request Withdrawal</button>
 
-                         <button type="button" class="col-md-12 mb-2 btn btn-primary overlay-btn" overlay-target="requestWithdrawal"  id="withdrawalBtn">Request Withdrawal</button>
-                         <p class="text-muted mT-10">Withdrawal Available</p>
-
-
-                     <%}else{%>
-
-                       <button type="button" class="col-md-12 mb-2 btn btn-primary" disabled >Request Withdrawal</button>
-
-                      <p class="text-muted mT-10">Withdrawal Unavailable.  Your next withdrawal is on <%=next_two_weeks.format('dddd, MMMM Do YYYY')%></p>
+                                        <p class="text-muted mT-10">Withdrawal Unavailable.  Your next withdrawal is on <%=next_two_weeks.format('dddd, MMMM Do YYYY')%></p>
+                                <%}%>
 
 
-                     <%}%>
+                         <%}else if(user.investment.investment_status=='active' && user.investment.investment_type == "convid-plan"){%>
+
+                                   <%if(duration >=  convid_date_left ){%>
+
+                                      <button type="button" class="col-md-12 mb-2 btn btn-primary overlay-btn" overlay-target="requestWithdrawal"  id="withdrawalBtn">Request Withdrawal</button>
+                                      <p class="text-muted mT-10">Withdrawal Available</p>
+
+
+                                  <%}else{%>
+
+                                          <button type="button" class="col-md-12 mb-2 btn btn-primary" disabled >Request Withdrawal</button>
+
+                                          <p class="text-muted mT-10">Withdrawal Unavailable.  Your next withdrawal is on <%=next_one_week.format('dddd, MMMM Do YYYY')%></p>
+                                  <%}%>
+
+                       <%}%>
 
 
 
