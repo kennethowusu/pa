@@ -81,6 +81,10 @@ module.exports.createUser = (req,res,next)=>{
                 FINANCE.create({
                   user_id:newUser.user_id
                 })
+                .catch(function(eww){
+                  console.log(eww)
+
+                })
                 .then(function(finance){
                   //=============CREATE FINANCE FOR USER===================//
                     INVESTMENT.create({

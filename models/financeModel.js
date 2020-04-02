@@ -20,9 +20,9 @@ const FINANCE = sequelize.define('finance',{
     defaultValue:0
   },
   investment_type:{
-    type:Sequelize.ENUM,
-    defaultValue:null,
-    values:['gold-plan','diamond-plan','platinum-plan']
+    type:Sequelize.STRING,
+    defaultValue:null
+
   },
   times_credited:{
     type:Sequelize.INTEGER,

@@ -8,9 +8,9 @@ const INVESTMENT = sequelize.define('investment',{
     defaultValue:null
   },
   investment_type:{
-    type:Sequelize.ENUM,
-    defaultValue:null,
-    values:['gold-plan','diamond-plan','platinum-plan']
+    type:Sequelize.STRING,
+    defaultValue:null
+
   },
   investment_date:{
     type:Sequelize.DATE,
