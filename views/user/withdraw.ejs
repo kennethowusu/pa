@@ -154,7 +154,7 @@
 
 <%
   const totalFunds = money.add(user.finance.principal,user.finance.interest);
-  const maximumWithdrawal = 0.05 * totalFunds;
+  const maximumWithdrawal = 0.07 * totalFunds;
 
 %>
 
@@ -165,7 +165,7 @@
 
     <div class="overlay--body ">
                 <div class="overlay--body__form">
-                          <p>Maximum withdrawal is <span class="font-weight-bold"> $<%=parseFloat(maximumWithdrawal).toFixed(2)%></span> (5% of your total funds)</p>
+                          <p>Maximum withdrawal is <span class="font-weight-bold"> $<%=parseFloat(maximumWithdrawal).toFixed(2)%></span> (7% of your total funds)</p>
 
                      <form class="needs-validation novalidate" action="index.html" method="post">
                        <div class="form-group">

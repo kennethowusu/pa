@@ -69,7 +69,7 @@ module.exports.postWithDrawalRequest = (req,res,next)=>{
     User.findOne({where:{user_id:user_id},include:[{all:true}]})
     .then(function(foundUser){
        const totalFunds = money.add(foundUser.finance.principal,foundUser.finance.interest);
-       const maximumWithdrawal = 0.05 * totalFunds;
+       const maximumWithdrawal = 0.07 * totalFunds;
        const maximumAmount = maximumWithdrawal.toFixed(2);
 
        if(parseFloat(amount) > parseFloat(maximumAmount)){
