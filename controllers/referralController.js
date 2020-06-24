@@ -10,7 +10,7 @@ require('dotenv').config();
 const request = require('request')
 //===============models==========================//
 var User = require('../models/userModel');
-const Notification = require('../models/notificationModel.js');
+
 const Finance      = require('../models/financeModel.js');
 const Investment  = require('../models/investmentModel.js');
 
@@ -22,8 +22,7 @@ module.exports.getReferralIndexPage = (req,res,next)=>{
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
     const refUrl = req.protocol + '://' + req.get('host') + '?i=' + foundUser.referal_id;
-    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-    .then(function(notifications){
+
       User.findAndCountAll({where:{referee_id:foundUser.referal_id}})
       .then(function(referrals){
         return res.render('referral/index',
@@ -31,7 +30,7 @@ module.exports.getReferralIndexPage = (req,res,next)=>{
 
       })
 
-    })
+
   })
 }
 

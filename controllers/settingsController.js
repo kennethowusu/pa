@@ -10,7 +10,7 @@ require('dotenv').config();
 const request = require('request')
 //===============models==========================//
 var User = require('../models/userModel');
-const Notification = require('../models/notificationModel.js');
+
 const Finance      = require('../models/financeModel.js');
 const Investment  = require('../models/investmentModel.js');
 
@@ -21,11 +21,10 @@ module.exports.getSettingsIndexPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-    Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-    .then(function(notifications){
+  
       return res.render('settings/index',
        {title:"Settings",user:foundUser,notifications:notifications,moment:moment})
-    })
+
   })
 }
 

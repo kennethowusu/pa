@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
 
-const Notification = require('./notificationModel.js');
+
 const Finance      = require('./financeModel.js');
 const Investment   = require('./investmentModel.js');
 const Earning      = require('./dailyEarningsModel')
@@ -62,7 +62,7 @@ const User = sequelize.define('user',{
   }
 });
 
-User.hasMany(Notification,{foreignKey:"user_id",sourceKey: 'user_id',onDelete:'NO ACTION',hooks:true });
+
 User.hasOne(Investment,{foreignKey:"user_id",sourceKey:"user_id",onDelete:'NO ACTION' ,hooks:true});
 User.hasOne(Finance, {foreignKey: 'user_id', sourceKey: 'user_id',onDelete: 'NO ACTION',hooks:true});
 User.hasMany(Deposit, {foreignKey: 'user_id', sourceKey: 'user_id',onDelete: 'NO ACTION',hooks:true});

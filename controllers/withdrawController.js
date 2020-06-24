@@ -15,7 +15,7 @@ require('dotenv').config();
 
 //===========models================//
 var User = require('../models/userModel');
-const Notification = require('../models/notificationModel.js');
+
 const Finance       = require('../models/financeModel.js');
 const Investment    = require('../models/investmentModel.js');
 const Deposit       = require('../models/depositModel');

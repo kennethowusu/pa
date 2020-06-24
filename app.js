@@ -10,12 +10,7 @@ var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 // var accountRouter = require('./routes/account');
 var withdrawRouter   = require('./routes/withdraw')
-// var summaryRouter   = require('./routes/summary');
-// var confirmRouter = require('./routes/confirm')
-// var investmentRouter = require('./routes/investment')
-// var referralRouter  = require('./routes/referral');
-// var notificationRouter = require('./routes/notification')
-// var settingsRouter  = require('./routes/settings')
+
 var app = express();
 
 var session = require('express-session');

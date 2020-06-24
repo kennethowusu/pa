@@ -36,9 +36,9 @@ user.requireAuth,
 userController.getSettingsPage);
 
 
-router.get('/notifications/:notificationId',
-user.requireAuth,
-userController.getNotificationPage);
+// router.get('/notifications/:notificationId',
+// user.requireAuth,
+// userController.getNotificationPage);
 
 router.get('/earnings',
 user.requireAuth,

@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
 const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
-const user  = require('../functions/userFunctions');
+
 const async = require('async');
 const truncate = require('truncate');
 const money    = require('money-math');
 const util   = require('util');
 const mail    =  require('../mail/mail');
-
+const user  = require('../functions/userFunctions');
 const sequelize = require('../config/database')
 
 
@@ -20,7 +20,7 @@ require('dotenv').config();
 
 //===========models================//
 var User = require('../models/userModel');
-const Notification = require('../models/notificationModel.js');
+
 const Finance       = require('../models/financeModel.js');
 const Investment    = require('../models/investmentModel.js');
 const Deposit       = require('../models/depositModel');
@@ -28,7 +28,8 @@ const Earning       = require('../models/dailyEarningsModel')
 const moment        = require('moment');
 
 
-
+var notifications = [];
+var notification = [];
 
 
 
@@ -37,8 +38,7 @@ module.exports.getDashboardPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-        .then(function(notifications){
+
 
            Earning.findAll({limit:5,where:{user_id:user_id},order:[['createdAt','DESC']]})
            .then(function(earnings){
@@ -54,7 +54,7 @@ module.exports.getDashboardPage = (req,res,next)=>{
 
              //return res.send({user:foundUser})
            })
-        })
+
   })
 
 
@@ -64,8 +64,6 @@ module.exports.getInvestPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-        .then(function(notifications){
 
           //var client = new Bitpay.Client({ apiKey: process.env.BITPAY_API_KEY });
 
@@ -94,7 +92,7 @@ module.exports.getInvestPage = (req,res,next)=>{
 
 
                 //return res.send({user:foundUser})
-        })
+
   })
 
 }
@@ -103,8 +101,7 @@ module.exports.getWithdrawPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-        .then(function(notifications){
+
 
                  if(!foundUser.finance.investment_type){
                    return res.render('user/not-invest',{
@@ -129,7 +126,7 @@ module.exports.getWithdrawPage = (req,res,next)=>{
 
 
                 //return res.send({user:foundUser})
-        })
+
   })
 
 }
@@ -147,8 +144,7 @@ module.exports.getHistoryPage = (req,res,next)=>{
 
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-        .then(function(notifications){
+
 
           console.log('from is '+from)
              sequelize.query(
@@ -199,7 +195,7 @@ module.exports.getHistoryPage = (req,res,next)=>{
 
              //return res.send({user:foundUser})
 
-        })
+
   })
 
 
@@ -210,8 +206,7 @@ module.exports.getReferralPage = (req,res,next)=>{
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
         const refUrl = req.protocol + '://' + req.get('host') + '?i=' + foundUser.referal_id;
-        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-        .then(function(notifications){
+
 
           User.findAndCountAll({where:{referee_id:foundUser.referal_id}})
           .then(function(referrals){
@@ -231,7 +226,7 @@ module.exports.getReferralPage = (req,res,next)=>{
 
 
                 //return res.send({user:foundUser})
-        })
+
   })
 
 
@@ -242,8 +237,7 @@ module.exports.getSettingsPage = (req,res,next)=>{
   const user_id = user.getUserId(req,res,next)
   User.findOne({where:{user_id:user_id},include:[{all:true}]})
   .then(function(foundUser){
-        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-        .then(function(notifications){
+
 
            Earning.findAll({limit:5,where:{user_id:user_id},order:[['createdAt','DESC']]})
            .then(function(earnings){
@@ -259,45 +253,10 @@ module.exports.getSettingsPage = (req,res,next)=>{
 
              //return res.send({user:foundUser})
            })
-        })
+
   })
 
 }
-
-
-module.exports.getNotificationPage = (req,res,next)=>{
-  const user_id = user.getUserId(req,res,next)
-  const notificationId = req.params.notificationId;
-
-  User.findOne({where:{user_id:user_id},include:[{all:true}]})
-  .then(function(foundUser){
-        Notification.findAll({limit:3,where:{user_id:user_id},order:[['createdAt','DESC']]})
-        .then(function(notifications){
-
-           Notification.findOne({where:{user_id:user_id,id:notificationId}})
-           .then(function(notification){
-             if(!notification){
-               return res.render('user/dashboard')
-             }else{
-               return res.render('user/notification',{
-                               title:"Notification",
-                               user:foundUser,
-                               page:'notification',
-                               notifications:notifications,
-                               notification:notification,
-                               moment:moment,
-                               truncate:truncate
-                           })
-             }
-
-             //return res.send({user:foundUser})
-           })
-        })
-  })
-
-}
-
-
 
 
 

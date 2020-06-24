@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var indexController  = require('../controllers/indexController');
 const user  = require('../functions/userFunctions');
-const account = require("../functions/accountFunctions");
+
 const util = require('util');
 
 const FINANCE = require('../models/financeModel');

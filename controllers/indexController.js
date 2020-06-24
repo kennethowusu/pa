@@ -5,13 +5,14 @@ const user  = require('../functions/userFunctions');
 const mail  = require('../mail/mail');
 const util  = require('util');
 const moment = require('moment')
-const _   = require('lodash')
+
+
 const CMC   = require('coinmarketcap-api')
 require('dotenv').config();
 const request = require('request')
 //===============models==========================//
 var User = require('../models/userModel');
-const NOTIFICATION = require('../models/notificationModel.js');
+
 const FINANCE       = require('../models/financeModel.js');
 const INVESTMENT    = require('../models/investmentModel.js');
 
@@ -90,16 +91,7 @@ module.exports.createUser = (req,res,next)=>{
                     INVESTMENT.create({
                       user_id:newUser.user_id
                     })
-                    .then(function(notification){
-                      //==========CREATE WELCOME NOTIFICATION FOR USER======//
-                        const welcome_message = `Hi, ${newUser.firstname} you are welcome to prime axis `;
-
-                        NOTIFICATION.create({
-                          topic:"Welcome to Prime Axis LLC",
-                          user_id:newUser.user_id,
-                          message:welcome_message
-                        }).
-                        then(function(){
+                        .then(function(){
                           //===============SET ACCESS TOKEN AND REDIRECT===============//
                           user.generateToken(req, res, next, newUser);
 
@@ -110,17 +102,12 @@ module.exports.createUser = (req,res,next)=>{
                           if(referee_id){
                             User.find({where:{referal_id:referee_id}})
                             .then(function(refer_user){
-                              if(refer_user){
-                                NOTIFICATION.create({
-                                  topic:"New User Registeration(Referral)",
-                                  user_id : refer_user.user_id,
-                                  message:`<p>${refer_user.firstname}, ${newUser.firstname} ${newUser.lastname} recently registered with your referal link</p>.
-                                          You will receive 3% of whatever ${newUser.firstname} deposits`
-                                })
 
-                              }else{
+
+
+
                                 return res.send({success:'/user/summary'});
-                              }
+
                             })
                           }else{
                               return res.send({success:'/user/summary'});
@@ -130,10 +117,7 @@ module.exports.createUser = (req,res,next)=>{
 
                 })
 
-            })
-          .catch(err => {
-            console.log(err)
-          })
+
       } //else
     })
 }
