@@ -6,9 +6,9 @@ const sequelize = require('../config/database');
 
 
 
-const Notification = sequelize.define('Notification',{
+const NotificationChange = sequelize.define('NotificationChange',{
 
-      notificationID:{
+      notificationChangeID:{
         type: Sequelize.INTEGER,
         autoIncrement:true,
         primaryKey:true
@@ -16,7 +16,7 @@ const Notification = sequelize.define('Notification',{
       notificationObjectID:{
         type: Sequelize.INTEGER
       },
-      notifierID:{
+      actorID:{
         type:Sequelize.STRING
       },
       status:{
@@ -26,7 +26,7 @@ const Notification = sequelize.define('Notification',{
 
       },{
         timestamps:false,
-        tableName: 'Notification'
+        tableName: 'NotificationChange'
       });
 
-      module.exports = Notification;
+      module.exports = NotificationChange;
